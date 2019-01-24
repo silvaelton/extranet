@@ -1,0 +1,162 @@
+.collapsing {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.header-title-bold {
+  font-size: 16px;
+  font-weight: bold;
+  color: #6d6d6d;
+}
+
+.header-title {
+  font-size: 25px;
+  color: #6d6d6d;
+}
+
+.form-control-label {
+  color: #6d6d6d;
+}
+
+.divider {
+  margin-top: 15px;
+}
+
+
+.table thead {
+  background-color: #f1f1f1;
+}
+
+.special-border {
+  padding-left: -20px;
+  border-left: 1px solid red;
+}
+
+
+
+.search-box .input-group {
+  margin-top: 10px;
+}
+
+.helpdesk-icon {
+
+}
+
+
+/* SIDEBAR */
+
+.side-nav-dark .side-nav .side-nav-inner .side-nav-menu > li.dropdown ul.dropdown-menu {
+  background-color: #2d2d2d;
+}
+
+.side-nav-dark .side-nav .side-nav-inner .side-nav-menu li a {
+  color: #d4d4d4 !important;
+}
+.horizontal-logo {
+  padding-top: 20px;
+  padding-left: 5px;
+}
+
+.mini-logo {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.is-collapsed .side-nav .horizontal-logo {
+  display: none;
+}
+
+.side-nav .mini-logo {
+  display: none;
+}
+
+.is-collapsed .side-nav .mini-logo {
+  display: block;
+}
+
+.is-collapsed .side-nav:hover .mini-logo {
+  display: none;
+}
+
+.is-collapsed .side-nav:hover .horizontal-logo {
+  display: block;
+}
+
+.side-nav-dark .side-nav {
+  background-color: #232323 !important;
+}
+
+.side-nav .nav-item .title {
+  color: white;
+}
+
+.side-nav .nav-item .icon-holder {
+  color: #f6cb0e;
+}
+
+.side-nav-logo {
+  border-bottom: none !important;
+}
+
+.side-nav .side-nav-inner .side-nav-menu li a:hover .icon-holder,
+.side-nav .side-nav-inner .side-nav-menu li a:focus .icon-holder {
+  color: #ffffff;
+}
+
+.side-nav .side-nav-inner .side-nav-menu li.dropdown.open > a .icon-holder {
+    color: #ffffff;
+}
+
+@media only screen and (max-width: 1440px) and (min-width: 992px) {
+  .side-nav .mini-logo {
+    display: block;
+  }
+
+  .side-nav .horizontal-logo {
+    display: none;
+  }
+
+  .side-nav:hover .mini-logo {
+    display: none !important;
+  }
+
+  .side-nav:hover .horizontal-logo {
+    display: block !important;
+  }
+
+  .is-collapsed .side-nav .horizontal-logo {
+    display: block;
+  }
+
+  .is-collapsed .side-nav .mini-logo {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .side-nav .mini-logo {
+    display: block;
+  }
+
+  .side-nav .horizontal-logo {
+    display: none;
+  }
+
+  .side-nav:hover .mini-logo {
+    display: none !important;
+  }
+
+  .side-nav:hover .horizontal-logo {
+    display: block !important;
+  }
+
+  .is-collapsed .side-nav .horizontal-logo {
+    display: block;
+  }
+
+  .is-collapsed .side-nav .mini-logo {
+    display: none;
+  }
+}
+
+

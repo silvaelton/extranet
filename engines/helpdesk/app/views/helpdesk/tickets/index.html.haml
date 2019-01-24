@@ -1,0 +1,26 @@
+.row
+  .col-lg-12
+    .header-title-bold Helpdesk
+    .header-title Chamados
+.divider
+.row
+  .col-lg-12
+    .card
+      .card-block
+        .row
+          .col-lg-12
+            = simple_form_for url_for do |f|
+              .row
+                .col-lg-2
+                  = f.input :by_type, as: :select, label: 'Por tipo', include_blank: 'Selecione...'
+                .col-lg-2
+                  = f.input :by_protocol, as: :string, label: 'Por protocolo'
+                .col-lg-2
+                  = f.input :by_sector_id, as: :select, collection: {}, include_blank: 'Selecione...'
+                .col-lg-2
+                  = f.input :by_code, as: :string
+                .col-lg-2
+                  = f.submit 'ICON', class: 'btn btn-primary'
+        .row
+          .col-lg-12.index
+            = render 'index'

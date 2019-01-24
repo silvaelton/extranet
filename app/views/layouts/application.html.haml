@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no", :name => "viewport"}/
+    %title Extranet
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'template'
+
+  %body.pace-done
+    .app.side-nav-dark
+      .layout
+        = render 'layouts/partials/sidebar'
+        .page-container
+          = render 'layouts/partials/topbar'
+          .main-content
+            .container-fluid
+              = yield
+    #modal.modal{tabindex: "-1", role: "dialog"}
+    

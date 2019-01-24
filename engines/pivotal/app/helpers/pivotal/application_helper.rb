@@ -1,4 +1,4 @@
 module Pivotal
-  module ApplicationHelper
+  module ApplicationHelper    
   end
 end

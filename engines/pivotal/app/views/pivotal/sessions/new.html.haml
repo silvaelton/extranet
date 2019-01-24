@@ -1,0 +1,19 @@
+.row
+  .col-md-10.mr-auto.ml-auto
+    .row
+      .mr-auto.ml-auto.full-height.height-100.d-flex.align-items-center
+        .vertical-align.full-height
+          .table-cell
+            .card
+              .card-body
+                .pdd-horizon-30.pdd-vertical-30
+                  .mrg-btm-30
+                    = image_tag 'horizontal-logo.png', class: 'img-responsive inline-block', width: '200'
+                  %p.mrg-btm-15.font-size-13 Informe sua matrícula e senha para realizar o acesso.
+                  = simple_form_for @session do |f|
+                    = f.input :code, label: false, placeholder: 'Matrícula'
+                    = f.input :password, label: false, placeholder: 'Senha'
+                    .pull-right
+                      %a{:href => "#"} Esqueceu a senha?
+                    .mrg-top-20.text-right
+                      = f.submit 'Realizar acesso', class: 'btn btn-success'

@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  mount Pivotal::Engine    => '/',          as: :pivotal
+  mount Helpdesk::Engine   => '/helpdesk',  as: :helpdesk
+  mount Candidate::Engine  => '/candidato', as: :candidate
+
 end

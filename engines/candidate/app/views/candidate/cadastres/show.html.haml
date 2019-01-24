@@ -1,0 +1,237 @@
+.row
+  .col-lg-12
+    .card
+      .card-block
+        .alert.alert-danger Cadastro possui ocorrências não solucionadas.
+        .row
+          .col-lg-8
+            %h5
+              RII (CHACARÁ DO PADRE)
+            %h1
+              %b 
+                OSVALDO PEREIRA DA CUNHA
+                = link_to "<i class='fa fa-heart-o'></i>".html_safe, "#", remote: true
+                .badge.badge-primary
+                  %i.fa.fa-wheelchair
+              %br/
+              012.159.782-10
+            %h4
+              %span
+                Habilitado - Documentação aprovada
+          .col-lg-4
+            %table.table.table-bordered.table-sm
+              %thead
+                %tr
+                  %th Lista
+                  %th Posição
+                  %th Faixa
+                  %th Pontuação
+              %tbody
+                %tr
+                  %td RII
+                  %td 54654956º
+                  %td Faixa 1
+                  %td 41545646.54665
+                %tr
+                  %td Idoso
+                  %td 5156º
+                  %td Faixa 1
+                  %td 41545646.54665
+                %tr
+                  %td Vulnerável
+                  %td 45968º
+                  %td Faixa 1
+                  %td 41545646.54665                          
+        .divider
+        %hr/
+        %h5 
+          = link_to "<i class='ei ei-pencil-alt'></i>".html_safe, "#", remote: true
+          Dados de básicos
+        .row
+          .col-lg-12.index
+            %table.table.table-bordered
+              %thead
+                %tr
+                  %th Nome completo
+                  %th CPF
+                  %th RG
+                  %th RG/ORG
+                  %th Data de nascimento
+                  %th Idade
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+        .row
+          .col-lg-12.index
+            %table.table.table-bordered
+              %thead
+                %tr
+                  %th Nome completo
+                  %th CPF
+                  %th RG
+                  %th RG/ORG
+                  %th Data de nascimento
+                  %th Idade
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+        .divider                              
+        %h5 
+          = link_to "<i class='ei ei-pencil-alt'></i>".html_safe, "#", remote: true
+          Dados de contato
+        .row
+          .col-lg-12.index
+            %table.table.table-bordered
+              %thead
+                %tr
+                  %th Telefone
+                  %th Telefone 2
+                  %th Celular
+                  %th E-mail
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+        .divider
+        %h5 
+          = link_to "<i class='ei ei-pencil-alt'></i>".html_safe, "#", remote: true
+          Conjugê
+        .row
+          .col-lg-12.index
+            %table.table.table-bordered
+              %thead
+                %tr
+                  %th Nome completo
+                  %th CPF
+                  %th RG
+                  %th RG/ORG
+                  %th Data de nascimento
+                  %th Idade
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+        .divider
+        %h5 
+          = link_to "<i class='ei ei-pencil-alt'></i>".html_safe, "#", remote: true
+          Ocorrências
+        .row
+          .col-lg-12.index
+            %table.table.table-bordered
+              %thead
+                %tr
+                  %th Nome completo
+                  %th CPF
+                  %th RG
+                  %th RG/ORG
+                  %th Data de nascimento
+                  %th Idade
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+        .divider
+        %h5 
+          = link_to "<i class='ei ei-pencil-alt'></i>".html_safe, "#", remote: true
+          Indicações para empreendimento
+        .row
+          .col-lg-12.index
+            %table.table.table-bordered
+              %thead
+                %tr
+                  %th Nome completo
+                  %th CPF
+                  %th RG
+                  %th RG/ORG
+                  %th Data de nascimento
+                  %th Idade
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+        .divider
+        %h5 
+          = link_to "<i class='ei ei-pencil-alt'></i>".html_safe, "#", remote: true
+          Endereço(s) vínculado(s)
+        .row
+          .col-lg-12.index
+            %table.table.table-bordered
+              %thead
+                %tr
+                  %th Nome completo
+                  %th CPF
+                  %th RG
+                  %th RG/ORG
+                  %th Data de nascimento
+                  %th Idade
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+        .divider
+        %hr
+        .row
+          .col-lg-12.index
+            #accordion-1.accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
+              .panel.panel-default
+                #headingOne.panel-heading{:role => "tab"}
+                  %h4.panel-title
+                    %a.collapsed{"aria-expanded" => "false", "data-parent" => "#accordion-1", "data-toggle" => "collapse", :href => "#collapseOne"}
+                      %span Situação cadastral 
+                      %i.icon.ti-arrow-circle-down
+                #collapseOne.panel-collapse.collapse{:style => ""}
+                  .panel-body
+                    .row
+                      .col-lg-12
+                        = link_to "+ Adicionar situação"
+                    .divider
+                    .row
+                      .col-lg-12
+                        %table.table.table-bordered
+                          %thead
+                            %tr
+                              %th Data/Hora
+                              %th Situação
+                              %th Usuário
+                              %th Observação
+                              %th
+              .panel.panel-default
+                #headingTwo.panel-heading{:role => "tab"}
+                  %h4.panel-title
+                    %a.collapsed{"aria-expanded" => "false", "data-parent" => "#accordion-1", "data-toggle" => "collapse", :href => "#collapseTwo"}
+                      %span Situação processual
+                      %i.icon.ti-arrow-circle-down
+                #collapseTwo.collapse.panel-collapse{:role => "tabpanel"}
+                  .panel-body
+                    %p
+                      How did I get into this mess? I really don't know how. We seem to be made to suffer. It's our lot in life. I've got to rest before I fall apart. My joints are almost frozen. What a desolate place this is. Where are you going? Well, I'm not going that way. It's much too rocky. This way is much easier. What makes you think there are settlements over there? Don't get technical with me. What mission? What are you talking about?
+              .panel.panel-default
+                #headingThree.panel-heading{:role => "tab"}
+                  %h4.panel-title
+                    %a.collapsed{"aria-expanded" => "false", "data-parent" => "#accordion-1", "data-toggle" => "collapse", :href => "#collapseThree"}
+                      %span Processos / Documentos
+                      %i.icon.ti-arrow-circle-down
+                #collapseThree.collapse.panel-collapse{:role => "tabpanel"}
+                  .panel-body
+                    %p
+                      Help me, Obi-Wan Kenobi. You're my only hope. What's this? What is what?!? He asked you a question... What is that? Help me, Obi-Wan Kenobi. You're my only hope. Help me, Obi-Wan Kenobi. You're my only hope. Oh, he says it's nothing, sir. Merely a malfunction. Old data. Pay it no mind. Who is she? She's beautiful. I'm afraid I'm not quite sure, sir. Help me, Obi-Wan Kenobi... I think she was a passenger on our last voyage.

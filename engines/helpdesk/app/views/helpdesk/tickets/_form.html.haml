@@ -1,0 +1,6 @@
+= simple_form_for url_for, remote: true do |f|
+  = f.input :ticket_type_id, as: :select, include_blank: 'Selecione o tipo'
+  = f.input :subject_id, as: :select, include_blank: 'Selecione o assunto'
+  = f.input :contact, as: :string, placeholder: 'Informe um número para contato'
+  = f.input :description, as: :text
+  = f.button :submit, class: 'btn btn-success'

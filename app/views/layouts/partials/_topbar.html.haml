@@ -1,0 +1,116 @@
+.header.navbar
+  .header-container
+    %ul.nav-left
+      %li.search-box
+        = simple_form_for url_for, remote: true do |f|
+          .form-group.input-group.btn-group
+            %input#text.form-control{:placeholder => "Pesquisar...", :type => "text"}/
+            %button.btn.btn-primary
+              %i.ti-search
+    %ul.nav-right
+      %li= link_to "<i class='ei-at-sign'></i>".html_safe, "https://cas.gdfnet.df.gov.br", target: "_blank", title: 'Web E-mail', class: 'top-nav-item'
+      %li= link_to "<i class='ei-money-bag'></i>".html_safe, "https://www.gdfnet.df.gov.br/Autenticacao/Login", target: "_blank", title: "Contracheque", class: 'top-nav-item'
+      %li= link_to "<i class='ei-customer-service'></i>".html_safe, helpdesk.new_ticket_path, remote: true, class: 'top-nav-item', title: 'Helpdesk'
+      %li= link_to "<i class='ei-file-text'></i>".html_safe, "http://sei.df.gov.br", target: '_blank', title: 'SEI GDF', class: 'top-nav-item'
+      %li= link_to "<i class='ei-agenda'></i>".html_safe, "#{pivotal.staffs_path}", remote: true, title: 'Lista de ramais', class: 'top-nav-item'
+      %li.user-profile.dropdown
+        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "http://themenate.com/espire/html/dist/index.html"}
+          %img.profile-img.img-fluid{:alt => "", :src => "#{image_url('noavatar.jpg')}"}/
+          .user-info
+            %span.name.pdd-right-5 Desenvolvedor
+            %i.ti-angle-down.font-size-10
+        %ul.dropdown-menu
+          %li
+            %a{:href => "#{pivotal.user_bookmarks_path(current_user)}"}
+              %i.fa.fa-heart.pdd-right-10
+              %span Favoritos
+          %li
+            %a{:href => "#{pivotal.user_path(current_user)}"}
+              %i.ti-settings.pdd-right-10
+              %span Meu perfil
+          %li
+            %a{:href => "#{pivotal.edit_password_path(current_user)}", :data => { :remote => true }}
+              %i.ti-user.pdd-right-10
+              %span Alterar senha
+          %li
+            %a{:href => "#{pivotal.user_tickets_path(current_user)}"}
+              %i.ti-email.pdd-right-10
+              %span Meus chamados
+          %li.divider{:role => "separator"}
+          %li
+            %a{:href => "http://themenate.com/espire/html/dist/index.html"}
+              %i.ti-power-off.pdd-right-10
+              %span Finalizar sessão
+      %li.notifications.dropdown
+        %span.counter 2
+        %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "http://themenate.com/espire/html/dist/index.html"}
+          %i.ti-bell
+        %ul.dropdown-menu
+          %li.notice-header
+            %i.ti-bell.pdd-right-10
+            %span Notificações
+          %li
+            %ul.list-info.overflow-y-auto.relative.scrollable.ps-container.ps-theme-default.ps-active-y{"data-ps-id" => "bdbab039-5c83-264b-3a4e-0f887046817f"}
+              %li
+                %a{:href => "http://themenate.com/espire/html/dist/index.html"}
+                  %img.thumb-img{:alt => "", :src => "./Espire - Bootstrap 4 Admin Template_files/thumb-5.jpg"}/
+                  .info
+                    %span.title
+                      %span.font-size-14.text-semibold Jennifer Watkins
+                      %span.text-gray
+                        commented on your
+                        %span.text-dark post
+                    %span.sub-title 5 mins ago
+              %li
+                %a{:href => "http://themenate.com/espire/html/dist/index.html"}
+                  %img.thumb-img{:alt => "", :src => "./Espire - Bootstrap 4 Admin Template_files/thumb-4.jpg"}/
+                  .info
+                    %span.title
+                      %span.font-size-14.text-semibold Samuel Field
+                      %span.text-gray
+                        likes your
+                        %span.text-dark photo
+                    %span.sub-title 8 hours ago
+              %li
+                %a{:href => "http://themenate.com/espire/html/dist/index.html"}
+                  %span.thumb-img.bg-primary
+                    %span.text-white M
+                  .info
+                    %span.title
+                      %span.font-size-14.text-semibold Michael Birch
+                      %span.text-gray
+                        likes your
+                        %span.text-dark photo
+                    %span.sub-title 5 hours ago
+              %li
+                %a{:href => "http://themenate.com/espire/html/dist/index.html"}
+                  %span.thumb-img.bg-success
+                    %span.text-white
+                      %i.fa.fa-paper-plane-o
+                  .info
+                    %span.title
+                      %span.font-size-14.text-semibold Message sent
+                    %span.sub-title 8 hours ago
+              %li
+                %a{:href => "http://themenate.com/espire/html/dist/index.html"}
+                  %span.thumb-img.bg-info
+                    %span.text-white
+                      %i.ti-user
+                  .info
+                    %span.title
+                      %span.font-size-14.text-semibold Admin
+                      %span.text-gray Welcome on board
+                    %span.sub-title 8 hours ago
+              .ps-scrollbar-x-rail{:style => "left: 0px; bottom: 0px;"}
+                .ps-scrollbar-x{:style => "left: 0px; width: 0px;", :tabindex => "0"}
+              .ps-scrollbar-y-rail{:style => "top: 0px; height: 248px; right: 0px;"}
+                .ps-scrollbar-y{:style => "top: 0px; height: 148px;", :tabindex => "0"}
+              .ps-scrollbar-x-rail{:style => "left: 0px; bottom: 0px;"}
+                .ps-scrollbar-x{:style => "left: 0px; width: 0px;", :tabindex => "0"}
+              .ps-scrollbar-y-rail{:style => "top: 0px; height: 248px; right: 0px;"}
+                .ps-scrollbar-y{:style => "top: 0px; height: 148px;", :tabindex => "0"}
+          %li.notice-footer
+            %span
+              %a.text-gray{:href => "http://themenate.com/espire/html/dist/index.html"}
+                Check all notifications
+                %i.ei-right-chevron.pdd-left-5.font-size-10
