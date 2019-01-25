@@ -1,0 +1,3 @@
+pt-BR:
+  disable_with: 'Carregando...'
+  include_blank: 'Selecione...'

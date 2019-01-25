@@ -1,0 +1,78 @@
+.page-title
+  %h4 Perfil
+.row
+  .col-md-12
+    .row
+      .col-md-4
+        .widget-profile-1.card
+          .profile.border.bottom
+            %img.mrg-top-30{:alt => "", :src => "#{image_url('noavatar.jpg')}", :width => '100'}/
+            %h4.mrg-top-20.no-mrg-btm.text-semibold= @user.presenter.format_name
+            %p CARGO
+          .pdd-horizon-30.pdd-vertical-20
+            %h5.text-semibold.mrg-btm-5 About
+            %p It looks like Sandpeople did this, all right. Look, here are Gaffi sticks, Bantha tracks. It's just...I never heard of them.
+            .mrg-top-30.text-center
+              %ul.list-unstyled.list-inline
+                %li.list-inline-item.no-pdd-horizon
+                  %a.btn.btn-facebook.btn-icon.btn-rounded{:href => ""}
+                    %i.ti-facebook
+                %li.list-inline-item.no-pdd-horizon
+                  %a.btn.btn-twitter.btn-icon.btn-rounded{:href => ""}
+                    %i.ti-twitter
+                %li.list-inline-item.no-pdd-horizon
+                  %a.btn.btn-google-plus.btn-icon.btn-rounded{:href => ""}
+                    %i.ti-google
+      .col-md-8
+        .card
+          .card-heading.border.bottom
+            %h4.card-title General Info
+          .card-block
+            
+            
+        
+        .card
+          .card-heading.border.bottom
+            %h4.card-title Authentication
+          .card-block
+            .row
+              .col-md-10
+                %ul.list-unstyled.list-info
+                  %li
+                    %span.thumb-img.pdd-top-10
+                      %i.ti-user.font-size-30
+                    .info
+                      %b.text-dark.font-size-16 Everyone can look me up
+                      %p A Jedi can feel the Force flowing through him. You mean it controls your actions
+              .col-md-2.text-right
+                .toggle-checkbox.toggle-success.checkbox-inline.toggle-sm.mrg-top-15
+                  %input#toggle1{:checked => "checked", :name => "toggle1", :type => "checkbox"}/
+                  %label{:for => "toggle1"}
+            %hr/
+            .row
+              .col-md-10
+                %ul.list-unstyled.list-info
+                  %li
+                    %span.thumb-img.pdd-top-10
+                      %i.ti-mobile.font-size-30
+                    .info
+                      %b.text-dark.font-size-16 Everyone can contact me
+                      %p When we heard about Alderaan, we were afraid that you were
+              .col-md-2.text-right
+                .toggle-checkbox.toggle-success.checkbox-inline.toggle-sm.mrg-top-15
+                  %input#toggle2{:name => "toggle2", :type => "checkbox"}/
+                  %label{:for => "toggle2"}
+            %hr/
+            .row
+              .col-md-10
+                %ul.list-unstyled.list-info
+                  %li
+                    %span.thumb-img.pdd-top-10
+                      %i.ti-location-pin.font-size-30
+                    .info
+                      %b.text-dark.font-size-16 Show my location
+                      %p I said, all systems have been alerted to your presence, sir.
+              .col-md-2.text-right
+                .toggle-checkbox.toggle-success.checkbox-inline.toggle-sm.mrg-top-15
+                  %input#toggle3{:checked => "checked", :name => "toggle3", :type => "checkbox"}/
+                  %label{:for => "toggle3"}

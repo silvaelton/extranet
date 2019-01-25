@@ -1,0 +1,12 @@
+.fluid-container
+  .page-title
+    %h4 Meus chamados
+  .row
+    .col-md-12
+      .row
+        %table.table.table-bordered
+          %thead
+          %tbody
+            - @logs.each do |log|
+              %tr
+                %td= log.inspect

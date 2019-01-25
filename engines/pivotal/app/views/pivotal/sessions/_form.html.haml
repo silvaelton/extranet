@@ -1,0 +1,13 @@
+= simple_form_for @session, remote: true do |f|
+  - if @session.errors.any?
+    .alert.alert-danger.text-center
+      Matrícula ou senha está incorreto.
+  .input-icon.form-group
+    %i.ti-user
+    %input.form-control.m-b{:placeholder => "Informe sua matrícula", :type => "text", :name => "session[code]", :value => f.object.code}/
+  .input-icon.form-group
+    %i.ti-lock
+    %input.form-control.m-b{:placeholder => "Informe sua senha", :type => "text", :name => "session[password]", :value => f.object.password}/
+  .mrg-top-20.text-right
+    = f.submit 'Realizar acesso', class: 'btn btn-success btn-block', data: { disable_with: 'Autenticando...'}
+    = link_to "Esqueci minha senha", "#", class: "btn btn-gray btn-block"

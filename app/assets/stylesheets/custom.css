@@ -160,3 +160,36 @@
 }
 
 
+
+
+/* SIDEBAR END */
+
+.text-center {
+  text-align: center !important;
+}
+
+
+/* FILTER SIDEBAR */
+
+.filter-sidebar {
+  background-color: white;
+  padding: 20px;
+  height: 90vh;
+}
+
+.filter-sidebar ul {
+  padding: 0px;
+}
+
+.filter-sidebar li {
+  list-style-type: none;
+}
+
+.filter-sidebar .form-group {
+  margin-bottom: 10px;
+}
+
+.filter-sidebar .filter-nav-item {
+  color: #bba11e;
+  font-size: 16px;
+}

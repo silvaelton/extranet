@@ -17,7 +17,7 @@
         %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "http://themenate.com/espire/html/dist/index.html"}
           %img.profile-img.img-fluid{:alt => "", :src => "#{image_url('noavatar.jpg')}"}/
           .user-info
-            %span.name.pdd-right-5 Desenvolvedor
+            %span.name.pdd-right-5= current_user.presenter.short_name
             %i.ti-angle-down.font-size-10
         %ul.dropdown-menu
           %li
@@ -36,6 +36,10 @@
             %a{:href => "#{pivotal.user_tickets_path(current_user)}"}
               %i.ti-email.pdd-right-10
               %span Meus chamados
+          %li
+            %a{:href => "#{pivotal.user_logs_path(current_user)}"}
+              %i.ti-email.pdd-right-10
+              %span Histórico de uso
           %li.divider{:role => "separator"}
           %li
             %a{:href => "http://themenate.com/espire/html/dist/index.html"}

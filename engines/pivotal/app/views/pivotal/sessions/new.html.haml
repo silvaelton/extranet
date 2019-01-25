@@ -7,13 +7,9 @@
             .card
               .card-body
                 .pdd-horizon-30.pdd-vertical-30
-                  .mrg-btm-30
-                    = image_tag 'horizontal-logo.png', class: 'img-responsive inline-block', width: '200'
-                  %p.mrg-btm-15.font-size-13 Informe sua matrícula e senha para realizar o acesso.
-                  = simple_form_for @session do |f|
-                    = f.input :code, label: false, placeholder: 'Matrícula'
-                    = f.input :password, label: false, placeholder: 'Senha'
-                    .pull-right
-                      %a{:href => "#"} Esqueceu a senha?
-                    .mrg-top-20.text-right
-                      = f.submit 'Realizar acesso', class: 'btn btn-success'
+                  .mrg-btm-30.text-center
+                    = image_tag 'vertical-marca.png', class: 'img-responsive inline-block', width: '150'
+                  %p.mrg-btm-15.font-size-13.text-center
+                    Informe sua matrícula e senha para realizar o acesso.
+                  #form
+                    = render 'form'

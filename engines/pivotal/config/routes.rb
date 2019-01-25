@@ -8,6 +8,7 @@ Pivotal::Engine.routes.draw do
       resources :passwords
     end 
     resources :tickets
+    resources :logs
   end
 
   resources :staffs

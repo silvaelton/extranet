@@ -4,6 +4,7 @@ module Pivotal
   class UsersController < ApplicationController
 
     def show
+      @user = Pivotal::User.find(params[:id])
     end
 
     def edit
