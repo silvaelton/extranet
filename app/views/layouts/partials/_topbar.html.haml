@@ -42,7 +42,7 @@
               %span Histórico de uso
           %li.divider{:role => "separator"}
           %li
-            %a{:href => "http://themenate.com/espire/html/dist/index.html"}
+            %a{:href => "#{pivotal.session_path(current_user)}", :data => { :method => 'delete'}}
               %i.ti-power-off.pdd-right-10
               %span Finalizar sessão
       %li.notifications.dropdown

@@ -1,4 +1,6 @@
 - if @password.errors.any?
   $("#modal").html("#{escape_javascript(render 'edit')}");
-
+  updateJs();
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
   updateJs();

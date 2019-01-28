@@ -1,5 +1,6 @@
-= simple_form_for @password, remote: true do |f|
-  = f.input :password_current
-  = f.input :password
-  = f.input :password_confirmation
+= simple_form_for @password, url: pivotal.password_path(current_user), method: :put, remote: true do |f|
+  = f.input :password_current, placeholder: 'Informe a sua senha atual'
+  = f.input :password_new, placeholder: 'Informe sua nova senha'
+  = f.input :password_confirmation, placeholder: 'Confirme a nova senha'
+  .divider-sm
   = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }
