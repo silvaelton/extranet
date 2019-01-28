@@ -24,6 +24,9 @@ gem 'validates_cpf_cnpj'
 gem 'validates_timeliness'
 gem 'email_validator'
 gem 'will_paginate-bootstrap'
+gem 'barby', '~> 0.6.5'
+gem 'chunky_png', '~> 1.3.10'
+gem 'rqrcode_png', '~> 0.1.5'
 
 gem 'bcrypt'
 
