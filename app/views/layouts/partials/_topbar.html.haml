@@ -34,12 +34,16 @@
               %span Alterar senha
           %li
             %a{:href => "#{pivotal.user_tickets_path(current_user)}"}
-              %i.ti-email.pdd-right-10
+              %i.ei-ticket.pdd-right-10
               %span Meus chamados
           %li
             %a{:href => "#{pivotal.user_logs_path(current_user)}"}
-              %i.ti-email.pdd-right-10
+              %i.ei-file-edit.pdd-right-10
               %span Histórico de uso
+          %li
+            %a{:href => "#{pivotal.user_session_logs_path(current_user)}"}
+              %i.ei-key.pdd-right-10
+              %span Histórico de acesso
           %li.divider{:role => "separator"}
           %li
             %a{:href => "#{pivotal.session_path(current_user)}", :data => { :method => 'delete'}}

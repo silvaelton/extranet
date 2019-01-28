@@ -15,12 +15,17 @@ module Pivotal
     def create
       @session = Pivotal::Session.new(set_params)
       if @session.valid?
+        @session.logger!(request, 'signin')
         session[:user_id] = @session.user_id
         redirect_to pivotal.root_path
       end
     end
-
+    
     def destroy
+      @session = Pivotal::Session.new
+      @session.user_id = session[:user_id]
+      @session.logger!(request, 'signout')
+      
       session[:user_id] = nil
       redirect_to pivotal.new_session_path
     end
