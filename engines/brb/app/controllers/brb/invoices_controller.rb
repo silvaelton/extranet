@@ -32,7 +32,7 @@ module Brb
     end
 
     def new
-      @invoice = Support::Brb::InvoiceInvoice.new
+      @invoice = Support::Brb::Invoice.new
     end
 
     def create
