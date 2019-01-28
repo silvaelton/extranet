@@ -4,21 +4,26 @@ module Pivotal
   class Password
     include ActiveModel::Model
     
-    attr_accessor :password_current, :password_new, :password_confirmation
-
+    attr_accessor :user_id, :password_current, :password_new, :password_confirmation
+    validates :password_current, :password_new, :password_confirmation, presence: true, length: {minimum: 6, maximum: 26}
     validate  :password_valid?
 
     def update_password!
       return false if !valid?
-      self.update(password: self.password_new)
+      user.update(password: self.password_new)
+    end
+    
+    private 
+    
+    def user
+      Support::Person::Staff.find_by(id: self.user_id)
     end
 
-    private 
-
-
     def password_valid?
-      if (BCrypt::Password.new(self.try(:password)) == self.password_current)
-        errors.add(:password_current, 'Senha atual inválida')
+      user_password = BCrypt::Password.new(user.password)
+
+      if user_password != self.password_current
+        errors.add(:password_current, 'inválida')
       end
       
       if self.password_new != self.password_confirmation

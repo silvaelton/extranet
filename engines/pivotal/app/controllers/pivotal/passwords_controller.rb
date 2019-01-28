@@ -9,6 +9,7 @@ module Pivotal
     
     def update
       @password = Pivotal::Password.new(set_params)
+      @password.user_id = current_user.id
       @password.update_password!
     end
     
@@ -17,7 +18,6 @@ module Pivotal
     def set_params
       params.require(:password).permit(:password_current, :password_new, :password_confirmation)
     end
-
     
   end
 end
