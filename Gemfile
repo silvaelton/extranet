@@ -46,6 +46,7 @@ end
 
 path 'engines' do
   gem 'attendance'
+  gem 'brb'
   gem 'candidate'
   gem 'helpdesk'
   gem 'pivotal'
