@@ -7,6 +7,18 @@ module Pivotal
     validates :code, :password, presence: true
     validate  :authenticate
     
+
+    def logger!(request, action)
+      log = Pivotal::LogSession.new
+
+      log.target_id     = self.user_id
+      log.target_model  = 'Pivotal::User'
+      log.target_action = action
+      log.ip            = request.remote_ip
+      
+      log.save
+    end
+
     private 
 
     def authenticate

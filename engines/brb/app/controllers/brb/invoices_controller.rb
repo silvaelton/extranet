@@ -25,27 +25,27 @@ module Brb
             params[:by_category] = 12
           end
 
-          @invoices = apply_scopes(Support::Brb::Invoice).all.order('created_at DESC').all
+          @invoices = apply_scopes(Brb::Invoice).all.order('created_at DESC').all
         }
         format.html
       end
     end
 
     def new
-      @invoice = Support::Brb::Invoice.new
+      @invoice = Brb::Invoice.new
     end
 
     def create
-      @invoice = Support::Brb::Invoice.new(set_params)
+      @invoice = Brb::Invoice.new(set_params)
       @invoice.save
     end
 
     def edit
-      @invoice = Invoice.find(params[:id])
+      @invoice = Brb::Invoice.find(params[:id])
     end
 
     def update
-      @invoice = Invoice.find(params[:id])
+      @invoice = Brb::Invoice.find(params[:id])
       if @invoice.update(set_update_params)
         flash[:success] =  t :success
         redirect_to action: 'index'
@@ -55,7 +55,7 @@ module Brb
     end
 
     def show
-      @invoice = Support::Brb::InvoiceInvoice.find(params[:id])
+      @invoice = Brb::InvoiceInvoice.find(params[:id])
 
       if @invoice.guia_simples?
         barcode = Barby::Code25Interleaved.new(@invoice.barcode)
@@ -84,7 +84,7 @@ module Brb
     end
 
     def set_invoices
-      @invoices = apply_scopes(Support::Brb::Invoice).all.order('created_at DESC')
+      @invoices = apply_scopes(Brb::Invoice).all.order('created_at DESC')
       @invoices = @invoices.paginate(:page => params[:page], :per_page => 40)
     end
   end

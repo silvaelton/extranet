@@ -32,6 +32,8 @@ gem 'bcrypt'
 
 gem 'support', github: 'codhab/support', branch: 'master'
 
+gem 'pagy'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -51,6 +53,7 @@ path 'engines' do
   gem 'attendance'
   gem 'brb'
   gem 'candidate'
+  gem 'entity'
   gem 'helpdesk'
   gem 'pivotal'
 end

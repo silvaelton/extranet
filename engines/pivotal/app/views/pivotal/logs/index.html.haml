@@ -1,12 +1,29 @@
-.fluid-container
+.container-fluid
   .page-title
-    %h4 Meus chamados
   .row
     .col-md-12
-      .row
-        %table.table.table-bordered
-          %thead
-          %tbody
-            - @logs.each do |log|
+      .card
+        .card-block
+          %h3 Histórico de uso
+          .divider-sm
+          %table.table.table-bordered
+            %thead
               %tr
-                %td= log.inspect
+                %td{colspan: 4}
+                  = pagy_bootstrap_nav(@pagy).html_safe
+              %tr
+                %td Data/Hora
+                %td Metódo
+                %td URL
+                %td IP
+            %tbody
+              - @logs.each do |log|
+                %tr
+                  %td.collapsing= log.created_at.strftime('%d/%m/%Y %H:%M')
+                  %td.collapsing= log.http_method
+                  %td= log.fullpath
+                  %td.collapsing= log.remote_ip
+            %tfoot
+              %tr
+                %td{colspan: 4}
+                  = pagy_bootstrap_nav(@pagy).html_safe

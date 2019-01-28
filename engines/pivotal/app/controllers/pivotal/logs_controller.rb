@@ -4,7 +4,7 @@ module Pivotal
   class LogsController < ApplicationController
 
     def index
-      @logs = Pivotal::Log.where(user_id: current_user.id)
+      @pagy, @logs = pagy(Pivotal::Log.where(user_id: current_user.id).order(created_at: :desc))
     end
     
   end

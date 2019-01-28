@@ -9,6 +9,7 @@ Pivotal::Engine.routes.draw do
     end 
     resources :tickets
     resources :logs
+    resources :session_logs
   end
 
   resources :staffs
