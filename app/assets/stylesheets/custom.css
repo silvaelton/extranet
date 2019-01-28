@@ -228,4 +228,6 @@ body {
   border-left: 5px solid #f6cb0e !important;
   border-bottom: 1px solid #e6ecf5 !important;
 }
-
+.custom-border-top {
+  border-top: 1px solid #e6ecf5 !important;
+}
