@@ -1,0 +1,6 @@
+- if @invoice.errors.any?
+  $("#modal").html("#{escape_javascript(render 'form')}");
+  updateJs();
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  updateJs();

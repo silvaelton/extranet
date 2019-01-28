@@ -1,0 +1,12 @@
+.fluid-container
+  .page-title
+    %h4 Boletos
+  .row
+    .col-md-12
+      .row
+        %table.table.table-bordered
+          %thead
+          %tbody
+            - @invoices.each do |invoice|
+              %tr
+                %td= invoice.inspect
