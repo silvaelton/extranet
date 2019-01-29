@@ -30,7 +30,7 @@ module Brb
 		private
 
 		def set_params
-			params.require(:category).permit(:name, :status, :invoice_type, :default_value)
+			params.require(:category).permit(:name, :status, :invoice_type_id, :default_value)
 		end
 
 		def set_categories

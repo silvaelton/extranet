@@ -232,7 +232,10 @@ body {
 .arrow-collapsing, .arrow-collapsing:hover, .arrow-collapsing:focus {
   color: #f6cb0e;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2adaa5930473906eb67be2d9ffd482968a9aaa6b
 .custom-border-top {
   border-top: 1px solid #e6ecf5 !important;
 }

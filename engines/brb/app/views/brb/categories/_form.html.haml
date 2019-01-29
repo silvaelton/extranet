@@ -1,0 +1,6 @@
+= simple_form_for @category, remote: true do |f|
+  = f.input :name, placeholder: 'Digite o nome da categoria'
+  = f.input :default_value, placeholder: 'Digite o Valor'
+  = f.input :status, as: :select, include_blank: 'selecione...'
+  = f.input :invoice_type_id, as: :select, collection: Brb::InvoiceType.all, include_blank: 'selecione...'
+  = f.button :submit, class: 'btn btn-success'

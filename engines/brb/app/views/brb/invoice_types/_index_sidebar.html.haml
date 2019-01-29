@@ -1,0 +1,50 @@
+.card.filter-sidebar
+  #card
+    .card-heading.custom-border-left.bottom
+      .card-title 
+        Filtro
+        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+          %i.fa.fa-minus
+    .card-block
+      .row
+        .col-md-12
+          = simple_form_for url_for, method: :get, remote: true do |f|
+            %ul
+              %li
+                = f.input :by_name, label: "Por nome", placeholder: 'Digite o nome'
+              %li
+                = f.input :by_account, label: "Por conta", placeholder: 'Digite a conta'
+              %li
+                = f.input :by_status, as: :select, label: "Por status", include_blank: 'selecione...'
+              %li
+                = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
+  #card
+    .card-heading.custom-border-left.border
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+          %i.fa.fa-minus
+    .card-block
+      .row
+        .col-md-12        
+          %ul
+            %li
+              %span= link_to "Adicionar tipo de boleto", new_invoice_type_path, class: 'filter-nav-item',  remote: true
+  #card         
+    .card-heading.custom-border-left.border
+      .card-title 
+        Menu rápido
+        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+          %i.fa.fa-minus   
+    .card-block
+      .row
+        .col-md-12        
+          %ul
+            %li
+              %span= link_to "Gestão de boletos", invoices_path, class: 'filter-nav-item'
+            %li
+              %span= link_to "Gestão de categorias", categories_path	 , class: 'filter-nav-item'
+            %li
+              %span= link_to "Gestão de tipos", invoice_types_path, class: 'filter-nav-item'
+            %li
+              %span= link_to "Gestão de situações", invoice_situations_path, class: 'filter-nav-item'

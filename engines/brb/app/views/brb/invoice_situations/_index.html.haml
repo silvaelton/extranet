@@ -1,0 +1,32 @@
+.card
+  .card-heading.custom-border-left
+    .card-title
+      Situações de boleto
+      = "(#{@invoice_situations.count})"    
+  .card-block
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Nº
+          %th Nome
+          %th Status
+          %th
+      %tbody
+        - if @invoice_situations.present?
+          -@invoice_situations.order(:name).each do |invoice_situation|
+            %tr
+              %td.collapsing= invoice_situation.id
+              %td= invoice_situation.name
+              %td.collapsing= invoice_situation.status? ? "Ativo" : "Inativo"
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", invoice_situation_path(invoice_situation), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "Editar", edit_invoice_situation_path(invoice_situation), class: 'dropdown-item', remote: true
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhuma situação registrada.

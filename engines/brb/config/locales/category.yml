@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      'brb/category': "Categoria"
+    attributes:
+      'brb/category':
+        name: "Nome"
+        status: "Status"
+        default_value: "Valor"
+        invoice_type_id: "Tipo de boleto"
