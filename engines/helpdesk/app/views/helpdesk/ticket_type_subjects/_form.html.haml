@@ -1,0 +1,5 @@
+= simple_form_for [@ticket_type, @ticket_type_subject], remote: true do |f|
+  = f.input :name, placeholder: 'Informe o assunto'
+  = f.input :status, as: :select, include_blank: false
+  .divider-sm
+  = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with)}

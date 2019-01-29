@@ -45,6 +45,7 @@
 
 .form-control {
   border: 1px solid #c7c8ca;
+  height: 38px !important;
 }
 
 label {
@@ -84,4 +85,26 @@ input::-ms-input-placeholder { /* Microsoft Edge */
 
 table td {
   color: #525465 !important;
+  vertical-align: middle !important;
+}
+
+h5 {
+  font-size: 14px !important;
+}
+
+.btn {
+  margin-right: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.btn-danger {
+  color: #ffffff;
+  background-color: #c70b0b !important;
+  border-color: #900707 !important;
+}
+
+.btn-danger:hover, .btn-danger:focus {
+  color: #ffffff;
+  background-color: #ff3131;
+  border-color: #ff3131;
 }

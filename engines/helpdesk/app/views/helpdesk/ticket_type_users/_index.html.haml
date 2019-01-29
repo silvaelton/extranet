@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    %h5 
+      %b Usuários (#{@ticket_type.ticket_type_users.count})
+    = link_to "Adicionar usuário", new_ticket_type_ticket_type_user_path(@ticket_type), remote: true, data: { disable_with: t(:disable_with)}
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Nome
+          %th.collapsing Vínculado por
+          %th.collapsing
+      %tbody
+        - if @ticket_type.ticket_type_users.present? 
+          - @ticket_type.ticket_type_users.each do |user|
+            %tr
+              %td= user.staff.name
+              %td= user.user.name
+              %td
+                = link_to "<i class='fa fa-trash'></i>".html_safe, helpdesk.ticket_type_ticket_type_user_path(@ticket_type, user), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              Nenhum usuário vínculado.

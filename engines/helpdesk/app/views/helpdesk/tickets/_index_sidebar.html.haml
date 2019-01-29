@@ -45,34 +45,6 @@
         .col-md-12        
           %ul
             %li
-              %span= link_to "Gestão de tipos", "#", class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de categorias", "#", class: 'filter-nav-item'
-            %li
-<<<<<<< HEAD
-              %span= link_to "Gestão de atendentes", "#", class: 'filter-nav-item'
-=======
-              = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
-    
-  .card-heading.custom-border-left.custom-border-top
-    .card-title Operações
-  .card-block
-    .row
-      .col-md-12        
-        %ul
-          %li
-            %span= link_to "Iniciar novo chamado", "#", class: 'filter-nav-item'
+              %span= link_to "Gestão de tipos", helpdesk.ticket_types_path, class: 'filter-nav-item'
           
-  .card-heading.custom-border-left.custom-border-top
-    .card-title Menu rápido    
-  .card-block
-    .row
-      .col-md-12        
-        %ul
-          %li
-            %span= link_to "Gestão de tipos", "#", class: 'filter-nav-item'
-          %li
-            %span= link_to "Gestão de categorias", "#", class: 'filter-nav-item'
-          %li
-            %span= link_to "Gestão de atendentes", "#", class: 'filter-nav-item'
->>>>>>> 46d778957e2e13db777d3228b39a0118cebc600d
+  

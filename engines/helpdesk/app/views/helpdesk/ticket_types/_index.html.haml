@@ -1,0 +1,33 @@
+.card
+  .card-heading.custom-border-left
+    .card-title Tipos de chamado (#{@ticket_types.count})      
+  .card-block
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Nome
+          %th.collapsing Situação
+          %th.collapsing Qtd de assuntos
+          %th.collapsing Qtd de atendentes
+          %th.collapsing
+      %tbody
+        - if @ticket_types.present?
+          - @ticket_types.each do |ticket_type|
+            %tr
+              %td= ticket_type.name
+              %td= ticket_type.status ? 'Ativo' : 'Inativo'
+              %td.collapsing= ticket_type.ticket_type_subjects.count
+              %td.collapsing= ticket_type.ticket_type_users.count
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", helpdesk.ticket_type_path(ticket_type), class: 'dropdown-item'
+                    = link_to "Editar", helpdesk.edit_ticket_type_path(ticket_type), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", helpdesk.ticket_type_path(ticket_type), method: :delete, remote: true, data: { confirm: t(:confirm)}, class: 'dropdown-item'
+        - else
+          %tr
+            %td{colspan: 5}
+              Nenhum tipo criado.

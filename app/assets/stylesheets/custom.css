@@ -228,14 +228,11 @@ body {
   border-left: 5px solid #f6cb0e !important;
   border-bottom: 1px solid #e6ecf5 !important;
 }
-<<<<<<< HEAD
-
 
 .arrow-collapsing, .arrow-collapsing:hover, .arrow-collapsing:focus {
   color: #f6cb0e;
 }
-=======
+
 .custom-border-top {
   border-top: 1px solid #e6ecf5 !important;
 }
->>>>>>> 46d778957e2e13db777d3228b39a0118cebc600d

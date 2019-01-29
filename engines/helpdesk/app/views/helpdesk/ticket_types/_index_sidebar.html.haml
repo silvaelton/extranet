@@ -1,0 +1,28 @@
+.card.filter-sidebar
+  #card
+    .card-heading.border.custom-border-left
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+          %i.fa.fa-minus        
+    .card-block
+      .row
+        .col-md-12        
+          %ul
+            %li
+              %span= link_to "Adicionar novo tipo", helpdesk.new_ticket_type_path, remote: true, class: 'filter-nav-item'
+          
+  #card
+    .card-heading.border.custom-border-left
+      .card-title 
+        Menu rápido
+        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+          %i.fa.fa-minus            
+    .card-block
+      .row
+        .col-md-12        
+          %ul
+            %li
+              %span= link_to "Gestão de chamados", helpdesk.ticket_types_path, class: 'filter-nav-item'
+          
+  

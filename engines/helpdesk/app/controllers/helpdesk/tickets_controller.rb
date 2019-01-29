@@ -14,6 +14,11 @@ module Helpdesk
     
     def new
       @ticket = Helpdesk::Ticket.new
+    end
+    
+    def create
+      @ticket = Helpdesk::Ticket.new(set_params)
+      @ticket.staff_id = current_user.id
       @ticket.save
     end
 
@@ -30,7 +35,8 @@ module Helpdesk
     private
 
     def set_params
-      params.require(:ticket).permit(:name)
+      params.require(:ticket)
+        .permit(:ticket_type_id, :subject_id, :description, :schedule, :schedule_date, :schedule_hour, :contact, :location_id)
     end
 
     def set_ticket

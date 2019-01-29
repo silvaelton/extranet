@@ -1,0 +1,7 @@
+- if @ticket_type.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+  updateJs();
+- else
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  updateJs();

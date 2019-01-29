@@ -12,22 +12,25 @@
           %th Solicitante
           %th
       %tbody
-        %tr
-          %td.collapsing 01
-          %td.collapsing 01/01/2019 08:00
-          %td.collapsing Sistemas
-          %td
-          %td
-          %td.collapsing
-            .dropdown
-              %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                %i.fa.fa-cog
-                %i.ti-angle-down
-              .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                %a.dropdown-item{:href => "#"} Detalhar
-                %a.dropdown-item{:href => "#"} Atualizar
-                %a.dropdown-item{:href => "#"} Finalizar
-                %a.dropdown-item{:href => "#"} Cancelar
-        %tr
-          %td{colspan: 6}
-            %i Nenhum chamado registrado.
+        - if @tickets.present?
+          - @tickets.each do |ticket|
+            %tr
+              %td.collapsing= ticket.id
+              %td.collapsing= ticket.created_at.strftime("%d/%m/%Y %H:%M")
+              %td.collapsing= ticket.ticket_type.name rescue t(:no_info)
+              %td.collapsing= ticket.ticket_subject.name rescue t(:no_info)
+              %td.collapsing= ticket.staff.name rescue t(:no_info)
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    %a.dropdown-item{:href => "#"} Detalhar
+                    %a.dropdown-item{:href => "#"} Atualizar
+                    %a.dropdown-item{:href => "#"} Finalizar
+                    %a.dropdown-item{:href => "#"} Cancelar
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum chamado registrado.

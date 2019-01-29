@@ -1,6 +1,52 @@
-= simple_form_for url_for, remote: true do |f|
-  = f.input :ticket_type_id, as: :select, include_blank: 'Selecione o tipo'
-  = f.input :subject_id, as: :select, include_blank: 'Selecione o assunto'
-  = f.input :contact, as: :string, placeholder: 'Informe um número para contato'
-  = f.input :description, as: :text
-  = f.button :submit, class: 'btn btn-success'
+= simple_form_for @ticket, remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :ticket_type_id, as: :select, collection: Helpdesk::TicketType.status_active.order(:name), include_blank: t(:include_blank), input_html: { id: "ticket_type_id"}
+  .row
+    .col-md-12
+      = f.input :subject_id, as: :select, include_blank: 'Selecione o tipo...', input_html: { id: "ticket_subject_id"}
+  .row
+    .col-md-6
+      = f.input :location_id, as: :select, include_blank: t(:include_blank)
+    .col-md-6
+      = f.input :contact, as: :string, placeholder: ''
+  %hr/
+  .row
+    .col-md-4
+      = f.input :schedule, as: :select, include_blank: false, input_html: { id: 'schedule'}
+    .col-md-4.schedule{style: "display: #{f.object.schedule ? 'block' : 'none'}"}
+      = f.input :schedule_date, as: :string, input_html: { class: 'date', value: f.object.schedule_date.present? ? localize(f.object.schedule_date) : nil }
+    .col-md-4.schedule{style: "display: #{f.object.schedule ? 'block' : 'none'}"}
+      = f.input :schedule_hour, as: :string, input_html: { class: 'hour' }
+  %hr/
+  .row
+    .col-md-12
+      = f.input :description, as: :text
+  .divider-sm
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
+
+:javascript
+
+  $("#schedule").on('change', function() {
+    $(".schedule").toggle();
+  })
+  $("#ticket_type_id").on("change", function() {
+
+    $.getJSON("#{helpdesk.subject_ticket_types_path}?by_type_id=" + $(this).val(), function(data) {
+      var options = "";
+
+      if(data.data.length == 0) {
+        options = "<option value>Nenhum assunto encontrado.</option>";
+      } else {
+        options = "<option value>Selecione...</option>";
+      }
+      
+      for(var i = 0; data.data.length > i; i++) {
+        options += "<option value='"+data.data[i].id+"'>"+data.data[i].name+"</option>";
+      }
+
+      $("#ticket_subject_id").html(options);
+    });
+  });

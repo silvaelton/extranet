@@ -1,0 +1,7 @@
+- if @ticket_type_subject.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+  updateJs();
+- else
+  $(".index_type_subjects").html("#{escape_javascript(render 'helpdesk/ticket_type_subjects/index')}");
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  updateJs();

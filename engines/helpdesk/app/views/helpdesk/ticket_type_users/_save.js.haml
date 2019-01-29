@@ -1,0 +1,7 @@
+- if @ticket_type_user.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+  updateJs();
+- else
+  $(".index_type_users").html("#{escape_javascript(render 'helpdesk/ticket_type_users/index')}");
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  updateJs();
