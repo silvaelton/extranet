@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'brb/invoice_situation': "Situação do boleto"
+    attributes:
+      'brb/invoice_situation':
+        name: "Nome"
+        status: "Status"

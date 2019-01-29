@@ -11,7 +11,7 @@
           = simple_form_for url_for, method: :get, remote: true do |f|
             %ul
               %li
-                = f.input :by_name, label: "Por nome", include_blank: t(:include_blank)
+                = f.input :by_name, label: "Por nome",  placeholder: 'Digite o nome'
               %li
                 = f.input :by_status, as: :select,label: "Por stauts", include_blank: t(:include_blank)
               %li
@@ -45,4 +45,6 @@
             %li
               %span= link_to "Gestão de categorias", categories_path	 , class: 'filter-nav-item'
             %li
-              %span= link_to "Gestão de tipos de boleto", invoice_types_path, class: 'filter-nav-item'
+              %span= link_to "Gestão de tipos", invoice_types_path, class: 'filter-nav-item'
+            %li
+              %span= link_to "Gestão de situações", invoice_situations_path, class: 'filter-nav-item'
