@@ -30,7 +30,7 @@ module Brb
 		private
 
 		def set_params
-			params.require(:invoice_type).permit(:name, :status, :invoice, :accout)
+			params.require(:invoice_type).permit(:name, :status, :account)
 		end
 
 		def set_invoice_types
