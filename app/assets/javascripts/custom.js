@@ -26,17 +26,16 @@ function closeModal() {
 }
 
 function collapsingFilter() {
-  $(".collapsing-filter").unbind().on('click', function() {
-    $('.form-filter').toggle();
-
-    if($(this).children('i').hasClass('ei-up-chevron')) {
-      $(this).children('i').removeClass('ei-up-chevron');
-      $(this).children('i').addClass('ei-down-chevron');
+  $(".arrow-collapsing").unbind().on('click', function() {
+    $(this).closest("#card").children('.card-block').toggle();
+    if($(this).children('i').hasClass('fa fa-minus')) {
+      $(this).children('i').removeClass('fa fa-minus');
+      $(this).children('i').addClass('fa fa-plus');
     } else {
-      $(this).children('i').removeClass('ei-down-chevron');
-      $(this).children('i').addClass('ei-up-chevron');
+      $(this).children('i').removeClass('fa fa-plus');
+      $(this).children('i').addClass('fa fa-minus');
     }
-  })
+  });
 }
 
 function mask() {

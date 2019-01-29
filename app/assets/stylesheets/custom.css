@@ -229,3 +229,7 @@ body {
   border-bottom: 1px solid #e6ecf5 !important;
 }
 
+
+.arrow-collapsing, .arrow-collapsing:hover, .arrow-collapsing:focus {
+  color: #f6cb0e;
+}
