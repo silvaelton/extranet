@@ -17,13 +17,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'haml'
 gem 'simple_form'
+gem 'pagy'
 
 gem 'has_scope'
 gem 'file_validators'
 gem 'validates_cpf_cnpj'
 gem 'validates_timeliness'
 gem 'email_validator'
-gem 'will_paginate-bootstrap'
 gem 'barby', '~> 0.6.5'
 gem 'chunky_png', '~> 1.3.10'
 gem 'rqrcode_png', '~> 0.1.5'
@@ -31,8 +31,6 @@ gem 'rqrcode_png', '~> 0.1.5'
 gem 'bcrypt'
 
 gem 'support', github: 'codhab/support', branch: 'master'
-
-gem 'pagy'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
