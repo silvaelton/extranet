@@ -1,50 +1,25 @@
-.card.filter-sidebar
-  #card
-    .card-heading.custom-border-left.bottom
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
       .card-title 
         Filtro
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+        = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
-    .card-block
-      .row
-        .col-md-12
-          = simple_form_for url_for, method: :get, remote: true do |f|
-            %ul
-              %li
-                = f.input :by_convocation, as: :select, label: "Por convocação", include_blank: t(:include_blank)
-              %li
-                = f.input :by_situation, as: :select,label: "Por situação", include_blank: t(:include_blank)
-              %li
-                = f.input :by_cpf, as: :string, label: "Por CPF", input_html: { class: 'cpf'}
-              %li
-                = f.input :by_program, as: :select, collection: Support::Common::Program.all, label: "Por Lista", include_blank: t(:include_blank)
-              %li
-                = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
-      
-  #card
-    .card-heading.border.custom-border-left
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_convocation, as: :select, label: "Por convocação", include_blank: t(:include_blank)
+        = f.input :by_situation, as: :select,label: "Por situação", include_blank: t(:include_blank)
+        = f.input :by_cpf, as: :string, label: "Por CPF", input_html: { class: 'cpf'}
+        = f.input :by_program, as: :select, collection: Support::Common::Program.all, label: "Por Lista", include_blank: t(:include_blank)
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+  .divider
+  .card
+    .card-body.card-header.border-left-yellow
       .card-title 
         Operações
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
-          %i.fa.fa-minus        
-    .card-block
-      .row
-        .col-md-12        
-          %ul
-            %li
-              %span= link_to "Iniciar novo chamado", "#", class: 'filter-nav-item'
-          
-  #card
-    .card-heading.border.custom-border-left
-      .card-title 
-        Menu rápido
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
-          %i.fa.fa-minus            
-    .card-block
-      .row
-        .col-md-12        
-          %ul
-            %li
-              %span= link_to "Gestão de tipos", helpdesk.ticket_types_path, class: 'filter-nav-item'
-          
-  
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Abrir novo chamado", helpdesk.new_ticket_path, remote: true
+      = link_to "Gestão de tipos", helpdesk.ticket_types_path

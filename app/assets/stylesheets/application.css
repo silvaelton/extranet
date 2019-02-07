@@ -1,10 +1,6 @@
 /*
- *= require espire/bootstrap
- *= require espire/animate.min
- *= require espire/ei-icon
- *= require espire/themify-icons
- *= require espire/font-awesome.min
- *= require espire/app
+ *= require bootstrap/bootstrap.min
+ *= require font-awesome
+ *= require style
  *= require custom
- *= require override
  */

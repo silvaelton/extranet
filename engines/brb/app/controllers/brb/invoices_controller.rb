@@ -26,6 +26,7 @@ module Brb
           end
 
           @invoices = apply_scopes(Brb::Invoice).all.order('created_at DESC').all
+          @pagy, @tickets = pagy(Brb::Invoice.all)
         }
         format.html
       end
@@ -85,7 +86,7 @@ module Brb
 
     def set_invoices
       @invoices = apply_scopes(Brb::Invoice).all.order('created_at DESC')
-      @invoices = @invoices.paginate(:page => params[:page], :per_page => 40)
+      # @invoices = @invoices.paginate(:page => params[:page], :per_page => 40)
     end
   end
 end
