@@ -1,15 +1,14 @@
-.row
-  .col-md-10.mr-auto.ml-auto
-    .row
-      .mr-auto.ml-auto.full-height.height-100.d-flex.align-items-center
-        .vertical-align.full-height
-          .table-cell
-            .card
-              .card-body
-                .pdd-horizon-30.pdd-vertical-30
-                  .mrg-btm-30.text-center
-                    = image_tag 'vertical-marca.png', class: 'img-responsive inline-block', width: '150'
-                  %p.mrg-btm-15.font-size-13.text-center
-                    Informe sua matrícula e senha para realizar o acesso.
-                  #form
-                    = render 'form'
+#login
+  .row
+    .col-sm-4.mr-auto.ml-auto
+      .row
+        .col-md-12
+          .card
+            .card-body
+              .row
+                .col-md-12.text-center
+                  = image_tag 'vertical-marca.png', class: 'img-responsive inline-block', width: '150'
+                  .title EXTRANET
+              .row.mt-4
+                .col-md-12
+                  = render 'form'
