@@ -1,12 +1,44 @@
-.fluid-container
-  .page-title
-    %h4 Boletos
-  .row
-    .col-md-12
-      .row
-        %table.table.table-bordered
-          %thead
-          %tbody
-            - @invoices.each do |invoice|
-              %tr
-                %td= invoice.inspect
+.card
+  .card-heading.custom-border-left
+    .card-title
+      Boletos
+      = "(#{@invoices.count})"
+  .card-block
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Código
+          %th Tipo
+          %th Categoria
+          %th CPF/CNPJ
+          %th Valor
+          %th Emitido em
+          %th Vencimento
+          %th Liquidação
+          %th Situação
+          %th
+      %tbody
+        - if @invoices.present?
+          -@invoices.order(:id).each do |invoice|
+            %tr
+              %td.collapsing= invoice.id
+              %td= invoice.invoice_type.name rescue nil
+              %td= invoice.category.name rescue nil
+              %td= invoice.cpf.present? ? invoice.cpf : invoice.cnpj
+              %td= number_to_currency invoice.value
+              %td= invoice.created_at.strftime('%d/%m/%Y')
+              %td= invoice.due.strftime('%d/%m/%Y')
+              %td= invoice.payment.strftime('%d/%m/%Y') rescue nil
+              %td= invoice.situation.name rescue nil
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", edit_invoice_path(invoice), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", invoice_path(invoice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum boleto registrado.

@@ -20,6 +20,8 @@ PATH
       rails (~> 5.2.2)
     candidate (0.1.0)
       rails (~> 5.2.2)
+    cpl (0.1.0)
+      rails (~> 5.2.2)
     entity (0.1.0)
       rails (~> 5.2.2)
     helpdesk (0.1.0)
@@ -265,6 +267,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   chunky_png (~> 1.3.10)
+  cpl!
   email_validator
   entity!
   file_validators
