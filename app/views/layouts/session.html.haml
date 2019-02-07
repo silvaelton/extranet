@@ -7,11 +7,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-  %body.pace-done{style: 'background-color: #f3f3f3'}
-    .app
-      .authentication
-        .sign-in-2
-          .container-fluid.no-pdd-horizon.bg
-            = yield
-
+  %body{style: 'background-color: #808184 !important'}
+    .container
+      = yield
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'

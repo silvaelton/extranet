@@ -190,3 +190,30 @@ input::placeholder, option {
   background-color: #f5b302;
   border-color: #f5b302;
 }
+
+#login .row {
+  margin-top: 5%;
+}
+
+#login .logo {
+  border-right: 1px solid #e2e2e2;;
+}
+
+#login .subtitle {
+  font-size: 13px;
+  color: gray;
+  margin-top: 10px;
+}
+
+#login .card {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: 5px solid #ffc640;
+}
+
+#login .title {
+  font-size: 16px;
+  color: #808184;
+  font-weight: bold;
+  margin-top: 10px;
+}

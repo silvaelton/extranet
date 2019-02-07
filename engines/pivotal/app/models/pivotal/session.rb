@@ -24,12 +24,16 @@ module Pivotal
     def authenticate
       user = Pivotal::User.where(status: true).find_by(code: self.code)
       
-      if (BCrypt::Password.new(user.try(:password)) == self.password)
-        self.user_id = user.id
-      else 
+      if user.nil?
         errors.add(:base, 'Não válido')
-      end    
-
+      else
+        if (BCrypt::Password.new(user.try(:password)) == self.password)
+          self.user_id = user.id
+        else 
+          errors.add(:base, 'Não válido')
+        end    
+      end
+      
     end
   end
 end

@@ -59,4 +59,4 @@
         %a.dropdown-item{:href => "#"} Histórico de acesso
         %a.dropdown-item{:href => "#"} Histórico de uso
         .dropdown-divider
-        %a.dropdown-item{:href => "#"} Finalizar sessão
+        = link_to "Finalizar sessão", pivotal.session_path(current_user), method: :delete, class: 'dropdown-item', data: { confirm: 'Deseja finalizar a sessão atual?' }
