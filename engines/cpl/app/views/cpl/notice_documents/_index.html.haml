@@ -1,0 +1,30 @@
+.card
+  .card-heading.custom-border-left
+    .card-title
+      = "Documentos do edital: #{@notice.name}"
+      = "(#{@notice_documents.count})"
+  .card-block
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Nº
+          %th Nome
+          %th
+      %tbody
+        - if @notice_documents.present?
+          -@notice_documents.each do |notice_document|
+            %tr
+              %td.collapsing= notice_document.id
+              %td= notice_document.document_type.name rescue nil
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", notice_notice_document_path(@notice, notice_document), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

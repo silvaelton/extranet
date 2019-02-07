@@ -5,4 +5,5 @@ Brb::Engine.routes.draw do
   resources :invoice_types
   resources :categories
   resources :invoice_situations
+  resources :remittances
 end

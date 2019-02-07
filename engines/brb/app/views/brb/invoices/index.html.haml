@@ -1,32 +1,13 @@
-.full-container
+.fluid-container
   .row
-    .col-md-2
-      .filter-sidebar
-        .filter
-          .row
-            .col-md-12
-              %h4
-                = link_to "<i class='ei-up-chevron'></i>".html_safe, "javascript:void(0)", class: 'collapsing-filter'
-                Filtro
-          .row.form-filter
-            .col-md-12
-              = simple_form_for url_for, method: :get, remote: true do |f|
-                %ul
-                  %li
-                    = f.input :by_name, label: "Nome"
-                  %li
-                    = f.input :by_cpf, label: "CPF", input_class: { class: 'cpf' }
-                  %li
-                    = f.input :by_type, as: :select, collection: Support::Brb::InvoiceType.all, label: "Tipo", include_blank: t(:include_blank)
-                  %li
-                    = f.input :by_category, as: :select, collection: Support::Brb::Category.all, label: "Categoria", include_blank: t(:include_blank)
-                  %li
-                    = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
-          .row.mrg-top-20
-            .col-md-12
-              %h4 Operações
-              %ul
-                %li
-                  %span= link_to "Novo boleto", new_invoice_path, remote: true, class: 'filter-nav-item'
-    .col-md-10
+    .col-md-12
+      .card
+        .card-block.custom-border-left
+          .title
+            Brb
+            .subtitle Categorias
+  .row
+    .col-md-2.index-sidebar
+      = render 'index_sidebar'
+    .col-md-10.index-content
       = render 'index'

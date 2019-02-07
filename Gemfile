@@ -53,6 +53,7 @@ path 'engines' do
   gem 'attendance'
   gem 'brb'
   gem 'candidate'
+  gem 'cpl'
   gem 'entity'
   gem 'helpdesk'
   gem 'pivotal'

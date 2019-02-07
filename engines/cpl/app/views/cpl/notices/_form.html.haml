@@ -1,0 +1,31 @@
+= simple_form_for @notice, remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :name, placeholder: 'Digite o tipo de boleto'
+  .row
+    .col-md-6
+      = f.input :notice_type_id, as: :select, collection: Cpl::NoticeType.all, include_blank: 'selecione...'
+    .col-md-6
+      = f.input :document_number, placeholder: 'Nº processo'
+  .row
+    .col-md-3
+      = f.input :proposal_date, as: :string, input_html: { class: 'date', placeholder: '00/00/0000', value: (@notice.proposal_date) ? localize(f.object.proposal_date) : nil }
+    .col-md-3
+      = f.input :proposal_hour, as: :string, input_html: { class: 'hour', placeholder: '00:00', value: @notice.proposal_hour.present? ? @notice.proposal_hour.strftime('%H:%M') : nil }
+    .col-md-3
+      = f.input :open_date, as: :string, input_html: { class: 'date', placeholder: '00/00/0000', value: (@notice.open_date) ? localize(f.object.open_date) : nil }
+    .col-md-3
+      = f.input :open_hour, as: :string, input_html: { class: 'hour', placeholder: '00:00', value: @notice.open_hour.present? ? @notice.open_hour.strftime('%H:%M') : nil }
+  .row
+    .col-md-3
+      = f.input :session_date, as: :string, input_html: { class: 'date', placeholder: '00/00/0000', value: (@notice.session_date) ? localize(f.object.session_date) : nil }
+    .col-md-3
+      = f.input :session_hour, as: :string, input_html: { class: 'hour', placeholder: '00:00', value: @notice.session_hour.present? ? @notice.session_hour.strftime('%H:%M') : nil }
+    .col-md-3
+      = f.input :attachment, as: :file
+    .col-md-3
+      = f.input :status, as: :select, include_blank: 'selecione...'
+  %hr
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
