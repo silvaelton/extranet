@@ -1,0 +1,19 @@
+%nav#nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        %a.nav-link{:href => "#"}
+          Dashboard
+          %span.sr-only (current)
+      - each_navs.order(:position).each do |nav|
+        - if nav.childrens.present?
+          %li.nav-item.dropdown
+            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+              = nav.label
+            .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+              - nav.childrens.each do |child|
+                %a.dropdown-item{:href => "#"}= child.label
+        - else
+          %li.nav-item
+            %a.nav-link{:href => "#"}
+              = nav.label

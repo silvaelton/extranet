@@ -1,8 +1,13 @@
 .card
-  .card-heading.custom-border-left
-    .card-title Chamados      
-  .card-block
-    %table.table.table-bordered.table-striped
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@tickets.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
           %th Nº
@@ -18,7 +23,7 @@
               %td.collapsing= ticket.id
               %td.collapsing= ticket.created_at.strftime("%d/%m/%Y %H:%M")
               %td.collapsing= ticket.ticket_type.name rescue t(:no_info)
-              %td.collapsing= ticket.ticket_subject.name rescue t(:no_info)
+              %td= ticket.ticket_subject.name rescue t(:no_info)
               %td.collapsing= ticket.staff.name rescue t(:no_info)
               %td.collapsing
                 .dropdown
@@ -30,6 +35,10 @@
                     %a.dropdown-item{:href => "#"} Atualizar
                     %a.dropdown-item{:href => "#"} Finalizar
                     %a.dropdown-item{:href => "#"} Cancelar
+          %tfoot
+            %tr
+              %td.text-center{colspan: 6}
+                = pagy_bootstrap_nav(@pagy).html_safe              
         - else
           %tr
             %td{colspan: 6}

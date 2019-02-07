@@ -18,6 +18,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'haml'
 gem 'simple_form'
 gem 'pagy'
+gem 'font-awesome-rails'
 
 gem 'has_scope'
 gem 'file_validators'
