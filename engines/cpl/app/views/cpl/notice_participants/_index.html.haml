@@ -1,0 +1,25 @@
+.card
+  .card-heading.custom-border-left
+    .card-title
+      = "Participantes do edital: #{@notice.name}"
+      = "(#{@notice_participants.count})"
+  .card-block
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Protocolo
+          %th Data de inclusão
+          %th
+      %tbody
+        - if @notice_participants.present?
+          -@notice_participants.each do |notice_participant|
+            %tr
+              %td.collapsing= "#{notice_participant.id}/#{notice_participant.created_at.strftime('%Y')}"
+              %td= notice_participant.created_at.strftime('%d/%m/%Y - %H:%M:%S')rescue nil
+              %td.collapsing
+                = link_to "<i class='fa fa-lock'></i>".html_safe, '#', class: 'btn btn-success btn-icon btn-sm'
+
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

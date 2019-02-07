@@ -5,5 +5,6 @@ module Brb
     protect_from_forgery with: :exception
 
     layout 'application'
+    include Pagy::Backend
   end
 end

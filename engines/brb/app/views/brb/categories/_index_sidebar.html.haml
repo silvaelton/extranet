@@ -11,7 +11,7 @@
         = f.input :by_status, as: :select,label: "Por stauts", include_blank: t(:include_blank)
         = f.input :by_type,as: :select, collection: Brb::InvoiceType.all, label: "Por tipo de boleto", include_blank: t(:include_blank)
         .mt-4
-          = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
+          = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
   .divider
   .card
     .card-body.card-header.border-left-yellow

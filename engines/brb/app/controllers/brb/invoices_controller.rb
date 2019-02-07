@@ -76,7 +76,7 @@ module Brb
 
     def set_params
       params.require(:invoice).permit(:category_id, :due, :cpf, :name, :address,
-                                      :city, :state_id, :value,:cep, :message, :invoice_type, :invoice_focus, :cnpj)
+                                      :city, :state_id, :value,:cep, :message, :invoice_type_id, :cnpj)
     end
 
     def set_update_params

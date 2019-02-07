@@ -1,0 +1,38 @@
+.card
+  .card-heading.custom-border-left
+    .card-title
+      Editais
+      = "(#{@notices.count})"
+  .card-block
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Nº
+          %th Nome
+          %th Tipo de edital
+          %th Nº Processo
+          %th Status
+          %th
+      %tbody
+        - if @notices.present?
+          -@notices.each do |notice|
+            %tr
+              %td.collapsing= notice.id
+              %td= notice.name
+              %td= notice.notice_type.name rescue nil
+              %td= notice.document_number
+              %td.collapsing= notice.status? ? "Ativo" : "Inativo"
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", notice_path(notice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "Editar", edit_notice_path(notice), class: 'dropdown-item', remote: true
+                    = link_to "Documentos", notice_notice_documents_path(notice), class: 'dropdown-item'
+                    = link_to "Participantes", notice_notice_participants_path(notice), class: 'dropdown-item'
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

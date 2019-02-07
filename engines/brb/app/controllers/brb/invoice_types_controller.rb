@@ -5,7 +5,9 @@ module Brb
 		before_action :set_invoice_types
 		before_action :set_invoice_type, only: %i[edit update destroy]
 
-		def index; end
+		def index
+			@pagy, @invoice_types = pagy(Brb::InvoiceType.all)
+		end
 
 		def new
 			@invoice_type = Brb::InvoiceType.new

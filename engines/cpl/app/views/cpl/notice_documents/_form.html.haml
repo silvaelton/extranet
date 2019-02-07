@@ -1,0 +1,8 @@
+= simple_form_for [@notice, @notice_document], remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :document_type_id, as: :select, collection: Cpl::DocumentType.all, prompt: 'Selecione...'
+  %hr
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
