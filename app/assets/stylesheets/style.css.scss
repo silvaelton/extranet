@@ -1,0 +1,192 @@
+@import "font-awesome";
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+#topnav {
+  background-color: #545454 !important;
+}
+
+#nav {
+  font-size: 13px;
+}
+
+#nav li {
+  margin-right: 20px;
+}
+
+#nav li .dropdown-item {
+  font-size: 13px;
+}
+
+#header .title {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  color: grey;
+}
+
+#header .card-body {
+  padding: 1rem;
+}
+
+#header .subtitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #545454;
+}
+
+#sidebar .card-body {
+  padding: 0.85rem !important;
+}
+
+#sidebar .card-body li {
+  list-style: none;
+}
+
+#sidebar .card-body .card-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+form label {
+  font-size: 13px;
+}
+
+.form-control {
+  height: calc(2rem + 1px);
+}
+
+.form-group {
+  margin-bottom: 0.8rem !important;
+}
+
+.form-control-label {
+  margin-bottom: 0.1rem !important;
+}
+
+input::placeholder, option {
+  font-size: 13px;
+}
+
+
+#topnav a {
+  color: white;
+}
+
+#topnav .dropdown-menu a {
+  color: black;
+}
+
+
+.table td, .table th {
+  padding: .55rem;
+  vertical-align: middle;
+  font-size: 14px;
+}
+
+.table td {
+  padding: .35rem;
+}
+
+.table thead {
+  background-color: #f7f7f7;
+  color: #7b7b7b;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(189, 189, 189, 0.05);
+}
+
+
+#header-content {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.card-header {
+  margin-bottom: 0 !important;
+}
+
+.card-header .card-title {
+  font-weight: bold;
+  color: #545454;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.card-header .collapsing-link {
+  float: right;
+}
+
+.border-left-yellow {
+  border-left: 4px solid #fdb300;
+}
+
+
+.nav-item {
+  font-size: 14px;
+}
+
+#search input {
+  background-color: #636363;
+  border: 1px solid #636363;
+  color: white;
+}
+
+#search input::placeholder {
+  color: rgb(192, 192, 192);
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.smart-menu .dropdown-item i {
+  margin-right: 10px;
+}
+
+.navbar-right .nav-item {
+  margin-right: 20px;
+}
+
+
+.btn-group-sm>.btn, .btn-sm {
+  padding: .1rem .5rem;
+  font-size: .875rem;
+}
+
+.group-action a {
+  color: white;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pagination {
+  margin: 0 auto;
+}
+
+.collapsing-link i {
+  color: #f5b302;
+}
+
+.divider {
+  margin-top: 10px !important;
+}
+
+.card .card-list a {
+  display: block;
+  margin-top: 5px;
+  color: #545454;
+  font-size: 14px;
+
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #f5b302;
+  border-color: #f5b302;
+}
