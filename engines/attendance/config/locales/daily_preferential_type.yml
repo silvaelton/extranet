@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/daily_preferential_type': "Tipo preferêncial"
+    attributes:
+      'attendance/daily_preferential_type':
+        name: "Nome"
+        status: "Status"
+        description: "Descrição"

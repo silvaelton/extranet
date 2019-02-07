@@ -1,10 +1,6 @@
 GIT
   remote: https://github.com/codhab/support.git
-<<<<<<< HEAD
   revision: aa5dba0e255fd30a9dc34e256bc1f2fac840b48f
-=======
-  revision: 00975d599ab7bc68541cfaba02323aab539cf13a
->>>>>>> 2adaa5930473906eb67be2d9ffd482968a9aaa6b
   branch: master
   specs:
     support (0.1.0)
@@ -89,7 +85,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (10.0.2)
-    capybara (3.12.0)
+    capybara (3.13.2)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)

@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/attendant_type': "Tipo de atendente"
+    attributes:
+      'attendance/attendant_type':
+        name: "Nome"
+        status: "Status"

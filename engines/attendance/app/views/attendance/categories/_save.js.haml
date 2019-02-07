@@ -1,0 +1,8 @@
+- if @category.errors.any?
+  $("#modal").html("#{escape_javascript(render 'form')}");
+  updateJs();
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+
+  updateJs();
