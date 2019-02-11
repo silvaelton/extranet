@@ -1,21 +1,23 @@
 .card
-  .card-heading.custom-border-left
-    .card-title Tipos de chamado (#{@ticket_types.count})      
-  .card-block
-    %table.table.table-bordered.table-striped
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@ticket_types.count}) registro(s)
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
           %th Nome
-          %th.collapsing Situação
+          %th Situação
           %th.collapsing Qtd de assuntos
           %th.collapsing Qtd de atendentes
-          %th.collapsing
+          %th
       %tbody
         - if @ticket_types.present?
           - @ticket_types.each do |ticket_type|
             %tr
               %td= ticket_type.name
-              %td= ticket_type.status ? 'Ativo' : 'Inativo'
+              %td.collapsing= ticket_type.status ? 'Ativo' : 'Inativo'
               %td.collapsing= ticket_type.ticket_type_subjects.count
               %td.collapsing= ticket_type.ticket_type_users.count
               %td.collapsing
@@ -27,6 +29,10 @@
                     = link_to "Detalhar", helpdesk.ticket_type_path(ticket_type), class: 'dropdown-item'
                     = link_to "Editar", helpdesk.edit_ticket_type_path(ticket_type), remote: true, class: 'dropdown-item'
                     = link_to "Remover", helpdesk.ticket_type_path(ticket_type), method: :delete, remote: true, data: { confirm: t(:confirm)}, class: 'dropdown-item'
+          %tfoot
+            %tr
+              %td.text-center{colspan: 6}
+                = pagy_bootstrap_nav(@pagy).html_safe              
         - else
           %tr
             %td{colspan: 5}

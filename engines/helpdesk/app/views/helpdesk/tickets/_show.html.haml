@@ -1,0 +1,107 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Detalhamento de chamado
+      %a.close
+        %i.fa.fa-close
+    .modal-body
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th.collapsing Número
+            %th Data/Hora
+            %th Tipo
+            %th Assunto
+        %tbody
+          %tr
+            %td= @ticket.id
+            %td.collapsing= @ticket.created_at.strftime("%d/%m/%Y %H:%M")
+            %td.collapsing= @ticket.ticket_type.name rescue t(:no_info)
+            %td= @ticket.ticket_subject.name rescue t(:no_info)              
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+        %tbody
+          %tr
+
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Solicitante
+            %th Atendente
+        %tbody
+          %tr
+            %td= @ticket.staff.presenter.short_name rescue t(:no_info) 
+            %td 
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Situação
+        %tbody
+          %tr
+            %td              
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Local
+        %tbody
+          %tr
+            %td 
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Agendado
+            %th Data
+            %th Hora
+        %tbody
+          %tr
+            %td= @ticket.schedule ? "Sim" : "Não"
+            %td= @ticket.schedule_date.strftime("%d/%m/%Y") rescue t(:no_info)
+            %td= @ticket.schedule_hour.strftime("%H:%M") rescue t(:no_info)
+
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Descrição
+        %tbody
+          %tr
+            %td= @ticket.description.html_safe  
+      
+      .mt-4
+      %h6 Arquivos
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Descrição
+            %th Link
+        %tbody
+          %tr
+            %td{colspan: 2}
+              %i Nenhum arquivo anexo.
+          %tr
+            %td 
+            %td 
+      
+      .mt-4
+      %h6 
+        Interações
+        = link_to "Adicionar interação", "#", class: 'float-right'
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr
+            %th Data/Hora
+            %th Conteúdo
+            %th
+        %tbody
+          %tr
+            %td{colspan: 3}
+              %i Nenhuma interação registrada.
+          %tr
+            %td 
+            %td 
+            %td 
+                     
