@@ -4,8 +4,9 @@ module Brb
   class Invoice < Support::Brb::Invoice
     belongs_to :category,     required: false
     belongs_to :invoice_type, required: false, class_name: 'Brb::InvoiceType'
+    belongs_to :situation, required: false, class_name: 'Brb::InvoiceSituation'
 
-    validates :due, :category, :name, :value, presence: true
+    validates :due, :category_id, :name, :value, presence: true
     validates :cpf, cpf: true, if: -> {cpf.present?}
     #validates :cep, :city, presence: true, if: -> {self.boleto?}
     validates :cnpj, cnpj: true, if: -> {cnpj.present?}

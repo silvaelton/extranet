@@ -1,4 +1,4 @@
-- if @invoice.errors.any?
+- if @return.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
   updateJs();
 - else

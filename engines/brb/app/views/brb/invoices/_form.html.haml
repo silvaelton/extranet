@@ -1,14 +1,16 @@
 = simple_form_for @invoice, remote: true do |f|
   .row
     .col-md-12
-      = f.input :category_id, as: :select, collection: Brb::Category.all, include_blank: 'selecione...'
+      = f.input :category_id, as: :select, collection: Brb::Category.all, include_blank: 'selecione...', input_html: {disabled: @invoice.new_record? ?  false : true}
   .row
-    .col-md-4
+    .col-md-3
       = f.input :due, as: :string, input_html: { class: 'date', value: f.object.due? ? localize(f.object.due) : '' }
-    .col-md-4
+    .col-md-3
       = f.input :value, as: :string, input_html: { class: 'coin', value: f.object.value? ? number_with_precision(f.object.value, precision: 2) : 0}
-    .col-md-4
-      = f.input :invoice_type, as: :select, collection: Brb::InvoiceType.all, include_blank: 'selecione...'
+    .col-md-3
+      = f.input :invoice_type_id, as: :select, collection: Brb::InvoiceType.all, include_blank: 'selecione...'
+    .col-md-3
+      = f.input :situation_id, as: :select, collection: Brb::InvoiceSituation.all, include_blank: 'selecione...'
   .row
     .col-md-8
       = f.input :name, placeholder: "Digite um nome"

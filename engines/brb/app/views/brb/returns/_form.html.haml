@@ -1,0 +1,7 @@
+= simple_form_for @return, remote: true do |f|
+  = f.input :type, as: :hidden, input_html:{value: @type}
+  .row
+    .col-md-12
+      = f.input :file, as: :file
+  .divider-sm
+  = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

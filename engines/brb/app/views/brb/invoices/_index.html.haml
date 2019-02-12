@@ -43,7 +43,7 @@
                     = link_to "Excluir", invoice_path(invoice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
           %tfoot
             %tr
-              %td.text-center{colspan: 6}
+              %td.text-center{colspan: 10}
                 = pagy_bootstrap_nav(@pagy).html_safe
         - else
           %tr

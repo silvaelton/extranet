@@ -1,7 +1,7 @@
 require "i18n"
 
 module Brb
-  class Remittance < ActiveRecord::Base
+  class Remittance < Support::Brb::Remittance
 
     def generate(date, between = false, date_end = nil)
       date_start = "#{date} 00:00:00"

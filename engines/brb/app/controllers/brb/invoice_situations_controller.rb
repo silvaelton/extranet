@@ -35,6 +35,8 @@ module Brb
 
 		def set_invoice_situations
 			@invoice_situations = Brb::InvoiceSituation.all
+			@pagy, @categories = pagy(Brb::InvoiceSituation.all)
+
 		end
 
 		def set_invoice_situation

@@ -35,6 +35,7 @@ module Brb
 
 		def set_categories
 			@categories = Brb::Category.all
+			@pagy, @categories = pagy(Brb::Category.all)
 		end
 
 		def set_category

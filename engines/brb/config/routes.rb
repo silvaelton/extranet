@@ -6,4 +6,6 @@ Brb::Engine.routes.draw do
   resources :categories
   resources :invoice_situations
   resources :remittances
+  resources :returns
+
 end
