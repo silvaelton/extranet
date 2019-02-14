@@ -5,5 +5,7 @@ module Cpl
     protect_from_forgery with: :exception
 
     layout 'application'
+    helper ::ApplicationHelper
+    include Pagy::Backend
   end
 end

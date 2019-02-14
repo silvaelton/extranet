@@ -28,6 +28,7 @@ gem 'email_validator'
 gem 'barby', '~> 0.6.5'
 gem 'chunky_png', '~> 1.3.10'
 gem 'rqrcode_png', '~> 0.1.5'
+gem 'bd_money', '~> 0.0.14'
 
 gem 'bcrypt'
 
@@ -55,5 +56,6 @@ path 'engines' do
   gem 'cpl'
   gem 'entity'
   gem 'helpdesk'
+  gem 'juridical'
   gem 'pivotal'
 end

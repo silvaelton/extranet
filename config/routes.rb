@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount Candidate::Engine   => '/candidato',    as: :candidate
   mount Cpl::Engine         => '/cpl',          as: :cpl
   mount Helpdesk::Engine    => '/helpdesk',     as: :helpdesk
+  mount Juridical::Engine   => '/juridico',     as: :juridical
   mount Pivotal::Engine     => '/',             as: :pivotal
 
 end

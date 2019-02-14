@@ -34,7 +34,7 @@ module Cpl
     end
 
     def set_notice_types
-      @notice_types = Cpl::NoticeType.all
+      @pagy, @notice_types = pagy(Cpl::NoticeType.all)
     end
 
     def set_notice_type

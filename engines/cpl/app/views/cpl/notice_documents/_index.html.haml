@@ -1,10 +1,14 @@
 .card
-  .card-heading.custom-border-left
+  .card-body.card-header.border-left-yellow
     .card-title
       = "Documentos do edital: #{@notice.name}"
-      = "(#{@notice_documents.count})"
-  .card-block
-    %table.table.table-bordered.table-striped
+      %br
+      Listando (#{@notice_documents.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
           %th Nº

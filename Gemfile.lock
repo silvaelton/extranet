@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/codhab/support.git
-  revision: aa5dba0e255fd30a9dc34e256bc1f2fac840b48f
+  revision: 0d0d6fd7614139d5ed180f1707998841f213dded
   branch: master
   specs:
     support (0.1.0)
@@ -25,6 +25,8 @@ PATH
     entity (0.1.0)
       rails (~> 5.2.2)
     helpdesk (0.1.0)
+      rails (~> 5.2.2)
+    juridical (0.1.0)
       rails (~> 5.2.2)
     pivotal (0.1.0)
       rails (~> 5.2.2)
@@ -82,6 +84,7 @@ GEM
       activerecord (>= 4.0, < 5.3)
     barby (0.6.6)
     bcrypt (3.1.12)
+    bd_money (0.0.14)
     bindex (0.5.0)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
@@ -260,6 +263,7 @@ DEPENDENCIES
   attendance!
   barby (~> 0.6.5)
   bcrypt
+  bd_money (~> 0.0.14)
   bootsnap (>= 1.1.0)
   brb!
   byebug
@@ -277,6 +281,7 @@ DEPENDENCIES
   helpdesk!
   jbuilder (~> 2.5)
   jquery-rails
+  juridical!
   listen (>= 3.0.5, < 3.2)
   pagy
   pg (>= 0.18, < 2.0)
