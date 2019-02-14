@@ -5,6 +5,10 @@ module Brb
 		before_action :set_invoice_types
 		before_action :set_invoice_type, only: %i[edit update destroy]
 
+		has_scope :by_name
+    has_scope :by_account
+		has_scope :by_status
+		
 		def index; end
 
 		def new
@@ -34,7 +38,7 @@ module Brb
 		end
 
 		def set_invoice_types
-			@invoice_types = Brb::InvoiceType.all
+      @pagy, @invoice_types = pagy(apply_scopes(Brb::InvoiceType).all.order(:name))
 		end
 
 		def set_invoice_type

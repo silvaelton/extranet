@@ -12,11 +12,9 @@ module Juridical
     has_scope :by_lawsuit
     has_scope :adm_process
 
-
     def index
       if params[:utf8].present?
-        @legal_advices = Juridical::LegalAdvice.includes([:lawsuit, :complements])
-        @legal_advices = apply_scopes(@legal_advices).paginate(:page => params[:page], :per_page => 20)
+        @pagy, @legal_advices = pagy(apply_scopes(Juridical::LegalAdvice.includes([:lawsuit, :complements]))).all
       end
     end
 

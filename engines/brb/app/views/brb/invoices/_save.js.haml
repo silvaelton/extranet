@@ -1,6 +1,8 @@
 - if @invoice.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
-  updateJs();
+  update_js();
 - else
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-invoice-#{@invoice.id}").addClass('table-success');
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
-  updateJs();
+  update_js();

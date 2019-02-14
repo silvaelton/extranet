@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/daily_type': "Tipos"
+    attributes:
+      'attendance/daily_type':
+        name: "Nome"
+        status: "Status"
+        description: "Descrição"

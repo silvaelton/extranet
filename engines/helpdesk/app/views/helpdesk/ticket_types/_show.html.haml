@@ -1,10 +1,11 @@
 .card
-  .card-heading.custom-border-left
-    .card-title Tipo: #{@ticket_type.name}      
-  .card-block
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Tipo: #{@ticket_type.name}   
+  .card-body      
     .index_type_subjects
       = render 'helpdesk/ticket_type_subjects/index'
     .divider
     .index_type_users
       = render 'helpdesk/ticket_type_users/index'
-    
+        

@@ -4,7 +4,7 @@
       = f.input :ticket_type_id, as: :select, collection: Helpdesk::TicketType.status_active.order(:name), include_blank: t(:include_blank), input_html: { id: "ticket_type_id"}
   .row
     .col-md-12
-      = f.input :subject_id, as: :select, include_blank: 'Selecione o tipo...', input_html: { id: "ticket_subject_id"}
+      = f.input :subject_id, as: :select, collection: f.object.ticket_type_id.present? ? Helpdesk::TicketTypeSubject.by_ticket_type(f.object.ticket_type_id) : {}, include_blank: 'Selecione o tipo...', input_html: { id: "ticket_subject_id"}
   .row
     .col-md-6
       = f.input :location_id, as: :select, include_blank: t(:include_blank)

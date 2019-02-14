@@ -1,0 +1,4 @@
+= simple_form_for @lawsuit, remote: true do |f|
+  = f.input :name, placeholder: 'Digite o tipo de ação'
+  = f.input :status, as: :select, include_blank: 'selecione...'
+  = f.button :submit, class: 'btn btn-success'

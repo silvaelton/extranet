@@ -11,8 +11,8 @@
           %th.collapsing
       %tbody
         - if @ticket_type.ticket_type_subjects.present? 
-          - @ticket_type.ticket_type_subjects.each do |subject|
-            %tr
+          - @ticket_type.ticket_type_subjects.order(:name).each do |subject|
+            %tr{class: "row-subject-#{subject.id}"}
               %td= subject.name
               %td.collapsing= subject.status ? 'Ativo' : 'Inativo'
               %td.collapsing

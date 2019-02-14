@@ -1,0 +1,40 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@legal_advices.count rescue 0}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Status
+          %th Processo
+          %th Tipo de Ação
+          %th Advogado Responsável
+          %th
+      %tbody
+        - if @legal_advices.present?
+          - @legal_advices.each do |legal_advice|
+            %tr{class: "row-type-#{legal_advice.id}"}
+              %td.collapsing= legal_advice.id
+              %td= legal_advice.name
+              %td.collapsing= legal_advice.status? ? "Ativo" : "Inativo"
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", legal_advice_path(legal_advice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "Editar", edit_legal_advice_path(legal_advice), class: 'dropdown-item'
+          %tfoot
+            %tr
+              %td.text-center{colspan: 10}
+                = pagy_bootstrap_nav(@pagy).html_safe
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

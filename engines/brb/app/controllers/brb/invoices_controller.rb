@@ -8,6 +8,7 @@ require 'barby/outputter/png_outputter'
 module Brb
   class InvoicesController < ApplicationController
     before_action :set_invoices
+    before_action :set_invoice, only: %i[edit update destroy]
 
     has_scope :by_name
     has_scope :by_cpf
@@ -28,6 +29,7 @@ module Brb
           @invoices = apply_scopes(Brb::Invoice).all.order('created_at DESC').all
         }
         format.html
+        format.js
       end
     end
 
@@ -41,11 +43,9 @@ module Brb
     end
 
     def edit
-      @invoice = Brb::Invoice.find(params[:id])
     end
 
     def update
-      @invoice = Brb::Invoice.find(params[:id])
       if @invoice.update(set_update_params)
         flash[:success] =  t :success
         redirect_to action: 'index'
@@ -55,8 +55,6 @@ module Brb
     end
 
     def show
-      @invoice = Brb::InvoiceInvoice.find(params[:id])
-
       if @invoice.guia_simples?
         barcode = Barby::Code25Interleaved.new(@invoice.barcode)
         File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
@@ -74,18 +72,22 @@ module Brb
     private
 
     def set_params
-      params.require(:invoice).permit(:category_id, :due, :cpf, :name, :address,
+      params.require(:invoice).permit(:situation_id, :category_id, :due, :cpf, :name, :address,
                                       :city, :state_id, :value,:cep, :message, :invoice_type_id, :cnpj)
     end
 
     def set_update_params
-      params.require(:invoice).permit(:category_id, :due, :cpf, :name, :address, :value,
-                                      :city, :state_id, :cep, :message, :bank_return, :payment, :status, :invoice_focus, :cnpj)
+      params.require(:invoice).permit(:situation_id, :cpf, :name, :address, :city, :state_id, :cep, 
+                                      :message, :bank_return, :payment, :status, :invoice_focus, :cnpj)
     end
 
     def set_invoices
-      @invoices = apply_scopes(Brb::Invoice).all.order('created_at DESC')
-      @invoices = @invoices.paginate(:page => params[:page], :per_page => 40)
+      @pagy, @invoices = pagy(apply_scopes(Brb::Invoice).all.order('created_at DESC'))
     end
+
+    def set_invoice
+      @invoice = Brb::Invoice.find(params[:id])
+    end
+    
   end
 end

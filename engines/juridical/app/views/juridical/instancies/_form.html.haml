@@ -1,0 +1,4 @@
+= simple_form_for @instancy, remote: true do |f|
+  = f.input :name, placeholder: 'Digite o tipo de boleto'
+  = f.input :status, as: :select, include_blank: 'selecione...'
+  = f.button :submit, class: 'btn btn-success'

@@ -68,6 +68,15 @@ body {
 
 }
 
-.dropdown-menu {
+.card .dropdown-menu {
   min-width: 0rem !important;
+  margin-left: -120%;
+}
+
+.form-control.is-valid, .was-validated .form-control:valid {
+    border-color: #ccd3d9 !important;
+    background-repeat: no-repeat;
+    background-position: none;
+    background-size: none;
+    background-image: none;
 }

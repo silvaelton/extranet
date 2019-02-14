@@ -1,0 +1,32 @@
+.card
+  .card-heading.custom-border-left
+    .card-title
+      Tipos de atendentes
+      = "(#{@attendant_types.count})"    
+  .card-block
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Nº
+          %th Nome
+          %th Status
+          %th
+      %tbody
+        - if @attendant_types.present?
+          -@attendant_types.order(:name).each do |attendant_type|
+            %tr
+              %td.collapsing= attendant_type.id
+              %td= attendant_type.name
+              %td.collapsing= attendant_type.status? ? "Ativo" : "Inativo"
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", attendant_type_path(attendant_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "Editar", edit_attendant_type_path(attendant_type), class: 'dropdown-item', remote: true
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum tipo de boleto registrado.

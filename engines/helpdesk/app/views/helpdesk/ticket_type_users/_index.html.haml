@@ -1,7 +1,7 @@
 .row
   .col-md-12
     %h5 
-      %b Usuários (#{@ticket_type.ticket_type_users.count})
+      %b Atendentes (#{@ticket_type.ticket_type_users.count})
     = link_to "Adicionar usuário", new_ticket_type_ticket_type_user_path(@ticket_type), remote: true, data: { disable_with: t(:disable_with)}
     %table.table.table-bordered.table-striped
       %thead
@@ -12,7 +12,7 @@
       %tbody
         - if @ticket_type.ticket_type_users.present? 
           - @ticket_type.ticket_type_users.each do |user|
-            %tr
+            %tr{class: "row-user-#{user.id}"}
               %td= user.staff.name
               %td= user.user.name
               %td

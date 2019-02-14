@@ -14,5 +14,8 @@ module Brb
       @remittance = Brb::Remittance.find(params[:id])
       render layout: 'brb/invoice'
     end
+
+    def new
+    end
   end
 end

@@ -1,9 +1,9 @@
 - if @category.errors.any?
-  $("#modal").html("#{escape_javascript(render 'form')}");
-  updateJs();
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
-  $(".index-content").html("#{escape_javascript(render 'index')}");
-  updateJs();
+  $(".index-content").html("#{escape_javascript(render 'brb/categories/index')}");
+  update_js();
   
 

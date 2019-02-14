@@ -1,0 +1,13 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Atualizar dados básicos", helpdesk.ticket_types_path
+      = link_to "Alterar senha", helpdesk.new_ticket_path, remote: true
+      %hr/
+      = link_to "Histórico de uso", helpdesk.new_ticket_path, remote: true
+      = link_to "Histórico de acesso", helpdesk.new_ticket_path, remote: true

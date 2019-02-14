@@ -12,8 +12,8 @@
               = nav.label
             .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
               - nav.childrens.each do |child|
-                %a.dropdown-item{:href => "#"}= child.label
+                %a.dropdown-item{:href => "#{child.url}"}= child.label
         - else
           %li.nav-item
-            %a.nav-link{:href => "#"}
+            %a.nav-link{:href => "#{nav.url}"}
               = nav.label

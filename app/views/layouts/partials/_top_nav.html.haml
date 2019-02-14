@@ -18,22 +18,27 @@
         %i.fa.fa-bolt
         
       .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdown"}
-        %a.dropdown-item{:href => "#"} 
+        %a.dropdown-item{:href => "#{helpdesk.new_ticket_path}", :data => { :remote => true }} 
           %i.fa.fa-question.btn.btn-danger
           Abrir chamado
         .dropdown-divider
         
-        %a.dropdown-item{:href => "#"}
+        %a.dropdown-item{:href => "#{pivotal.staffs_path}", :data => { :remote => true }} 
+          %i.fa.fa-question.btn.btn-warning
+          Lista de ramais
+        .dropdown-divider
+
+        %a.dropdown-item{:href => "https://www.gdfnet.df.gov.br/Autenticacao/Login", :target => '_blank'}
           %i.fa.fa-dollar.btn.btn-success
           Contracheque
         .dropdown-divider
         
-        %a.dropdown-item{:href => "#"}
+        %a.dropdown-item{:href => "https://cas.gdfnet.df.gov.br", :target => '_blank'}
           %i.fa.fa-at.btn.btn-secondary
           WebMail
         
         .dropdown-divider
-        %a.dropdown-item{:href => "#"}
+        %a.dropdown-item{:href => "http://sei.df.gov.br", :target => '_blank'}
           %i.fa.fa-file.btn.btn-info
           SEI-GDF
     
@@ -50,13 +55,13 @@
       %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         = current_user.presenter.short_name
       .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdown"}
-        %a.dropdown-item{:href => "#"} Meu perfil
-        %a.dropdown-item{:href => "#"} Alterar minha senha
+        %a.dropdown-item{:href => "#{pivotal.user_path(current_user)}"} Meu perfil
+        %a.dropdown-item{:href => "#{pivotal.edit_password_path(current_user)}", :data => { :remote => true }} Alterar minha senha
         .dropdown-divider
-        %a.dropdown-item{:href => "#"} Favoritos
+        %a.dropdown-item{:href => "#{pivotal.user_bookmarks_path(current_user)}"} Favoritos
         %a.dropdown-item{:href => "#"} Notificações
         .dropdown-divider
-        %a.dropdown-item{:href => "#"} Histórico de acesso
-        %a.dropdown-item{:href => "#"} Histórico de uso
+        %a.dropdown-item{:href => "#{pivotal.user_session_logs_path(current_user)}"} Histórico de acesso
+        %a.dropdown-item{:href => "#{pivotal.user_logs_path(current_user)}"} Histórico de uso
         .dropdown-divider
         = link_to "Finalizar sessão", pivotal.session_path(current_user), method: :delete, class: 'dropdown-item', data: { confirm: 'Deseja finalizar a sessão atual?' }

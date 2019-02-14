@@ -5,6 +5,9 @@ module Brb
 		before_action :set_invoice_situations
 		before_action :set_invoice_situation, only: %i[edit update destroy]
 
+		has_scope :by_name
+		has_scope :by_status
+
 		def index; end
 
 		def new
@@ -34,7 +37,8 @@ module Brb
 		end
 
 		def set_invoice_situations
-			@invoice_situations = Brb::InvoiceSituation.all
+			@pagy, @invoice_situations = pagy(apply_scopes(Brb::InvoiceSituation).all.order(:name))
+
 		end
 
 		def set_invoice_situation
