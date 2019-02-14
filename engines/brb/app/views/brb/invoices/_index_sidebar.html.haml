@@ -6,12 +6,12 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus  
     .card-body
-      = simple_form_for url_for, method: :get, remote: true do |f|
-        = f.input :by_id, label: "Por código",  placeholder: 'Digite o código'
-        = f.input :by_name, label: "Por nome",  placeholder: 'Digite o nome'
-        = f.input :by_cpf, label: "CPF", input_class: { class: 'cpf' }
-        = f.input :by_type, as: :select, collection: Brb::InvoiceType.all, label: "Tipo", include_blank: t(:include_blank), input_html: { onchange: "this.form.submit()", value: params[:by_type], class: 'ui fluid'}
-        = f.input :by_category, as: :select, collection: Brb::Category.all, label: "Categoria", include_blank: t(:include_blank), input_html: { onchange: "this.form.submit()"}
+      = simple_form_for url_for, method: :get, remote: true, html: { id: 'invoice-filter'} do |f|
+        = f.input :by_id, label: "Por código",  input_html: {onchange: "$('#invoice-filter').submit()", name: 'by_id', value: params[:by_id], placeholder: 'Digite o codigo'}
+        = f.input :by_name, label: "Por nome",  input_html: {onchange: "$('#invoice-filter').submit()", name: 'by_name', value: params[:by_name], placeholder: 'Digite o nome'}
+        = f.input :by_cpf, label: "CPF", input_html: {onchange: "$('#invoice-filter').submit()", name: 'by_cpf', value: params[:by_cpf], placeholder: 'Digite o nome', cls: 'cpf'}
+        = f.input :by_type, as: :select, collection: Brb::InvoiceType.all, label: "Tipo", selected: params[:by_type] , input_html: {onchange: "$('#invoice-filter').submit()", name: 'by_type'}, prompt: 'Selecione'
+        = f.input :by_category, as: :select, collection: Brb::Category.all, label: "Categoria", selected: params[:by_category] , input_html: {onchange: "$('#invoice-filter').submit()", name: 'by_category'}, prompt: 'Selecione'
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: {  disable_with:  t(:disable_with)}
   .divider

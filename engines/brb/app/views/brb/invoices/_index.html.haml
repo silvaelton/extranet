@@ -23,7 +23,7 @@
       %tbody
         - if @invoices.present?
           -@invoices.order(:id).each do |invoice|
-            %tr
+            %tr{class: "row-invoice-#{invoice.id}"}
               %td.collapsing= invoice.id
               %td= invoice.invoice_type.name rescue nil
               %td= invoice.category.name rescue nil

@@ -1,12 +1,11 @@
 .fluid-container
-  .row
+  .row.mt-4
     .col-md-12
-      .card
-        .card-block.custom-border-left
-          .title 
-            Helpdesk
-            .subtitle Tipos de chamado
-  .row
+      .card#header.border-left-yellow
+        .card-body
+          .title Helpdesk
+          .subtitle Gestão de tipos de chamado
+  .row.mt-4
     .col-md-2.index-sidebar
       = render 'index_sidebar'
     .col-md-10.index-content

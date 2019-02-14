@@ -6,5 +6,6 @@ module Helpdesk
     has_many :ticket_type_subjects
     
     validates :name, presence: true, uniqueness: true
+
   end
 end

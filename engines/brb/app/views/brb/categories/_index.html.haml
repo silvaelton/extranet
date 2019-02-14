@@ -17,7 +17,7 @@
           %th
       %tbody
         - if @categories.present?
-          -@categories.order(:name).each do |category|
+          -@categories.each do |category|
             %tr
               %td.collapsing= category.id
               %td= category.name

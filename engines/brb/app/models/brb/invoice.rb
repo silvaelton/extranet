@@ -14,7 +14,7 @@ module Brb
     after_create :generate_invoice!, if: -> { self.invoice_type.id == 2 }
     after_create :generate_simple_invoice!, if: -> { self.invoice_type.id == 1 }
 
-    scope :by_name,       ->(name) { where('name ilike ?' "%#{name}%") }
+    scope :by_name,       ->(name) { where("name ilike '%#{name}%'") }
     scope :by_cpf,        ->(cpf) { where(cpf: cpf.gsub('.','').gsub('-','')) }
     scope :by_id,         ->(id) { where(id: id) }
     scope :by_type,       ->(type) { where(invoice_type_id: type) }

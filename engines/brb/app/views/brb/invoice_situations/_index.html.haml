@@ -16,7 +16,7 @@
           %th
       %tbody
         - if @invoice_situations.present?
-          -@invoice_situations.order(:name).each do |invoice_situation|
+          -@invoice_situations.each do |invoice_situation|
             %tr
               %td.collapsing= invoice_situation.id
               %td= invoice_situation.name

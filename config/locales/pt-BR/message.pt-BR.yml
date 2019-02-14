@@ -1,3 +1,5 @@
 pt-BR:
   disable_with: 'Carregando...'
   include_blank: 'Selecione...'
+  confirm: 'Tem certeza que deseja realizar esta operação?'
+  no_info: 'Sem informação'

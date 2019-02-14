@@ -39,7 +39,7 @@ module Helpdesk
     end
 
     def set_ticket_types
-      @ticket_types = Helpdesk::TicketType.all.order(:name)
+      @pagy, @ticket_types = pagy(Helpdesk::TicketType.all.order(:name))
     end
 
     def set_ticket_type

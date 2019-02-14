@@ -1,19 +1,10 @@
-.card.filter-sidebar
-
-  #card
-    .card-heading.border.custom-border-left
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
       .card-title 
-        Menu rápido
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
-          %i.fa.fa-minus            
-    .card-block
-      .row
-        .col-md-12        
-          %ul
-            %li
-              %span= link_to "Voltar para listagem", helpdesk.ticket_types_path, class: 'filter-nav-item'
-            %li.divider
-            %li
-              %span= link_to "Gestão de chamados", helpdesk.ticket_types_path, class: 'filter-nav-item'
-          
-  
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Voltar para listagem", helpdesk.ticket_types_path
+      = link_to "Gestão de chamados", helpdesk.ticket_types_path

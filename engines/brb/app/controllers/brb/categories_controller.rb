@@ -5,6 +5,9 @@ module Brb
 		before_action :set_categories
 		before_action :set_category, only: %i[edit update destroy]
 
+		has_scope :by_name
+		has_scope :by_status
+		
 		def index; end
 
 		def new
@@ -34,8 +37,7 @@ module Brb
 		end
 
 		def set_categories
-			@categories = Brb::Category.all
-			@pagy, @categories = pagy(Brb::Category.all)
+			@pagy, @categories = pagy(apply_scopes(Brb::Category).all.order(:name))
 		end
 
 		def set_category

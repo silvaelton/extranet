@@ -1,7 +1,7 @@
 - if @return.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
-  updateJs();
+  update_js();
 - else
   $(".index-content").html("#{escape_javascript(render 'index')}");
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
-  updateJs();
+  update_js();

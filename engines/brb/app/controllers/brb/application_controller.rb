@@ -3,7 +3,9 @@ require_dependency 'application_controller'
 module Brb
   class ApplicationController < ApplicationController
 
-    layout 'application'
+    helper ::ApplicationHelper
     include Pagy::Backend
+
+    layout 'application'
   end
 end

@@ -6,9 +6,9 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus  
     .card-body
-      = simple_form_for url_for, method: :get, remote: true do |f|
-        = f.input :by_name, label: "Por nome", placeholder: 'Digite o nome'
-        = f.input :by_status, as: :select, label: "Por status", include_blank: 'selecione...'
+      = simple_form_for url_for, method: :get, remote: true, html: { id: 'invoice-situation-filter'} do |f|
+        = f.input :by_name, label: "Por nome",  input_html: {onchange: "$('#invoice-situation-filter').submit()", name: 'by_name', value: params[:by_name], placeholder: 'Digite o nome'}
+        = f.input :by_status, as: :select, label: "Por status", selected: params[:by_status] , input_html: {onchange: "$('#invoice-situation-filter').submit()", name: 'by_status'}, prompt: 'Selecione'
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
   .divider

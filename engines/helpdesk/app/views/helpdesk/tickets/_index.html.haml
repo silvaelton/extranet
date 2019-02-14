@@ -15,31 +15,32 @@
           %th Tipo
           %th Assunto
           %th Solicitante
-          %th 
+          %th Situação
+          %th
       %tbody
         - if @tickets.present?
           - @tickets.each do |ticket|
             %tr
-              %td.collapsing= ticket.id
+              %td.collapsing= link_to ticket.id, helpdesk.ticket_path(ticket), remote: true
               %td.collapsing= ticket.created_at.strftime("%d/%m/%Y %H:%M")
               %td.collapsing= ticket.ticket_type.name rescue t(:no_info)
               %td= ticket.ticket_subject.name rescue t(:no_info)
-              %td.collapsing= ticket.staff.name rescue t(:no_info)
+              %td.collapsing= ticket.staff.presenter.short_name rescue t(:no_info)
+              %td.collapsing
               %td.collapsing
                 .dropdown
-                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                  %button.btn.btn-dark.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                     %i.fa.fa-cog
                     %i.ti-angle-down
-                  .dropdown-menu{"aria-labelledby" => "dropdownMenuButton"}
-                    %a.dropdown-item{:href => "#"} Detalhar
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
                     %a.dropdown-item{:href => "#"} Atualizar
                     %a.dropdown-item{:href => "#"} Finalizar
                     %a.dropdown-item{:href => "#"} Cancelar
           %tfoot
             %tr
-              %td.text-center{colspan: 6}
+              %td.text-center{colspan: 7}
                 = pagy_bootstrap_nav(@pagy).html_safe              
         - else
           %tr
-            %td{colspan: 6}
+            %td{colspan: 7}
               %i Nenhum chamado registrado.

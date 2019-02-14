@@ -5,7 +5,7 @@ module Helpdesk
     before_action :set_ticket, only: [:edit, :update, :destroy]
 
     def index
-      @pagy, @tickets = pagy(Helpdesk::Ticket.all)
+      @pagy, @tickets = pagy(Helpdesk::Ticket.by_current_user(current_user))
     end
     
     def show

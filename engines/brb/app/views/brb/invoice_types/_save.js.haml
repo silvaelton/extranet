@@ -1,8 +1,9 @@
 - if @invoice_type.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
-  updateJs();
+  update_js();
 - else
-  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".index-content").html("#{escape_javascript(render 'brb/invoice_types/index')}");
+  $(".row-type-#{@invoice_type.id}").addClass('table-success');
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
 
-  updateJs();
+  update_js();
