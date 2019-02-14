@@ -27,14 +27,14 @@
     .col-md-4
       = f.input :free_justice, as: :select, prompt: 'Selecione'
     .col-md-4
-      = f.input :veredict, as: :select, collection: [['improcedente',false], ['procedente', true]], prompt: 'selecione...'
+      = f.input :veredict, as: :select, collection: [['improcedente',false], ['procedente', true]], prompt: 'selecione...', allow_blank: false
   .row
     .col-md-4
-      = f.input :procedural_costs, as: :select, prompt: 'Selecione'
+      = f.input :procedural_costs, as: :string, input_html: { placeholder:'ex. 1.000,00', class: 'money'}
     .col-md-4
       = f.input :judicial_deposit, as: :select, prompt: 'Selecione'
     .col-md-4
-      = f.input :probability, as: :select, collection: Juridical::LegalAdvice.probabilities, prompt: 'selecione...'
+      = f.input :probability, as: :select, collection: Juridical::LegalAdvice.probabilities, prompt: 'selecione...', allow_blank: false
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
