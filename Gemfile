@@ -30,6 +30,9 @@ gem 'chunky_png', '~> 1.3.10'
 gem 'rqrcode_png', '~> 0.1.5'
 gem 'bd_money', '~> 0.0.14'
 
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+gem 'carrierwave-base64', '~> 2.7.0'
+
 gem 'bcrypt'
 
 gem 'support', github: 'codhab/support', branch: 'master'

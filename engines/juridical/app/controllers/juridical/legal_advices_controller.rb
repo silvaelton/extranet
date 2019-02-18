@@ -14,7 +14,7 @@ module Juridical
 
     def index
       if params[:utf8].present?
-        @pagy, @legal_advices = pagy(apply_scopes(Juridical::LegalAdvice.includes([:lawsuit, :complements]))).all
+        @pagy, @legal_advices = pagy(apply_scopes(Juridical::LegalAdvice.includes([:lawsuit, :complements]).all))
       end
     end
 
@@ -53,7 +53,7 @@ module Juridical
     def show
       @return = Juridical::ReturningTribunalService.new(@legal_advice).get_array
 
-      @assessment = Protocol::Assessment.where('description_subject ilike ? ', "%#{@legal_advice.process_number}%").first if @legal_advice.process_number.present?
+      @assessment = Protocol::Assessment.where('description_subject ilike ? ', "%#{@legal_advice.process_number}%").first rescue nil
       @complainants = @legal_advice.complainants.all
       @defendants = @legal_advice.defendants.all
 

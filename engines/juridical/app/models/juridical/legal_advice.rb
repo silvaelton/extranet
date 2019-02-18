@@ -9,7 +9,7 @@ module Juridical
     belongs_to :instancy_place,     required: false
     belongs_to :document_type,      required: false, class_name: "Protocol::DocumentType"
     #belongs_to :responsible_lawyer, required: false,-> {where(sector_current_id: 5)}, foreign_key: "responsible_lawyer_id", class_name: "Person::Staff"
-    belongs_to :staff,              required: false, class_name: "Person::Staff"
+  #  belongs_to :staff,              required: false, class_name: "Person::Staff"
 
     enum process_type: ['normal','eletrônico']
 
