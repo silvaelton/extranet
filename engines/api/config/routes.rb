@@ -1,7 +1,6 @@
 Api::Engine.routes.draw do
 
-  namespace :v1 do
-
+  namespace :v1, defaults: { format: :json }  do
     namespace :candidate do
       resources :cadastres
     end
