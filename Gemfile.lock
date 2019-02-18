@@ -16,6 +16,8 @@ PATH
   specs:
     address (0.1.0)
       rails (~> 5.2.2)
+    api (0.1.0)
+      rails (~> 5.2.2)
     attendance (0.1.0)
       rails (~> 5.2.2)
     brb (0.1.0)
@@ -262,6 +264,7 @@ PLATFORMS
 
 DEPENDENCIES
   address!
+  api!
   attendance!
   barby (~> 0.6.5)
   bcrypt (~> 3.1.12)

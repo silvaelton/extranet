@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount Address::Engine     => '/imoveis',      as: :address
+  mount Api::Engine         => '/api',          as: :api
   mount Attendance::Engine  => '/atendimento',  as: :attendance
   mount Brb::Engine         => '/brb',          as: :brb
   mount Candidate::Engine   => '/candidato',    as: :candidate

@@ -52,6 +52,7 @@ end
 
 path 'engines' do
   gem 'address'
+  gem 'api'
   gem 'attendance'
   gem 'brb'
   gem 'candidate'
