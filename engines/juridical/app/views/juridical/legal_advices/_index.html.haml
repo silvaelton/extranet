@@ -19,17 +19,25 @@
         - if @legal_advices.present?
           - @legal_advices.each do |legal_advice|
             %tr{class: "row-type-#{legal_advice.id}"}
-              %td.collapsing= legal_advice.id
-              %td= legal_advice.name
-              %td.collapsing= legal_advice.status? ? "Ativo" : "Inativo"
+              %td.collapsing
+                - if legal_advice.status
+                  = link_to "aberto", legal_advice_update_status_path(legal_advice), class: 'btn btn-success btn-sm'
+                -else
+                  = link_to "fechado", legal_advice_update_status_path(legal_advice), class: 'btn btn-danger btn-sm'
+              %td= legal_advice.process_number
+              %td= legal_advice.lawsuit.name rescue nil
+              %td= legal_advice.responsible_lawyer.name rescue nil
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Visulizar", legal_advice_path(legal_advice), class: 'dropdown-item'
+                    = link_to "Complemento", legal_advice_complements_path(legal_advice), class: 'dropdown-item'
+                    = link_to "Editar", edit_legal_advice_path(legal_advice), class: 'dropdown-item', remote: true
                     = link_to "Excluir", legal_advice_path(legal_advice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
-                    = link_to "Editar", edit_legal_advice_path(legal_advice), class: 'dropdown-item'
+
           %tfoot
             %tr
               %td.text-center{colspan: 10}

@@ -38,3 +38,23 @@
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
+
+:javascript
+
+  $(document).ready(function() {
+    $("#legal_advice_instancy").on('change', function(){
+
+      $.getJSON("#{instancy_places_path}?instancy_id=" + $(this).val(), function(data) {
+
+        html = "<option value>selecione...</option>"
+        if(data.length > 0) {
+          for(var i = 0; i < data.length; i++) {
+            html += "<option value='"+data[i].id+"'>"+data[i].name+"</option>"
+          }
+        } else {
+          html = "<option value>Não foram encontrados locais</option>"
+        }
+          $("#legal_advice_instancy_place_id").html(html)
+      });
+    });
+  });

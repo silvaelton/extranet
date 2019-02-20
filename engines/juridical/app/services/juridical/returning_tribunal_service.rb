@@ -8,22 +8,25 @@ module Juridical
 
     def get_array
       return nil if @legal_advice.advice_type_id == 1
-      #crawler_tj
-      if crawler_tj.nil?
-        crawler_tj = crawler_tj.delete_if {|x| x.blank?}
+
+      crawler = get_crawler
+
+      if crawler.present?
+        crawler_tj = crawler.delete_if {|x| x.blank?}
         @data = crawler_tj.sort_by { |h| h}.reverse
       end
     end
 
     private
 
-    def crawler_tj
+    def get_crawler
 
       count   = 1
       url     = nil
       process = @legal_advice.process_number.to_s.gsub('.','').gsub('-','')
 
       if process.present?
+
         while count < 15 && url.nil? do
 
           url = "http://tjdf19.tjdft.jus.br/cgi-bin/tjcgi1?NXTPGM=tjhtml105&SELECAO=1&ORIGEM=INTER&CIRCUN=#{count}&CDNUPROC=#{process}"
@@ -35,31 +38,22 @@ module Juridical
 
             @data_return[index] =  []
 
-              link.xpath('td').each_with_index do |a, increment|
-                if a.text.present?
-                  if a.text != "Data" && a.text != "Andamento" && a.text != "Complemento" && a.text != ""
-                    #begin
-                     @data_return[index][0] = DateTime.parse(a.text) if increment == 0
-                    #rescue
-                      #@data_return[index][0] = a.text
-                    #end
-
-                      @data_return[index][1] = a.content if increment == 1
-                      @data_return[index][2] = a.children.to_s.encode("UTF-8").html_safe if @data_return[index][2]
-
-                  end
+            link.xpath('td').each_with_index do |a, increment|
+              if a.text.present?
+                if a.text != "Data" && a.text != "Andamento" && a.text != "Complemento" && a.text != ""
+                  @data_return[index][0] = DateTime.parse(a.text) if increment == 0
+                  @data_return[index][1] = a.content if increment == 1
+                  @data_return[index][2] = a.children.to_s.encode("UTF-8").html_safe if @data_return[index][2]
                 end
-
+              end
             end
           end
-
           count +=1
         end
+
         @complements = @legal_advice.complements
           if @complements.present?
-
              index = @data_return.count
-
 
              @complements.each do |c|
                @data_return[index] = []
@@ -71,7 +65,7 @@ module Juridical
               index +=1
             end
           end
-        @data_return
+        return @data_return
       else
         {}
       end

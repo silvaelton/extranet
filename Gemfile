@@ -11,7 +11,7 @@ gem 'bcrypt', '~> 3.1.12'
 gem 'bootsnap', '~> 1.1.0', require: false
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '~> 1.3.0'
-gem 'jquery-rails', '~> 4.3.3' 
+gem 'jquery-rails', '~> 4.3.3'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
@@ -32,6 +32,13 @@ gem 'validates_timeliness', '~> 4.0.2'
 gem 'barby', '~> 0.6.5'
 gem 'chunky_png', '~> 1.3.10'
 gem 'rqrcode_png', '~> 0.1.5'
+gem 'nokogiri', '~> 1.10.1'
+gem 'bootstrap-datepicker-rails'
+
+gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+gem 'carrierwave-base64', '~> 2.7.0'
+
+
 
 gem 'support', github: 'codhab/support', branch: 'master'
 
