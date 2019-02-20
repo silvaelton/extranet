@@ -1,0 +1,12 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar situação", entity.new_cadastre_situation_path, remote: true
+      %hr.divider
+      = link_to "Gestão de entidades", entity.cadastres_path
+      = link_to "Gestão de cargos", entity.member_jobs_path

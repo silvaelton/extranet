@@ -1,0 +1,8 @@
+- if @member_job.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+  update_js();
+- else
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-#{@member_job.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  update_js();

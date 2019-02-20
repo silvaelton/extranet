@@ -3,8 +3,12 @@ require_dependency 'entity/application_controller'
 module Entity
   class CadastresController < ApplicationController 
     
+    has_scope :by_cnpj
+    has_scope :by_acron
+    has_scope :by_situation
+
     def index
-      @pagy, @entities = pagy(Entity::Cadastre.all)
+      @pagy, @entities = pagy(apply_scopes(Entity::Cadastre).all)
     end 
 
     def new
