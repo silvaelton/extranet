@@ -23,7 +23,7 @@
             %tr{class: "row-daily-#{daily.id}"}
               %td.collapsing= daily.id
               %td= daily.name
-              %td= daily.cpf
+              %td= daily.cpf.format_cpf
               %td= daily.attendant.staff.name rescue nil
               %td= daily.station.name rescue nil
               %td= daily.category.name rescue nil

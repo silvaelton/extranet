@@ -18,7 +18,7 @@
           %tr{class: "row-attendant-station-#{attendant_station.id}"}
             %td.collapsing= attendant_station.id
             %td= attendant_station.attendant.staff.name rescue "Sem informação"
-            %td= attendant_station.created_at.strftime("%d/%m/%Y")
+            %td= attendant_station.created_at.format_datetime
             %td= attendant_station.creator.name
             %td.collapsing= link_to "<i class='fa fa-trash'></i>".html_safe, station_attendant_station_path(@station, attendant_station), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
       - else
@@ -43,8 +43,8 @@
           %tr
             %td.collapsing= attendant_station.id
             %td= attendant_station.attendant.staff.name rescue "Sem informação"
-            %td= attendant_station.created_at.strftime("%d/%m/%Y")
-            %td= attendant_station.deleted_at.strftime("%d/%m/%Y") rescue "Sem informação"
+            %td= attendant_station.created_at.format_datetime
+            %td= attendant_station.deleted_at.format_datetime rescue "Sem informação"
 
         %tfoot 
           %tr

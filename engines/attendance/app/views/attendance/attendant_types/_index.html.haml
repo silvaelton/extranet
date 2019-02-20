@@ -20,7 +20,7 @@
             %tr{class: "row-attendant-#{attendant_type.id}"}
               %td.collapsing= attendant_type.id
               %td= attendant_type.name
-              %td.collapsing= attendant_type.status? ? "Ativo" : "Inativo"
+              %td.collapsing= attendant_type.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

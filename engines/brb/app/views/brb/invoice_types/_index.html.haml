@@ -22,7 +22,7 @@
               %td.collapsing= invoice_type.id
               %td= invoice_type.name
               %td= invoice_type.account
-              %td.collapsing= invoice_type.status? ? "Ativo" : "Inativo"
+              %td.collapsing= invoice_type.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

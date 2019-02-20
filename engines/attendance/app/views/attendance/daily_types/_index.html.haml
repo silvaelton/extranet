@@ -22,7 +22,7 @@
               %td.collapsing= daily_type.id
               %td= daily_type.name
               %td= daily_type.description
-              %td.collapsing= daily_type.status? ? "Ativo" : "Inativo"
+              %td.collapsing= daily_type.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

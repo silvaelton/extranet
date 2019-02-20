@@ -20,7 +20,7 @@
             %tr{class: "row-situation-#{invoice_situation.id}"}
               %td.collapsing= invoice_situation.id
               %td= invoice_situation.name
-              %td.collapsing= invoice_situation.status? ? "Ativo" : "Inativo"
+              %td.collapsing= invoice_situation.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

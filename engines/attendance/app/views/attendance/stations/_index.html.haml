@@ -24,7 +24,7 @@
               %td= station.name
               %td= station.responsible.name
               %td= station.description
-              %td.collapsing= station.status? ? "Ativo" : "Inativo"
+              %td.collapsing= station.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

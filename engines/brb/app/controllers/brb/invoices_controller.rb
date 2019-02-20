@@ -55,18 +55,18 @@ module Brb
     end
 
     def show
-      # if @invoice.guia_simples?
+      if @invoice.invoice_type_id == 1
         barcode = Barby::Code25Interleaved.new(@invoice.barcode)
-        # File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
+        File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
         render template: 'brb/invoices/simple_show', layout: 'brb/invoice'
-      # else
+      else
 
-        # @account = '0158567'
+        @account = '0158567'
 
-        # barcode = Barby::Code128.new(@invoice.barcode)
-        # File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
-        # render layout: 'brb/invoice'
-      # end
+        barcode = Barby::Code128.new(@invoice.barcode)
+        File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
+        render layout: 'brb/invoice'
+      end
     end
 
     private
