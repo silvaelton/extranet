@@ -39,6 +39,10 @@ body {
   border-color: #f5b302;
 }
 
+.btn-primary.focus, .btn-primary:focus {
+  box-shadow: #e8a900;
+}
+
 .btn-primary:not(:disabled):not(.disabled).active:focus, 
 .btn-primary:not(:disabled):not(.disabled):active:focus, 
 .show>.btn-primary.dropdown-toggle:focus {

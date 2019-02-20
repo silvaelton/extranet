@@ -16,19 +16,20 @@
           %th
       %tbody
         - if @request_types.present?
-          -@request_types.each do |request_type|
-            %tr
-              %td.collapsing= request_type.id
-              %td= request_type.name
-              %td.collapsing= request_type.status? ? "Ativo" : "Inativo"
-              %td.collapsing
-                .dropdown
-                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                    %i.fa.fa-cog
-                    %i.ti-angle-down
-                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Excluir", request_type_path(request_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
-                    = link_to "Editar", edit_request_type_path(request_type), class: 'dropdown-item', remote: true
+          - @request_types.each do |request_type|
+            - request_type.presenter do |r|
+              %tr
+                %td.collapsing= r.id
+                %td= r.name
+                %td.collapsing= r.status
+                %td.collapsing
+                  .dropdown
+                    %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                      %i.fa.fa-cog
+                      %i.ti-angle-down
+                    .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                      = link_to "Excluir", request_type_path(r), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                      = link_to "Editar", edit_request_type_path(r), class: 'dropdown-item', remote: true
         - else
           %tr
             %td{colspan: 6}

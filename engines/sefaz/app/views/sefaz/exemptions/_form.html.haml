@@ -1,0 +1,16 @@
+= simple_form_for [@allotment, @exemption], remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name
+    .col-md-4
+      = f.input :notifier_id, as: :select, collection: Sefaz::Notifier.status_active, prompt: 'Selecione'
+  .row
+    .col-md-6
+      = f.input :request_type_id, as: :select, collection: Sefaz::RequestType.status_active, prompt: 'Selecione'
+  .row
+    .col-md-12
+      = f.input :observation
+  %hr
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
