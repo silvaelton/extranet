@@ -1,0 +1,60 @@
+= simple_form_for @legal_advice, remote: true do |f|
+  .row
+    .col-md-6
+      = f.input :process_number, input_html: {placeholder: 'Processo judicial'}
+    .col-md-6
+      = f.input :agency, input_html: {placeholder: 'Preencha'}
+  .row
+    .col-md-6
+      = f.input :lawsuit_id, collection: Juridical::Lawsuit.all, prompt: 'Selecione'
+    .col-md-6
+      = f.input :process_type, collection: Juridical::LegalAdvice.process_types.keys, prompt: 'selecione...'
+  .row
+    .col-md-6
+      = f.input :instancy, collection: Juridical::Instancy.all, prompt: 'Selecione'
+    .col-md-6
+      = f.input :instancy_place_id, collection: {}, prompt: 'Selecione'
+  .row
+    .col-md-4
+      = f.input :lawsuit_value, as: :string, input_html: { placeholder:'ex. 1.000,00', class: 'money'}
+    .col-md-4
+      = f.input :condemnation_value, as: :string, input_html: { placeholder:'ex. 1.000,00', class: 'money'}
+    .col-md-4
+      = f.input :assessment_number, input_html: {placeholder: 'Preencha', class: 'document_number'}
+  .row
+    .col-md-4
+      = f.input :status, as: :select, prompt: 'Selecione'
+    .col-md-4
+      = f.input :free_justice, as: :select, prompt: 'Selecione'
+    .col-md-4
+      = f.input :veredict, as: :select, collection: [['improcedente',false], ['procedente', true]], prompt: 'selecione...', allow_blank: false
+  .row
+    .col-md-4
+      = f.input :procedural_costs, as: :string, input_html: { placeholder:'ex. 1.000,00', class: 'money'}
+    .col-md-4
+      = f.input :judicial_deposit, as: :select, prompt: 'Selecione'
+    .col-md-4
+      = f.input :probability, as: :select, collection: Juridical::LegalAdvice.probabilities, prompt: 'selecione...', allow_blank: false
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
+
+:javascript
+
+  $(document).ready(function() {
+    $("#legal_advice_instancy").on('change', function(){
+
+      $.getJSON("#{instancy_places_path}?instancy_id=" + $(this).val(), function(data) {
+
+        html = "<option value>selecione...</option>"
+        if(data.length > 0) {
+          for(var i = 0; i < data.length; i++) {
+            html += "<option value='"+data[i].id+"'>"+data[i].name+"</option>"
+          }
+        } else {
+          html = "<option value>Não foram encontrados locais</option>"
+        }
+          $("#legal_advice_instancy_place_id").html(html)
+      });
+    });
+  });

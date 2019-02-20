@@ -39,7 +39,7 @@ module Cpl
     end
 
     def set_notices
-      @notices = Cpl::Notice.all
+      @pagy, @notices = pagy(Cpl::Notice.all)
     end
 
     def set_notice

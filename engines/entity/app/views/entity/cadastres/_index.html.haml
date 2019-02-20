@@ -1,0 +1,25 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando () registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Id
+          %th Sigla
+          %th Tipo
+          %th Assunto
+          %th Solicitante
+          %th Situação
+          %th
+      %tbody
+        - @entities.each do |entity|
+          - entity.presenter do |e|
+            %tr
+              %td= e.id
+              %td= e.acron

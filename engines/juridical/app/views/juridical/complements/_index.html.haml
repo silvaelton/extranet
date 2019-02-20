@@ -1,0 +1,53 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@complements.count rescue 0}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Situação
+          %th Tipo de Documento
+          %th Tipo de Ação
+          %th Advogado Responsável
+          %th
+      %tbody
+        - if @complements.present?
+          - @complements.each do |complement|
+            %tr{class: "row-type-#{complement.id}"}
+              %td
+                - if complement.responsible_lawyer_id == @user.id
+                  - if complement.status
+                    = link_to "aberto", update_status_path(complement_id: complement), class: 'ui mini green button'
+                  -else
+                    = link_to "fechado", update_status_path(complement_id: complement), class: 'ui mini red button'
+                - else
+                  - if complement.status
+                    .ui.green.label aberto
+                  -else
+                    .ui.red.label fechado
+              %td
+                = complement.document_type.name rescue t(:no_info)
+              %td
+                = complement.lawsuit.name rescue t(:no_info)
+              %td
+                = complement.responsible_lawyer.name rescue t(:no_info)
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Reenviar email", resend_email_path(complement_id: complement.id), class: 'dropdown-item',data: {disable_with: "carregando..."}, class: 'dropdown-item'
+                    = link_to "Visualizar", legal_advice_complement_path(complement.legal_advice_id, complement), title: "visualizar",  class: 'dropdown-item',data: {disable_with: "carregando..."}
+                    = link_to "Editar", edit_legal_advice_complement_path(complement.legal_advice_id,complement), title: "editar",  class: 'dropdown-item',data: {disable_with: "carregando..."}, remote: true
+                    = link_to "Excluir", legal_advice_complement_path(complement.legal_advice_id,complement), method: :delete, data: { confirm: 'Are you sure?' }, title: 'Deletar', class: 'dropdown-item'
+
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

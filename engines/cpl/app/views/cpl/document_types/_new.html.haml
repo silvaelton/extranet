@@ -2,7 +2,7 @@
   .modal-content
     .modal-header
       %h5.modal-title Novo tipo de documento
-      %a.close
+      %a.close{ "data-dismiss": 'modal', "aria-label": "Close"}
         %i.fa.fa-close
     .modal-body
       = render 'form'

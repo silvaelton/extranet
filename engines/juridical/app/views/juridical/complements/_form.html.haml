@@ -1,0 +1,49 @@
+= simple_form_for [@legal_advice, @complement], remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :document_type_id, as: :select, collection: Support::Protocol::DocumentType.all, prompt: 'selecione...'
+  .row
+    .col-md-6
+      = f.input :distribution_date, as: :string, input_html: { class: 'datepicker' ,  placeholder: '00/00/0000', value: (@complement.distribution_date) ? localize(f.object.distribution_date) : nil}
+    .col-md-6
+      = f.input :end_date, as: :string, input_html: { class: 'datepicker', placeholder: '00/00/0000', value: (@complement.end_date) ? localize(f.object.end_date) : nil}
+  .row
+    .col-md-12
+      = f.input :complement, as: :text, input_html: { placeholder: 'Complementos', rows: 4}
+  .row
+    .col-md-6
+      = f.input :responsible_lawyer_id, collection: Pivotal::User.where(sector_current_id: 5, status: true), prompt: 'selecione...'
+    .col-md-6
+      = f.input :advice_type_id, as: :select, collection: Juridical::AdviceType.all, prompt: 'selecione...'
+  .row
+    .col-md-6
+      = f.input :status, as: :select, prompt: 'Selecione'
+    .col-md-6
+      = f.input :file_path, as: :file
+  .row
+    .col-md-12
+      = f.submit 'salvar' , class: 'btn btn-success',data: {disable_with: "carregando..."}
+
+:javascript
+
+  $(document).ready(function() {
+    $('.datepicker').datepicker();
+    $("#complement_instancy").on('change', function(){
+
+      $.getJSON("#{instancy_places_path}?instancy_id=" + $(this).val(), function(data) {
+
+        html = "<option value>selecione...</option>"
+        if(data.length > 0) {
+          console.log(data)
+          for(var i = 0; i < data.length; i++) {
+            html += "<option value='"+data[i].id+"'>"+data[i].name+"</option>"
+          }
+
+        } else {
+          html = "<option value>Não foram encontrados locais</option>"
+        }
+          $("#complement_instancy_place_id").html(html)
+      });
+    });
+
+  });

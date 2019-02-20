@@ -1,14 +1,19 @@
 .card
-  .card-heading.custom-border-left
+  .card-body.card-header.border-left-yellow
     .card-title
       = "Participantes do edital: #{@notice.name}"
-      = "(#{@notice_participants.count})"
-  .card-block
-    %table.table.table-bordered.table-striped
+      %br
+      Listando (#{@notice_participants.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
           %th Protocolo
-          %th Data de inclusão
+          %th Data de entrada
           %th
       %tbody
         - if @notice_participants.present?
@@ -17,7 +22,21 @@
               %td.collapsing= "#{notice_participant.id}/#{notice_participant.created_at.strftime('%Y')}"
               %td= notice_participant.created_at.strftime('%d/%m/%Y - %H:%M:%S')rescue nil
               %td.collapsing
-                = link_to "<i class='fa fa-lock'></i>".html_safe, '#', class: 'btn btn-success btn-icon btn-sm'
+                = @notice.session_date
+                %br
+                = Date.current
+                %br
+                = (@notice.session_date >= Date.current)
+                %br
+                = @notice.session_hour
+                %br
+                = Time.current
+
+                %br
+                - if @notice.session_date >= Date.current && @notice.session_hour >= Time.current
+                  = link_to "<i class='fa fa-lock'></i>".html_safe, '#', class: 'btn btn-success btn-icon btn-sm'
+                - else
+                  = link_to "<i class='fa fa-lock'></i>".html_safe, '#', class: 'btn btn-danger btn-icon btn-sm'
 
         - else
           %tr

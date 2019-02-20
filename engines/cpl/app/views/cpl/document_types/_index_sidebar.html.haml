@@ -1,48 +1,25 @@
-.card.filter-sidebar
-  #card
-    .card-heading.custom-border-left.bottom
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
       .card-title
         Filtro
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+        = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
-    .card-block
-      .row
-        .col-md-12
-          = simple_form_for url_for, method: :get, remote: true do |f|
-            %ul
-              %li
-                = f.input :by_name, label: "Por nome", placeholder: 'Digite o nome'
-              %li
-                = f.input :by_account, label: "Por conta", placeholder: 'Digite a conta'
-              %li
-                = f.input :by_status, as: :select, label: "Por status", include_blank: 'selecione...'
-              %li
-                = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
-  #card
-    .card-heading.custom-border-left.border
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_name, label: "Por nome", placeholder: 'Digite o nome'
+        = f.input :by_process, label: "Por processo", placeholder: 'Digite o nº processo'
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+  .divider
+  .card
+    .card-body.card-header.border-left-yellow
       .card-title
         Operações
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+        = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
-    .card-block
-      .row
-        .col-md-12
-          %ul
-            %li
-              %span= link_to "Novo tipo de edital", new_document_type_path, class: 'filter-nav-item',  remote: true
-  #card
-    .card-heading.custom-border-left.border
-      .card-title
-        Menu rápido
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
-          %i.fa.fa-minus
-    .card-block
-      .row
-        .col-md-12
-          %ul
-            %li
-              %span= link_to "Gestão de editais", notices_path, class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de tipos de editais", notice_types_path, class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de tipos de documentos", document_types_path, class: 'filter-nav-item'
+    .card-body.card-list
+      = link_to "Novo tipo de edital", new_document_type_path, class: 'filter-nav-item',  remote: true
+      = link_to "Gestão de editais", notices_path
+      = link_to "Gestão de tipos de editais", notice_types_path
+      = link_to "Gestão de tipos de documentos", document_types_path
