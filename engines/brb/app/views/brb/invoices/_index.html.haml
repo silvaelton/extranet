@@ -40,7 +40,7 @@
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
                     = link_to "Editar", edit_invoice_path(invoice), class: 'dropdown-item', remote: true
-                    = link_to "Excluir", invoice_path(invoice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "imprimir", invoice_path(invoice), class: 'dropdown-item',target: "_blank"
           %tfoot
             %tr
               %td.text-center{colspan: 10}

@@ -1,56 +1,25 @@
-.card.filter-sidebar
-  #card
-    .card-heading.custom-border-left.bottom
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
       .card-title 
         Filtro
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
-          %i.fa.fa-minus
-    .card-block
-      .row
-        .col-md-12
-          = simple_form_for url_for, method: :get, remote: true do |f|
-            %ul
-              %li
-                = f.input :by_name, label: "Por nome", placeholder: 'Digite o nome'
-              %li
-                = f.input :by_status, as: :select, label: "Por status", include_blank: 'selecione...'
-              %li
-                = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
-  #card
-    .card-heading.custom-border-left.border
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus  
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true, html: { id: 'attendance-filter'} do |f|
+        = f.input :by_name, label: "Por nome",  input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_name', value: params[:by_name], placeholder: 'Digite o nome'}
+        = f.input :by_status, as: :select, label: "Por status", selected: params[:by_status] , input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_status'}, prompt: 'Selecione'
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+  .divider
+  .card
+    .card-body.card-header.border-left-yellow
       .card-title 
         Operações
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
+        = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
-    .card-block
-      .row
-        .col-md-12        
-          %ul
-            %li
-              %span= link_to "Adicionar tipo atendente", new_attendant_type_path, class: 'filter-nav-item',  remote: true
-  #card         
-    .card-heading.custom-border-left.border
-      .card-title 
-        Menu rápido
-        = link_to "javascript:void(0)", class: "float-right arrow-collapsing" do
-          %i.fa.fa-minus   
-    .card-block
-      .row
-        .col-md-12        
-          %ul
-            %li
-              %span= link_to "Gestão de atendimentos", "#", class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de postos", "#", class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de atendentes", "#", class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de atendentes por postos", "#", class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de categorias", attendance.categories_path, class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de tipos de atendentes", attendance.attendant_types_path, class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de tipos preferêncais" , attendance.daily_preferential_types_path, class: 'filter-nav-item'
-            %li
-              %span= link_to "Gestão de tipos de atendimentos" , attendance.daily_types_path, class: 'filter-nav-item'
+    .card-body.card-list
+      = link_to "Adicionar tipo atendente", new_attendant_type_path, class: 'filter-nav-item',  remote: true
+      = link_to "Gestão de postos", attendance.stations_path, class: 'filter-nav-item'
+      = link_to "Gestão de atendentes", attendance.attendants_path, class: 'filter-nav-item'
+      = link_to "Gestão de atendimentos", attendance.dailies_path, class: 'filter-nav-item'

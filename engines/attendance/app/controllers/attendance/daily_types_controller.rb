@@ -5,6 +5,9 @@ module Attendance
     before_action :set_daily_types
     before_action :set_daily_type, only: %i[edit update destroy]
     
+    has_scope :by_name
+    has_scope :by_status
+
     def index; end
 
     def new
@@ -34,7 +37,7 @@ module Attendance
     end
 
     def set_daily_types
-      @daily_types = Attendance::DailyType.all
+      @pagy, @daily_types = pagy(apply_scopes(Attendance::DailyType).all.order(:name))
     end
 
     def set_daily_type

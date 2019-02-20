@@ -4,6 +4,9 @@ module Attendance
   class CategoriesController < ApplicationController
     before_action :set_categories
     before_action :set_category, only: %i[edit update destroy]
+
+    has_scope :by_name
+    has_scope :by_status
     
     def index; end
 
@@ -34,7 +37,7 @@ module Attendance
     end
 
     def set_categories
-      @categories = Attendance::Category.all
+      @pagy, @categories = pagy(apply_scopes(Attendance::Category).all.order(:name))
     end
 
     def set_category

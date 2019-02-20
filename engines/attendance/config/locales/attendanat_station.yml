@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/attendant_station': "Atendentes"
+    attributes:
+      'attendance/attendant_station':
+        attendant_id: "Atendente"

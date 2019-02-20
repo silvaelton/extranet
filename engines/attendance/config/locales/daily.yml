@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/daily': "Atendimentos"
+    attributes:
+      'attendance/daily':
+        name: "Nome"
+        cpf: "Cpf"
+        document_number: "Número do documento"
+        scheduled: "Agendado?"
+        category_id: "Categoria"
+        daily_type_id: "Tipo de atendimento"
+        preferential: "Preferencial?"
+        preferential_type_id: "Tipo preferencial"
+        special_condition: "Condição especial?"
+        special_condition_type_id: "Tipo de condição"
+        station_id: "Posto"

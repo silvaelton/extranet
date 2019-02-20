@@ -1,13 +1,13 @@
 .fluid-container
-  .row
+  .row.mt-4
     .col-md-12
-      .card
-        .card-block.custom-border-left
-          .title 
-            Atendimento
-            .subtitle Tipos preferenciais
-  .row
+      .card#header.border-left-yellow
+        .card-body
+          .title Atendimento
+          .subtitle Tipos preferenciais
+  .row.mt-4
     .col-md-2.index-sidebar
       = render 'index_sidebar'
     .col-md-10.index-content
       = render 'index'
+

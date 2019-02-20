@@ -18,7 +18,7 @@
       %tbody
         - if @categories.present?
           -@categories.each do |category|
-            %tr
+            %tr{class: "row-category-#{category.id}"}
               %td.collapsing= category.id
               %td= category.name
               %td= category.invoice_type.name rescue nil

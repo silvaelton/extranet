@@ -8,7 +8,7 @@ require 'barby/outputter/png_outputter'
 module Brb
   class InvoicesController < ApplicationController
     before_action :set_invoices
-    before_action :set_invoice, only: %i[edit update destroy]
+    before_action :set_invoice, only: %i[edit update destroy show]
 
     has_scope :by_name
     has_scope :by_cpf
@@ -55,24 +55,24 @@ module Brb
     end
 
     def show
-      if @invoice.guia_simples?
+      # if @invoice.guia_simples?
         barcode = Barby::Code25Interleaved.new(@invoice.barcode)
-        File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
+        # File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
         render template: 'brb/invoices/simple_show', layout: 'brb/invoice'
-      else
+      # else
 
-        @account = '0158567'
+        # @account = '0158567'
 
-        barcode = Barby::Code128.new(@invoice.barcode)
-        File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
-        render layout: 'brb/invoice'
-      end
+        # barcode = Barby::Code128.new(@invoice.barcode)
+        # File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
+        # render layout: 'brb/invoice'
+      # end
     end
 
     private
 
     def set_params
-      params.require(:invoice).permit(:situation_id, :category_id, :due, :cpf, :name, :address,
+      params.require(:invoice).permit(:number_document, :situation_id, :category_id, :due, :cpf, :name, :address,
                                       :city, :state_id, :value,:cep, :message, :invoice_type_id, :cnpj)
     end
 
