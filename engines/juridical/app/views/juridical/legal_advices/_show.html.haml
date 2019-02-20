@@ -57,14 +57,14 @@
           %td= @legal_advice.created_at.strftime("%d/%m/%Y %H:%M:%S")
           %td
             - if @legal_advice.status == true
-              .ui.green.label Aberto
+              .btn.btn-success.btn-sm Aberto
             - else
-              .ui.red.label Fechado
+              .btn.btn-danger.btn-sm Fechado
           %td= @legal_advice.assessment_number rescue t(:no_info)
           %td= @legal_advice.responsible_lawyer.name rescue t(:no_info)
   - if @return.present? && !@return.empty?
     .card-body
-      %table.ui.celled.striped.table
+      %table.table.table-bordered.table-striped.table-celled
         %thead
           %tr
             %th Data
@@ -76,12 +76,12 @@
           - @return.each_with_index do |data, index|
             - if data.present?
               %tr
-                %td.col-md-2= data[0].strftime('%d/%m/%Y - %H:%M:%S') if data[0].present?
+                %td= data[0].strftime('%d/%m/%Y - %H:%M:%S') if data[0].present?
                 %td= data[1]
                 %td= data[2]
                 %td= data[3]
                 %td
                   - if data[4]
-                    .ui.green.label Aberto
+                    .btn.btn-success.btn-sm Aberto
                   - if data[4] == false
-                    .ui.red.label Fechado
+                    .btn.btn-danger.btn-sm Fechado

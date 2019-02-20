@@ -17,13 +17,11 @@ module Juridical
     def create
       @complement = @legal_advice.complements.new(complement_params)
       @complement.staff_id = current_user.id
-      if @complement.save
-        begin
-         Juridical::InformationMailer.open_complement(@complement).deliver_now! if @complement.responsible_lawyer_id.present?
-        rescue
-        end
+      @complement.save
+      begin
+       Juridical::InformationMailer.open_complement(@complement).deliver_now! if @complement.responsible_lawyer_id.present?
+      rescue
       end
-      redirect_to legal_advice_complements_path(@legal_advice.id)
     end
 
     def resend_email
@@ -55,24 +53,18 @@ module Juridical
     def edit; end
 
     def update
-      if @complement.update(complement_params)
-        redirect_to legal_advice_complements_path(@legal_advice.id)
-      else
-        redirect_to action: :edit
-      end
+      @complement.update(complement_params)
     end
 
     def destroy
-      if @complement.destroy
-        redirect_to action: 'index'
-      end
+      @complement.destroy
     end
 
     private
 
     def complement_params
       params.require(:complement).permit(:document_type_id, :lawsuit_id, :instancy_place_id,
-                                         :distribution_date, :deadline, :days, :end_date, :complement,
+                                         :distribution_date, :end_date, :complement,
                                          :responsible_lawyer_id, :advice_type_id, :file_path, :status,
                                          :complement_father_id, :legal_advice_id)
     end

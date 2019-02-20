@@ -4,13 +4,13 @@ module Juridical
   class LegalAdvicesController < ApplicationController
     before_action :set_legal_advice, only: [:show, :edit, :update, :destroy]
 
-    has_scope :process
-    has_scope :lawyer
-    has_scope :status
+    has_scope :by_process
+    has_scope :by_lawyer
+    has_scope :by_status
     has_scope :by_suitor
     has_scope :by_agency
     has_scope :by_lawsuit
-    has_scope :adm_process
+    has_scope :by_adm_process
 
     def index
       if params[:utf8].present?
@@ -29,16 +29,11 @@ module Juridical
     def create
       @legal_advice = Juridical::LegalAdvice.new(set_legal_advice_params)
       @legal_advice.staff_id = current_user.id
-      if @legal_advice.save
-        flash[:success] = "Acompanhamento incluído com sucesso."
-        begin
-          Juridical::InformationMailer.open(@legal_advice.responsible_lawyer_id, @legal_advice).deliver_now!
-        rescue
-          flash[:warning] = "Erro ao enviar email."
-        end
-        redirect_to legal_advices_path(utf8:'✓' ,process: @legal_advice.process_number)
-      else
-        redirect_to new_legal_advice_path
+      @legal_advice.save
+      begin
+        Juridical::InformationMailer.open(@legal_advice.responsible_lawyer_id, @legal_advice).deliver_now!
+      rescue
+        flash[:warning] = "Erro ao enviar email."
       end
     end
 
@@ -56,23 +51,16 @@ module Juridical
       @assessment = Protocol::Assessment.where('description_subject ilike ? ', "%#{@legal_advice.process_number}%").first rescue nil
       @complainants = @legal_advice.complainants.all
       @defendants = @legal_advice.defendants.all
-
     end
 
     def edit; end
 
     def update
-      if @legal_advice.update(set_legal_advice_params)
-        flash[:success] = "Acompanhamento atualizado."
-        redirect_to legal_advices_path
-      else
-        render action: 'edit'
-      end
+      @legal_advice.update(set_legal_advice_params)
     end
 
     def destroy
       @legal_advice.destroy
-      redirect_to action: 'index'
     end
 
     private
