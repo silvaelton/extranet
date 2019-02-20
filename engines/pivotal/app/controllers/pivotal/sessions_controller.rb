@@ -16,7 +16,10 @@ module Pivotal
       @session = Pivotal::Session.new(set_params)
       if @session.valid?
         @session.logger!(request, 'signin')
+        
         session[:user_id] = @session.user_id
+        session[:filter]  = nil
+
         redirect_to pivotal.root_path
       end
     end
@@ -27,6 +30,7 @@ module Pivotal
       @session.logger!(request, 'signout')
       
       session[:user_id] = nil
+      session[:filter]  = nil
       redirect_to pivotal.new_session_path
     end
 
