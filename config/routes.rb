@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   mount Helpdesk::Engine    => '/helpdesk',     as: :helpdesk
   mount Juridical::Engine   => '/juridico',     as: :juridical
   mount Pivotal::Engine     => '/',             as: :pivotal
+  mount Sefaz::Engine       => '/sefaz',        as: :sefaz
 
 end

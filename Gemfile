@@ -34,6 +34,7 @@ gem 'chunky_png', '~> 1.3.10'
 gem 'rqrcode_png', '~> 0.1.5'
 gem 'nokogiri', '~> 1.10.1'
 gem 'bootstrap-datepicker-rails'
+gem 'savon', '~> 2.12.0'
 
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'carrierwave-base64', '~> 2.7.0'
@@ -68,4 +69,5 @@ path 'engines' do
   gem 'helpdesk'
   gem 'juridical'
   gem 'pivotal'
+  gem 'sefaz'
 end
