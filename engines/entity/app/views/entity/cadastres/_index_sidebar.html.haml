@@ -9,9 +9,10 @@
       = simple_form_for url_for, method: :get, remote: true do |f|
         = f.input :by_cnpj, as: :string, label: "Por CNPJ", input_html: { class: 'cnpj', name: :by_cnpj, value: params[:by_cnpj]}
         = f.input :by_acron, as: :string, label: "Por sigla", input_html: { name: :by_acron, value: params[:by_acron] }
-        = f.input :by_situation, as: :select,label: "Por situação", include_blank: t(:include_blank), input_html: { name: :by_situation }
+        = f.input :by_situation, as: :select, collection: Entity::CadastreSituation.status_active.order(:name), label: "Por situação", include_blank: t(:include_blank_all), input_html: { name: :by_situation }
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
   .divider
   .card
     .card-body.card-header.border-left-yellow
