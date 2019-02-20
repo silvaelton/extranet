@@ -1,0 +1,33 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@member_jobs.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nome
+          %th Situação
+          %th
+      %tbody
+        - if @member_jobs.present?
+          - @member_jobs.each do |member|
+            %tr{class: "row-#{member.id}"}
+              %td= member.name
+              %td.collapsing= member.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", entity.edit_member_job_path(member), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", entity.member_job_path(member), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 4}
+              %i Nenhum registro encontrado.
