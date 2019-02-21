@@ -1,7 +1,7 @@
 require_dependency 'sefaz/application_controller'
 
 module Sefaz
-  class ExemptionsController < ApplicationController # :nodoc:
+  class TotalExemptionsController < ApplicationController # :nodoc:
     before_action :set_allotment
     before_action :set_exemptions
     before_action :set_exemption, only: %i[edit update destroy]
@@ -31,8 +31,7 @@ module Sefaz
     private
 
     def set_params
-      params.require(:exemption).permit(:name, :cpf, :city, :address, :realty_number,
-                                        :realty_value)
+      params.require(:exemption).permit(:number_act_cancel, :year_act_cancel)
     end
 
     def set_exemptions

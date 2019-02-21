@@ -17,19 +17,18 @@
       %tbody
         - if @exemption_types.present?
           - @exemption_types.each do |exemption_type|
-            - exemption_type.presenter do |e|
-              %tr
-                %td.collapsing= e.id
-                %td= e.name
-                %td.collapsing= e.status
-                %td.collapsing
-                  .dropdown
-                    %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                      %i.fa.fa-cog
-                      %i.ti-angle-down
-                    .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                      = link_to "Excluir", exemption_type_path(e), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
-                      = link_to "Editar", edit_exemption_type_path(e), class: 'dropdown-item', remote: true
+            %tr
+              %td.collapsing= exemption_type.id
+              %td= exemption_type.name
+              %td.collapsing= exemption_type.status.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", exemption_type_path(exemption_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "Editar", edit_exemption_type_path(exemption_type), class: 'dropdown-item', remote: true
         - else
           %tr
             %td{colspan: 6}

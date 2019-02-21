@@ -1,0 +1,12 @@
+= simple_form_for @exemption, url: @exemption.new_record? ? allotment_total_exemptions_path(@allotment) : allotment_total_exemption_path(@allotment),
+method: @exemption.new_record? : :post : :put, remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :number_act_cancel, input_html: { placeholder: 'Ex. 218' }
+  .row
+    .col-md-12
+      = f.input :year_act_cancel, input_html: { placeholder: 'Ex. 2017' }
+  %hr
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

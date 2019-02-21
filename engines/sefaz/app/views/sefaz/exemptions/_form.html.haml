@@ -1,15 +1,19 @@
 = simple_form_for [@allotment, @exemption], remote: true do |f|
   .row
     .col-md-8
-      = f.input :name
+      = f.input :name, input_html: { placeholder: 'Nome' }
     .col-md-4
-      = f.input :notifier_id, as: :select, collection: Sefaz::Notifier.status_active, prompt: 'Selecione'
+      = f.input :cpf, input_html: { class: 'cpf' }
+  .row
+    .col-md-4
+      = f.input :city, input_html: { placeholder: 'Cidade' }
+    .col-md-8
+      = f.input :address, input_html: { placeholder: 'Ex. QD 03 ...' }
   .row
     .col-md-6
-      = f.input :request_type_id, as: :select, collection: Sefaz::RequestType.status_active, prompt: 'Selecione'
-  .row
-    .col-md-12
-      = f.input :observation
+      = f.input :realty_number, input_html: { placeholder: 'Nº IPTU' }
+    .col-md-6
+      = f.input :realty_value, input_html: { placeholder: 'ex. 10000' }
   %hr
   .row
     .col-md-12
