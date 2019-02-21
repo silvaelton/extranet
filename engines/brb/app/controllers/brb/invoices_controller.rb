@@ -61,8 +61,6 @@ module Brb
         render template: 'brb/invoices/simple_show', layout: 'brb/invoice'
       else
 
-        @account = '0158567'
-
         barcode = Barby::Code128.new(@invoice.barcode)
         File.open("public/uploads/barcodes/#{barcode}.png", 'wb') { |f| f.write barcode.to_png(xdim: 1,height: 50) }
         render layout: 'brb/invoice'

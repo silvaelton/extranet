@@ -64,7 +64,7 @@
               #{@invoice.name}
               |
               %b CPF:
-              #{@invoice.cpf}
+              #{@invoice.cpf.format_cpf}
               |
               %b CNPJ:
               #{@invoice.cnpj}
@@ -208,7 +208,7 @@
                     = @invoice.name.upcase
                     %br/
                     %b CPF:
-                    = @invoice.cpf
+                    = @invoice.cpf.format_cpf
                     - if @invoice.cnpj.present?
                       %b CNPJ:
                       = @invoice.cnpj

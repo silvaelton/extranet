@@ -180,7 +180,7 @@
                       %p= @invoice.name.upcase
                       %p
                         %b CPF:
-                      %p= @invoice.cpf
+                      %p= @invoice.cpf.format_cpf
                       - if @invoice.cnpj.present?
                         %p
                           %b CNPJ:

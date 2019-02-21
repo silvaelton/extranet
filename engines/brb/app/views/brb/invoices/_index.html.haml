@@ -29,8 +29,8 @@
               %td= invoice.category.name rescue nil
               %td= invoice.cpf.present? ? invoice.cpf : invoice.cnpj
               %td= number_to_currency invoice.value
-              %td= invoice.created_at.format_date 
-              %td= invoice.due.format_date 
+              %td= invoice.created_at.format_date
+              %td= invoice.due.format_date
               %td= invoice.payment.format_date rescue nil
               %td= invoice.situation.name rescue nil
               %td.collapsing
