@@ -13,30 +13,35 @@
           %th Informações
           %th.collapsing
       %tbody
-        - @entities.each do |row|
-          - row.presenter do |e|
-            %tr
-              %td
-                %h6
-                  %b= link_to e.acron, entity.cadastre_path(e), remote: true
-                  %br/
-                  = e.cnpj
-                  %br/
-                  %small= e.name
-                  %br/
-                  %small 
-                    %b Presidente:
-                    Teste 123
-                  %br/
-                  .badge.badge-success
-                    Credenciada                    
-              %td.collapsing
-                .dropdown
-                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                    %i.fa.fa-cog
-                    %i.ti-angle-down
-                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Visualizar", entity.cadastre_path(e), remote: true, class: 'dropdown-item'
-                    = link_to "Detalhar", entity.cadastre_path(e), class: 'dropdown-item'
-                    = link_to "Editar", entity.edit_cadastre_path(e), remote: true, class: 'dropdown-item'
-                
+        - if @entities.present?
+          - @entities.each do |row|
+            - row.presenter do |e|
+              %tr
+                %td
+                  %h6
+                    %b= link_to e.acron, entity.cadastre_path(e), remote: true
+                    %br/
+                    = e.cnpj
+                    %br/
+                    %small= e.name
+                    %br/
+                    %small 
+                      %b Presidente:
+                      Teste 123
+                    %br/
+                    .badge.badge-success
+                      Credenciada                    
+                %td.collapsing
+                  .dropdown
+                    %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                      %i.fa.fa-cog
+                      %i.ti-angle-down
+                    .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                      = link_to "Visualizar", entity.cadastre_path(e), remote: true, class: 'dropdown-item'
+                      = link_to "Detalhar", entity.cadastre_path(e), class: 'dropdown-item'
+                      = link_to "Editar", entity.edit_cadastre_path(e), remote: true, class: 'dropdown-item'
+        - else
+          %tr
+            %td{colspan: 2}
+              %i Nenhum registro encontrado.
+                  

@@ -3,6 +3,7 @@
   updateJs();
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
-  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".index-content").html("#{escape_javascript(render 'attendance/daily_preferential_types/index')}");
+  $(".row-preferential-#{@daily_preferential_type.id}").addClass('table-success');
 
   updateJs();

@@ -1,0 +1,9 @@
+- if @attendant.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  updateJs();
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".index-content").html("#{escape_javascript(render 'attendance/attendants/index')}");
+  $(".row-attendant-#{@attendant.id}").addClass('table-success');
+
+  update_js();

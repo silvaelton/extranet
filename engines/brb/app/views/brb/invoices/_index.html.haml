@@ -29,9 +29,9 @@
               %td= invoice.category.name rescue nil
               %td= invoice.cpf.present? ? invoice.cpf : invoice.cnpj
               %td= number_to_currency invoice.value
-              %td= invoice.created_at.strftime('%d/%m/%Y')
-              %td= invoice.due.strftime('%d/%m/%Y')
-              %td= invoice.payment.strftime('%d/%m/%Y') rescue nil
+              %td= invoice.created_at.format_date
+              %td= invoice.due.format_date
+              %td= invoice.payment.format_date rescue nil
               %td= invoice.situation.name rescue nil
               %td.collapsing
                 .dropdown
@@ -40,7 +40,7 @@
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
                     = link_to "Editar", edit_invoice_path(invoice), class: 'dropdown-item', remote: true
-                    = link_to "Excluir", invoice_path(invoice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "imprimir", invoice_path(invoice), class: 'dropdown-item',target: "_blank"
           %tfoot
             %tr
               %td.text-center{colspan: 10}

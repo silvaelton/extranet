@@ -1,0 +1,12 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Voltar para listagem", entity.cadastres_path(filter_params)
+      %hr.divider
+      = link_to "Editar informações", entity.edit_cadastre_path(@entity), remote: true
+      = link_to "Atualizar situação", entity.edit_cadastre_path(@entity), remote: true

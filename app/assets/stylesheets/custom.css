@@ -48,6 +48,12 @@ body {
 .show>.btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #f5b302;
 }
+
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: #ffc671;
+  border-color: #ffc671;
+}
+
 .alert {
   font-size: 13px;
   font-weight: bold;

@@ -3,9 +3,10 @@ require 'pagy/extras/bootstrap'
 
 class ApplicationController < ActionController::Base
   before_action :set_action_logger!
+  before_action :get_params_for_filter
 
   helper Pivotal::NavHelper
-  helper_method :current_user, :authenticate_user!
+  helper_method :current_user, :authenticate_user!, :filter_params
 
   private
 
@@ -31,4 +32,32 @@ class ApplicationController < ActionController::Base
     log.remote_ip             = request.remote_ip
     log.save
   end
+
+  def get_params_for_filter
+    engine_name = controller_path.split('/')[0]
+
+    params.each do |key, value|
+      if key.include?('by_')
+        
+        session[:filter] = {} if !session.has_key?(:filter)
+       
+        if session[:filter][engine_name].nil?
+          session[:filter][engine_name] = {}
+        elsif session[:filter][engine_name].count > 12
+          session[:filter].delete engine_name
+        else
+          session[:filter][engine_name][key] = value
+        end
+
+      end
+    end
+  end
+
+  def filter_params
+    engine_name = controller_path.split('/')[0]
+    session[:filter][engine_name]
+  end
+
+
+
 end

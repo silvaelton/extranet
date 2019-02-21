@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/attendant': "Atendentes"
+    attributes:
+      'attendance/attendant':
+        staff_id: "Nome"
+        attendant_type_id: "Tipo de atendente"

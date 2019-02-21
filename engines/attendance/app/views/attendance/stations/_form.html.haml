@@ -1,0 +1,20 @@
+= simple_form_for @station, remote: true do |f|
+  .row
+    .col-md-6
+      = f.input :name, placeholder: 'Digit o nome'
+    .col-md-6
+      = f.input :responsible_id, as: :select, collection: Pivotal::User.all, include_blank: 'Selecione...'
+  .row
+    .col-md-4
+      = f.input :lat, placeholder: 'Digit a latitude'
+    .col-md-4
+      = f.input :lng, placeholder: 'Digit a longitude'
+    .col-md-4
+      = f.input :status,as: :select, includ_blank: 'Selecione...'
+  .row
+    .col-md-12
+      = f.input :description, placeholder: 'Digit uma descrição'
+  .divider-sm
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

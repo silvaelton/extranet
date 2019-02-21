@@ -1,9 +1,56 @@
-.modal-dialog.modal-lg
-  .modal-content
-    .modal-header
-      %h5.modal-title Visualização de entidade
-      %a.close
-        %i.fa.fa-close
-    .modal-body
-      %table.table.table-striped.table-bordered
-        %thead
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Detalhamento
+      .float-right.group-action
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %h5 #{@entity.cnpj.format_cnpj}
+    %h3
+      %b #{@entity.acron}
+    %h6 #{@entity.name}
+    .mt-3
+
+    %h6 Presidente
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Foto
+          %th Informações
+          %th
+      %tbody
+        %tr
+          %td
+          %td
+          %td
+            
+    %h6 Diretoria | Membros
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Telefone
+          %th Telefone (secundário)
+          %th Celular
+          %th Email
+      %tbody
+        %tr
+          %td= @entity.telephone.format_empty
+          %td= @entity.telephone_optional.format_empty
+          %td= @entity.cell_phone.format_empty
+          %td= @entity.email.format_empty
+
+    %h6 Dados de contato
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Telefone
+          %th Telefone (secundário)
+          %th Celular
+          %th Email
+      %tbody
+        %tr
+          %td
+          %td
+          %td
+          %td

@@ -4,6 +4,9 @@ module Attendance
   class AttendantTypesController < ApplicationController
     before_action :set_attendant_types
     before_action :set_attendant_type, only: %i[edit update destroy]
+
+    has_scope :by_name
+		has_scope :by_status
     
     def index; end
 
@@ -34,7 +37,7 @@ module Attendance
     end
 
     def set_attendant_types
-      @attendant_types = Attendance::AttendantType.all
+      @pagy, @attendant_types = pagy(apply_scopes(Attendance::AttendantType).all.order(:name))
     end
 
     def set_attendant_type

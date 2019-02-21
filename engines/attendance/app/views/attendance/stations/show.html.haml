@@ -1,0 +1,12 @@
+.fluid-container
+  .row.mt-4
+    .col-md-12
+      .card#header.border-left-yellow
+        .card-body
+          .title Atendimento
+          .subtitle Detalhamento de posto
+  .row.mt-4
+    .col-md-2.show-sidebar
+      = render 'attendance/attendant_stations/index_sidebar'
+    .col-md-10.show-content
+      = render 'show'
