@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    models:
+      'brb/invoice': "Boletos"
+    attributes:
+      'brb/invoice':
+        name: "Nome"
+        cpf: "Cpf"
+        cnpj: "Cnpj"
+        category_id: "Categoria"
+        due: "Vencimento"
+        value: "Valor"
+        situation_id: "Situação"
+        invoice_type_id: "Tipo de boleto"
+        number_document: "Número do documento"
+        cep: "Cep"
+        state_id: "Estado"
+        city: "Cidade"
+        address: "Endereço"
+        message: "Mensagem"

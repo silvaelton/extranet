@@ -1,0 +1,31 @@
+= simple_form_for @daily, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name,placeholder: 'Digite o nome'
+    .col-md-4
+      = f.input :cpf, input_html: {class: 'cpf', placeholder: 'Digite o nome'}
+  .row
+    .col-md-4
+      = f.input :document_number, placeholder: 'Digitre o documento'
+    .col-md-4
+      = f.input :station_id,as: :select, collection: Attendance::Station.all, include_blank: 'Selecione...'
+    .col-md-4
+      = f.input :scheduled,as: :select, include_blank: 'Selecione...'
+  .row
+    .col-md-4
+      = f.input :daily_type_id,as: :select, collection: Attendance::DailyType.all, include_blank: 'Selecione...'
+    .col-md-4
+      = f.input :category_id,as: :select, collection: Attendance::Category.all, include_blank: 'Selecione...'
+    .col-md-4
+      = f.input :preferential,as: :select, include_blank: 'Selecione...'
+  .row
+    .col-md-4
+      = f.input :preferential_type_id,as: :select, collection: Attendance::DailyPreferentialType.all, include_blank: 'Selecione...'
+    .col-md-4
+      = f.input :special_condition,as: :select, include_blank: 'Selecione...'
+    .col-md-4
+      = f.input :special_condition_id,as: :select, collection: Support::Common::SpecialConditionType.all, include_blank: 'Selecione...'
+  .divider-sm
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

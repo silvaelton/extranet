@@ -1,0 +1,23 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus  
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true, html: { id: 'attendance-filter'}  do |f|
+        = f.input :by_attendantvv, as: :select, label: "Por atendente", collection: Attendance::Attendant.all, label_method: lambda {|by_attendant| "#{by_attendant.staff.name}"}, selected: params[:by_attendant], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_attendant'}, prompt: 'Selecione'
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Voltar para listagem", attendance.stations_path
+      = link_to "Gestão de atendentes", attendance.attendants_path, class: 'filter-nav-item'
+      = link_to "Gestão de atendimentos", attendance.dailies_path, class: 'filter-nav-item'
+      = link_to "Gestão de tipos de atendentes", attendance.attendant_types_path, class: 'filter-nav-item'

@@ -4,6 +4,9 @@ module Attendance
   class DailyPreferentialTypesController < ApplicationController
     before_action :set_daily_preferential_types
     before_action :set_daily_preferential_type, only: %i[edit update destroy]
+
+    has_scope :by_name
+    has_scope :by_status
     
     def index; end
 
@@ -34,7 +37,7 @@ module Attendance
     end
 
     def set_daily_preferential_types
-      @daily_preferential_types = Attendance::DailyPreferentialType.all
+      @pagy, @daily_preferential_types = pagy(apply_scopes(Attendance::DailyPreferentialType).all.order(:name))
     end
 
     def set_daily_preferential_type

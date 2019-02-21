@@ -1,0 +1,224 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head#Head1
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title
+  %style{:media => "print"}
+  :css
+
+    .codigoBarra
+    {
+        font-size: 12px;
+        font-family: IDAutomationHC39M;
+    }
+    .bordaFina
+    {
+        border:0.3mm solid black;
+    }
+    .bordaFina td
+    {
+        border:0.3mm solid black;
+        padding-left: 2px;
+    }
+  %body
+    %div{:style => "width:755px; margin: 0 auto;"}
+      %div{:style => "width:800px; margin: 0 auto;"}
+        %span{:style => "font-size: 12px;"}
+          %img{:src => "/extranet/images/codhab.png", :width => "120px"}/
+      %br/
+      %form#form1{:action => "./visualizarBoletoImpresso.aspx?coBoleto=665590&cpf=047.879.101-16", :method => "post"}
+        %div
+          #pnlBoleto
+            %div{:style => " width: 750px;  overflow: hidden;"}
+              %br/
+              %table.bordaFina{:cellpadding => "0", :cellspacing => "0", :width => "750px"}
+                %tr
+                  %td{:colspan => "7"}
+                    %span{:style => "font-size: 11px;"} Local de pagamento
+                    %br/
+                    %span{:style => "font-size: 12px;"}
+                      %b PAGUE SOMENTE NAS AGÊNCIAS DO BRB - BANCO DE BRASÍLIA S/A
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Plano/Sistema
+                    %br/
+                    %span{:style => "font-size: 12px;"}
+                      %b  
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Vencimento
+                    %br/
+                    %span{:style => "font-size: 12px;"}
+                      %b= @invoice.due.strftime("%d/%m/%Y")
+                    %br/
+                %tr
+                  %td{:colspan => "7"}
+                    %span{:style => "font-size: 11px;"} Cedente
+                    %br/
+                    %span{:style => "font-size: 12px;"} COMPANHIA DE DESENVOLVIMENTO HABITACIONAL DO DF CNPJ: 09.335.575.0001/30
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Tipo de Operação
+                    %br/
+                    %span{:style => "font-size: 12px;"}
+                      %b  
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} (=)Valor a pagar
+                    %br/
+                    %span{:style => "font-size: 12px;"}
+                      %b= number_to_currency @invoice.value
+                    %br/
+                %tr
+                  %td
+                    %span{:style => "font-size: 11px;"} D/C
+                    %br/
+                    %span{:style => "font-size: 12px;"} 0
+                    %br/
+                  %td{:colspan => ""}
+                    %span{:style => "font-size: 11px;"} CJTO
+                    %br/
+                    %span{:style => "font-size: 12px;"} 0000
+                    %br/
+                  %td
+                    %span{:style => "font-size: 11px;"} N. Contrato
+                    %br/
+                    %span{:style => "font-size: 12px;"}  
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Outros recebimentos
+                    %br/
+                    %span{:style => "font-size: 12px;"}  
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Outros abatimentos
+                    %br/
+                    %span{:style => "font-size: 12px;"}  
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Encargos do mês
+                    %br/
+                    %span{:style => "font-size: 12px;"}= number_to_currency @invoice.value
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Tipo de reajuste
+                    %br/
+                    %span{:style => "font-size: 12px;"}  
+                    %br/
+                %tr
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Cód.Ag.Ced
+                    %br/
+                    %span{:style => "font-size: 12px;"} 0000
+                    %br/
+                  %td{:colspan => ""}
+                    %span{:style => "font-size: 11px;"} Dig.
+                    %br/
+                    %span{:style => "font-size: 12px;"}  
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Nosso número/Cód
+                    %br/
+                    %span{:style => "font-size: 12px;"}= @invoice.number_our
+                    %br/
+                  %td
+                    %span{:style => "font-size: 11px;"} Conta/Contrato
+                    %br/
+                    %span{:style => "font-size: 12px;"} 000000-0
+                    %br/
+                  %td
+                    %span{:style => "font-size: 11px;"} Data Emissão
+                    %br/
+                    %span{:style => "font-size: 12px;"}= @invoice.created_at.strftime("%d/%m/%Y")
+                    %br/
+                  %td{:colspan => "2"}
+                    %span{:style => "font-size: 11px;"} Isento de mora até
+                    %br/
+                    %span{:style => "font-size: 12px;"}= @invoice.created_at.strftime("%d/%m/%Y")
+                    %br/
+                  %td{:colspan => "2", :td => ""}
+                    %span{:style => "font-size: 11px;"} Espécie de moeda
+                    %br/
+                    %span{:style => "font-size: 12px;"} R$
+                    %br/
+                %tr
+                  %td{:colspan => "11"}
+                    %span{:style => "font-size: 11px;"} Sacado: #{@invoice.name.upcase} - #{@invoice.cpf.present? ? @invoice.cpf : @invoice.cnpj}
+                %tr
+                  %td{:colspan => "11"}
+                    %table{:border => "0", :cellpadding => "1", :cellspacing => "1", :width => "100%"}
+                      %tr
+                        %td{:align => "center", :style => "border:0px"}
+                          %span{:style => "font-size: 11px;"}
+                            %b INSTRUÇÕES
+                %tr
+                  %td{:colspan => "11"}
+                    %table{:border => "0", :cellpadding => "1", :cellspacing => "1", :width => "100%"}
+                      %tr
+                        %td{:style => "border:0px; border-bottom: 2px solid #c9c9c9;"}
+                          %span{:style => "font-size: 12px;"}
+                            %b
+                      %tr
+                        %td{:style => "border:0px;height:90px;"}
+                          %span{:style => "font-size: 13px;"} Obs.: #{@invoice.category.name.upcase}
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "750px"}
+                %tr
+                  %td{:colspan => "11", :style => "border: 0px; border-bottom:1px dotted black;"}  
+              %table{:cellpadding => "0", :cellspacing => "0", :style => "border: 2px solid black; padding-left: 10px;", :width => "750px"}
+                %tr
+                  %td{:style => "width:80px; padding-top: 15px"}
+                    %img{:src => "/extranet/images/codhab.png", :width => "120px"}/
+                  %td{:colspan => "10"}
+                    %span{:style => "font-size: 14px;"}
+                      %b COMPANHIA DE DESENVOLVIMENTO HABITACIONAL DO DISTRITO FEDERAL
+                    %br/
+                %tr
+                  %td{:colspan => "11"}
+                    %span{:style => "font-size: 12px;"}
+                      %p
+                        %b NOME:
+                      %p= @invoice.name.upcase
+                      %p
+                        %b CPF:
+                      %p= @invoice.cpf.format_cpf
+                      - if @invoice.cnpj.present?
+                        %p
+                          %b CNPJ:
+                        %p= @invoice.cnpj.format_cnpj
+                      %p
+                        %b END:
+                      %p= @invoice.address
+                %tr
+                  %td{:colspan => "11"}
+                    %p= @invoice.message
+                %tr
+                  %td{:colspan => "11"}  
+                %tr
+                  %td{:aling => "right", :colspan => "11", :style => "padding-right: 10px;"}
+                    %table.bordaFina{:align => "right", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "60%"}
+                      %tr
+                        %td
+                          %span{:style => "font-size: 10px;"} N. Documento
+                        %td
+                          %span{:style => "font-size: 10px;"} N. Contrato
+                        %td
+                          %span{:style => "font-size: 10px;"} Vencimento
+                        %td
+                          %span{:style => "font-size: 10px;"} Total do Pagamento
+                      %tr
+                        %td{:align => "center"}
+                          %span{:style => "font-size: 10px;"}= @invoice.number_our
+                        %td{:align => "center"}
+                          %span{:style => "font-size: 10px;"}  
+                        %td{:align => "center"}
+                          %span{:style => "font-size: 10px;"}= @invoice.due.strftime("%d/%m/%Y")
+                        %td{:align => "center"}
+                          %span{:style => "font-size: 10px;"}
+                            %b= number_to_currency @invoice.value
+                %tr
+                  %td{:colspan => "11"}  
+              %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+                %tr
+                  %td{:colspan => ""}
+                    %br/
+                    %img{:alt => "Código de Barras", :src => "/uploads/barcodes/#{@invoice.barcode}.png"}/

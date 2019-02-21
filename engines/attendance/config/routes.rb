@@ -7,4 +7,9 @@ Attendance::Engine.routes.draw do
   resources :daily_preferential_types
   resources :categories
   resources :attendant_types
+  resources :attendants
+  resources :dailies
+  resources :stations do 
+    resources :attendant_stations
+  end
 end

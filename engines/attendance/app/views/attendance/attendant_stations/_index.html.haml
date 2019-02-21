@@ -1,0 +1,57 @@
+.row
+  .col-md-12
+    %h5 
+      %b Atendentes (#{@station.attendant_stations.count})
+    = link_to "Adicionar atendente", new_station_attendant_station_path(@station), remote: true, data: { disable_with: t(:disable_with)}
+.content
+  %table.table.table-bordered.table-striped.table-celled
+    %thead
+      %tr
+        %th Nº 
+        %th Atendente
+        %th Adicionado em:
+        %th Adicionado por:
+        %th
+    %tbody
+      - if @station.attendant_stations.present?
+        -@station.attendant_stations.each do |attendant_station|
+          %tr{class: "row-attendant-station-#{attendant_station.id}"}
+            %td.collapsing= attendant_station.id
+            %td= attendant_station.attendant.staff.name rescue "Sem informação"
+            %td= attendant_station.created_at.format_datetime
+            %td= attendant_station.creator.name
+            %td.collapsing= link_to "<i class='fa fa-trash'></i>".html_safe, station_attendant_station_path(@station, attendant_station), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+      - else
+        %tr
+          %td{colspan: 6}
+            %i Nenhum atendente registrado.
+.row
+  .col-md-12
+    %h5 
+      %b Histórico de atendentes (#{@station.attendant_stations.undelete_scope.where.not(deleted_at: nil).count})
+.content
+  %table.table.table-bordered.table-striped.table-celled
+    %thead
+      %tr
+        %th Nº 
+        %th Atendente
+        %th Adicionado em:
+        %th Removido em:
+    %tbody
+      - if @attendant_stations.present?
+        -@attendant_stations.order(deleted_at: :desc).each do |attendant_station|
+          %tr
+            %td.collapsing= attendant_station.id
+            %td= attendant_station.attendant.staff.name rescue "Sem informação"
+            %td= attendant_station.created_at.format_datetime
+            %td= attendant_station.deleted_at.format_datetime rescue "Sem informação"
+
+        %tfoot 
+          %tr
+            %td.text-center{colspan: 4}
+              = pagy_bootstrap_nav(@pagy).html_safe
+              
+      - else
+        %tr
+          %td{colspan: 6}
+            %i Nenhum atendente registrado.
