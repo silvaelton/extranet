@@ -7,6 +7,16 @@ module Sefaz
     belongs_to :allotment, required: false
 
     validate :virtual_validate!
+    before_save :clean_cpf_mask
+
+    scope :by_cpf, ->(cpf) { where(cpf: cpf.gsub('.','').gsub('-','')) }
+    scope :by_return, ->(return_message) {
+      if return_message == "true"
+        where("act_number is not null and act_number <> '' ")
+      else
+        where("return_message is not null and return_message <> '' ")
+      end
+    }
 
     def presenter
       presenter = call_presenter('Sefaz::ExemptionPresenter', self)
@@ -14,6 +24,10 @@ module Sefaz
     end
 
     private
+
+    def clean_cpf_mask
+      self.cpf = self.cpf.gsub('.','').gsub('-','')
+    end
 
     def virtual_validate!
       self.system_message = ""

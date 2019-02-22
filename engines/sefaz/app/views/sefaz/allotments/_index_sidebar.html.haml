@@ -7,12 +7,12 @@
           %i.fa.fa-minus
     .card-body
       = simple_form_for url_for, method: :get, remote: true do |f|
-        = f.input :by_protocol, label: "Por protocolo", placeholder: 'Digite o protocolo'
-        = f.input :by_date, label: "Por processo", placeholder: 'Digite o nº processo'
-        = f.input :by_exemption_type, label: "Por tipo", placeholder: 'Digite o nº processo'
-        = f.input :by_notifier, label: "Por transmitente", placeholder: 'Digite o nº processo'
-        = f.input :by_cpf, label: "Por cpf", placeholder: 'Digite o nº processo'
-        = f.input :by_request_situation, label: "Por situação", placeholder: 'Digite o nº processo'
+        = f.input :by_protocol, label: "Por protocolo", placeholder: 'Digite o protocolo', input_html: { name: 'by_protocol' }
+        = f.input :by_date, label: "Por data", input_html: { name: 'by_date', class: 'date' }
+        = f.input :by_exemption_type, label: "Por tipo", collection: Sefaz::ExemptionType.status_active, input_html: { name: 'by_exemption_type' }, prompt: 'Tipo de solicitação'
+        = f.input :by_notifier, label: "Por transmitente", collection: Sefaz::Notifier.status_active, input_html: { name: 'by_notifier' }, prompt: 'Transmitente'
+        = f.input :by_cpf, label: "Por cpf", input_html: { class: 'cpf', name: 'by_cpf' }
+        = f.input :by_request_situation, label: "Por situação", collection: Sefaz::RequestSituation.status_active, input_html: { name: 'by_request_situation' }, prompt: 'Selecione situação'
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
   .divider
@@ -25,6 +25,6 @@
     .card-body.card-list
       = link_to "Novo lote", new_allotment_path, class: 'filter-nav-item',  remote: true
       = link_to "Gestão de tipo de solicitação", request_types_path
-      = link_to "Gestão de situações", request_situations_path
+      = link_to "Gestão de situações de solicitação", request_situations_path
       = link_to "Gestão de tipos de isenção", exemption_types_path
       = link_to "Gestão de transmitente", notifiers_path

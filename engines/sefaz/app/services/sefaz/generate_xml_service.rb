@@ -4,7 +4,8 @@ module Sefaz
       @exemption = exemption
     end
 
-    def send_xml
+    # Constroi xml para solicitação de insenção de ITBI/ITCD
+    def send_xml!
       xml = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') { |xml|
         xml.ArrayofImovelConstruido do
           new_exemption.each do |exemption|
@@ -43,7 +44,8 @@ module Sefaz
         }.to_xml
     end
 
-    def xml_parcial
+    # Constroi xml para cancelamento parcial de insenção de ITBI/ITCD
+    def xml_parcial!
       xml = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') { |xml|
         xml.ArrayofCancelamentoParcial do
           new_exemption.each do |exemption|
@@ -82,8 +84,8 @@ module Sefaz
         }.to_xml
     end
 
-
-    def xml_total
+    # Constroi xml para cancelamento total de insenção de ITBI/ITCD
+    def xml_total!
      xml = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') { |xml|
        xml.ArrayofCancelamentoTotal do
          new_exemption.each do |exemption|

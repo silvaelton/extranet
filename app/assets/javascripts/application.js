@@ -1,6 +1,7 @@
 //= require jquery
-//= require jquery_ujs
+//= require rails-ujs
 //= require turbolinks
+//= require jquery.remotipart
 //= require bootstrap/popper.min
 //= require bootstrap/bootstrap.min
 //= require bootstrap-datepicker

@@ -35,6 +35,7 @@
           %tr
             %td= @exemptions.where("return_message is not null and return_message <> '' ").count
             %td= @exemptions.where("act_number is not null and act_number <> '' ").count
+%br
 .card
   .card-body.card-header.border-left-yellow
     .card-title
@@ -64,7 +65,7 @@
               %tr
                 %td.collapsing= e.id
                 %td= e.name
-                %td= e.cpf
+                %td= e.cpf.format_cpf
                 %td= e.city
                 %td= e.address
                 %td= e.realty_number

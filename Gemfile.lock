@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: 51a985cd56b47a47abda98367789802724598b60
+  revision: 80a98f1f4677629419df404bb41ecca6042aac2d
   branch: master
   specs:
     support (0.1.0)
@@ -19,6 +19,13 @@ GIT
       pg
       rails (~> 5.2.0)
       rake
+
+GIT
+  remote: https://github.com/mshibuya/remotipart.git
+  revision: 88d9a7d55bde66acb6cf3a3c6036a5a1fc991d5e
+  ref: 88d9a7
+  specs:
+    remotipart (1.2.1)
 
 PATH
   remote: engines
@@ -227,6 +234,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    roo (2.7.1)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
     rqrcode (0.10.1)
       chunky_png (~> 1.0)
     rqrcode_png (0.1.5)
@@ -337,6 +347,8 @@ DEPENDENCIES
   pivotal!
   puma (~> 3.11)
   rails (~> 5.2.2)
+  remotipart!
+  roo (~> 2.7.1)
   rqrcode_png (~> 0.1.5)
   sass-rails (~> 5.0)
   savon (~> 2.12.0)
