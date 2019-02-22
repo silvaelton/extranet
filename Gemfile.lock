@@ -52,6 +52,8 @@ PATH
       rails (~> 5.2.2)
     pivotal (0.1.0)
       rails (~> 5.2.2)
+    protocol (0.1.0)
+      rails (~> 5.2.2)
     sefaz (0.1.0)
       rails (~> 5.2.2)
 
@@ -345,6 +347,7 @@ DEPENDENCIES
   person!
   pg (>= 0.18, < 2.0)
   pivotal!
+  protocol!
   puma (~> 3.11)
   rails (~> 5.2.2)
   remotipart!

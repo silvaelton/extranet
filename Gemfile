@@ -41,8 +41,6 @@ gem 'savon', '~> 2.12.0'
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'carrierwave-base64', '~> 2.7.0'
 
-
-
 gem 'support', github: 'codhab/support', branch: 'master'
 
 group :development, :test do
@@ -72,5 +70,6 @@ path 'engines' do
   gem 'juridical'
   gem 'person'
   gem 'pivotal'
+  gem 'protocol'
   gem 'sefaz'
 end
