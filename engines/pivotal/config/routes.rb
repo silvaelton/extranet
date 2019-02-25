@@ -18,4 +18,6 @@ Pivotal::Engine.routes.draw do
     resources :permissions
   end
 
+  resources :sectors, path: 'setores'
+  resources :jobs,    path: 'cargos'
 end

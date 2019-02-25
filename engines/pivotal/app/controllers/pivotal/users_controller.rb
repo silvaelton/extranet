@@ -3,6 +3,9 @@ require_dependency 'pivotal/application_controller'
 module Pivotal
   class UsersController < ApplicationController
 
+    def index 
+    end
+    
     def show
       @user = Pivotal::User.find(params[:id])
     end

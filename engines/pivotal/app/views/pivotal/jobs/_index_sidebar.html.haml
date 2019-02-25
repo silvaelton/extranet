@@ -1,0 +1,13 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar setor", pivotal.new_sector_path, remote: true, data: { disable_with: t(:disable_with)}
+      %hr.divider
+      = link_to "Gestão de usuários", pivotal.users_path, data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de cargos", pivotal.jobs_path, data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de engines", pivotal.engines_path, data: { disable_with: t(:disable_with)}

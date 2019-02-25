@@ -1,0 +1,43 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando #{@sectors.count} de #{@pagy.count} registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Id
+          %th Sigla
+          %th Nome
+          %th Situação
+          %th Setor Pai
+          %th.collapsing
+      %tbody
+        - if @sectors.present?
+          - @sectors.each do |sector|
+            %tr{class: "row-#{sector.id}"}
+              %td.collapsing= sector.id
+              %td.collapsing= sector.acron
+              %td= sector.name
+              %td.collapsing= sector.status ? "Ativo" : "Inativo"
+              %td= sector.father.acron rescue t(:no_info)
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", pivotal.edit_sector_path(sector), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", pivotal.sector_path(sector), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+          %tfoot
+            %tr
+              %td.text-center{colspan: 6}
+                = pagy_bootstrap_nav(@pagy).html_safe        
+        - else
+          %tr
+            %td
+              %i Nenhum setor encontrado.

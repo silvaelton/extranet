@@ -7,7 +7,18 @@ module ApplicationHelper
     html_options ||= {}
     
     # => Quando usuario nao possui permissao
-    user_permitted = true
+    if current_user.administrator
+      user_permitted = true
+    else
+      permissions = Pivotal::EnginePermission.where(path: options, status: true)
+
+      if permissions.present?
+        user_permissions = Pivotal::UserPermission.where(user_id: current_user.id).where(permission_id: permissions)
+        user_permitted   = user_permissions.present? ? true : false
+      else
+        user_permitted = true
+      end
+    end
 
     if !user_permitted
       if html_options[:class].present?
