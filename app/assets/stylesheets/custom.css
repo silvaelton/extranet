@@ -90,3 +90,7 @@ body {
     background-size: none;
     background-image: none;
 }
+
+.unpermitted {
+  color: #dadada !important;
+}

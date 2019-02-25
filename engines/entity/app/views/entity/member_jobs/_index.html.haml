@@ -10,6 +10,7 @@
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
+          %th Id
           %th Nome
           %th Situação
           %th
@@ -17,8 +18,9 @@
         - if @member_jobs.present?
           - @member_jobs.each do |member|
             %tr{class: "row-#{member.id}"}
+              %td.collapsing= member.id
               %td= member.name
-              %td.collapsing= member.status_format
+              %td.collapsing= member.status
               %td.collapsing
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

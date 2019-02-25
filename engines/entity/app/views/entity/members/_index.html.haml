@@ -1,0 +1,36 @@
+%h6
+  = link_to "<i class='fa fa-plus'></i>".html_safe, entity.new_cadastre_member_path(@entity), remote: true 
+  Membros (Diretoria)
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Nome / CPF
+      %th Telefone
+      %th Telefone (secundário)
+      %th Celular
+      %th E-mail
+      %th
+  %tbody
+    - if @entity.members.present?
+      - @entity.members.each do |member|
+        %tr{class: "row-member-#{member.id}"}
+          %td
+            = member.name
+            = member.cpf
+          %td= member.telephone
+          %td= member.telephone_optional
+          %td= member.cell_phone
+          %td= member.email
+          %td.collapsing
+            .dropdown
+              %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-cog
+                %i.ti-angle-down
+              .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                = link_to "Detalhar", entity.cadastre_member_path(@entity, member), remote: true, class: 'dropdown-item'
+                = link_to "Editar", entity.edit_cadastre_member_path(@entity, member), remote: true, class: 'dropdown-item'
+                = link_to "Remover", entity.cadastre_member_path(@entity, member), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+    - else
+      %tr
+        %td{colspan: 7}
+          %i Nenhum membro vínculado.

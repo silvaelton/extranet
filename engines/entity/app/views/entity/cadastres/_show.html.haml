@@ -6,51 +6,45 @@
         = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
   
   .card-body
-    %h5 #{@entity.cnpj.format_cnpj}
-    %h3
-      %b #{@entity.acron}
-    %h6 #{@entity.name}
-    .mt-3
+    .row.mb-3
+      .col-12
+        %h5 #{@entity.presenter.cnpj}
+        %h3
+          %b #{@entity.presenter.acron}
+        %h6 #{@entity.presenter.name}
 
-    %h6 Presidente
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Foto
-          %th Informações
-          %th
-      %tbody
-        %tr
-          %td
-          %td
-          %td
-            
-    %h6 Diretoria | Membros
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Telefone
-          %th Telefone (secundário)
-          %th Celular
-          %th Email
-      %tbody
-        %tr
-          %td= @entity.telephone.format_empty
-          %td= @entity.telephone_optional.format_empty
-          %td= @entity.cell_phone.format_empty
-          %td= @entity.email.format_empty
+    .row
+      .col-12
+        .index-president-content
+          = render 'entity/presidents/index'
+    .row
+      .col-12
+        .index-member-content
+          = render 'entity/members/index'
+    .row
+      .col-12
+        .index-contact-content
+          = render 'entity/contacts/index'
+    .row
+      .col-12
+        .index-enterprise-content
+          = render 'entity/enterprises/index'
+    .row
+      .col-12
+        .index-activity-content
+          = render 'entity/indications/index'
+   
+    .row
+      .col-12
+        .index-activity-content
+          = render 'entity/activities/index'
 
-    %h6 Dados de contato
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Telefone
-          %th Telefone (secundário)
-          %th Celular
-          %th Email
-      %tbody
-        %tr
-          %td
-          %td
-          %td
-          %td
+              
+
+    .row
+      .col-12
+        .index-activity-content
+          = render 'entity/audits/index'
+   
+        
+  

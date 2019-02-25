@@ -5,5 +5,56 @@
       %a.close
         %i.fa.fa-close
     .modal-body
-      %table.table.table-striped.table-bordered
-        %thead
+      .row.mb-5
+        .col-12
+          = link_to "Clique aqui para editar ou detalhar as informações", entity.cadastre_path(@entity), class: 'btn btn-success btn-block'
+      
+      .row
+        .col-12
+          %h4
+            %b= @entity.presenter.acron
+          %h6= @entity.presenter.name
+          %h6= @entity.presenter.cnpj
+          .badge.badge-success
+            Credenciada
+      .row.mt-4
+        .col-12
+
+          %h6
+            Presidente
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Nome
+                %th CPF
+            %tbody
+              %tr
+                %td{colspan: 2}
+                  %i Nenhum presidente vínculado.
+      .row
+        .col-12
+          %h6 Diretoria        
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Nome
+                %th CPF
+                %th Cargo
+            %tbody
+              %tr
+                %td{colspan: 3}
+                  %i Nenhum membro vínculado.
+      .row
+        .col-12
+          %h6 Projetos vínculados        
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Descrição                                
+                %th Edital                                
+                %th Situação      
+
+            %tbody
+              %tr
+                %td{colspan: 3}
+                  %i Nenhum projeto vínculado.                                            

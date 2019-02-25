@@ -2,6 +2,7 @@ Pivotal::Engine.routes.draw do
   root 'dashboard#index'
 
   resources :sessions, except: [:edit, :update, :show], path: 'acesso'
+  
   resources :users, path: 'usuarios' do
     resources :bookmarks
     collection do 
@@ -10,7 +11,11 @@ Pivotal::Engine.routes.draw do
     resources :tickets
     resources :logs
     resources :session_logs
+    resources :permissions
   end
 
-  resources :staffs
+  resources :engines do
+    resources :permissions
+  end
+
 end

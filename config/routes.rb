@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   mount Juridical::Engine   => '/juridico',     as: :juridical
   mount Pivotal::Engine     => '/',             as: :pivotal
 
+
+  get 'unpermitted', to: 'errors#unpermitted'
 end

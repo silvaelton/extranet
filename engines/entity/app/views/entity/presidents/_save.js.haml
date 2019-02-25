@@ -1,0 +1,9 @@
+- if @president.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".index-president-content").html("#{escape_javascript(render 'entity/presidents/index')}");
+  $(".row-president-#{@president.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+
+update_js();
