@@ -1,0 +1,73 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Dados do lote
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Transmitente
+          %th Tipo de isenção
+      %tbody
+        %tr
+          %td= " #{@allotment.notifier.name rescue t(:no_info)} - CNPJ: #{@allotment.notifier.cnpj rescue t(:no_info)}"
+          %td= @allotment.exemption_type.name.upcase rescue t(:no_info)
+      %thead
+        %tr
+          %th Status da solicitação
+          %th Usuário solicitante
+      %tbody
+        %tr
+          %td= @allotment.request_situation.name rescue t(:no_info)
+          %td= @allotment.staff.name rescue t(:no_info)
+      %thead
+        %tr
+          %th{colspan: 2} Observação
+      %tbody
+        %tr
+          %td{colspan: 2}= @allotment.observation
+      - if @allotment.request_situation_id == 4
+        %thead
+          %tr
+            %th Retorno com problemas
+            %th Retorno com Ato
+        %tbody
+          %tr
+            %td= @exemptions.where("return_message is not null and return_message <> '' ").count
+            %td= @exemptions.where("act_number is not null and act_number <> '' ").count
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@exemptions.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th #
+          %th N° do Ato declaratório
+          %th Ano do Ato
+          %th
+      %tbody
+        - if @exemptions.present?
+          - @exemptions.each do |exemption|
+            %tr
+              %td.collapsing= exemption.id
+              %td= exemption.number_act_cancel
+              %td= exemption.year_act_cancel
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", edit_allotment_total_exemption_path(@allotment, exemption), class: 'dropdown-item', remote: true if @allotment.request_situation_id < 3
+                    = link_to "Excluir", allotment_total_exemption_path(@allotment, exemption), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true if @allotment.request_situation_id < 3
+
+        - else
+          %tr
+            %td{colspan: 9}
+              %i Nenhum registro encontrado.

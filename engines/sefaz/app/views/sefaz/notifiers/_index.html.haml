@@ -1,0 +1,37 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@notifiers.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nº
+          %th Nome
+          %th CNPJ
+          %th Status
+          %th
+      %tbody
+        - if @notifiers.present?
+          - @notifiers.each do |notifier|
+            %tr
+              %td.collapsing= notifier.id
+              %td= notifier.name
+              %td= notifier.cnpj
+              %td.collapsing= notifier.status.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", notifier_path(notifier), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "Editar", edit_notifier_path(notifier), class: 'dropdown-item', remote: true
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

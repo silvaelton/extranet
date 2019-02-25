@@ -1,0 +1,19 @@
+= simple_form_for @exemption, url: @exemption.new_record? ? allotment_parcial_exemptions_path(@allotment) : allotment_parcial_exemption_path(@allotment),
+method: @exemption.new_record? ? :post : :put, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, input_html: { placeholder: 'Nome' }
+    .col-md-4
+      = f.input :cpf, input_html: { class: 'cpf' }
+  .row
+    .col-md-6
+      = f.input :number_act_cancel, input_html: { placeholder: 'Ex. 199' }
+    .col-md-6
+      = f.input :year_act_cancel, input_html: { placeholder: 'Ex. 2018' }
+  .row
+    .col-md-6
+      = f.input :realty_number, input_html: { placeholder: 'Nº IPTU' }
+  %hr
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

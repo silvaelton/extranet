@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   mount Helpdesk::Engine    => '/helpdesk',     as: :helpdesk
   mount Juridical::Engine   => '/juridico',     as: :juridical
   mount Pivotal::Engine     => '/',             as: :pivotal
+  mount Protocol::Engine    => '/protocolo',    as: :protocol
+  mount Sefaz::Engine       => '/sefaz',        as: :sefaz
 
 
   get 'unpermitted', to: 'errors#unpermitted'

@@ -1,7 +1,7 @@
 = simple_form_for @notice, remote: true do |f|
   .row
     .col-md-12
-      = f.input :name, placeholder: 'Digite o tipo de boleto'
+      = f.input :name, placeholder: 'Digite um nome'
   .row
     .col-md-6
       = f.input :notice_type_id, as: :select, collection: Cpl::NoticeType.all, include_blank: 'selecione...'

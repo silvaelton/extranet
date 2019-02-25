@@ -1,0 +1,11 @@
+= simple_form_for @exemption_type, remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :name, placeholder: 'Digite um nome'
+  .row
+    .col-md-12
+      = f.input :status, as: :select, include_blank: 'selecione...'
+  %hr
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

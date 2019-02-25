@@ -1,0 +1,88 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Dados do lote
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Transmitente
+          %th Tipo de isenção
+      %tbody
+        %tr
+          %td= " #{@allotment.notifier.name rescue t(:no_info)} - CNPJ: #{@allotment.notifier.cnpj rescue t(:no_info)}"
+          %td= @allotment.exemption_type.name.upcase rescue t(:no_info)
+      %thead
+        %tr
+          %th Status da solicitação
+          %th Usuário solicitante
+      %tbody
+        %tr
+          %td= @allotment.request_situation.name rescue t(:no_info)
+          %td= @allotment.staff.name rescue t(:no_info)
+      %thead
+        %tr
+          %th{colspan: 2} Observação
+      %tbody
+        %tr
+          %td{colspan: 2}= @allotment.observation
+      - if @allotment.request_situation_id == 4
+        %thead
+          %tr
+            %th Retorno com problemas
+            %th Retorno com Ato
+        %tbody
+          %tr
+            %td= @exemptions.where("return_message is not null and return_message <> '' ").count
+            %td= @exemptions.where("act_number is not null and act_number <> '' ").count
+%br
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@exemptions.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th #
+          %th Nome
+          %th CPF
+          %th Cidade
+          %th Endereço
+          %th IPTU
+          %th Valor
+          %th Mensagem
+          %th
+          %th
+      %tbody
+        - if @exemptions.present?
+          - @exemptions.each do |exemption|
+            - exemption.presenter do |e|
+              %tr
+                %td.collapsing= e.id
+                %td= e.name
+                %td= e.cpf.format_cpf
+                %td= e.city
+                %td= e.address
+                %td= e.realty_number
+                %td= e.realty_value
+                %td= e.message_sefaz
+                %td.collapsing
+                  %button{class: "#{e.icon_color}", title: "#{e.system_message}"}
+                    %i{class: "#{e.icon_return}"}
+                %td.collapsing
+                  .dropdown
+                    %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                      %i.fa.fa-cog
+                      %i.ti-angle-down
+                    .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                      = link_to "Excluir", allotment_exemption_path(@allotment, e), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true if @allotment.request_situation_id < 3
+                      = link_to "Editar", edit_allotment_exemption_path(@allotment,e), class: 'dropdown-item', remote: true if @allotment.request_situation_id < 3
+        - else
+          %tr
+            %td{colspan: 9}
+              %i Nenhum registro encontrado.
