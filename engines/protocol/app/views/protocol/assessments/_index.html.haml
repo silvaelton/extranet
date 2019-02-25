@@ -1,0 +1,34 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@assessments.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Número
+          %th Tipo de Documento
+          %th Assunto
+          %th Setor
+          %th Data
+      %tbody
+        - if @assessments.present?
+          - @assessments.each do |assessment|
+            %tr
+              %td= link_to assessment.document_number, assessment_path(assessment)
+              %td= assessment.document_type.name rescue t(:no_info)
+              %td= assessment.subject.name rescue t(:no_info)
+              %td= assessment.sector.name rescue t(:no_info)
+              %td= assessment.created_at.format_date
+          %tfoot
+            %tr
+              %td.text-center{colspan: 6}
+                = pagy_bootstrap_nav(@pagy).html_safe
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum tipo de boleto registrado.

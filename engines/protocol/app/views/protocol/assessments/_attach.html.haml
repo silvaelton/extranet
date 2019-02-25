@@ -1,0 +1,27 @@
+%h6 Documentos Anexos/Apensos
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th
+      %th Número Documento
+      %th Tipo de Documento
+      %th Tipo
+      %th Data
+  %tbody
+    - if @attach_document.present?
+      - @attach_document.each_with_index do |j, i|
+        %tr
+          %td.col-md-1
+            = i + 1
+          %td
+            = j.document_child.document_number rescue nil
+          %td
+            = j.document_child.document_type.name rescue nil
+          %td
+            = j.attach_type_i18n
+          %td
+            = j.created_at.strftime('%d/%m/%Y - %H:%M')
+    - else
+      %tr
+        %td{colspan: 5}
+          %i Nenhum registro encontrado.

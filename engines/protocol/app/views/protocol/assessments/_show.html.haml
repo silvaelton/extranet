@@ -1,0 +1,90 @@
+.card
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nº do Documento
+          %th{colspan: 2} Tipo de Documento
+          %th Data de Criação
+      %tbody
+        %tr
+          %td= @assessment.document_number
+          %td{colspan: 2}= @assessment.document_type.name rescue t(:no_information)
+          %td= @assessment.created_at.strftime("%d/%m/%Y - %H:%M:%S")
+      %thead
+        %tr
+          %th{colspan: 2} Unidade Solicitante
+          %th{colspan: 2} Orgão Externo
+      %tbody
+        %tr
+          %td{colspan: 2}= @assessment.requesting_unit
+          %td{colspan: 2}= @assessment.external_agency.present? ? @assessment.external_agency : t(:no_information)
+      %thead
+        %tr
+          %th{colspan: 2} Interessado
+          %th CPF
+          %th CNPJ
+      %tbody
+        %tr
+          %td{colspan: 2}= @assessment.recipient
+          %td= @assessment.cpf.present? ? @assessment.cpf.format_cpf : t(:no_information)
+          %td= @assessment.cnpj.present? ? @assessment.cnpj : t(:no_information)
+      %thead
+        %tr
+          %th Cidade
+          %th{colspan: 3} Endereço
+      %tbody
+        %tr
+          %td= @assessment.city.present? ? @assessment.city : t(:no_information)
+          %td{colspan: 3}= @assessment.address.present? ? @assessment.address : t(:no_information)
+      %thead
+        %tr
+          %th Assunto
+          %th{colspan: 3} Descrição do Assunto
+      %tbody
+        %tr
+          %td= @assessment.subject.name rescue t(:no_information)
+          %td{colspan: 3}= @assessment.description_subject.present? ? @assessment.description_subject : t(:no_information)
+      %thead
+        %tr
+          %th{colspan: 2} Assinado Por
+          %th{colspan: 2} Observação
+      %tbody
+        %tr
+          %td{colspan: 2}= @assessment.sign_by.present? ? @assessment.sign_by : t(:no_information)
+          %td{colspan: 2}= @assessment.observation.present? ? @assessment.observation : t(:no_information)
+      %thead
+        %tr
+          %th Finalizado
+          %th Data de finalização
+          %th Respondido
+          %th Data de resposta
+      %tbody
+        %tr
+          %td= @assessment.finalized ? "Sim" : "Não"
+          %td= @assessment.finalized_date.strftime("%d/%m/%Y") rescue t(:no_information)
+          %td= @assessment.responded ? "Sim" : "Não"
+          %td= @assessment.responded_date.strftime("%d/%m/%Y") rescue t(:no_information)
+    -if @attach_child.present?
+      %table.table.table-bordered.table-striped.table-celled
+        %thead
+          %tr
+            - @type = @attach_child.attach_type == 'attach' ? "Anexado" : "Apensado"
+            %th= "#{@type} ao documento"
+            %th= "#{@type} em"
+        %tbody
+          %tr
+            %td= "#{@attach_child.document_father.document_type.name}:  #{@attach_child.document_father.document_number}" rescue nil
+            %td= @attach_child.created_at.strftime("%d/%m/%Y") rescue nil
+    .row
+      .col-md-12
+        = render 'conduct'
+    .row
+      .col-md-12
+        = render 'attach'
+    .row
+      .col-md-12
+        = render 'digital'
+    .row
+      .col-md-12
+        = render 'location'

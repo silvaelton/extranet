@@ -1,0 +1,31 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true, html: { id: 'invoice-filter'} do |f|
+        = f.input :by_process, label: "Por Processo",  input_html: {onchange: "$('#invoice-filter').submit()", name: 'by_process', value: params[:by_process], placeholder: 'Por Processo'}
+        = f.input :by_document_types, label: "Por Orgão",  input_html: {onchange: "$('#invoice-filter').submit()", name: 'by_agency', value: params[:by_agency], placeholder: 'Por Orgão'}
+        = f.input :by_cpf, as: :select, label: "Por Tipo de Processo", prompt: 'Selecione', input_html: { name: 'by_process_type'}
+        = f.input :by_cnpj, as: :select, collection: Juridical::Lawsuit.all, selected: params[:by_lawsuit], label: "Por Tipo de Ação", prompt: 'Selecione', input_html: { name: 'by_lawsuit'}
+        = f.input :by_subject, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        = f.input :by_sector, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        = f.input :by_recipient, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        = f.input :by_description, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        = f.input :by_observation, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        = f.input :by_start_date, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        = f.input :by_end_date, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        = f.input :by_external, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: {  disable_with:  t(:disable_with)}
+  .divider
+    .card
+      .card-body.card-header.border-left-yellow
+        .card-title
+          Operações
+          = link_to "javascript:void(0)", class: "collapsing-link" do
+            %i.fa.fa-minus
+      .card-body.card-list
