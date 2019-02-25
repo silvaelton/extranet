@@ -68,7 +68,6 @@ path 'engines' do
   gem 'entity'
   gem 'helpdesk'
   gem 'juridical'
-  gem 'person'
   gem 'pivotal'
   gem 'protocol'
   gem 'sefaz'

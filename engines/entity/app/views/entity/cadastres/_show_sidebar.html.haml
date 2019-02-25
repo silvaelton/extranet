@@ -8,5 +8,10 @@
     .card-body.card-list
       = link_to "Voltar para listagem", entity.cadastres_path(filter_params)
       %hr.divider
-      = link_to "Editar informações", entity.edit_cadastre_path(@entity), remote: true
-      = link_to "Atualizar situação", entity.edit_cadastre_path(@entity), remote: true
+        = link_to "Atualizar informações (Geral)", entity.edit_cadastre_path(@entity), remote: true
+        = link_to "Atualizar dados de contato", "#"
+        = link_to "Atualizar situação", entity.edit_cadastre_path(@entity), remote: true
+      %hr.divider
+        = link_to "Atualizar presidencia", "#"
+        = link_to "Adicionar membro (Diretoria)"
+        = link_to "Víncular empreendimento"

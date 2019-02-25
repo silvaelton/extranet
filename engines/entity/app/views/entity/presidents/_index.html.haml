@@ -1,0 +1,38 @@
+%h6
+  = link_to "<i class='fa fa-plus'></i>".html_safe, entity.new_cadastre_president_path(@entity), remote: true 
+  Presidente
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Foto
+      %th Nome / CPF
+      %th Telefone
+      %th Telefone (secundário)
+      %th Celular
+      %th E-mail
+      %th
+  %tbody
+    - if @entity.presidents.present?
+      - @entity.presidents.each do |president|
+        %tr{class: "row-president-#{president.id}"}
+          %td= president.photo
+          %td
+            = president.name
+            = president.cpf
+          %td= president.telephone
+          %td= president.telephone_optional
+          %td= president.cell_phone
+          %td= president.email
+          %td.collapsing
+            .dropdown
+              %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-cog
+                %i.ti-angle-down
+              .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                = link_to "Detalhar", entity.cadastre_president_path(@entity, president), remote: true, class: 'dropdown-item'
+                = link_to "Editar", entity.edit_cadastre_president_path(@entity, president), remote: true, class: 'dropdown-item'
+                = link_to "Remover", entity.cadastre_president_path(@entity, president), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+    - else
+      %tr
+        %td{colspan: 7}
+          %i Nenhum presidente vínculado.

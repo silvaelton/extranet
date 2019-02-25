@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :get_params_for_filter
 
   helper Pivotal::NavHelper
-  helper_method :current_user, :authenticate_user!, :filter_params
+  helper_method :current_user, :authenticate_user!, :filter_params, :engine_name
 
   private
 
@@ -34,8 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_params_for_filter
-    engine_name = controller_path.split('/')[0]
-
     params.each do |key, value|
       if key.include?('by_')
         
@@ -54,10 +52,11 @@ class ApplicationController < ActionController::Base
   end
 
   def filter_params
-    engine_name = controller_path.split('/')[0]
     session[:filter][engine_name]
   end
 
-
+  def engine_name
+    controller_path.split('/')[0]
+  end
 
 end

@@ -1,0 +1,26 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_situation, as: :select,  label: "Por situação", include_blank: t(:include_blank_all), input_html: { name: :by_situation }
+        = f.input :by_father_id, as: :select, collection: {}, label: "Por setor pai", include_blank: t(:include_blank_all), input_html: { name: :by_situation }
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
+  .divider  
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar setor", pivotal.new_sector_path, remote: true, data: { disable_with: t(:disable_with)}
+      %hr.divider
+      = link_to "Gestão de usuários", pivotal.users_path, data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de cargos", pivotal.jobs_path, data: { disable_with: t(:disable_with)}

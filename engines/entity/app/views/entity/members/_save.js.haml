@@ -1,0 +1,9 @@
+- if @member.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".index-member-content").html("#{escape_javascript(render 'entity/members/index')}");
+  $(".row-member-#{@member.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+
+update_js();

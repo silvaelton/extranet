@@ -16,7 +16,7 @@ module Pivotal
     private 
     
     def user
-      Support::Person::Staff.find_by(id: self.user_id)
+      Support::Pivotal::User.find_by(id: self.user_id)
     end
 
     def password_valid?
