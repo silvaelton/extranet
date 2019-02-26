@@ -1,0 +1,27 @@
+%h6
+  = link_to "<i class='fa fa-plus'></i>".html_safe, juridical.new_legal_advice_defendant_path(@legal_advice), remote: true
+  Réu
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Nº
+      %th Nome
+      %th
+  %tbody
+    - if @legal_advice.defendants.present?
+      -@legal_advice.defendants.each do |defendant|
+        %tr{class: "row-defendant-#{defendant.id}"}
+          %td.collapsing= defendant.id
+          %td= defendant.name
+          %td.collapsing
+            .dropdown
+              %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-cog
+                %i.ti-angle-down
+              .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                = link_to "Excluir", legal_advice_defendant_path(@legal_advice, defendant), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                = link_to "Editar", edit_legal_advice_defendant_path(@legal_advice, defendant), class: 'dropdown-item', remote: true
+    - else
+      %tr
+        %td{colspan: 6}
+          %i Nenhum registro encontrado.

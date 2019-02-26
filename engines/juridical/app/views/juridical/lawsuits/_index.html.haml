@@ -20,7 +20,7 @@
             %tr{class: "row-type-#{lawsuit.id}"}
               %td.collapsing= lawsuit.id
               %td= lawsuit.name
-              %td.collapsing= lawsuit.status? ? "Ativo" : "Inativo"
+              %td.collapsing= lawsuit.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

@@ -1,0 +1,39 @@
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Número do Processo
+      %th Tipo de Documento
+      %th Tipo de Ação
+      %th Tipo de acompanhamento
+  %tbody
+    %tr
+      %td= @legal_advice.process_number
+      %td= @complement.document_type.name rescue t(:no_info)
+      %td= @complement.lawsuit.name rescue t(:no_info)
+      %td= @complement.advice_type.name rescue t(:no_info)
+  %thead
+    %tr
+      %th{colspan: 4} Complemento
+  %tbody
+    %tr
+      %td{colspan: 4}= @complement.complement
+  %thead
+    %tr
+      %th Instância
+      %th{colspan: 2} Local da Instância
+      %th Data de distribuição
+  %tbody
+    %tr
+      %td= @complement.instancy_place.instancy.name rescue t(:no_info)
+      %td{colspan: 2}= @complement.instancy_place.name rescue t(:no_info)
+      %td= @complement.distribution_date.strftime("%d/%m/%Y") rescue t(:no_info)
+  %thead
+    %tr
+      %th{colspan: 2} Anexo
+      %th Status
+      %th Data de inclusão
+  %tbody
+    %tr
+      %td{colspan: 2}= link_to "Ver anexo", @complement.attachment_url, target: '_blank' if @complement.attachment.present?
+      %td= @complement.status.status_format
+      %td= @complement.created_at.format_datetime

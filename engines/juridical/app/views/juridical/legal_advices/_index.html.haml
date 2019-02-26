@@ -34,7 +34,6 @@
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
                     = link_to "Visulizar", legal_advice_path(legal_advice), class: 'dropdown-item'
-                    = link_to "Complemento", legal_advice_complements_path(legal_advice), class: 'dropdown-item'
                     = link_to "Editar", edit_legal_advice_path(legal_advice), class: 'dropdown-item', remote: true
                     = link_to "Excluir", legal_advice_path(legal_advice), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
 

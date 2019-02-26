@@ -1,0 +1,40 @@
+%h6
+  = link_to "<i class='fa fa-pencil'></i>".html_safe, edit_legal_advice_path(@legal_advice), remote: true
+  Dados
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Tipo de Processo
+      %th Orgão
+      %th Valor da Ação
+      %th Valor da Condenação
+  %tbody
+    %tr
+      %td= @legal_advice.process_type ? "Eletrônico" : "Normal"
+      %td= @legal_advice.agency
+      %td= @legal_advice.lawsuit_value
+      %td= @legal_advice.condemnation_value
+  %thead
+    %tr
+      %th Veredito
+      %th Probalidade
+      %th Instância
+      %th Local da Instância
+  %tbody
+    %tr
+      %td= @legal_advice.veredict
+      %td= @legal_advice.probability
+      %td= @legal_advice.instancy_place.instancy.name rescue t(:no_information)
+      %td= @legal_advice..instancy_place.name rescue t(:no_information)
+  %thead
+    %tr
+      %th Custas do processo
+      %th Data de inclusão
+      %th Processo Administrativo
+      %th Advogado Responsável
+  %tbody
+    %tr
+      %td= number_to_currency @legal_advice.procedural_costs
+      %td= @legal_advice.created_at.format_datetime
+      %td= @legal_advice.assessment_number rescue t(:no_info)
+      %td= @legal_advice.responsible_lawyer.name rescue t(:no_info)
