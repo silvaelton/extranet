@@ -12,7 +12,7 @@
       - @conduct.each_with_index do |c, i|
         - if  c.conduct_type != 'doc_to_send'
           %tr
-            %td.col-md-1
+            %td.collapsing
               = i + 1
             %td
               = c.conduct_type rescue t(:no_info)

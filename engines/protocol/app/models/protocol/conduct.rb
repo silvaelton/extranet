@@ -4,7 +4,9 @@ module Protocol
   class Conduct < Support::Protocol::Conduct
     belongs_to :assessment
     belongs_to :allotment
-    belongs_to :staff,  class_name: "Support::Person::Staff"
-    belongs_to :sector, class_name: "Support::Person::Sector"
+    belongs_to :staff,  class_name: "Pivotal::Staff"
+    belongs_to :sector, class_name: "Pivotal::Sector"
+
+    enum conduct_type: ['criado', 'enviado', 'devolvido', 'cancelado', 'recebido','aguardando']
   end
 end

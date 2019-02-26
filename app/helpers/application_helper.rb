@@ -5,9 +5,9 @@ module ApplicationHelper
     html_options, options, name = options, name, block if block_given?
     options ||= {}
     html_options ||= {}
-    
+
     # => Quando usuario nao possui permissao
-    if current_user.administrator
+    if current_user.present? && current_user.administrator
       user_permitted = true
     else
       permissions = Pivotal::EnginePermission.where(path: options, status: true)
@@ -23,12 +23,12 @@ module ApplicationHelper
     if !user_permitted
       if html_options[:class].present?
         html_options[:class] += " unpermitted"
-      else 
+      else
         html_options[:class] = " unpermitted"
       end
-      
+
       html_options[:remote] = true
-      
+
       url = main_app.unpermitted_path
     else
       url = url_for(options)
