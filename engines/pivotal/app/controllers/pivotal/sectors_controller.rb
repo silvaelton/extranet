@@ -4,6 +4,9 @@ module Pivotal
   class SectorsController < ApplicationController
     before_action :set_sectors
     before_action :set_sector, only: [:edit, :update, :destroy]
+
+    has_scope :by_status
+    has_scope :by_father_id
     
     def index; end
     
@@ -13,7 +16,7 @@ module Pivotal
     
     def create
       @sector = Pivotal::Sector.new(set_params)
-      @sector.save
+      @sector.save!
     end
 
     def edit;end
@@ -37,7 +40,7 @@ module Pivotal
     end
 
     def set_sectors
-      @pagy, @sectors = pagy(Pivotal::Sector.all.order(:name))
+      @pagy, @sectors = pagy(apply_scopes(Pivotal::Sector).all.order(:name))
     end
   end
 end

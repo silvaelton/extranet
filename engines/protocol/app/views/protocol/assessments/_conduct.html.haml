@@ -1,0 +1,28 @@
+%h6 Movimentação
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th
+      %th Movimentação
+      %th Usuário
+      %th Setor
+      %th Data
+  %tbody
+    - if @conduct.present?
+      - @conduct.each_with_index do |c, i|
+        - if  c.conduct_type != 'doc_to_send'
+          %tr
+            %td.collapsing
+              = i + 1
+            %td
+              = c.conduct_type rescue t(:no_info)
+            %td
+              = c.user.name rescue t(:no_info)
+            %td
+              = c.sector.name rescue t(:no_info)
+            %td
+              = c.created_at.format_datetime
+    - else
+      %tr
+        %td{colspan: 5}
+          %i Nenhum registro encontrado.

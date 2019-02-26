@@ -1,0 +1,22 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true, html: { id: 'invoice-filter'} do |f|
+        = f.input :by_process, label: "Por Processo",  input_html: { name: 'by_process', value: params[:by_process], placeholder: 'Por Processo'}
+        = f.input :by_document_type, collection: Protocol::DocumentType.all, label: "Tipo de documento",  input_html: {name: 'by_document_type'}, prompt: 'Selecione'
+        = f.input :by_cpf, label: "Por CPF",  input_html: { name: 'by_cpf', class: 'cpf', value: params[:by_cpf]}
+        = f.input :by_cnpj, label: "Por CNPJ", input_html: { name: 'by_cnpj', class: 'cnpj', value: params[:by_cnpj]}
+        = f.input :by_subject, collection: Protocol::Subject.all, label: "Por assunto", input_html: { name: 'by_subject'}, prompt: "Selecione"
+        = f.input :by_sector, collection: Pivotal::Sector.all, label: "Por setor", input_html: { name: 'by_sector'}, prompt: "Selecione"
+        = f.input :by_recipient, label: "Interessado", input_html: { name: 'by_recipient', value: params[:by_recipient] }
+        = f.input :by_start_date, label: "Data início", input_html: { name: 'by_start_date', value: params[:by_start_date], class: 'date'}
+        = f.input :by_end_date, label: "Data fim", input_html: { name: 'by_end_date', value: params[:by_end_date], class: 'date'}
+        = f.input :by_external, label: "Orgão externo", input_html: { name: 'by_external', value: params[:by_external] }
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: {  disable_with:  t(:disable_with)}
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'

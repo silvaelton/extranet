@@ -2,7 +2,7 @@
   $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
   update_js();
 - else
-  $(".index_type_subjects").html("#{escape_javascript(render 'helpdesk/ticket_type_subjects/index')}");
-  $(".row-job-#{@job.id}").addClass('table-success');
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".index_type_subjects").html("#{escape_javascript(render 'pivotal/jobs/index')}");
+  $(".row-job-#{@job.id}").addClass('table-success');
   update_js();
