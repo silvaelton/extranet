@@ -1,0 +1,5 @@
+= simple_form_for @daily_type, remote: true do |f|
+  = f.input :name, placeholder: 'Digite o nome'
+  = f.input :description, placeholder: 'Digite a descrição'
+  = f.input :status, as: :select, include_blank: 'selecione...'
+  = f.button :submit, class: 'btn btn-success'

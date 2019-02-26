@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   mount Juridical::Engine   => '/juridico',     as: :juridical
   mount Pivotal::Engine     => '/',             as: :pivotal
   mount Sefaz::Engine       => '/sefaz',        as: :sefaz
+  mount Person::Engine      => '/pessoal',      as: :person
 
 end

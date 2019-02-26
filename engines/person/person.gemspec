@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.version     = Person::VERSION
   spec.authors     = ["Elton Silva"]
   spec.email       = ["elton.chrls@gmail.com"]
-  spec.homepage    = "https://github.com/codhab/extranet"
+  spec.homepage    = "https://github.com/codhab/extranet.git"
   spec.summary     = "Summary of Person."
   spec.description = "Description of Person."
   spec.license     = "MIT"
