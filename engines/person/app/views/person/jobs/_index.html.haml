@@ -26,10 +26,10 @@
               %td= job.code
               %td= job.salary
               %td= job.function_code
-              %td.collapsing= job.status ? "Ativo" : "Inativo"
+              %td.collapsing= job.status
               %td.collapsing
                 .dropdown
-                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}

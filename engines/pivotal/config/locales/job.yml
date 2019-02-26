@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    modules:
+      'pivotal/job': 'Cargo'
+    attributes:
+      'pivotal/job':
+        name: "Nome"
+        function_code: "Código da função"
+        code: "Código"
+        salary: "Salário"
+        status: "Status"

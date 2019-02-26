@@ -29,7 +29,7 @@ module Pivotal
     private
 
     def set_params
-      params.require(:job).permit(:name)
+      params.require(:job).permit(:name, :code, :function_code, :salary, :status)
     end
 
     def set_job
@@ -37,7 +37,7 @@ module Pivotal
     end
 
     def set_jobs
-      @jobs = Pivotal::Job.all.order(:name)
+     @pagy, @jobs = pagy(Pivotal::Job.all.order(:name))
     end
   end
 end
