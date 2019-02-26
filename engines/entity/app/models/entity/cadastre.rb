@@ -2,7 +2,9 @@ require_dependency 'support/entity/cadastre'
 
 module Entity
   class Cadastre < ::Support::Entity::Cadastre
-    
+    has_many :presidents, foreign_key: :cadastre_id
+    has_many :members, foreign_key: :cadastre_id
+
     validates :cnpj, cnpj: true, uniqueness: true
     
     scope :by_acron, -> (value) {

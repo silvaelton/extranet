@@ -5,7 +5,7 @@ module Sefaz
     end
 
     def import_files!
-      spreadsheet = Roo::Excelx.new(@exemption_file.file_path.path)
+      spreadsheet = Roo::Excelx.new(@exemption_file.attachment.path)
       header = spreadsheet.row(1)
       (2..spreadsheet.last_row).each do |i|
         exemption_hash = Hash[[header, spreadsheet.row(i)].transpose]
@@ -35,10 +35,10 @@ module Sefaz
           iptu = exemption_hash["IPTU"]
           exemption_new.realty_number          = iptu.class == Float ? exemption_hash["IPTU"].to_i : exemption_hash["IPTU"]
           exemption_new.realty_value           = exemption_hash["VALOR"]
-          exemption_new.year_act               = exemption_hash["ANO"].present? ? exemption_hash["ANO"]  : nil
-          exemption_new.number_act_to_cancel   = exemption_hash["NUMERO"].present? ? exemption_hash["NUMERO"].to_i : nil
+          exemption_new.year_act_cancel        = exemption_hash["ANO"].present? ? exemption_hash["ANO"]  : nil
+          exemption_new.number_act_cancel      = exemption_hash["NUMERO"].present? ? exemption_hash["NUMERO"].to_i : nil
           exemption_new.allotment_id           = @exemption_file.allotment_id
-          exemption_new.staff_id               = @exemption_file.user_id
+          exemption_new.user_id                = @exemption_file.user_id
 
           begin
             exemption_new.save!

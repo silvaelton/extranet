@@ -5,6 +5,12 @@ module Sefaz
     before_action :set_allotments
     before_action :set_allotment, only: %i[edit update destroy]
 
+    has_scope :by_protocol
+    has_scope :by_date
+    has_scope :by_notifier
+    has_scope :by_request_situation
+    has_scope :by_cpf
+
     def index; end
 
     def new
@@ -27,16 +33,48 @@ module Sefaz
       @allotment.destroy
     end
 
+    def to_process
+			@service = Sefaz::AllotmentService.new(@allotment)
+      @service = @service.protocol_search!
+
+			if @service == 'ok'
+				redirect_to allotment_exemptions_path(@allotment.id)
+			else
+				flash["warning"] = process
+				redirect_to allotments_path
+			end
+		end
+
+		def send_exemption
+      @service = Sefaz::AllotmentService.new(@allotment)
+      @service = @service.send_allotment!(current_user.id)
+
+			redirect_to allotments_path
+		end
+
+		def send_parcial_cancelation
+      @service = Sefaz::AllotmentService.new(@allotment)
+      @service = @service.send_parcial_cancelation!(current_user.id)
+
+			redirect_to allotments_path
+		end
+
+		def send_total_cancelation
+      @service = Sefaz::AllotmentService.new(@allotment)
+      @service = @service.send_total_cancelation!(current_user.id)
+
+			redirect_to allotments_path
+		end
+
     private
 
     def set_params
       params.require(:allotment).permit(:exemption_type_id, :notifier_id,
-                                        :observation, :request_situation_id,
-                                        :request_type_id)
+                                        :observation, :request_type_id)
     end
 
     def set_allotments
-      @allotments = Sefaz::Allotment.all
+      @pagy, @allotments = pagy(apply_scopes(Sefaz::Allotment).all)
     end
 
     def set_allotment

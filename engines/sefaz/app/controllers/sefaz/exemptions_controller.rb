@@ -6,6 +6,9 @@ module Sefaz
     before_action :set_exemptions
     before_action :set_exemption, only: %i[edit update destroy]
 
+    has_scope :by_cpf
+    has_scope :by_return
+
     def index; end
 
     def new
@@ -36,7 +39,7 @@ module Sefaz
     end
 
     def set_exemptions
-      @exemptions = @allotment.exemptions.all
+      @exemptions = apply_scopes(@allotment.exemptions).all
     end
 
     def set_exemption

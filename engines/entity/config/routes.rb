@@ -1,7 +1,10 @@
 Entity::Engine.routes.draw do
   root 'cadastres#index'
 
-  resources :cadastres, path: 'cadastros'
+  resources :cadastres, path: 'cadastros' do 
+    resources :members, path: 'membros'
+    resources :presidents, path: 'presidentes'
+  end
 
   resources :cadastre_situations, path: 'cadastro-situacoes'
   resources :member_jobs, path: 'diretoria-cargos'

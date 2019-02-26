@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    modules:
+      'pivotal/sector': 'Setor'
+    attributes:
+      'pivotal/sector':
+        name: "Nome"
+        acron: "Sigla"
+        prefex: "Prefixo"
+        father_id: "Setor pai"
+        responsible_id: "Responśavel"
+        status: "Ativo?"
+        code: "Código"
+        color: "Cor"

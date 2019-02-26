@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'pivotal/dashboard#index'
+
   mount Address::Engine     => '/imoveis',      as: :address
   mount Api::Engine         => '/api',          as: :api
   mount Attendance::Engine  => '/atendimento',  as: :attendance
@@ -9,8 +11,10 @@ Rails.application.routes.draw do
   mount Cpl::Engine         => '/cpl',          as: :cpl
   mount Helpdesk::Engine    => '/helpdesk',     as: :helpdesk
   mount Juridical::Engine   => '/juridico',     as: :juridical
-  mount Pivotal::Engine     => '/',             as: :pivotal
+  mount Pivotal::Engine     => '/nucleo',       as: :pivotal
+  mount Protocol::Engine    => '/protocolo',    as: :protocol
   mount Sefaz::Engine       => '/sefaz',        as: :sefaz
-  mount Person::Engine      => '/pessoal',      as: :person
 
+
+  get 'unpermitted', to: 'errors#unpermitted'
 end

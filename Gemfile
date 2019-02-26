@@ -20,6 +20,8 @@ gem 'haml', '~> 5.0.4'
 gem 'has_scope', '~> 0.7.2'
 gem 'simple_form', '~> 4.1.0'
 gem 'pagy', '~> 1.3.3'
+gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7'
+gem 'roo', '~> 2.7.1'
 
 
 gem 'bd_money', '~> 0.0.14'
@@ -38,8 +40,6 @@ gem 'savon', '~> 2.12.0'
 
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'carrierwave-base64', '~> 2.7.0'
-
-
 
 gem 'support', github: 'codhab/support', branch: 'master'
 
@@ -68,7 +68,7 @@ path 'engines' do
   gem 'entity'
   gem 'helpdesk'
   gem 'juridical'
-  gem 'person'
   gem 'pivotal'
+  gem 'protocol'
   gem 'sefaz'
 end
