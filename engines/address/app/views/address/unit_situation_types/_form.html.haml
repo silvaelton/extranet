@@ -1,0 +1,5 @@
+= simple_form_for @unit_situation_type, remote: true do |f|
+  = f.input :name, placeholder: 'Digite um nome'
+  = f.input :description, placeholder: 'Digite uma descrição'
+  = f.input :status, as: :select, include_blank: 'selecione...'
+  = f.button :submit, class: 'btn btn-success'

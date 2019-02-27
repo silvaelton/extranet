@@ -1,0 +1,37 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@unit_situation_types.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nº
+          %th Nome
+          %th Descrição
+          %th Status
+          %th
+      %tbody
+        - if @unit_situation_types.present?
+          -@unit_situation_types.each do |unit_situation_type|
+            %tr{class: "row-type-#{unit_situation_type.id}"}
+              %td.collapsing= unit_situation_type.id
+              %td= unit_situation_type.name
+              %td= unit_situation_type.description
+              %td.collapsing= unit_situation_type.status.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", edit_unit_situation_type_path(unit_situation_type), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", unit_situation_type_path(unit_situation_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

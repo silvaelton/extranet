@@ -1,0 +1,9 @@
+- if @region.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
+- else
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-type-#{@region.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+  update_js();

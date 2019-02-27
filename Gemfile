@@ -37,6 +37,7 @@ gem 'rqrcode_png', '~> 0.1.5'
 gem 'nokogiri', '~> 1.10.1'
 gem 'bootstrap-datepicker-rails'
 gem 'savon', '~> 2.12.0'
+gem 'bd_money', '~> 0.0.14'
 
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'carrierwave-base64', '~> 2.7.0'
