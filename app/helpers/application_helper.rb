@@ -10,7 +10,9 @@ module ApplicationHelper
     if current_user.present? && current_user.administrator
       user_permitted = true
     else
-      permissions = Pivotal::EnginePermission.where(path: options, status: true)
+      attr_options = options.present? ? options : nil
+
+      permissions = Pivotal::EnginePermission.where(path: attr_options, status: true) rescue nil
 
       if permissions.present?
         user_permissions = Pivotal::UserPermission.where(user_id: current_user.id).where(permission_id: permissions)

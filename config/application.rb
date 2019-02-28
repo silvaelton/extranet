@@ -17,6 +17,11 @@ module Extranet
     config.assets.paths << Rails.root.join('vendor', 'templates')
     config.assets.paths << Rails.root.join('vendor', 'stylesheets')
     config.assets.paths << Rails.root.join('vendor', 'javascripts')
-
+     
+    config.autoload_paths << Rails.root.join('lib', 'generators')
+  
+    config.generators do |g|
+      g.template_engine :haml
+    end
   end
 end
