@@ -8,4 +8,5 @@ Address::Engine.routes.draw do
   resources :regions, path: 'regioes'
   resources :unit_use_types, path: 'unidade-tipo-usos'
   resources :unit_situation_types, path: 'unidade-tipo-situacoes'
+  resources :unit_cadastre_situations, path: 'unidade-cadastro-situacoes'
 end
