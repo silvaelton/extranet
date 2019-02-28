@@ -22,7 +22,7 @@
               %td.collapsing= instancy_place.id
               %td= instancy_place.name
               %td= instancy_place.instancy.name rescue nil
-              %td.collapsing= instancy_place.status? ? "Ativo" : "Inativo"
+              %td.collapsing= instancy_place.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

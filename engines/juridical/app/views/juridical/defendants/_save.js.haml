@@ -1,0 +1,9 @@
+- if @defendant.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
+- else
+  $(".index-defendant-content").html("#{escape_javascript(render 'juridical/defendants/index')}");
+  $(".row-defendant-#{@defendant.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+  update_js();

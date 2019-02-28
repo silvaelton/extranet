@@ -1,0 +1,8 @@
+!!!
+%html
+  %body
+    %h3= "Dados do usuário"
+    %p= "Nome: #{@staff.name}"
+    %p= "Matrícula: #{@staff.code}"
+    %p= "Cargo: #{@staff.job.name}"
+    %p= "Setor: #{@staff.sector_current.name}"

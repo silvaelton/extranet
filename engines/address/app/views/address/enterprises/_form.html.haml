@@ -1,0 +1,35 @@
+= simple_form_for @enterprise, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, placeholder: 'Digite um nome'
+    .col-md-4
+      = f.input :value, as: :string, input_html:{ class: 'money' }
+  .row
+    .col-md-6
+      = f.input :company_id, collection: Address::EnterpriseCompany.all, prompt: 'Selecione'
+    .col-md-6
+      = f.input :number_document
+  .row
+    .col-md-6
+      = f.input :entity, as: :select
+    .col-md-6
+      = f.input :entity_id, collection: Entity::Cadastre.all, prompt: 'Selecione'
+  .row
+    .col-md-4
+      = f.input :number_assessment
+    .col-md-4
+      = f.input :manifestation_allow, as: :select
+    .col-md-4
+      = f.input :web_url
+  .row
+    .col-md-4
+      = f.input :city_id, collection: Support::Common::City.where(state_id: 7), prompt: 'Selecione'
+    .col-md-3
+      = f.input :lat
+    .col-md-3
+      = f.input :lat
+    .col-md-2
+      = f.input :status, as: :select
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

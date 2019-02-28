@@ -1,0 +1,50 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@enterprises.count rescue 0}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th #
+          %th Nome
+          %th Qtd. Tipologias
+          %th Empresa Resp.
+          %th Unidades
+          %th Edital
+          %th Situação
+          %th Indicados
+          %th.collapsing
+      %tbody
+        - if @enterprises.present?
+          - @enterprises.each do |enterprise|
+            %tr{class: "row-type-#{enterprise.id}"}
+              %td= enterprise.id
+              %td= enterprise.name
+              %td= enterprise.enterprise_typologies.count rescue 0
+              %td= enterprise.company.name rescue t(:no_info)
+              %td= enterprise.enterprise_typologies.sum(:unit_quantity) rescue 0
+              %td= enterprise.number_document
+              %td= enterprise.status.status_format
+              %td
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Visualizar", address.enterprise_path(enterprise), remote: true, class: 'dropdown-item'
+                    = link_to "Detalhar", address.enterprise_path(enterprise), class: 'dropdown-item'
+                    = link_to "Editar", address.edit_enterprise_path(enterprise), remote: true, class: 'dropdown-item'
+          %tfoot
+            %tr
+              %td.text-center{colspan: 10}
+                = pagy_bootstrap_nav(@pagy).html_safe
+        - else
+          %tr
+            %td{colspan: 9}
+              %i Nenhum registro encontrado.

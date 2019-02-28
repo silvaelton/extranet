@@ -1,0 +1,22 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Detalhamento
+      .float-right.group-action
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    .row.mb-3
+      .col-12
+        %h5 #{@enterprise.company.name rescue nil}
+        %h3
+          %b #{@enterprise.name}
+        %h5 #{@enterprise.enterprise_typologies.sum(:unit_quantity) rescue 0} unidades
+    .row
+      .col-12
+        .index-president-content
+          = render 'detail'
+    .row
+      .col-12
+        .index-typology-content
+          = render 'address/enterprise_typologies/index'

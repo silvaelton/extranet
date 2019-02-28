@@ -7,6 +7,7 @@
           %i.fa.fa-minus
     .card-body.card-list
       = link_to "Novo tipo de solicitação", new_request_type_path, class: 'filter-nav-item',  remote: true
+      %hr.divider
       = link_to "Gestão de situações", request_situations_path
       = link_to "Gestão de tipos de isenção", exemption_types_path
       = link_to "Gestão de lotes de isenção", allotments_path

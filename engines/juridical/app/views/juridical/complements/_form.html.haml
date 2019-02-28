@@ -1,18 +1,18 @@
 = simple_form_for [@legal_advice, @complement], remote: true do |f|
   .row
     .col-md-12
-      = f.input :document_type_id, as: :select, collection: Support::Protocol::DocumentType.all, prompt: 'selecione...'
+      = f.input :document_type_id, as: :select, collection: Protocol::DocumentType.all, prompt: 'selecione...'
   .row
     .col-md-6
-      = f.input :distribution_date, as: :string, input_html: { class: 'datepicker' ,  placeholder: '00/00/0000', value: (@complement.distribution_date) ? localize(f.object.distribution_date) : nil}
+      = f.input :distribution_date, as: :string, input_html: { name: 'distribution_date', class: 'datepicker',  value: (@complement.distribution_date) ? localize(f.object.distribution_date) : nil}
     .col-md-6
-      = f.input :end_date, as: :string, input_html: { class: 'datepicker', placeholder: '00/00/0000', value: (@complement.end_date) ? localize(f.object.end_date) : nil}
+      = f.input :end_date, as: :string, input_html: { name: 'end_date', class: 'datepicker', value: (@complement.end_date) ? localize(f.object.end_date) : nil}
   .row
     .col-md-12
       = f.input :complement, as: :text, input_html: { placeholder: 'Complementos', rows: 4}
   .row
     .col-md-6
-      = f.input :responsible_lawyer_id, collection: Pivotal::User.where(sector_current_id: 5, status: true), prompt: 'selecione...'
+      = f.input :responsible_lawyer_id, collection: Pivotal::User.where(sector_id: 5, status: true), prompt: 'selecione...'
     .col-md-6
       = f.input :advice_type_id, as: :select, collection: Juridical::AdviceType.all, prompt: 'selecione...'
   .row
@@ -34,7 +34,6 @@
 
         html = "<option value>selecione...</option>"
         if(data.length > 0) {
-          console.log(data)
           for(var i = 0; i < data.length; i++) {
             html += "<option value='"+data[i].id+"'>"+data[i].name+"</option>"
           }

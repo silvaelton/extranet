@@ -1,0 +1,12 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar região", new_region_path, class: 'filter-nav-item', remote: true
+      %hr.divider
+      = link_to "Gestão de tipos de atividade", activity_types_path, class: 'filter-nav-item'
+      = link_to "Gestão de tipos de registro", registry_types_path, class: 'filter-nav-item'

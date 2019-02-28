@@ -1,0 +1,16 @@
+%h6
+  = link_to "<i class='fa fa-pencil'></i>".html_safe, address.edit_enterprise_path(@enterprise), remote: true
+  Dados
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Edital
+      %th Nº do processo
+      %th Situação
+      %th Entidade
+  %tbody
+    %tr
+      %td=@enterprise.number_document
+      %td=@enterprise.number_assessment
+      %td=@enterprise.status.status_format
+      %td=@enterprise.entity.name rescue t(:no_info)
