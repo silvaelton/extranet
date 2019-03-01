@@ -1,0 +1,23 @@
+= simple_form_for [@ticket_category, @category_step], remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, placeholder: 'Digite o nome'
+    .col-md-4
+      = f.input :resume, placeholder: 'Digite o código'
+  .row
+    .col-md-12
+      = f.input :document_required, as: :select, include_blank: 'selecione...'
+  .row
+    .col-md-12
+      = f.input :screen_order, placeholder: 'Digite um texto de ajuda'
+  .row
+    .col-md-6
+      = f.input :status, as: :select, include_blank: 'selecione...'
+    .col-md-6
+      = f.input :allow_confirmation, as: :select, include_blank: 'selecione...'
+    .col-md-6
+      = f.input :required, as: :select, include_blank: 'selecione...'
+  .divider-sm
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

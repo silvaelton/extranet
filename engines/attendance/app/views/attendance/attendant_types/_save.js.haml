@@ -1,5 +1,5 @@
 - if @attendant_type.errors.any?
-  $("#modal").html("#{escape_javascript(render 'form')}");
+  $("#modal").html("#{escape_javascript(render 'new')}");
   update_js();
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");

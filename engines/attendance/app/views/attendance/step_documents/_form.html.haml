@@ -1,0 +1,6 @@
+= simple_form_for @step_document, url:ticket_category_ticket_category_step_step_documents_path(@ticket_category, @category_step), remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :document_type_id, as: :select, collection: Attendance::DocumentType.all, label: false
+    .col-md-4
+      = f.button :submit, class: 'btn btn-success'

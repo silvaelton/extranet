@@ -1,9 +1,7 @@
 = simple_form_for @station, remote: true do |f|
   .row
-    .col-md-6
+    .col-md-12
       = f.input :name, placeholder: 'Digit o nome'
-    .col-md-6
-      = f.input :responsible_id, as: :select, collection: Pivotal::User.all, include_blank: 'Selecione...'
   .row
     .col-md-4
       = f.input :lat, placeholder: 'Digit a latitude'

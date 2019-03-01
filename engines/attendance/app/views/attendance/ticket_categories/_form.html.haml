@@ -1,0 +1,40 @@
+= simple_form_for @ticket_category, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, placeholder: 'Digite o nome'
+    .col-md-4
+      = f.input :status, as: :select, include_blank: 'selecione...'
+  .row
+    .col-md-3
+      = f.input :started_at, as: :string, input_html: {class: 'date'}
+    .col-md-3
+      = f.input :ended_at, as: :string, input_html: {class: 'date'}
+    .col-md-3
+      = f.input :unique, as: :select, include_blank: 'selecione...'
+    .col-md-3
+      = f.input :due, as: :select, include_blank: 'selecione...'
+  .row
+    .col-md-3
+      = f.input :filter_situation, as: :select, include_blank: 'selecione...'
+    .col-md-3
+      = f.input :filter_convocation, as: :select, include_blank: 'selecione...'
+    .col-md-3
+      = f.input :filter_program, as: :select, include_blank: 'selecione...'
+    .col-md-3
+      = f.input :filter_sql, as: :select, include_blank: 'selecione...'
+  .row
+    .col-md-12
+      = f.input :filter_situation_id, placeholder: 'Digite o nome'
+  .row
+    .col-md-12
+      = f.input :filter_convocation_id, placeholder: 'Digite o código'
+  .row
+    .col-md-12
+      = f.input :filter_program_id, placeholder: 'Digite o código'
+  .row
+    .col-md-12
+      = f.input :filter_sql_content, placeholder: 'Digite o código'
+  .divider-sm
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
