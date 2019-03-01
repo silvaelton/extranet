@@ -1,0 +1,9 @@
+- if @enterprise_typology.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
+- else
+  $(".index-typology-content").html("#{escape_javascript(render 'address/enterprise_typologies/index')}");
+  $(".row-typology-#{@enterprise_typology.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+  update_js();

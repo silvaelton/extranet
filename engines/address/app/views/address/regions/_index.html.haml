@@ -1,0 +1,37 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@regions.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nº
+          %th Nome
+          %th Descrição
+          %th Status
+          %th
+      %tbody
+        - if @regions.present?
+          -@regions.each do |region|
+            %tr{class: "row-type-#{region.id}"}
+              %td.collapsing= region.id
+              %td= region.name
+              %td= region.description
+              %td.collapsing= region.status.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", edit_region_path(region), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", region_path(region), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.

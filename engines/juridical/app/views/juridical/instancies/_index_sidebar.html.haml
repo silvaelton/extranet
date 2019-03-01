@@ -1,12 +1,12 @@
 #sidebar
-  .divider
-    .card
-      .card-body.card-header.border-left-yellow
-        .card-title
-          Operações
-          = link_to "javascript:void(0)", class: "collapsing-link" do
-            %i.fa.fa-minus
-      .card-body.card-list
-        = link_to "Adicionar instância", new_instancy_path, class: 'filter-nav-item', remote: true
-        = link_to "Gestão de acompanhamentos", legal_advices_path, class: 'filter-nav-item'
-        = link_to "Gestão de tipo de ações", lawsuits_path, class: 'filter-nav-item'
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar instância", new_instancy_path, class: 'filter-nav-item', remote: true
+      %hr.divider
+      = link_to "Gestão de acompanhamentos", legal_advices_path, class: 'filter-nav-item'
+      = link_to "Gestão de tipo de ações", lawsuits_path, class: 'filter-nav-item'

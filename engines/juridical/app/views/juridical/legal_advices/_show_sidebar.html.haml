@@ -6,7 +6,7 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar Complemento", new_legal_advice_complement_path(@legal_advice), class: 'filter-nav-item', remote: true
-      = link_to "Gestão de acompanhamentos", legal_advices_path, class: 'filter-nav-item'
+      = link_to "Voltar para listagem", juridical.legal_advices_path(filter_params)
+      %hr.divider
       = link_to "Gestão de instâncias", instancies_path, class: 'filter-nav-item'
       = link_to "Gestão de tipo de ação", lawsuits_path, class: 'filter-nav-item'

@@ -1,0 +1,44 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Visualização de empreendimento
+      %a.close
+        %i.fa.fa-close
+    .modal-body
+      .row.mb-5
+        .col-12
+          = link_to "Clique aqui para editar ou detalhar as informações", address.enterprise_path(@enterprise), class: 'btn btn-success btn-block'
+
+      .row
+        .col-12
+          %h4
+            %b= @enterprise.name
+          %h6= @enterprise.company.name rescue nil
+          %h6 #{@enterprise.enterprise_typologies.sum(:unit_quantity) rescue 0} unidades
+      .row.mt-4
+        .col-12
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Edital
+                %th Nº do processo
+            %tbody
+              %tr
+                %td= @enterprise.number_document
+                %td= @enterprise.number_assessment
+      .row
+        .col-12
+          %h6 Tipologia
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Nome
+                %th Área
+                %th Unidades
+            %tbody
+              - if @enterprise.enterprise_typologies.present?
+                - @enterprise.enterprise_typologies.each do |typology|
+                  %tr
+                    %td= typology.name rescue nil
+                    %td= typology.private_area rescue nil
+                    %td= typology.unit_quantity rescue nil

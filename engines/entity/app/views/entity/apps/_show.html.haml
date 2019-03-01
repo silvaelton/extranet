@@ -1,0 +1,10 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Detalhamento
+  .card-body
+    .row.mb-3
+      .col-12.text-center
+
+        #iframe-app{style: "background-image: url(#{image_url('mobile-device.png')})"}
+          %iframe{allowfullscreen: "", frameborder: "0", height: "315", src: "#{@iframe_url}", width: "560", class: "app-iframe"}

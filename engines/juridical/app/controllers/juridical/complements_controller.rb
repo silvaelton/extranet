@@ -3,12 +3,7 @@ require_dependency 'juridical/application_controller'
 module Juridical
   class ComplementsController < ApplicationController
     before_action :set_legal_advice, except: [:update_status, :resend_email]
-    before_action :set_complements, only: [:index, :create, :destroy, :update]
     before_action :set_complement, only: [:edit, :destroy, :update, :show]
-
-    def index
-      @user = current_user
-    end
 
     def new
       @complement = @legal_advice.complements.new
@@ -16,12 +11,8 @@ module Juridical
 
     def create
       @complement = @legal_advice.complements.new(complement_params)
-      @complement.staff_id = current_user.id
+      @complement.user_id = current_user.id
       @complement.save
-      begin
-       Juridical::InformationMailer.open_complement(@complement).deliver_now! if @complement.responsible_lawyer_id.present?
-      rescue
-      end
     end
 
     def resend_email
@@ -65,12 +56,8 @@ module Juridical
     def complement_params
       params.require(:complement).permit(:document_type_id, :lawsuit_id, :instancy_place_id,
                                          :distribution_date, :end_date, :complement,
-                                         :responsible_lawyer_id, :advice_type_id, :file_path, :status,
-                                         :complement_father_id, :legal_advice_id)
-    end
+                                         :responsible_lawyer_id, :advice_type_id, :file_path, :status)
 
-    def set_complements
-      @complements = @legal_advice.complements.all
     end
 
     def set_complement

@@ -28,7 +28,7 @@ module Juridical
 
     def create
       @legal_advice = Juridical::LegalAdvice.new(set_legal_advice_params)
-      @legal_advice.staff_id = current_user.id
+      @legal_advice.user_id = current_user.id
       @legal_advice.save
       begin
         Juridical::InformationMailer.open(@legal_advice.responsible_lawyer_id, @legal_advice).deliver_now!
@@ -47,10 +47,7 @@ module Juridical
 
     def show
       @return = Juridical::ReturningTribunalService.new(@legal_advice).get_array
-
       @assessment = Protocol::Assessment.where('description_subject ilike ? ', "%#{@legal_advice.process_number}%").first rescue nil
-      @complainants = @legal_advice.complainants.all
-      @defendants = @legal_advice.defendants.all
     end
 
     def edit; end

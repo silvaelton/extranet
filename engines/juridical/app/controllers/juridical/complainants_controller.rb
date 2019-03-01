@@ -3,10 +3,7 @@ require_dependency 'juridical/application_controller'
 module Juridical
   class ComplainantsController < ApplicationController
     before_action :set_legal_advice
-    before_action :set_complainants, only: [:index, :create, :destroy, :update]
     before_action :set_complainant, only: [:edit, :destroy, :update]
-
-    def index; end
 
     def new
       @complainant = @legal_advice.complainants.new
@@ -14,9 +11,8 @@ module Juridical
 
     def create
       @complainant = @legal_advice.complainants.new(complainant_params)
-      @complainant.staff_id = current_user.id
+      @complainant.user_id = current_user.id
       @complainant.save
-      @legal_advices = Juridical::LegalAdvice.order(created_at: :desc).includes([:lawsuit, :complements]).paginate(:page => params[:page], :per_page => 20)
     end
 
     def edit; end
@@ -33,10 +29,6 @@ module Juridical
 
     def complainant_params
       params.require(:complainant).permit(:name)
-    end
-
-    def set_complainants
-      @complainants = @legal_advice.complainants.all
     end
 
     def set_legal_advice

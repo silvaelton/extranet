@@ -1,0 +1,37 @@
+- if @return.present? && !@return.empty?
+  %h6
+    = link_to "<i class='fa fa-plus'></i>".html_safe, new_legal_advice_complement_path(@legal_advice), remote: true
+    Complemento
+  %table.table.table-bordered.table-striped.table-celled
+    %thead
+      %tr
+        %th Data
+        %th Descrição
+        %th Complemento
+        %th Advogado responsável
+        %th Status
+        %th
+    %tbody
+      - @return.each_with_index do |data, index|
+        - if data.present?
+          %tr{class: "row-complement-#{data[5] rescue 0}"}
+            %td= data[0].format_datetime if data[0].present?
+            %td= data[1]
+            %td= data[2]
+            %td= data[3]
+            %td
+              - if data[4]
+                .btn.btn-success.btn-sm Aberto
+              - if data[4] == false
+                .btn.btn-danger.btn-sm Fechado
+            %td.collapsing
+              - if data[5].present?
+                .dropdown
+                  %button.btn.btn-success.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Reenviar email", resend_email_path(complement_id: data[5]), class: 'dropdown-item',data: {disable_with: "carregando..."}, class: 'dropdown-item'
+                    = link_to "Visualizar", legal_advice_complement_path(@legal_advice, data[5]), remote: true, title: "visualizar",  class: 'dropdown-item',data: {disable_with: "carregando..."}
+                    = link_to "Editar", edit_legal_advice_complement_path(@legal_advice, data[5]), title: "editar",  class: 'dropdown-item',data: {disable_with: "carregando..."}, remote: true
+                    = link_to "Excluir", legal_advice_complement_path(@legal_advice, data[5]), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, title: 'Deletar', class: 'dropdown-item'

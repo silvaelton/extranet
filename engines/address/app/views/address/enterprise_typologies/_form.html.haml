@@ -1,0 +1,26 @@
+= simple_form_for [@enterprise, @enterprise_typology], remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, placeholder: 'Digite um nome'
+    .col-md-4
+      = f.input :unit_quantity, as: :string
+  .row
+    .col-md-12
+      = f.input :description
+  .row
+    .col-md-4
+      = f.input :home_type
+    .col-md-4
+      = f.input :private_area
+    .col-md-4
+      = f.input :status, as: :select
+  .row
+    .col-md-4
+      = f.input :value_start, as: :string, input_html: { class: 'money', placeholder: 'Ex. 1.000'}
+    .col-md-4
+      = f.input :value_end, as: :string, input_html: { class: 'money', placeholder: 'Ex. 1.000'}
+    .col-md-4
+      = f.input :value_general, as: :string, input_html: { class: 'money', placeholder: 'Ex. 1.000'}
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

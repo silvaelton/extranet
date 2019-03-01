@@ -1,87 +1,29 @@
 .card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Detalhamento
+      .float-right.group-action
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
   .card-body
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Número do Processo
-          %th Orgão
-          %th Valor da Ação
-          %th Valor da Condenação
-      %tbody
-        %tr
-          %td= @legal_advice.process_number
-          %td= @legal_advice.agency
-          %td= @legal_advice.lawsuit_value
-          %td= @legal_advice.condemnation_value
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Veredito
-          %th Probalidade
-          %th Instância
-          %th Local da Instância
-      %tbody
-        %tr
-          %td= @legal_advice.veredict
-          %td= @legal_advice.probability
-          %td= @legal_advice.instancy_place.instancy.name rescue t(:no_information)
-          %td= @legal_advice..instancy_place.name rescue t(:no_information)
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Tipo de Ação
-          %th Tipo de Processo
-          %th Autor(es)
-          %th Réu(s)
-      %tbody
-        %tr
-          %td= @legal_advice.lawsuit.name rescue t(:no_info)
-          %td= @legal_advice.process_type == false ? "Normal" : "Eletrônico"
-          %td
-            - @complainants.each do |c|
-              = c.name.upcase if c.name.present?
-              %br
-          %td
-            - @defendants.each do |c|
-              = c.name.upcase if c.name.present?
-              %br
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Data de inclusão
-          %th Status
-          %th Processo Administrativo
-          %th Advogado Responsável
-      %tbody
-        %tr
-          %td= @legal_advice.created_at.strftime("%d/%m/%Y %H:%M:%S")
-          %td
-            - if @legal_advice.status == true
-              .btn.btn-success.btn-sm Aberto
-            - else
-              .btn.btn-danger.btn-sm Fechado
-          %td= @legal_advice.assessment_number rescue t(:no_info)
-          %td= @legal_advice.responsible_lawyer.name rescue t(:no_info)
-  - if @return.present? && !@return.empty?
-    .card-body
-      %table.table.table-bordered.table-striped.table-celled
-        %thead
-          %tr
-            %th Data
-            %th Descrição
-            %th Complemento
-            %th Advogado responsável
-            %th Status
-        %tbody
-          - @return.each_with_index do |data, index|
-            - if data.present?
-              %tr
-                %td= data[0].strftime('%d/%m/%Y - %H:%M:%S') if data[0].present?
-                %td= data[1]
-                %td= data[2]
-                %td= data[3]
-                %td
-                  - if data[4]
-                    .btn.btn-success.btn-sm Aberto
-                  - if data[4] == false
-                    .btn.btn-danger.btn-sm Fechado
+    .row.mb-3
+      .col-12
+        %h5 #{ @legal_advice.lawsuit.name rescue t(:no_info)}
+        %h3
+          %b #{@legal_advice.process_number}
+        %h6 #{@legal_advice.status ? "Aberto" : "Fechado"}
+    .row
+      .col-12
+        .index-detail
+          = render 'detail'
+    .row
+      .col-12
+        .index-complainant-content
+          = render 'juridical/complainants/index'
+    .row
+      .col-12
+        .index-defendant-content
+          = render 'juridical/defendants/index'
+    .row
+      .col-12
+        .index-complement-content
+          = render 'complement'

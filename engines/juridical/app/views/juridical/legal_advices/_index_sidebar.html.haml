@@ -14,6 +14,7 @@
         = f.input :by_suitor, label: "Partes", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por parte interessada'}
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: {  disable_with:  t(:disable_with)}
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
   .divider
     .card
       .card-body.card-header.border-left-yellow
@@ -23,5 +24,6 @@
             %i.fa.fa-minus
       .card-body.card-list
         = link_to "Adicionar acompanhamento", new_legal_advice_path, class: 'filter-nav-item', remote: true
+        %hr.divider
         = link_to "Gestão de instâncias", instancies_path, class: 'filter-nav-item'
         = link_to "Gestão de tipo de ação", lawsuits_path, class: 'filter-nav-item'

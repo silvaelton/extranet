@@ -61,6 +61,7 @@ module Juridical
                @data_return[index][1] = c.complement
                @data_return[index][3] = c.responsible_lawyer.name rescue nil
                @data_return[index][4] = c.status
+               @data_return[index][5] = c.id
 
               index +=1
             end

@@ -2,6 +2,15 @@ body {
   background-color: #f6f8fd !important;
 }
 
+
+body::-webkit-scrollbar {
+  width: 0.7em;
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: #f5b302;
+}
+
 .collapsing {
   width: 1px;
   white-space: nowrap;
@@ -94,3 +103,19 @@ body {
 .unpermitted {
   color: #dadada !important;
 }
+
+#iframe-app {
+  width: 400px;
+  height: 700px;
+  background-repeat: no-repeat;
+  background-size: 85% auto;
+  background-position: center;
+  margin: 0 auto;
+  padding: 75px 45px 70px 42px;
+}
+
+#iframe-app iframe {
+  width: 100%;
+  height: 100%;
+}
+

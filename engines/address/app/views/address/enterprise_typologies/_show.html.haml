@@ -1,0 +1,38 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Detalhamento
+      %a.close
+        %i.fa.fa-close
+    .modal-body
+      %table.table.table-bordered.table-striped.table-celled
+        %thead
+          %tr
+            %th Nome
+            %th Unidades
+            %th Situação
+        %tbody
+          %tr
+            %td= @enterprise_typology.name
+            %td= @enterprise_typology.unit_quantity
+            %td= @enterprise_typology.status.status_format
+        %thead
+          %tr
+            %th Descrição
+            %th Tipo de imóvel
+            %th Área
+        %tbody
+          %tr
+            %td= @enterprise_typology.description
+            %td= @enterprise_typology.home_type
+            %td= @enterprise_typology.private_area
+        %thead
+          %tr
+            %th Valor inicial
+            %th Valor final
+            %th Valor do imóvel
+        %tbody
+          %tr
+            %td= number_to_currency @enterprise_typology.value_start
+            %td= number_to_currency @enterprise_typology.value_end
+            %td= number_to_currency @enterprise_typology.value_general

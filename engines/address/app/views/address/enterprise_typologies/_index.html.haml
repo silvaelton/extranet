@@ -1,0 +1,32 @@
+%h6
+  = link_to "<i class='fa fa-plus'></i>".html_safe, address.new_enterprise_enterprise_typology_path(@enterprise), remote: true
+  Tipologias
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Descrição
+      %th Tipo de imóvel
+      %th Área
+      %th Unidades
+      %th.collapsing
+  %tbody
+    - if @enterprise.enterprise_typologies.present?
+      - @enterprise.enterprise_typologies.each do |enterprise_typology|
+        %tr{class: "row-typology-#{enterprise_typology.id}"}
+          %td= enterprise_typology.name
+          %td= enterprise_typology.home_type
+          %td= enterprise_typology.private_area
+          %td= enterprise_typology.unit_quantity
+          %td.collapsing
+            .dropdown
+              %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-cog
+                %i.ti-angle-down
+              .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                = link_to "Visualizar", address.enterprise_enterprise_typology_path(@enterprise, enterprise_typology), remote: true, class: 'dropdown-item'
+                = link_to "Editar", address.edit_enterprise_enterprise_typology_path(@enterprise, enterprise_typology), remote: true, class: 'dropdown-item'
+                = link_to "Excluir", address.enterprise_enterprise_typology_path(@enterprise, enterprise_typology), method: :delete, data: {confirm: t(:confirm)}, remote: true, class: 'dropdown-item'
+    - else
+      %tr
+        %td{colspan: 9}
+          %i Nenhum registro encontrado.
