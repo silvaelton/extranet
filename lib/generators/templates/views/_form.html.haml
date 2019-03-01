@@ -1,0 +1,9 @@
+= simple_form_for @<%= @model_name %>, remote: true do |f|
+  <%- @attributes.each do |attr| %>
+    .row
+      .col-12 
+        = f.input :<%= attr %>, as: :string
+  <% end %>
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }
