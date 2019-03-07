@@ -1,7 +1,7 @@
 require_dependency "<%= @engine_name %>/application_controller"
 
 module <%= @engine_name.camelcase %>
-  class <%= @model_name.camelcase %>Controller < ApplicationController
+  class <%= @model_name.pluralize.camelcase %>Controller < ApplicationController
     before_action :set_<%= @model_name.pluralize %>
     before_action :set_<%= @model_name %>, only: [:edit, :show, :update, :destroy]
     
@@ -31,7 +31,7 @@ module <%= @engine_name.camelcase %>
     private
 
     def set_params
-      params.require(:<%= @model_name %>).permit(:name)
+      params.require(:<%= @model_name %>).permit(<%- @attributes.eac)
     end
 
     def set_<%= @model_name.pluralize %>

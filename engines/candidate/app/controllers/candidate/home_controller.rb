@@ -1,7 +1,7 @@
 require_dependency 'candidate/application_controller'
 
 module Candidate
-  class DashboardController < ApplicationController
+  class HomeController < ApplicationController
     
     def index
     end 

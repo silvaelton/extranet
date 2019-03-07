@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: cf86e80d333b14d19c5f251079bd97b2e272e790
+  revision: 6c9d80d495e8dc90e076a7daf6ec1ff35c222d3e
   branch: master
   specs:
     support (0.1.0)
@@ -145,8 +145,8 @@ GEM
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    font-awesome-rails (4.7.0.4)
-      railties (>= 3.2, < 6.0)
+    font_awesome5_rails (0.5.0)
+      railties (>= 4.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gyoku (1.3.1)
@@ -332,7 +332,7 @@ DEPENDENCIES
   email_validator (~> 1.6.0)
   entity!
   file_validators (~> 2.3.0)
-  font-awesome-rails (~> 4.7.0.4)
+  font_awesome5_rails
   haml (~> 5.0.4)
   has_scope (~> 0.7.2)
   helpdesk!

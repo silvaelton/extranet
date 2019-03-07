@@ -11,10 +11,24 @@ $(document).ready(ready);
 
 function update_js() {
   sidebar_collapsed();
+  collapse();
   close_modal();
   mask();
 }
 
+function collapse() {
+  $(".collapsing-content-link").unbind().click(function () {
+    $(this).closest(".card").children(".card-body:nth-child(2)").toggle();
+
+    if ($(this).children("i").hasClass('fa-plus')) {
+      $(this).children("i").removeClass('fa-plus');
+      $(this).children("i").addClass('fa-minus');
+    } else {
+      $(this).children("i").addClass('fa-plus');
+      $(this).children("i").removeClass('fa-minus');
+    }
+  });
+}
 function sidebar_collapsed() {
   $(".collapsing-link").unbind().click(function() {
     $(this).closest(".card").children(".card-body:nth-child(2)").toggle();

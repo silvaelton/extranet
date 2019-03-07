@@ -17,6 +17,9 @@ body::-webkit-scrollbar-thumb {
   overflow: visible !important;
 }
 
+.container-fluid {
+  padding-bottom: 100px;
+}
 
 .bg-light {
   background-color: #ffffff!important;
@@ -119,3 +122,46 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
 }
 
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.title-sm {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.title-xs {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.tr-danger {
+  background-color: #6b0510;
+  color: white;
+  
+}
+
+.tr-danger th {
+  border: 1px solid #6b0510;
+}
+
+.table thead th {
+  border-bottom: 2px solid #b5b5b5;
+}
+
+.invisible {
+  display: none;
+}
+
+
+#candidate-content .content {
+  margin-top: 15px;
+}
