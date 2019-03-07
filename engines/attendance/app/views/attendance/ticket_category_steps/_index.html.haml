@@ -3,9 +3,10 @@
     %h5 
       %b Categoria: 
       #{@ticket_category.name}
-
-    = link_to "+", new_ticket_category_ticket_category_step_path(@ticket_category), remote: true, data: { disable_with: t(:disable_with)}
-    Etapas
+    %br
+    %h6
+      = link_to "<i class='fa fa-plus'></i>".html_safe, new_ticket_category_ticket_category_step_path(@ticket_category), remote: true, data: { disable_with: t(:disable_with)}
+      Etapas
     %table.table.table-bordered.table-striped
       %thead
         %tr

@@ -1,0 +1,44 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@activity_types.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+
+            %td name
+          
+            %td status
+          
+            %td description
+          
+      %tbody
+        - if @activity_types.present?
+          - @activity_types.each do |activity_type|
+            %tr{class: "row-activity-type-#{activity_type.id}"}
+
+                %td= activity_type.name
+              
+                %td= activity_type.status
+              
+                %td= activity_type.description
+              
+              %td
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", candidate.activity_type_path(activity_type), class: 'dropdown-item'
+                    = link_to "Editar", candidate.edit_activity_type_path(activity_type), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.activity_type_path(activity_type), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              %i Nenhum registro encontrado.
+                  

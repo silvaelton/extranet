@@ -119,3 +119,14 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
 }
 
+.my-button {
+  background-color: green;
+  border: 0;
+  margin-top: 3px;
+  margin-left: -6px;
+}
+
+.no-padding{
+  padding: 0px !important;
+}
+
