@@ -122,6 +122,7 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
 }
 
+<<<<<<< HEAD
 
 .title {
   font-size: 28px;
@@ -165,3 +166,16 @@ body::-webkit-scrollbar-thumb {
 #candidate-content .content {
   margin-top: 15px;
 }
+=======
+.my-button {
+  background-color: green;
+  border: 0;
+  margin-top: 3px;
+  margin-left: -6px;
+}
+
+.no-padding{
+  padding: 0px !important;
+}
+
+>>>>>>> 563999ab2bee0cb4dca9f1259d106da670383238

@@ -3,6 +3,8 @@ require_dependency 'support/attendance/attendant_type'
 module Attendance
   class Station < Support::Attendance::Station
 
+    validates :name, presence: true
+
     belongs_to :responsible, class_name: 'Pivotal::User'
 
     has_many :attendant_stations

@@ -1,0 +1,9 @@
+- if @category_step.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'attendance/ticket_category_steps/show')}");
+  
+  update_js();
+
+- else
+  $(".index_show_document").html("#{escape_javascript(render 'attendance/ticket_category_steps/show')}");
+
+  update_js();

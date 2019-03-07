@@ -3,6 +3,8 @@ require_dependency 'support/attendance/attendant_type'
 module Attendance
   class Attendant < Support::Attendance::Attendant
 
+    validates :staff_id,:attendant_type_id, presence: true
+
     belongs_to :staff, class_name: 'Pivotal::User'
     belongs_to :attendant_type, class_name: 'Attendance::AttendantType'
 
