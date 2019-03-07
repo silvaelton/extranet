@@ -4,15 +4,15 @@ module Candidate
   class CadastreSituationsController < ApplicationController 
     before_action :set_cadastre
     before_action :set_situation_cadastre, only: [:edit, :update, :destroy]
-    
+
     def new
-    end 
+    end
     
     def create
-    end 
+    end
     
     def edit
-    end 
+    end
 
     def update
     end
