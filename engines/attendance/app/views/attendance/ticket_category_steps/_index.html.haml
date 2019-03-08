@@ -1,0 +1,43 @@
+.row
+  .col-md-12
+    %h5 
+      %b Categoria: 
+      #{@ticket_category.name}
+    %br
+    %h6
+      = link_to "<i class='fa fa-plus'></i>".html_safe, new_ticket_category_ticket_category_step_path(@ticket_category), remote: true, data: { disable_with: t(:disable_with)}
+      Etapas
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Orden
+          %th Nome
+          %th Resumo
+          %th.collapsing Documentação obrigatória?
+          %th.collapsing Confirmação do candidato?
+          %th.collapsing Requer
+          %th
+      %tbody
+        - if @ticket_category.ticket_category_steps.present?
+          -@ticket_category.ticket_category_steps.order(:screen_order).each do |category_step|
+            %tr{class: "row-category-step-#{category_step.id}"}
+              %td.collapsing= category_step.screen_order
+              %td= category_step.name
+              %td= category_step.resume
+              %td= category_step.document_required
+              %td= category_step.allow_confirmation
+              %td= category_step.required
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Documentação", ticket_category_ticket_category_step_path(@ticket_category, category_step), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", ticket_category_ticket_category_step_path(@ticket_category, category_step), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+                    = link_to "Editar", edit_ticket_category_ticket_category_step_path(@ticket_category, category_step), class: 'dropdown-item', remote: true
+                
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum tipo de atendimento registrado.

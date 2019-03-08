@@ -1,0 +1,22 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_cnpj, as: :string, label: "Por CNPJ", input_html: { class: 'cnpj', name: :by_cnpj, value: params[:by_cnpj]}
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
+  .divider
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Exemplo", "#"

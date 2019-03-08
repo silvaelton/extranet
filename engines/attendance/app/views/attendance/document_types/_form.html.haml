@@ -1,0 +1,24 @@
+= simple_form_for @document_type, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, placeholder: 'Digite o nome'
+    .col-md-4
+      = f.input :code, placeholder: 'Digite o código'
+  .row
+    .col-md-12
+      = f.input :observation, placeholder: 'Digite uma observação'
+  .row
+    .col-md-12
+      = f.input :description, placeholder: 'Digite uma descrição'
+  .row
+    .col-md-12
+      = f.input :help_text, placeholder: 'Digite um texto de ajuda'
+  .row
+    .col-md-6
+      = f.input :label, placeholder: 'Digite um titulo'
+    .col-md-6
+      = f.input :status, as: :select, include_blank: 'selecione...'
+  .divider-sm
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

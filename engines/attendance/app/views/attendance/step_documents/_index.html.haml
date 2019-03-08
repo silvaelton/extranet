@@ -1,0 +1,22 @@
+%hr.divider
+%h8
+  Listando (#{@category_step.step_documents.count}) registro(s)
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Nº 
+      %th Documento
+      %th
+  %tbody
+
+    - if @category_step.step_documents.present?
+      -@category_step.step_documents.reject(&:new_record?).each do |document|
+        %tr{class: "row-document-#{document.id}"}
+          %td.collapsing= document.id
+          %td= document.document_type.name
+          %td.collapsing= link_to "<i class='fa fa-trash'></i>".html_safe,ticket_category_ticket_category_step_step_document_path(@ticket_category, @category_step, document), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+
+    - else
+      %tr
+        %td{colspan: 6}
+          %i Nenhum atendente registrado.

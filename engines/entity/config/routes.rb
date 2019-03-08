@@ -19,4 +19,5 @@ Entity::Engine.routes.draw do
   resources :provisional_cadastres, path: 'cadastro-eventuais'
   resources :audits, path: 'atividades'
 
+  resources :apps, path: 'aplicativo'
 end

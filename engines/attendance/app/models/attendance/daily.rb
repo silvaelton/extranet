@@ -3,6 +3,8 @@ require_dependency 'support/attendance/attendant_type'
 module Attendance
   class Daily < Support::Attendance::Daily
 
+    validates :name,:cpf, :station_id, :category_id, :daily_type_id, presence: true
+
     belongs_to :attendant, class_name: 'Attendance::Attendant'
     belongs_to :station, class_name: 'Attendance::Station'
     belongs_to :category, class_name: 'Attendance::Category'

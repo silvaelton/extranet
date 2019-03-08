@@ -52,7 +52,8 @@ class ApplicationController < ActionController::Base
   end
 
   def filter_params
-    session[:filter][engine_name] if session[:filter].present?
+    session[:filter] = {} if !session.has_key?(:filter)
+    session[:filter][engine_name] ||= nil
   end
 
   def engine_name

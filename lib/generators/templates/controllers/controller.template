@@ -1,0 +1,46 @@
+require_dependency "<%= @engine_name %>/application_controller"
+
+module <%= @engine_name.camelcase %>
+  class <%= @model_name.pluralize.camelcase %>Controller < ApplicationController
+    before_action :set_<%= @model_name.pluralize %>
+    before_action :set_<%= @model_name %>, only: [:edit, :show, :update, :destroy]
+    
+    def index;end
+
+    def show; end
+
+    def new
+      @<%= @model_name %>.new
+    end
+
+    def create
+      @<%= @model_name %>.new(set_params)
+      @<%= @model_name %>.save
+    end
+
+    def edit; end
+
+    def update
+      @<%= @model_name %>.update(set_params)
+    end
+
+    def destroy
+      @<%= @model_name %>.destroy
+    end
+
+    private
+
+    def set_params
+      params.require(:<%= @model_name %>).permit(<%- @attributes.eac)
+    end
+
+    def set_<%= @model_name.pluralize %>
+      @pagy, @<%= @model_name.pluralize %> = pagy(apply_scopes(<%= @engine_name.camelcase %>::<%= @model_name.camelcase %>).all)
+    end
+
+    def set_<%= @model_name %>
+      @<%= @model_name %> = <%= @engine_name.camelcase %>::<%= @model_name.camelcase %>.find(params[:id])
+    end
+
+  end
+end

@@ -1,0 +1,17 @@
+
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title 
+      = link_to "javascript:void(0)", class: "collapsing-content-link" do
+        9. Documento / Processo (0)
+  .card-body{style: 'display: none'}
+    .row
+      .col-12
+        %table.table.table-striped.table-bordered.table-celled
+          %thead
+            %tr
+              %th ID
+              %th Nome
+              %th CPF
+              %th RG
+              %th Dt. Nascimento

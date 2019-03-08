@@ -1,7 +1,8 @@
 /*
  *= require bootstrap/bootstrap.min
- *= require font-awesome
+ *= require font_awesome5_webfont
+ *= require font_awesome5
+ *= require bootstrap-datepicker3
  *= require style
  *= require custom
- *= require bootstrap-datepicker3
  */
