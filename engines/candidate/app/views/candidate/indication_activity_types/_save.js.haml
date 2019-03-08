@@ -1,0 +1,9 @@
+- if @indication_activity_type.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+
+- else
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-indication-activity-type-#{@indication_activity_type.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();

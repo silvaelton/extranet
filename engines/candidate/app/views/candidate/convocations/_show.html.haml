@@ -1,0 +1,47 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      .card-body
+        %table.table.table-bordered.table-striped.table-celled
+          %thead
+            %tr
+              %td{colspan: 4} Nome
+          %tbody
+            %tr
+              %td{colspan: 4}= @convocation.name
+          %thead
+            %tr
+              %td Data de inicio
+              %td Data de final
+              %td Quantidade
+              %td Programa
+          %tbody
+            %td= @convocation.start_date.format_date.format_empty
+            %td= @convocation.end_date.format_date.format_empty
+            %td= @convocation.quantity
+            %td= @convocation.program.name.format_empty
+          %thead
+            %tr
+              %td Sub-programa
+              %td Documento
+              %td Data do documento
+              %td Status
+          %tbody
+            %tr 
+              %td= @convocation.sub_program.name.format_empty
+              %td= @convocation.document
+              %td= @convocation.document_date.format_date.format_empty
+              %td= @convocation.status? ? "Ativo" : "Inativo"
+          %thead
+            %tr
+              %td{colspan: 4} Descrição
+          %tbody
+            %tr
+              %td{colspan: 4}= @convocation.description
+          %thead
+            %tr
+              %td{colspan: 4} Justificativa
+          %tbody
+            %tr
+              %td{colspan: 4}= @convocation.justify
+                        

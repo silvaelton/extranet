@@ -1,0 +1,43 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@convocations.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Nome
+          %td Justificativa
+          %td Data de inicio
+          %td Data final
+          %td Quantidade
+          %td status
+          %td 
+      %tbody
+        - if @convocations.present?
+          - @convocations.each do |convocation|
+            %tr{class: "row-convocation-#{convocation.id}"}
+              %td= convocation.name
+              %td= convocation.justify
+              %td= convocation.start_date.format_date.format_empty
+              %td= convocation.end_date.format_date.format_empty
+              %td= convocation.quantity
+              %td.collapsing= convocation.status? ? "Ativo" : "Inativo"
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", candidate.convocation_path(convocation), class: 'dropdown-item', remote: true
+                    = link_to "Editar", candidate.edit_convocation_path(convocation), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.convocation_path(convocation), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 12}
+              %i Nenhum registro encontrado.
+                  

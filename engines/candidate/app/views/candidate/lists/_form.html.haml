@@ -1,0 +1,51 @@
+= simple_form_for @list, remote: true do |f|
+  .row
+    .col-12 
+      = f.input :name, as: :string
+  .row
+    .col-3 
+      = f.input :detail, as: :select
+    .col-3 
+      = f.input :detail_column, as: :string
+    .col-3 
+      = f.input :detail_field_param, as: :string
+    .col-3 
+      = f.input :detail_url, as: :string
+  .row
+    .col-3 
+      = f.input :detail_target_blank, as: :select
+    .col-3 
+      = f.input :filter, as: :select
+    .col-3 
+      = f.input :filter_fields, as: :string
+    .col-3 
+      = f.input :filter_field_labels, as: :string
+  .row
+    .col-3 
+      = f.input :row_count, as: :select
+    .col-3 
+      = f.input :status, as: :select
+    .col-3 
+      = f.input :program_id, as: :select, collection: Support::Common::Program.all
+    .col-3 
+      = f.input :sub_program_id, as: :select, collection: Support::Common::Program.all
+  .row
+    .col-3 
+      = f.input :external, as: :select
+    .col-3 
+      = f.input :extract_xls, as: :select
+    .col-3 
+      = f.input :extract_csv, as: :select
+    .col-3 
+      = f.input :slug, as: :string
+  .row
+    .col-6 
+      = f.input :view_columns, as: :string
+    .col-6 
+      = f.input :sql, as: :string
+  .row
+    .col-12 
+      = f.input :description, as: :string
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

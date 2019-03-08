@@ -1,0 +1,13 @@
+= simple_form_for @indication_activity_type, remote: true do |f|
+  .row
+    .col-12 
+      = f.input :name, placeholder: 'Digite o nome'
+  .row
+    .col-6 
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+    .col-6 
+      = f.input :waiver, as: :select, include_blank: 'Selecione...'
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

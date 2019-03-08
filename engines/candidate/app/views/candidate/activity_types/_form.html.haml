@@ -1,17 +1,12 @@
 = simple_form_for @activity_type, remote: true do |f|
 
-    .row
-      .col-12 
-        = f.input :name, as: :string
-  
-    .row
-      .col-12 
-        = f.input :status, as: :string
-  
-    .row
-      .col-12 
-        = f.input :description, as: :string
-  
+  .row
+    .col-12
+      = f.input :name, as: :string, placeholder: 'Digite o nome'
+  .row
+    .col-6
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+
   .row
     .col-12
       = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

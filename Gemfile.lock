@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: 8b4ac06d217fd6e103f4acf1752da4876bca933d
+  revision: 6c9d80d495e8dc90e076a7daf6ec1ff35c222d3e
   branch: master
   specs:
     support (0.1.0)

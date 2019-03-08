@@ -1,0 +1,28 @@
+= simple_form_for @iptu, remote: true do |f|
+  .row
+    .col-8 
+      = f.input :name, as: :string
+    .col-4 
+      = f.input :cpf, input_html: { class: 'cpf'}
+  .row
+    .col-6 
+      = f.input :registration, as: :string
+    .col-6 
+      = f.input :city, as: :string
+  .row
+    .col-4 
+      = f.input :kind_search, as: :string
+    .col-4 
+      = f.input :year, as: :string
+    .col-4 
+      = f.input :realty_codhab, as: :string
+  .row
+    .col-12 
+      = f.input :address, as: :string
+  .row
+    .col-12 
+      = f.input :kind_realty, as: :string
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

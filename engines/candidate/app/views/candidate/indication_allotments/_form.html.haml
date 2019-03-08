@@ -1,0 +1,54 @@
+= simple_form_for @indication_allotment, remote: true do |f|
+  .row
+    .col-12 
+      = f.input :name, as: :string, placeholder: 'Digite o nome'
+  .row
+    .col-4 
+      = f.input :income_start, as: :string, placeholder: 'Renda inicial'
+    .col-4 
+      = f.input :income_end, as: :string, placeholder: 'Renda final'
+    .col-4 
+      = f.input :enterprise_id, as: :select, collection: Address::Enterprise.all, include_blank: 'Selecione...'
+  .row
+    .col-4 
+      = f.input :program_id, as: :select, collection: Support::Common::Program.all, include_blank: 'Selecione...'
+    .col-4 
+      = f.input :evaluation_entity, as: :select, include_blank: 'Selecione...'
+    .col-4 
+      = f.input :evaluation_entity_id, as: :select, collection: Entity::Cadastre.all, include_blank: 'Selecione...'
+  .row
+    .col-3
+      = f.input :only_extract, as: :select, include_blank: 'Selecione...' 
+    .col-3 
+      = f.input :ticket_id, as: :select, collection: Support::Attendance::Ticket.all, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :filter_city, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :filter_city_id, as: :select, collection: Support::Common::City.all, include_blank: 'Selecione...'
+  .row
+    .col-3 
+      = f.input :ignore_active_indicated, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :ignore_occurrence, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :demand, as: :string
+    .col-3 
+      = f.input :rii, as: :string
+  .row
+    .col-3 
+      = f.input :rie, as: :string
+    .col-3 
+      = f.input :old, as: :string
+    .col-3 
+      = f.input :special, as: :string
+    .col-3 
+      = f.input :vulnerable, as: :string
+  .row
+    .col-8 
+      = f.input :description, as: :string, placeholder: 'Digite uma descrição'
+    .col-4
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

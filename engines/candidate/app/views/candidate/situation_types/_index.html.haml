@@ -1,0 +1,46 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@situation_types.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+
+          %td name
+        
+          %td description
+        
+          %td status
+          
+          %td
+          
+      %tbody
+        - if @situation_types.present?
+          - @situation_types.each do |situation_type|
+            %tr{class: "row-situation-type-#{situation_type.id}"}
+
+              %td= situation_type.name
+            
+              %td= situation_type.description
+            
+              %td= situation_type.status? ? "Ativo" : "Inativo"
+              
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", candidate.situation_type_path(situation_type), class: 'dropdown-item'
+                    = link_to "Editar", candidate.edit_situation_type_path(situation_type), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.situation_type_path(situation_type), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              %i Nenhum registro encontrado.
+                  

@@ -1,0 +1,49 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@occurrence_targets.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+
+          %td name
+        
+          %td observation
+        
+          %td description
+        
+          %td status
+        
+          %td 
+          
+      %tbody
+        - if @occurrence_targets.present?
+          - @occurrence_targets.each do |occurrence_target|
+            %tr{class: "row-occurrence-target-#{occurrence_target.id}"}
+
+              %td= occurrence_target.name
+            
+              %td= occurrence_target.observation
+            
+              %td= occurrence_target.description
+            
+              %td= occurrence_target.status? ? "Ativo" : "Inativo"
+              
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", candidate.edit_occurrence_target_path(occurrence_target), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.occurrence_target_path(occurrence_target), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 5}
+              %i Nenhum registro encontrado.
+                  

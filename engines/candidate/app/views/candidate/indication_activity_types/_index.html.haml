@@ -1,0 +1,36 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@indication_activity_types.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Nome
+          %td Status
+          %td Desistência?
+          %td 
+      %tbody
+        - if @indication_activity_types.present?
+          - @indication_activity_types.each do |indication_activity_type|
+            %tr{class: "row-indication-activity-type-#{indication_activity_type.id}"}
+              %td= indication_activity_type.name
+              %td.collapsing= indication_activity_type.status? ? "Ativo" : "Inativo"
+              %td.collapsing= indication_activity_type.waiver? ? "Sim" : "Não"
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", candidate.edit_indication_activity_type_path(indication_activity_type), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.indication_activity_type_path(indication_activity_type), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              %i Nenhum registro encontrado.
+                  

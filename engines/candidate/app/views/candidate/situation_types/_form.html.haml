@@ -1,0 +1,15 @@
+= simple_form_for @situation_type, remote: true do |f|
+
+  .row
+    .col-8 
+      = f.input :name, as: :string
+    .col-4 
+      = f.input :status, as: :select
+
+  .row
+    .col-12 
+      = f.input :description, as: :string
+
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

@@ -5,16 +5,19 @@ module Candidate
     before_action :set_activity_types
     before_action :set_activity_type, only: [:edit, :show, :update, :destroy]
     
+    has_scope :by_name
+    has_scope :by_status
+
     def index;end
 
     def show; end
 
     def new
-      @activity_type.new
+      @activity_type = Candidate::ActivityType.new
     end
 
     def create
-      @activity_type.new(set_params)
+      @activity_type = Candidate::ActivityType.new(set_params)
       @activity_type.save
     end
 
@@ -31,7 +34,7 @@ module Candidate
     private
 
     def set_params
-      params.require(:activity_type).permit(:name)
+      params.require(:activity_type).permit(:name, :status, :description)
     end
 
     def set_activity_types

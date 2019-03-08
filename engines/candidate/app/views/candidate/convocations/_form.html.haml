@@ -1,0 +1,32 @@
+= simple_form_for @convocation, remote: true do |f|
+  .row
+    .col-12 
+      = f.input :name, as: :string, placeholder: 'Digite o nome'
+  .row
+    .col-3 
+      = f.input :start_date, as: :string,  input_html: { class: 'date', value: (@convocation.start_date) ? localize(f.object.start_date) : nil}
+    .col-3 
+      = f.input :end_date, as: :string,  input_html: { class: 'date', value: (@convocation.end_date) ? localize(f.object.end_date) : nil}
+    .col-3 
+      = f.input :quantity
+    .col-3 
+      = f.input :program_id, as: :select, collection: Support::Common::Program.all, include_blank: 'Selecione...'
+  .row
+    .col-3 
+      = f.input :sub_program_id, as: :select, collection: Support::Common::Program.all, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :document, placeholder: 'Digite o documento'
+    .col-3 
+      = f.input :document_date, as: :string,  input_html: { class: 'date', value: (@convocation.document_date) ? localize(f.object.document_date) : nil}
+    .col-3 
+      = f.input :status, as: :select,include_blank: 'Selecione...'
+  .row
+    .col-12 
+      = f.input :description, placeholder: 'Digite uma descrição'
+  .row
+    .col-12 
+      = f.input :justify, placeholder: 'Digite a justificativa'
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

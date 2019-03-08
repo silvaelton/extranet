@@ -1,0 +1,49 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      .card-body
+        %table.table.table-bordered.table-striped.table-celled
+          %thead
+            %tr
+              %td{colspan: 3} Nome
+              %td Cpf
+          %tbody
+            %tr
+              %td{colspan: 3}= @cadin.name
+              %td= @cadin.cpf
+          %thead
+            %tr
+              %td Rg
+              %td Rg Uf
+              %td Rg org
+              %td Data de nascimento
+          %tbody
+            %td= @cadin.rg
+            %td= @cadin.rg_org
+            %td= @cadin.rg_uf.name rescue nil
+            %td= @cadin.born.format_date rescue nil
+          %thead
+            %tr
+              %td Número do documento
+              %td Local de nascimento
+              %td Cidade
+              %td Endereço
+          %tbody
+            %tr 
+              %td= @cadin.document_number
+              %td= @cadin.place_birth
+              %td= @cadin.city.name.format_empty
+              %td= @cadin.address
+          %thead
+            %tr
+              %td Cep
+              %td Porcentagem
+              %td Data de distribuição
+              %td Status
+          %tbody
+            %tr
+              %td= @cadin.cep
+              %td= @cadin.percentege
+              %td= @cadin.distribution_date.format_date.format_empty
+              %td= @cadin.estate? ? "Ativo" : "Inativo"
+                        

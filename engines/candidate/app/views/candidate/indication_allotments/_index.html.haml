@@ -1,0 +1,39 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@indication_allotments.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Nome
+          %td Empreendimento
+          %td Programa
+          %td Descrição
+          %td 
+      %tbody
+        - if @indication_allotments.present?
+          - @indication_allotments.each do |indication_allotment|
+            %tr{class: "row-indication_allotment-#{indication_allotment.id}"}
+              %td= indication_allotment.name
+              %td= indication_allotment.enterprise_id
+              %td= indication_allotment.program_id
+              %td= indication_allotment.description
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", candidate.indication_allotment_path(indication_allotment), class: 'dropdown-item', remote: true
+                    = link_to "Editar", candidate.edit_indication_allotment_path(indication_allotment), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.indication_allotment_path(indication_allotment), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 26}
+              %i Nenhum registro encontrado.
+                  

@@ -1,0 +1,48 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@iptus.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Nome
+          %td Cpf
+          %td Registo
+          %td Cidade
+          %td Endereço
+          %td Tipo de imóvel
+          %td Tipo de pesquisa
+          %td Ano
+          %td Imóvel da coddhab
+          %td 
+      %tbody
+        - if @iptus.present?
+          - @iptus.each do |iptu|
+            %tr{class: "row-iptu-#{iptu.id}"}
+              %td= iptu.name
+              %td= iptu.cpf
+              %td= iptu.registration
+              %td= iptu.city
+              %td= iptu.address
+              %td= iptu.kind_realty
+              %td= iptu.kind_search
+              %td= iptu.year
+              %td= iptu.realty_codhab
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", candidate.edit_iptu_path(iptu), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.iptu_path(iptu), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 10}
+              %i Nenhum registro encontrado.
+                  

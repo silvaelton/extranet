@@ -1,0 +1,40 @@
+= simple_form_for @cadin, remote: true do |f|
+  .row
+    .col-8 
+      = f.input :name, placeholder: 'Digite o nome'
+    .col-4 
+      = f.input :cpf, input_html: { class: 'cpf'}
+  .row
+    .col-3 
+      = f.input :rg,placeholder: 'Digite o Rg'
+    .col-3 
+      = f.input :rg_org, placeholder: 'Digite o expedidor'
+    .col-3 
+      = f.input :rg_uf_id, as: :select, collection: Support::Common::State.all, include_blank: 'Selecione...' 
+    .col-3 
+      = f.input :born,as: :string, input_html: { class: 'date', value: (@cadin.born) ? localize(f.object.born) : nil}
+  .row
+    .col-3 
+      = f.input :document_number, placeholder: 'Digite o número do documento'
+    .col-3 
+      = f.input :place_birth, placeholder: 'Digite o local de nascimento'
+    .col-3 
+      = f.input :city_id, as: :select,collection: Support::Common::City.all, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :address, placeholder: 'Digite o endereço'
+  .row
+    .col-3 
+      = f.input :cep, placeholder: 'Digite o cep'
+    .col-3 
+      = f.input :distribution_date, as: :string, input_html: { class: 'date', value: (@cadin.distribution_date) ? localize(f.object.distribution_date) : nil}
+    .col-3 
+      = f.input :percentege
+    .col-3 
+      = f.input :estate, as: :select, include_blank: 'Selecione...'
+  .row
+    .col-12
+      = f.input :observation, placeholder: 'Digite uma observação'
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

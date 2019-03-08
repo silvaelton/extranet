@@ -1,0 +1,43 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@cadins.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Nome
+          %td Cpf
+          %td Cidade
+          %td Endereço
+          %td Data de distribuição
+          %td Status
+          %td 
+      %tbody
+        - if @cadins.present?
+          - @cadins.each do |cadin|
+            %tr{class: "row-cadin-#{cadin.id}"}
+              %td= cadin.name
+              %td= cadin.cpf
+              %td= cadin.city.name.format_empty
+              %td= cadin.address
+              %td= cadin.distribution_date.format_date.format_empty
+              %td= cadin.estate? ? "Ativo" : "Inativo"
+              %td
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", candidate.cadin_path(cadin), class: 'dropdown-item', remote: true
+                    = link_to "Editar", candidate.edit_cadin_path(cadin), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.cadin_path(cadin), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 15}
+              %i Nenhum registro encontrado.
+                  

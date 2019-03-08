@@ -1,0 +1,71 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      .card-body
+        %table.table.table-bordered.table-striped.table-celled
+          %thead
+            %tr
+              %td{colspan: 4} Nome
+          %tbody
+            %tr
+              %td{colspan: 4}= @indication_allotment.name
+          %thead
+            %tr
+              %td Renda inicial
+              %td Renda final
+              %td{colspan: 2} Enpreendimento
+          %tbody
+            %td= @indication_allotment.income_start
+            %td= @indication_allotment.income_end
+            %td{colspan: 2}= @indication_allotment.enterprise.name.format_empty
+          %thead
+            %tr
+              %td Programa
+              %td Avaliação da entidade?
+              %td{colspan: 2} Entidade avaliadora
+          %tbody
+            %tr 
+              %td= @indication_allotment.program.name.format_empty
+              %td= @indication_allotment.evaluation_entity? ? "Sim" : "Não"
+              %td{colspan: 2}= @indication_allotment.evaluation_entity.name.format_empty
+          %thead
+            %tr
+              %td Extração única
+              %td Chamado
+              %td Filtro por cidade?
+              %td Cidade filtrada
+          %tbody
+            %td= @indication_allotment.only_extract? ? "Sim" : "Não"
+            %td= @indication_allotment.ticket_id rescue nil
+            %td= @indication_allotment.filter_city? ? "Sim" : "Não"
+            %td= @indication_allotment.filter_city.name.format_empty
+          %thead
+            %tr
+              %td Ignora indicação?
+              %td Ignora ocorrência?
+              %td Demanda
+              %td Rii
+          %tbody
+            %td= @indication_allotment.ignore_active_indicated? ? "Sim" : "Não"
+            %td= @indication_allotment.ignore_occurrence? ? "Sim" : "Não"
+            %td= @indication_allotment.demand
+            %td= @indication_allotment.rii
+          %thead
+            %tr
+              %td Rie
+              %td Idosos
+              %td Deficientes
+              %td Vulneráveis
+          %tbody
+            %td= @indication_allotment.rie
+            %td= @indication_allotment.old
+            %td= @indication_allotment.special
+            %td= @indication_allotment.vulnerable
+          %thead
+            %tr
+              %td{colspan: 3} Descrição
+              %td Status
+          %tbody
+            %td{colspan: 3}= @indication_allotment.description
+            %td= @indication_allotment.status? ? "Ativo" : "Inativo"
+          
