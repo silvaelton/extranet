@@ -24,10 +24,9 @@ gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7'
 gem 'roo', '~> 2.7.1'
 
 
-gem 'bd_money', '~> 0.0.14'
 gem 'email_validator', '~> 1.6.0'
 gem 'file_validators', '~> 2.3.0'
-gem 'font-awesome-rails', '~> 4.7.0.4'
+gem 'font_awesome5_rails'
 gem 'validates_cpf_cnpj', '~> 0.2.0'
 gem 'validates_timeliness', '~> 4.0.2'
 

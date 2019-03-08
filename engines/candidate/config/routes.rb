@@ -1,6 +1,7 @@
 Candidate::Engine.routes.draw do
-  root 'dashboard#index'
+  root 'home#index'
 
+<<<<<<< HEAD
   resources :cadastres,                  path: 'cadastros'
   resources :activity_types,             path: 'atividade-tipos'
   resources :cadins,                     path: 'cadastros-imobiliario'
@@ -12,4 +13,27 @@ Candidate::Engine.routes.draw do
   resources :occurrence_targets,         path: 'objetos-ocorrencias'
   resources :procedural_types,           path: 'processsos-tipos'
   resources :situation_types,            path: 'situacoes-tipos'
+=======
+  resources :cadastres, path: 'cadastros' do
+    resources :cadastre_situations
+    resources :cadastre_procedural_situations
+    resources :cadastre_convocations
+    resources :cadastre_reservations
+    resources :cadastre_contacts
+    resources :cadastre_general
+    resources :cadastre_dependents
+    resources :cadastre_inheritors
+    resources :cadastre_pontuations
+    resources :cadastre_occurrences
+    resources :cadastre_indications
+    resources :cadastre_schedules
+    resources :cadastre_chats
+    resources :cadastre_notifications
+    resources :cadastre_communications
+    resources :cadastre_activities
+    resources :cadastre_helps
+  end
+  
+  resources :activity_types
+>>>>>>> 6ca56d7764cb31075a255b6e41155939f6fcf833
 end

@@ -9,7 +9,11 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
+<<<<<<< HEAD
   revision: 6c9d80d495e8dc90e076a7daf6ec1ff35c222d3e
+=======
+  revision: 026e59e330b6c44f59a2b5dbdc28fd11c27c09d6
+>>>>>>> 6ca56d7764cb31075a255b6e41155939f6fcf833
   branch: master
   specs:
     support (0.1.0)
@@ -145,8 +149,8 @@ GEM
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    font-awesome-rails (4.7.0.4)
-      railties (>= 3.2, < 6.0)
+    font_awesome5_rails (0.5.0)
+      railties (>= 4.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gyoku (1.3.1)
@@ -160,7 +164,7 @@ GEM
     httpi (2.4.4)
       rack
       socksify
-    i18n (1.5.3)
+    i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
     jbuilder (2.8.0)
@@ -277,7 +281,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    temple (0.8.0)
+    temple (0.8.1)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -332,7 +336,7 @@ DEPENDENCIES
   email_validator (~> 1.6.0)
   entity!
   file_validators (~> 2.3.0)
-  font-awesome-rails (~> 4.7.0.4)
+  font_awesome5_rails
   haml (~> 5.0.4)
   has_scope (~> 0.7.2)
   helpdesk!
