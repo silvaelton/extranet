@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     log.fullpath              = request.fullpath
     log.original_fullpath     = request.original_fullpath
     log.parameters            = request.params
-    log.user_agent            = request.user_agent 
+    log.user_agent            = request.user_agent
     log.remote_ip             = request.remote_ip
     log.save
   end
@@ -36,9 +36,9 @@ class ApplicationController < ActionController::Base
   def get_params_for_filter
     params.each do |key, value|
       if key.include?('by_')
-        
+
         session[:filter] = {} if !session.has_key?(:filter)
-       
+
         if session[:filter][engine_name].nil?
           session[:filter][engine_name] = {}
         elsif session[:filter][engine_name].count > 12
@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def filter_params
-    session[:filter][engine_name]
+    session[:filter][engine_name] if session[:filter].present?
   end
 
   def engine_name

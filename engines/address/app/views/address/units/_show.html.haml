@@ -1,0 +1,16 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Detalhamento
+      .float-right.group-action
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Cidade
+          %th Endereço
+      %tbody
+        %tr
+          %td= @unit.city.name rescue t(:no_info)
+          %td= @unit.complete_address
