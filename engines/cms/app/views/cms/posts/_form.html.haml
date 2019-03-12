@@ -1,0 +1,63 @@
+= simple_form_for @post do |f|
+
+  .row
+    .col-8 
+      = f.input :title, as: :string, placeholder: 'Digite o nome'
+    .col-4 
+      = f.input :publish, as: :select, include_blank: 'Selecione...'
+
+  .row
+    .col-12 
+      = f.input :content, input_html: {class: 'tinymce', rows: 20}
+
+  .row
+    .col-12 
+      = f.input :description, placeholder: 'Digite uma descrição'
+
+  .row
+    .col-3 
+      = f.input :image, as: :file,input_html:{placeholder: 'Escola uma imagem'}
+    .col-3 
+      = f.input :external, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :internal, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :image_slide, as: :file, placeholder: 'Escola uma imagem paro o slide'
+
+  .row
+    .col-3 
+      = f.input :slide, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :image_header, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :author_image, as: :string, placeholder: 'Digite o autor'
+    .col-3 
+      = f.input :slide_color, as: :string, placeholder: 'Escolha a cor'
+
+  .row
+    .col-3 
+      = f.input :external_content_url, as: :string, placeholder: 'Link'
+    .col-3 
+      = f.input :publish_date, as: :string, input_html: { class: 'date', value: (@post.publish_date) ? localize(f.object.publish_date) : nil}
+    .col-3 
+      = f.input :post_author, as: :string, placeholder: 'Digite o autor'
+    .col-3 
+      = f.input :draft, as: :select, include_blank: 'Selecione...'
+
+  .row
+    .col-6 
+      = f.input :slug, as: :string, placeholder: 'Digite o nome'
+    .col-6 
+      = f.input :layout, as: :string, placeholder: 'Digite o nome'
+
+  .row
+    .col-4
+      = f.input :iframe, as: :select, include_blank: 'Selecione...'
+    .col-4 
+      = f.input :iframe_url, as: :string, placeholder: 'Digite o link'
+    .col-4 
+      = f.input :post_category_id, collection: Cms::PostCategory.status_active, include_blank: 'Selecione...'
+  
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

@@ -10,16 +10,16 @@
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
-          <%- @attributes.each do |attr| %>
-            %td <%= attr %>
-          <% end %>
+        <%- @attributes.each do |attr| %>
+          %td <%= attr %>
+        <% end %>
       %tbody
         - if @<%= @model_name.pluralize %>.present?
           - @<%= @model_name.pluralize %>.each do |<%= @model_name %>|
             %tr{class: "row-<%= @model_name %>-#{<%= @model_name %>.id}"}
-              <%- @attributes.each do |attr| %>
-                %td= <%= @model_name %>.<%= attr %>
-              <% end %>
+            <%- @attributes.each do |attr| %>
+              %td= <%= @model_name %>.<%= attr %>
+            <% end %>
               %td
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

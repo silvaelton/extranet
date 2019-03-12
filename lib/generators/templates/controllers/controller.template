@@ -10,11 +10,11 @@ module <%= @engine_name.camelcase %>
     def show; end
 
     def new
-      @<%= @model_name %>.new
+      @<%= @model_name %> = <%= @engine_name.camelcase %>::<%= @model_name.camelcase %> .new
     end
 
     def create
-      @<%= @model_name %>.new(set_params)
+      @<%= @model_name %> = <%= @engine_name.camelcase %>::<%= @model_name.camelcase %>.new(set_params)
       @<%= @model_name %>.save
     end
 
@@ -31,7 +31,7 @@ module <%= @engine_name.camelcase %>
     private
 
     def set_params
-      params.require(:<%= @model_name %>).permit(<%- @attributes.eac)
+      params.require(:<%= @model_name %>).permit()
     end
 
     def set_<%= @model_name.pluralize %>

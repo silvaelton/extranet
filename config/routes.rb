@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   mount Pivotal::Engine     => '/nucleo',       as: :pivotal
   mount Protocol::Engine    => '/protocolo',    as: :protocol
   mount Sefaz::Engine       => '/sefaz',        as: :sefaz
+  mount Cms::Engine         => '/comunicacao',  as: :cms
 
 
   get 'unpermitted', to: 'errors#unpermitted'

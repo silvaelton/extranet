@@ -1,0 +1,39 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@posts.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Titulo
+          %td Descrição
+          %td Publicado?
+          %td Categoria
+          %td 
+      %tbody
+        - if @posts.present?
+          - @posts.each do |post|
+            %tr{class: "row-post-#{post.id}"}
+              %td= post.title
+              %td= post.description
+              %td= post.publish? ? "Sim" : "Não"
+              %td= post.post_category.name
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", cms.post_path(post), class: 'dropdown-item'
+                    = link_to "Editar", cms.edit_post_path(post), class: 'dropdown-item'
+                    = link_to "Remover", cms.post_path(post), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 5}
+              %i Nenhum registro encontrado.
+                  

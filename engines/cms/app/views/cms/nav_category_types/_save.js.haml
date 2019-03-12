@@ -1,0 +1,9 @@
+- if @nav_category_type.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+
+- else
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-nav_category_type-#{@nav_category_type.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();

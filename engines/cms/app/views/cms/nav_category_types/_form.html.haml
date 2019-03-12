@@ -1,0 +1,11 @@
+= simple_form_for @nav_category_type, remote: true do |f|
+
+  .row
+    .col-8 
+      = f.input :name, as: :string, placeholder: 'Digite o nome'
+    .col-4 
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+  
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }
