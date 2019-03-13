@@ -1,0 +1,33 @@
+.row
+  .col-7
+    .row
+      .col-12
+        %h6 Endereço de Reserva
+        %p= @unit.complete_address
+    .row
+      .col-12
+        = simple_form_for [@unit, @booking], remote: true do |f|
+          = f.input :unit_id, as: :hidden, input_html: {value: @unit.id}
+          .row
+            .col-12
+              = f.input :cpf, input_html: { class: 'cpf'}
+          .row
+            .col-12
+              = f.input :observation, as: :text
+          %hr
+          .row
+            .col-12
+              = f.button :submit, "Reservar", class: 'btn btn-success', data: { disable_with: t(:disable_with)}
+  .col-5
+    .row
+      .col-12
+        %p
+          Atente-se ao CPF informado.
+        %p
+          Atente-se ao Endereço selecionado.
+        %p
+          Verifique se o CPF informado está correto e esta vínculado ao candidato destino desta reserva.
+        %p
+          Verifique se a situação do candidato é válida para está operação.
+
+        %p Esta operação é irreversível.

@@ -1,0 +1,22 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Detalhamento
+      .float-right.group-action
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  .card-body.show-content
+    .row
+      .col-12
+        = render 'detail'
+    .row
+      .col-12
+        = render 'dependent'
+    .row
+      .col-12
+        = render 'situation'
+    .row
+      .col-12
+        = render 'document'
+    .row
+      .col-12
+        = render 'activity'

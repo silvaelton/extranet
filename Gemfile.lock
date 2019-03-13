@@ -9,11 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-<<<<<<< HEAD
-  revision: 6c9d80d495e8dc90e076a7daf6ec1ff35c222d3e
-=======
-  revision: 026e59e330b6c44f59a2b5dbdc28fd11c27c09d6
->>>>>>> 6ca56d7764cb31075a255b6e41155939f6fcf833
+  revision: a8201dd1a9ad516a52f315fa72ac7874a61397fc
   branch: master
   specs:
     support (0.1.0)
@@ -57,6 +53,8 @@ PATH
     protocol (0.1.0)
       rails (~> 5.2.2)
     sefaz (0.1.0)
+      rails (~> 5.2.2)
+    social (0.1.0)
       rails (~> 5.2.2)
 
 GEM
@@ -138,7 +136,7 @@ GEM
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     chunky_png (1.3.11)
-    concurrent-ruby (1.1.4)
+    concurrent-ruby (1.1.5)
     crass (1.0.4)
     debug_inspector (0.0.3)
     email_validator (1.6.0)
@@ -197,7 +195,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    msgpack (1.2.7)
+    msgpack (1.2.8)
     multi_json (1.13.1)
     nio4r (2.3.1)
     nokogiri (1.10.1)
@@ -359,6 +357,7 @@ DEPENDENCIES
   sefaz!
   selenium-webdriver (~> 3.141.0)
   simple_form (~> 4.1.0)
+  social!
   support!
   turbolinks (~> 5)
   uglifier (~> 1.3.0)

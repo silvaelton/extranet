@@ -1,0 +1,5 @@
+= simple_form_for @question, remote: true do |f|
+  = f.input :name, placeholder: 'Digite um etapa'
+  = f.input :question_type_id, collection: Social::Question.question_type_ids.keys, label_method: lambda {|c| c.humanize}, prompt: 'Selecione'
+  = f.input :status, as: :select, include_blank: 'selecione...'
+  = f.button :submit, class: 'btn btn-success'

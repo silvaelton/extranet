@@ -1,0 +1,87 @@
+= simple_form_for @cadastre, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name
+    .col-md-4
+      = f.input :cpf, input_html: {class: 'cpf'}
+  .row
+    .col-md-3
+      = f.input :gender_id, collection: Support::Common::Gender.all, prompt: 'Selecione'
+    .col-md-3
+      = f.input :born, as: :string, input_html: {class: 'date', value: (@cadastre.born) ? localize(f.object.born) : nil}
+    .col-md-3
+      = f.input :civil_state_id, collection: Support::Common::CivilState.all, prompt: 'Selecione'
+    .col-md-3
+      = f.input :place_birth
+  .row
+    .col-md-3
+      = f.input :rg
+    .col-md-3
+      = f.input :rg_org
+    .col-md-3
+      = f.input :rg_uf_id, collection: Support::Common::State.all, label_method: :acronym, prompt: 'Selecione'
+    .col-md-3
+      = f.input :rg_date, as: :string, input_html: {class: 'date', value: (@cadastre.rg_date) ? localize(f.object.born) : nil}
+  .row
+    .col-md-3
+      = f.input :telephone
+    .col-md-3
+      = f.input :celphone
+    .col-md-6
+      = f.input :email
+  .row
+    .col-md-4
+      = f.input :cep
+    .col-md-4
+      = f.input :city_id, collection: Social::City.all, prompt: 'Selecione'
+    .col-md-4
+      = f.input :burgh_id, collection: @cadastre.burgh_id.present? ? Social::Burgh.where(id: @cadastre.burgh_id) : [], prompt: 'Selecione'
+  .row
+    .col-md-12
+      = f.input :address
+  .row
+    .col-md-3
+      = f.input :income, as: :string, input_html:{ class: 'coin', placeholder: 'Ex. 1000.00'}
+    .col-md-5
+      = f.input :work
+    .col-md-4
+      = f.input :work_ocupation
+  .row
+    .col-md-6
+      = f.input :mother_name
+    .col-md-6
+      = f.input :father_name
+  .row
+    .col-md-6
+      = f.input :pension, as: :select, include_blank: false
+    .col-md-6
+      = f.input :pension_id
+  .row
+    .col-md-6
+      = f.input :benefit, as: :select, include_blank: false
+    .col-md-6
+      = f.input :benefit_id
+  .row
+    .col-md-4
+      = f.input :education_id, collection: Support::Common::EducationBackground.all, prompt: 'Selecione'
+    .col-md-3
+      = f.input :course_interest, as: :select, include_blank: false
+    .col-md-5
+      = f.input :course_name
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
+
+:javascript
+  $(document).ready(function(){
+    $("#cadastre_city_id").on('change', function(){
+      $.getJSON("/social/cidades/" + $(this).val() + "/bairros.json", function(data) {
+        var options = "<option value>selecione...</option>";
+
+        $.each(data, function(key, val) {
+          options += "<option value='" + val.id + "'>" + val.name + "</option>";
+        });
+        $("#cadastre_burgh_id").html(options);
+      });
+    });
+  });

@@ -1,0 +1,4 @@
+= simple_form_for @question_multiple, url: question_question_multiples_path(@question), remote: true do |f|
+  = f.input :name, placeholder: 'Digite um nome'
+  = f.input :status, as: :select, include_blank: 'selecione...'
+  = f.button :submit, class: 'btn btn-success'

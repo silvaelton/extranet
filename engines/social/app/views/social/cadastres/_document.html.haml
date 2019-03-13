@@ -1,0 +1,16 @@
+%h6 Documentos
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Tipo de Documento
+      %th Documento
+      %th Data
+      %th
+  %tbody
+    - if @cadastre.cadastre_documents.present?
+      - @cadastre.cadastre_documents.each do |document|
+        %tr
+    - else
+      %tr
+        %td{colspan: 3}
+          %i Nenhum documento cadastrado.

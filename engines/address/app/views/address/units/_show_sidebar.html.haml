@@ -16,7 +16,7 @@
       = link_to "Editar dados de registro", "#", class: 'filter-nav-item'
       %hr.divider
       = link_to "Distribuir", "#", class: 'filter-nav-item'
-      = link_to "Reservar", "#", class: 'filter-nav-item'
+      = link_to "Reservar", new_unit_booking_path(@unit), remote: true, class: 'filter-nav-item'
       = link_to "Transferir", "#", class: 'filter-nav-item'
       = link_to "Distratar", "#", class: 'filter-nav-item'
       = link_to "Sobrestar", "#", class: 'filter-nav-item'

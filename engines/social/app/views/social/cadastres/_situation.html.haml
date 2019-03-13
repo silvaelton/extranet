@@ -1,0 +1,16 @@
+%h6 Situação Habitacional/Infraestrura da Residência
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Pergunta
+      %th Resposta
+  %tbody
+    - if @cadastre.answers.present?
+      - @cadastre.answers.each do |answer|
+        %tr
+          %td= answer.question_multiple.question.name rescue t(:no_info)
+          %td= answer.question_multiple.name rescue t(:no_info)
+    - else
+      %tr
+        %td{colspan: 2}
+          %i Nenhum registro cadastrado.
