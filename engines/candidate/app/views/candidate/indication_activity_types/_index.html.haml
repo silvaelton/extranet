@@ -19,7 +19,7 @@
           - @indication_activity_types.each do |indication_activity_type|
             %tr{class: "row-indication-activity-type-#{indication_activity_type.id}"}
               %td= indication_activity_type.name
-              %td.collapsing= indication_activity_type.status? ? "Ativo" : "Inativo"
+              %td.collapsing= indication_activity_type.status.status_format
               %td.collapsing= indication_activity_type.waiver? ? "Sim" : "Não"
               %td.collapsing
                 .dropdown

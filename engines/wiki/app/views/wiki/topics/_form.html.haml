@@ -1,0 +1,21 @@
+= simple_form_for @topic, remote: true do |f|
+
+  .row
+    .col-12 
+      = f.input :name, as: :string, placeholder: 'Digite o nome' 
+  
+  .row
+    .col-12 
+      = f.input :description, placeholder: 'Digite uma descrição' 
+  
+  .row
+    .col-12 
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+  
+  .row
+    .col-12 
+      = f.input :public, as: :select, include_blank: 'Selecione...'
+  
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

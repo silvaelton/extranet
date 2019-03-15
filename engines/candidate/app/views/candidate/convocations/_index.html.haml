@@ -26,7 +26,7 @@
               %td= convocation.start_date.format_date.format_empty
               %td= convocation.end_date.format_date.format_empty
               %td= convocation.quantity
-              %td.collapsing= convocation.status? ? "Ativo" : "Inativo"
+              %td.collapsing= convocation.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

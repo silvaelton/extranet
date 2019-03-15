@@ -18,7 +18,7 @@
           - @nav_category_types.each do |nav_category_type|
             %tr{class: "row-nav_category_type-#{nav_category_type.id}"}
               %td= nav_category_type.name
-              %td= nav_category_type.status? ? "Ativo" : "Inativo" 
+              %td= nav_category_type.status.status_format
               %td.collapsing
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

@@ -1,0 +1,21 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      .h5
+        -if @topic.status == true
+          %i.fa.fa-circle{style: "color: #068840"}
+        -else
+          %i.fa.fa-circle
+        %b
+          = @topic.name
+        .float-right.group-action
+          = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+          = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm' 
+  .card-body      
+    .index_page_users
+      = render 'wiki/page_users/index'
+    .divider
+    .index_pages
+      = render 'wiki/pages/index'
+        
+        

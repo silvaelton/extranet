@@ -1,0 +1,30 @@
+.row
+  .col-md-12
+    %h5 
+      %b Páginas (#{@topic.pages.count rescue 0}) 
+    %h6
+      = link_to "<i class='fa fa-plus'></i>".html_safe, new_topic_page_path(@topic), remote: true, data: { disable_with: t(:disable_with)}
+      Páginas
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %td Titulo
+          %td Link
+          %td Link?
+          %td Status
+          %td 
+      %tbody
+        - if @topic.pages.present? 
+          - @topic.pages.each do |page|
+            %tr{class: "row-page-#{page.id}"}
+              %td= page.title
+              %td= page.iframe_url
+              %td= page.iframe.status_format
+              %td= page.status.status_format
+              %td.collapsing
+                = link_to "<i class='fa fa-pencil'></i>".html_safe, wiki.edit_topic_page_path(@topic, page), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                = link_to "<i class='fa fa-trash'></i>".html_safe, wiki.topic_page_path(@topic, page), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              Nenhum usuário vínculado.

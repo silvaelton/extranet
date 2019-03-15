@@ -1,0 +1,21 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus  
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_title, as: :select, label: "Por titulo", selected: params[:by_title], input_html: {name: 'by_title'}, prompt: 'Digite o titulo'
+        = f.input :by_status, as: :select, label: "Por status", selected: params[:by_title], input_html: {name: 'by_title'}, prompt: 'Selecione...'
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Voltar para listagem", wiki.topics_path

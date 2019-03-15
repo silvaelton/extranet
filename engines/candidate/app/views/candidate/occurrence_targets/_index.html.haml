@@ -11,13 +11,13 @@
       %thead
         %tr
 
-          %td name
+          %td Nome
         
-          %td observation
+          %td Observação
         
-          %td description
+          %td Descrição
         
-          %td status
+          %td Status
         
           %td 
           
@@ -32,7 +32,7 @@
             
               %td= occurrence_target.description
             
-              %td= occurrence_target.status? ? "Ativo" : "Inativo"
+              %td= occurrence_target.status.status_format
               
               %td.collapsing
                 .dropdown

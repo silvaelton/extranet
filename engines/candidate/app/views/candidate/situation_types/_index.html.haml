@@ -11,11 +11,11 @@
       %thead
         %tr
 
-          %td name
+          %td Nome
         
-          %td description
+          %td Descrição
         
-          %td status
+          %td Status
           
           %td
           
@@ -28,7 +28,7 @@
             
               %td= situation_type.description
             
-              %td= situation_type.status? ? "Ativo" : "Inativo"
+              %td= situation_type.status.status_format
               
               %td.collapsing
                 .dropdown
