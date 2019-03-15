@@ -3,6 +3,7 @@ Social::Engine.routes.draw do
     resources :cadastre_schedules, path: 'agendamentos'
     resources :dependents,         path: 'dependentes'
     resources :answers,            path: 'respostas'
+    resources :cadastre_documents, path: 'documentos', only: %i[new create destroy]
   end
 
   resources :steps, path: 'etapas'

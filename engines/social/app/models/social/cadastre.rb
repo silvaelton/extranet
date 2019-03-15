@@ -2,6 +2,8 @@ require_dependency 'support/social/cadastre'
 
 module Social
   class Cadastre < Support::Social::Cadastre
+    belongs_to :gender, required: false, class_name: 'Support::Common::Gender'
+
     has_many :dependents
     has_many :cadastre_schedules
     has_many :cadastre_documents

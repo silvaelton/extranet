@@ -1,7 +1,7 @@
 Candidate::Engine.routes.draw do
   root 'home#index'
 
-  resources :cadastres,                  path: 'cadastros'
+
   resources :activity_types,             path: 'atividade-tipos'
   resources :cadins,                     path: 'cadastros-imobiliario'
   resources :convocations,               path: 'convocacoes'
@@ -32,6 +32,4 @@ Candidate::Engine.routes.draw do
     resources :cadastre_activities
     resources :cadastre_helps
   end
-  
-  resources :activity_types
 end

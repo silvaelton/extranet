@@ -1,0 +1,12 @@
+= simple_form_for @archive, remote: true do |f|
+
+  .row
+    .col-12 
+      = f.input :name, as: :string
+  .row
+    .col-8 
+      = f.input :archive, as: :file
+  
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

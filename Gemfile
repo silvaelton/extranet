@@ -23,6 +23,9 @@ gem 'pagy', '~> 1.3.3'
 gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7'
 gem 'roo', '~> 2.7.1'
 
+gem 'tinymce-rails', '~> 4.3.8'
+gem 'tinymce-rails-langs', '~> 4.20180103'
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 
 gem 'email_validator', '~> 1.6.0'
 gem 'file_validators', '~> 2.3.0'
@@ -64,6 +67,7 @@ path 'engines' do
   gem 'attendance'
   gem 'brb'
   gem 'candidate'
+  gem 'cms'
   gem 'cpl'
   gem 'entity'
   gem 'helpdesk'

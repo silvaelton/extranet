@@ -1,0 +1,10 @@
+= simple_form_for [@cadastre, @document], remote: true do |f|
+  .row
+    .col-12
+      = f.input :document_type_id, collection: Social::DocumentType.all, prompt: 'Selecione'
+  .row
+    .col-12
+      = f.input :attachment, as: :file
+  .row
+    .col-md-12
+      = f.button :submit, 'Salvar', class: 'btn btn-success',data: {disable_with: "carregando..."}

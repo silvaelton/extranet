@@ -14,6 +14,7 @@ function update_js() {
   collapse();
   close_modal();
   mask();
+  initTinyMCE();
 }
 
 function collapse() {
@@ -59,4 +60,27 @@ function mask() {
   $('.percent').mask("00.0", { placeholder: "00.0" });
   $('.coin').mask("######0.00", { reverse: true });
   $('.money').mask('000.000.000.000,00', { reverse: true });
+}
+
+function initTinyMCE() {
+  //tinymce.remove();
+  tinymce.init({
+    selector: 'textarea.tinymce',
+    language: 'pt_BR',
+    indentation: '20pt',
+    indent_use_margin: true,
+    fontsize_formats: '8pt 10pt 12pt 14pt 18pt 24pt 36pt',
+    toolbar: [
+      "styleselect | bold italic | alignleft aligncenter alignright alignjustify",
+      "bullist numlist outdent indent | link image | code | codesample | fontsizeselect"
+    ],
+    plugins: "image,link,code,codesample,imagetools,media,table,insertdatetime,charmap,print,preview,anchor,searchreplace,visualblocks,fullscreen",
+
+    setup: function (editor) {
+      editor.on('change', function () {
+        editor.save();
+      });
+    }
+  });
+
 }

@@ -2,10 +2,6 @@
   $("#modal").html("#{escape_javascript(render 'new')}");
   update_js();
 - else
-  - if url_for == '/social/cadastros'
-    $(".index-content").html("#{escape_javascript(render 'index')}");
-  - else
-    $(".show-content").html("#{escape_javascript(render 'show')}");
   $(".row-type-#{@cadastre.id}").addClass('table-success');
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
 

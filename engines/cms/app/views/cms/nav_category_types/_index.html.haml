@@ -1,0 +1,35 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@nav_category_types.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Nome
+          %td Status
+          %td 
+      %tbody
+        - if @nav_category_types.present?
+          - @nav_category_types.each do |nav_category_type|
+            %tr{class: "row-nav_category_type-#{nav_category_type.id}"}
+              %td= nav_category_type.name
+              %td= nav_category_type.status? ? "Ativo" : "Inativo" 
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", cms.nav_category_type_path(nav_category_type), class: 'dropdown-item'
+                    = link_to "Editar", cms.edit_nav_category_type_path(nav_category_type), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", cms.nav_category_type_path(nav_category_type), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              %i Nenhum registro encontrado.
+                  

@@ -1,8 +1,8 @@
 = simple_form_for @<%= @model_name %>, remote: true do |f|
-  <%- @attributes.each do |attr| %>
-    .row
-      .col-12 
-        = f.input :<%= attr %>, as: :string
+<%- @attributes.each do |attr| %>
+  .row
+    .col-12 
+      = f.input :<%= attr %>, as: :string
   <% end %>
   .row
     .col-12

@@ -1,0 +1,25 @@
+= simple_form_for @nav, remote: true do |f|
+
+  .row
+    .col-8
+      = f.input :name, as: :string, placeholder: 'Digite o nome'
+    .col-4 
+      = f.input :order
+
+  .row
+    .col-12 
+      = f.input :url, as: :string, placeholder: 'Digite o link'
+
+  .row
+    .col-12 
+      = f.input :category_id, as: :select, collection: Cms::NavCategory.status_active, include_blank: 'Selecione...'
+
+  .row
+    .col-6
+      = f.input :publish, as: :select, include_blank: 'Selecione...'
+    .col-6 
+      = f.input :target_blank, as: :select, include_blank: 'Selecione...'
+  
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }
