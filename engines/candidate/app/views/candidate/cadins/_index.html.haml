@@ -26,7 +26,7 @@
               %td= cadin.city.name.format_empty
               %td= cadin.address
               %td= cadin.distribution_date.format_date.format_empty
-              %td= cadin.estate? ? "Ativo" : "Inativo"
+              %td= cadin.estate.status_format
               %td
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

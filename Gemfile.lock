@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: a8201dd1a9ad516a52f315fa72ac7874a61397fc
+  revision: 25aa8d8329f318a293be8a7b4c6ffd1fea38db0f
   branch: master
   specs:
     support (0.1.0)
@@ -55,6 +55,8 @@ PATH
     protocol (0.1.0)
       rails (~> 5.2.2)
     sefaz (0.1.0)
+      rails (~> 5.2.2)
+    wiki (0.1.0)
       rails (~> 5.2.2)
 
 GEM
@@ -374,6 +376,7 @@ DEPENDENCIES
   validates_cpf_cnpj (~> 0.2.0)
   validates_timeliness (~> 4.0.2)
   web-console (~> 3.3.0)
+  wiki!
 
 RUBY VERSION
    ruby 2.6.0p0

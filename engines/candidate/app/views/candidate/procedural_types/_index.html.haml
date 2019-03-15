@@ -11,11 +11,11 @@
       %thead
         %tr
 
-          %td name
+          %td Nome
         
-          %td description
+          %td Descrição
         
-          %td status
+          %td Status
           
           %td 
           
@@ -28,7 +28,7 @@
             
               %td= procedural_type.description
             
-              %td= procedural_type.status? ? "Ativo" : "Inativo"
+              %td= procedural_type.status.status_format
               
               %td.collapsing
                 .dropdown

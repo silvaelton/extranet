@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   mount Protocol::Engine    => '/protocolo',    as: :protocol
   mount Sefaz::Engine       => '/sefaz',        as: :sefaz
   mount Cms::Engine         => '/comunicacao',  as: :cms
+  mount Wiki::Engine        => '/wiki',         as: :wiki
 
 
   get 'unpermitted', to: 'errors#unpermitted'

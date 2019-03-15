@@ -10,7 +10,7 @@ module <%= @engine_name.camelcase %>
     def show; end
 
     def new
-      @<%= @model_name %> = <%= @engine_name.camelcase %>::<%= @model_name.camelcase %> .new
+      @<%= @model_name %> = <%= @engine_name.camelcase %>::<%= @model_name.camelcase %>.new
     end
 
     def create

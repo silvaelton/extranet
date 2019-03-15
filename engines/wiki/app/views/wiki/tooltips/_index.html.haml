@@ -1,0 +1,40 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@tooltips.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Código
+          %td Titulo
+          %td Conteudo
+          %td Categoria
+          %td Status
+          %td 
+      %tbody
+        - if @tooltips.present?
+          - @tooltips.each do |tooltip|
+            %tr{class: "row-tooltip-#{tooltip.id}"}
+              %td= tooltip.code
+              %td= tooltip.title
+              %td= tooltip.content
+              %td= tooltip.category.name
+              %td= tooltip.status.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", wiki.edit_tooltip_path(tooltip), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", wiki.tooltip_path(tooltip), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 6}
+              %i Nenhum registro encontrado.
+                  

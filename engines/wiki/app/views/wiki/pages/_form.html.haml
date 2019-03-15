@@ -1,0 +1,21 @@
+= simple_form_for [@topic, @page], remote: true do |f|
+
+  .row
+    .col-10
+      = f.input :title, placeholder: 'Digite o titulo'
+    .col-2
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+  
+  .row
+    .col-10
+      = f.input :iframe_url, placeholder: 'Digite o link'
+    .col-2
+      = f.input :iframe, as: :select, include_blank: 'Selecione...'
+  
+  .row
+    .col-12 
+      = f.input :content, input_html: {class: 'tinymce', rows: 15}
+  
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

@@ -24,7 +24,7 @@
 
               %td= activity_type.name
             
-              %td.collapsing= activity_type.status? ? "Ativo" : "Inativo"
+              %td.collapsing= activity_type.status.status_format
                
               %td.collapsing
                 .dropdown

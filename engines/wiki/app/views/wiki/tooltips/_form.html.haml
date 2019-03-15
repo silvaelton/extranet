@@ -1,0 +1,20 @@
+= simple_form_for @tooltip, remote: true do |f|
+  .row
+    .col-8 
+      = f.input :title, as: :string, placeholder: 'Digite o titulo'
+    .col-4 
+      = f.input :code, as: :string, placeholder: 'Digite o código'
+
+  .row
+    .col-12 
+      = f.input :content
+
+  .row
+    .col-8
+      = f.input :category_id, collection: Wiki::TooltipCategory.status_active, include_blank: 'Selecione...'
+    .col-4 
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }
