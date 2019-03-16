@@ -46,12 +46,12 @@
                   %b clima            
           .card-body
             .row
+              .col-6.text-center
+                = image_tag("#{@weather.condition.slug}.png", class: 'img-fluid', width: "80") rescue nil
               .col-6
-                = image_tag @weather.condition.slug rescue nil
-              .col-6
-                %h3 Brasília
                 %h3 
                   %b #{@weather.condition.temperature.to_i} °
+                %h3 Brasília
                 %h6 #{@weather.condition.humidity}% Umidade
     .divider
     .row

@@ -1,0 +1,9 @@
+= simple_form_for @eventual, remote: true do |f|
+  = f.input :name
+  = f.input :cpf
+  = f.input :born, as: :string, input_html: { class: 'date' }
+  = f.input :gender_id, as: :select, collection: Support::Common::Gender.status_active.order(:id), include_blank: false
+  = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: t(:include_blank)
+  = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: t(:include_blank)
+  = f.input :observation
+  
