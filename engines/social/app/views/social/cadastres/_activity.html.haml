@@ -1,0 +1,18 @@
+%h6 Interações
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Título
+      %th Observação
+      %th Documento 1
+      %th Documento 2
+      %th Data
+      %th
+  %tbody
+    - if @cadastre.cadastre_activities.present?
+      - @cadastre.cadastre_activities.each do |activity|
+        %tr
+    - else
+      %tr
+        %td{colspan: 5}
+          %i Nenhuma intereção cadastrada.

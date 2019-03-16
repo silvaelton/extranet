@@ -1,0 +1,15 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar tipo de documento", new_document_type_path, class: 'filter-nav-item', remote: true
+      %hr.divider
+      = link_to "Gestão de cidades", cities_path, class: 'filter-nav-item'
+      = link_to "Gestão de tipos de documento", document_types_path, class: 'filter-nav-item'
+      = link_to "Gestão de etapas", steps_path, class: 'filter-nav-item'
+      = link_to "Gestão de tipo de atividade", activity_types_path, class: 'filter-nav-item'
+      = link_to "Gestão de questionários", questions_path, class: 'filter-nav-item'

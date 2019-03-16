@@ -84,7 +84,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dropdown-item {
-  font-size: 14px !important;
+  font-size: 17px !important;
   padding-left: 15px;
   padding-top: 3px;  
 
@@ -166,16 +166,13 @@ body::-webkit-scrollbar-thumb {
 #candidate-content .content {
   margin-top: 15px;
 }
-=======
-.my-button {
-  background-color: green;
-  border: 0;
-  margin-top: 3px;
-  margin-left: -6px;
-}
 
 .no-padding{
   padding: 0px !important;
 }
 
->>>>>>> 563999ab2bee0cb4dca9f1259d106da670383238
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(53, 53, 53);
+  font-size: 17px;
+}
+

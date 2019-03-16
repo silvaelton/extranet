@@ -11,5 +11,9 @@ Address::Engine.routes.draw do
   resources :unit_cadastre_situations, path: 'unidade-cadastro-situacoes'
   resources :labels,                   path: 'etiquetas'
 
-  resources :units, path: 'unidades'
+  resources :units, path: 'unidades' do
+    resources :bookings, path: 'reservas', only: %i[new create]
+  end
+
+  resources :documents
 end

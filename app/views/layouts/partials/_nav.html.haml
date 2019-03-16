@@ -1,8 +1,8 @@
 %nav#nav.navbar.navbar-expand-lg.navbar-light.bg-light
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      %li.nav-item.active
-        %a.nav-link{:href => "#"}
+      %li.nav-item
+        %a.nav-link{:href => "#{pivotal.root_path}"}
           Dashboard
           %span.sr-only (current)
       - each_navs.order(:position).each do |nav|

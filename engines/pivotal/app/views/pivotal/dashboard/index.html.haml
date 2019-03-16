@@ -1,4 +1,74 @@
+.mt-4
 .row
-  .col-lg-3
-    .card
-      .card-block
+  .col-8
+    .row
+      .col-12
+        .card
+          .card-header.border-left-yellow
+            .row
+              .col-12
+                %h4 
+                  Meus 
+                  %b chamados
+          .card-body          
+  .col-2
+    .row
+      .col-12
+        .card
+          .card-header.border-left-yellow
+            .row
+              .col-12
+                %h4 
+                  Últimas 
+                  %b notícias          
+          .card-body
+            - 4.times do 
+              .row
+                .col-12
+                  %h6 
+                    %b= link_to "(10/02/2016) Titulo da notícia", "#"
+                  = link_to image_tag('noimage.png', class: 'img-thumbnail'), "#"
+              .divider
+            .row
+              .col-12 
+                %br/
+                = link_to "Visualizar todas as notícias"
+
+  .col-2
+    .row
+      .col-12
+        .card
+          .card-header.border-left-yellow
+            .row
+              .col-12
+                %h4 
+                  Info 
+                  %b clima            
+          .card-body
+            .row
+              .col-6
+                = image_tag @weather.condition.slug rescue nil
+              .col-6
+                %h3 Brasília
+                %h3 
+                  %b #{@weather.condition.temperature.to_i} °
+                %h6 #{@weather.condition.humidity}% Umidade
+    .divider
+    .row
+      .col-12
+        .card
+          .card-header.border-left-yellow
+            .row
+              .col-12
+                %h4 
+                  Aniversariantes 
+                  %b (semana)          
+          .card-body
+            .row
+              .col-4
+                = link_to image_tag('noimage.png', class: 'img-fluid img-thumbnail')
+              .col-8
+                %h6
+                  %b Nome da pessoa
+                %h7
+                  10/12

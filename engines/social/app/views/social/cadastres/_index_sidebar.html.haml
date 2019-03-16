@@ -1,0 +1,29 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true, html: { id: 'invoice-filter'} do |f|
+        = f.input :by_process, label: "Por Nome",  input_html: {name: 'by_process', value: params[:by_process], placeholder: 'Por Processo'}
+        = f.input :by_agency, label: "Por Cpf",  input_html: {name: 'by_agency', value: params[:by_agency], placeholder: 'Por Orgão'}
+        = f.input :by_process_type, as: :select, label: "Possui perfil?", prompt: 'Selecione', input_html: { name: 'by_process_type'}
+        = f.input :by_lawsuit, label: "Por data início", input_html: { name: 'by_lawsuit',  class: 'date'}
+        = f.input :by_suitor, label: "Por data final", input_html: { name: 'by_suitor', value: params[:by_suitor],  class: 'date'}
+        = f.input :by_suitor, label: "Por posto", input_html: { name: 'by_suitor', value: params[:by_suitor], placeholder: 'Por posto'}
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: {  disable_with:  t(:disable_with)}
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
+  .divider
+    .card
+      .card-body.card-header.border-left-yellow
+        .card-title
+          Operações
+          = link_to "javascript:void(0)", class: "collapsing-link" do
+            %i.fa.fa-minus
+      .card-body.card-list
+        = link_to "Adicionar cadastrto", new_cadastre_path, remote: true, class: 'filter-nav-item'
+        %hr.divider
+        = link_to "Gestão de situações", '#', class: 'filter-nav-item'

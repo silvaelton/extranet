@@ -1,0 +1,15 @@
+= simple_form_for [@cadastre, @cadastre_schedule], remote: true do |f|
+  .row
+    .col-md-6
+      = f.input :date, as: :string, input_html: { class: 'date' }
+    .col-md-6
+      = f.input :hour, as: :string, input_html: { class: 'hour' }
+  .row
+    .col-md-12
+      = f.input :situation_id, collection: Social::CadastreSchedule.situation_ids.keys, prompt: 'Selecione'
+  .row
+    .col-md-12
+      = f.input :observation
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

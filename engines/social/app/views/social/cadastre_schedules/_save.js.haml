@@ -1,0 +1,9 @@
+- if @cadastre_schedule.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
+- else
+  $(".index-content").html("#{escape_javascript(render 'social/cadastres/index')}");
+  $(".row-type-#{@cadastre_schedule.cadastre_id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+  update_js();

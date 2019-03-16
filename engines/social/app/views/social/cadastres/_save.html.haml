@@ -1,0 +1,8 @@
+- if @cadastre.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
+- else
+  $(".row-type-#{@cadastre.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+  update_js();

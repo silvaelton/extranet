@@ -1,0 +1,9 @@
+- if @dependent.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
+- else
+  $(".show-content").html("#{escape_javascript(render 'social/cadastres/show')}");
+  $(".row-dep-#{@dependent.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+  update_js();

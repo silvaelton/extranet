@@ -1,0 +1,39 @@
+= simple_form_for [@cadastre, @dependent], remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name
+    .col-md-4
+      = f.input :cpf, input_html: {class: 'cpf'}
+  .row
+    .col-md-4
+      = f.input :gender_id, collection: Support::Common::Gender.all, prompt: 'Selecione'
+    .col-md-4
+      = f.input :born, as: :string, input_html: {class: 'date', value: (@dependent.born) ? localize(f.object.born) : nil}
+    .col-md-4
+      = f.input :civil_state_id, collection: Support::Common::CivilState.all, prompt: 'Selecione'
+  .row
+    .col-md-3
+      = f.input :rg
+    .col-md-3
+      = f.input :rg_org
+    .col-md-3
+      = f.input :rg_uf_id, collection: Support::Common::State.all, label_method: :acronym, prompt: 'Selecione'
+    .col-md-3
+      = f.input :rg_date, as: :string, input_html: {class: 'date', value: (@dependent.rg_date) ? localize(f.object.born) : nil}
+  .row
+    .col-md-3
+      = f.input :kinship_id, collection: Support::Common::Kinship.all, prompt: 'Selecione'
+    .col-md-3
+      = f.input :income, as: :string, input_html:{ class: 'coin', placeholder: 'Ex. 1000.00'}
+    .col-md-6
+      = f.input :work_ocupation
+  .row
+    .col-md-4
+      = f.input :education_id, collection: Support::Common::EducationBackground.all, prompt: 'Selecione'
+    .col-md-3
+      = f.input :course_interest, as: :select, include_blank: false
+    .col-md-5
+      = f.input :course_name
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

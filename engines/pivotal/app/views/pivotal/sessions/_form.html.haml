@@ -2,7 +2,7 @@
   - if @session.errors.any?
     .alert.alert-danger.text-center
       Matrícula ou senha inválidos.
-  = f.input :code, label: false, placeholder: 'Informe sua matrícula'
+  = f.input :username, label: false, placeholder: 'Informe seu usuário'
   = f.input :password, label: false, placeholder: 'Informe sua senha'
   = f.submit "Realizar acesso", type: 'submit', class: 'btn btn-primary btn-block', data: { disable_with: 'Autenticando...'}
   = link_to "Recuperar senha", "#", class: 'btn btn-dark btn-block'

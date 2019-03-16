@@ -1,0 +1,82 @@
+.row
+  .col-12
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th{colspan: 3} Nome
+          %th CPF
+          %th Sexo
+      %tbody
+        %tr
+          %td{colspan: 3}= @cadastre.name rescue t(:no_information)
+          %td= @cadastre.cpf.format_cpf rescue t(:no_information)
+          %td= @cadastre.gender.name rescue t(:no_information)
+      %thead
+        %tr
+          %th Email
+          %th Estado Civil
+          %th Data de Nascimento
+          %th Local de Nascimento
+          %th Grau de Instrução
+      %tbody
+        %tr
+          %td= @cadastre.email rescue t(:no_information)
+          %td= @cadastre.civil_state.name rescue t(:no_information)
+          %td= @cadastre.born.strftime('%d/%m/%Y') rescue t(:no_information)
+          %td= @cadastre.place_birth rescue t(:no_information)
+          %td= @cadastre.education.name rescue t(:no_information)
+      %thead
+        %tr
+          %th RG
+          %th Orgão Emissor
+          %th Data de Emissão
+          %th Nome da Mãe
+          %th Nome do Pai
+      %tbody
+        %tr
+          %td= @cadastre.rg rescue t(:no_information)
+          %td= @cadastre.rg_org rescue t(:no_information)
+          %td= @cadastre.rg_date.strftime("%d/%m/%Y") rescue t(:no_information)
+          %td= @cadastre.mother_name rescue t(:no_information)
+          %td= @cadastre.father_name rescue t(:no_information)
+      %thead
+        %tr
+          %th Cidade
+          %th Bairro
+          %th Endereço
+          %th Telefone
+          %th Celular
+      %tbody
+        %tr
+          %td= @cadastre.city.name rescue t(:no_information)
+          %td= @cadastre.burgh.name rescue t(:no_information)
+          %td= @cadastre.address
+          %td= @cadastre.telephone rescue t(:no_information)
+          %td= @cadastre.celphone rescue t(:no_information)
+      %thead
+        %tr
+          %th Trabalha?
+          %th Ocupação
+          %th Renda
+          %th Família com especial?
+          %th
+      %tbody
+        %tr
+          %td= @cadastre.work ? "Sim" : "Não"
+          %td= @cadastre.work_ocupation.present? ? @cadastre.work_ocupation : t(:no_information)
+          %td= @cadastre.income rescue t(:no_information)
+          %td= @cadastre.relative_special ? "Sim" : "Não"
+          %td
+      %thead
+        %tr
+          %th Recebe Pensão?
+          %th Recebe Benefício?
+          %th Interesse em cursos?
+          %th Nome do curso
+          %th
+      %tbody
+        %tr
+          %td= @cadastre.pension ? "Sim" : "Não"
+          %td= @cadastre.benefit ? "Sim" : "Não"
+          %td= @cadastre.course_interest ? "Sim" : "Não"
+          %td{colspan: 2}= @cadastre.course_name

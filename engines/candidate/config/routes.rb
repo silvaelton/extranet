@@ -1,18 +1,22 @@
 Candidate::Engine.routes.draw do
   root 'home#index'
 
-  resources :cadastres,                  path: 'cadastros'
+
   resources :activity_types,             path: 'atividade-tipos'
-  resources :cadins,                     path: 'cadastros-imobiliario'
-  resources :convocations,               path: 'convocacoes'
-  resources :indication_activity_types,  path: 'indicacoes-atividades-tipos'
-  resources :indication_allotments,      path: 'lotes-indicacoes'
-  resources :iptus,                      path: 'iptus'
-  resources :lists,                      path: 'listas'
+  resources :cadins,                     path: 'imobiliario-cadastros'
+  resources :indication_allotments,      path: 'indicacao-lotes'
+  resources :indication_activity_types,  path: 'indicacao-atividade-tipos'
+  
   resources :occurrence_targets,         path: 'objetos-ocorrencias'
-  resources :procedural_types,           path: 'processsos-tipos'
+  resources :procedural_types,           path: 'processos-tipos'
   resources :situation_types,            path: 'situacoes-tipos'
   
+  
+  resources :convocations,  path: 'convocacoes'
+  resources :lists,         path: 'listas'
+  resources :occurrences,   path: 'ocorrencias'
+  resources :notifications, path: 'notificacoes'
+
   resources :cadastres, path: 'cadastros' do
     resources :cadastre_situations
     resources :cadastre_procedural_situations
@@ -32,6 +36,4 @@ Candidate::Engine.routes.draw do
     resources :cadastre_activities
     resources :cadastre_helps
   end
-  
-  resources :activity_types
 end

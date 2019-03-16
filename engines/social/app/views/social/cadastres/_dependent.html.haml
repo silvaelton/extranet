@@ -1,0 +1,22 @@
+%h6 Composição Familiar
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Nome
+      %th CPF
+      %th Data de Nascimento
+      %th Parentesco
+      %th
+  %tbody
+    - if @cadastre.dependents.present?
+      - @cadastre.dependents.each do |dependent|
+        %tr{class: "row-dep-#{dependent.id}"}
+          %td= dependent.name
+          %td= dependent.cpf.format_cpf
+          %td= dependent.born.strftime('%d/%m/%Y')
+          %td= dependent.kinship.name rescue t(:no_info)
+          %td
+    - else
+      %tr
+        %td{colspan: 5}
+          %i Nenhum dependente cadastrado.

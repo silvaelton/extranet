@@ -1,0 +1,31 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Voltar para listagem", social.cadastres_path(filter_params)
+  %br
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Etapas
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "1 - Visita social", '#', class: 'filter-nav-item'
+      = link_to "2 - Dados do titular", edit_cadastre_path(@cadastre), remote: true, class: 'filter-nav-item'
+      = link_to "3 - Dados do cônjuge", '#', class: 'filter-nav-item'
+      = link_to "4 - Composição familiar", new_cadastre_dependent_path(@cadastre), remote: true, class: 'filter-nav-item'
+      = link_to "5 - Situação habitacional", new_cadastre_answer_path(@cadastre, type: 0), remote: true, class: 'filter-nav-item'
+      = link_to "6 - Infra residencial", new_cadastre_answer_path(@cadastre, type: 1), remote: true, class: 'filter-nav-item'
+      = link_to "7 - Arquivos", new_cadastre_cadastre_document_path(@cadastre), remote: true, class: 'filter-nav-item'
+      = link_to "8 - Requisitos sociais", '#', class: 'filter-nav-item'
+      = link_to "9 - Visita técnica", '#', class: 'filter-nav-item'
+      = link_to "10 - Requisitos técnicos", '#', class: 'filter-nav-item'
+      = link_to "11 - Habilitado", '#', class: 'filter-nav-item'
+      = link_to "12 - Estudo preliminar", '#', class: 'filter-nav-item'
+      = link_to "13 - Aprovação morador", '#', class: 'filter-nav-item'
+      = link_to "14 - Projeto executivo", '#', class: 'filter-nav-item'

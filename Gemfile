@@ -5,7 +5,7 @@ ruby '2.6.0'
 
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'puma', '~> 3.11'
+
 gem 'bcrypt', '~> 3.1.12'
 
 gem 'bootsnap', '~> 1.1.0', require: false
@@ -40,11 +40,14 @@ gem 'nokogiri', '~> 1.10.1'
 gem 'bootstrap-datepicker-rails'
 gem 'savon', '~> 2.12.0'
 gem 'bd_money', '~> 0.0.14'
+gem 'dotenv-rails'
+gem 'hg-weather'
 
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'carrierwave-base64', '~> 2.7.0'
 
 gem 'support', github: 'codhab/support', branch: 'master'
+
 
 group :development, :test do
   gem 'byebug', '~> 11.0.0', platforms: [:mri, :mingw, :x64_mingw]
@@ -61,6 +64,10 @@ group :test do
   gem 'chromedriver-helper', '~> 2.1.0'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 path 'engines' do
   gem 'address'
   gem 'api'
@@ -72,6 +79,7 @@ path 'engines' do
   gem 'entity'
   gem 'helpdesk'
   gem 'juridical'
+  gem 'social'
   gem 'pivotal'
   gem 'protocol'
   gem 'sefaz'

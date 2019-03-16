@@ -1,0 +1,6 @@
+pt-BR:
+  activemodel:
+    attributes:
+      'pivotal/session':
+        username: "Usuário"
+        password: "Senha"
