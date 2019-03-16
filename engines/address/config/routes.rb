@@ -14,4 +14,6 @@ Address::Engine.routes.draw do
   resources :units, path: 'unidades' do
     resources :bookings, path: 'reservas', only: %i[new create]
   end
+
+  resources :documents
 end

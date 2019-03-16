@@ -2,9 +2,9 @@ module Pivotal
   class Session
     include ActiveModel::Model
 
-    attr_accessor :code, :password, :user_id
+    attr_accessor :username, :password, :user_id
 
-    validates :code, :password, presence: true
+    validates :username, :password, presence: true
     validate  :authenticate
     
 
@@ -22,12 +22,12 @@ module Pivotal
     private 
 
     def authenticate
-      user = Pivotal::User.where(status: true).find_by(code: self.code)
-
+      user = Pivotal::User.where(status: true).find_by(username: self.username)
+      
       if !user.nil? && (BCrypt::Password.new(user.try(:password)) == self.password)
         self.user_id = user.id
       else 
-        errors.add(:code, 'não válido')
+        errors.add(:username, 'não válido')
         errors.add(:password, 'não confere')
       end     
 
