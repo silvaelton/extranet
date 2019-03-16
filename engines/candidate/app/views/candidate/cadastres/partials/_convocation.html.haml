@@ -2,15 +2,32 @@
   .card-body.card-header.border-left-yellow
     .card-title 
       = link_to "javascript:void(0)", class: "collapsing-content-link" do
-        3. Convocação (0)
-  .card-body{style: 'display: none'}
+        3. Convocação (#{@cadastre.cadastre_convocations.count})
+  .card-body.convocation-display{style: 'display: none'}  
     .row
-      .col-12
-        %table.table.table-striped.table-bordered.table-celled
+      .col-md-12 
+        %h5 
+        = link_to "Adicionar convocação", new_cadastre_cadastre_convocation_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
+        %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Convocaçao
+              %th Usuário
+              %th Observação
+              %th Status
+              %th
+          %tbody
+            - if @cadastre.cadastre_convocations.present? 
+              - @cadastre.cadastre_convocations.order(created_at: :desc).each do |cadastre_convocation|
+                %tr{class: "row-cadastre-convocation-#{cadastre_convocation.id}"}
+                  %td= cadastre_convocation.convocation.name
+                  %td= cadastre_convocation.user.name
+                  %td= cadastre_convocation.observation
+                  %td.collapsing= cadastre_convocation.status ? 'Ativo' : 'Inativo'
+                  %td.collapsing
+                    = link_to "<i class='fa fa-pencil'></i>".html_safe, candidate.edit_cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                    = link_to "<i class='fa fa-trash'></i>".html_safe, candidate.cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

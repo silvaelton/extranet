@@ -1,0 +1,10 @@
+- if @cadastre_situation.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".situation-cadastre-content").html("#{escape_javascript(render 'candidate/cadastres/partials/situation_cadastre')}");
+  $(".header-content").html("#{escape_javascript(render 'candidate/cadastres/partials/header')}");
+  $(".situation-display").css('display','block');
+  $(".row-cadastre-situation-#{@cadastre_situation.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();
