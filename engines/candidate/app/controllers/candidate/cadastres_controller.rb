@@ -7,6 +7,7 @@ module Candidate
     end
 
     def show
+      @cadastre = Candidate::Cadastre.find(params[:id])
     end
     
   end

@@ -1,123 +1,124 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      Visão geral  
-  .card-body
-    .row
-      .col-8
-        .row
-          .col-12
-            %p.title-sm RII (Ch. do padre)
-            %p.title 
-              OSVALDO PEREIRA DA CUNHA
-              = link_to "#", class: 'btn-icon bookmark-link' do
-                %i.far.fa-heart 
-            %p.title-sm 610.211.991-68
-            %p.title-sm 
-              %span.badge.badge-primary{title: 'Possui condição especial'}
-                %i.fa.fa-wheelchair
-              
-              %span.badge.badge-warning{title: 'Idoso'}
-                + 60
+      Visão geral
+  .header-content-new
+    .card-body
+      .row
+        .col-8
+          .row
+            .col-12
+              %p.title-sm RII (Ch. do padre)
+              %p.title 
+                OSVALDO PEREIRA DA CUNHA
+                = link_to "#", class: 'btn-icon bookmark-link' do
+                  %i.far.fa-heart 
+              %p.title-sm 610.211.991-68
+              %p.title-sm 
+                %span.badge.badge-primary{title: 'Possui condição especial'}
+                  %i.fa.fa-wheelchair
+                
+                %span.badge.badge-warning{title: 'Idoso'}
+                  + 60
 
-              %span.badge.badge-danger{title: 'Possui ocorrências não resolvidas'}
-                %i.fa.fa-exclamation-triangle
+                %span.badge.badge-danger{title: 'Possui ocorrências não resolvidas'}
+                  %i.fa.fa-exclamation-triangle
 
-      .col-4
-        %table.table.table-striped.table-bordered
-          %thead
-            %tr
-              %th Lista
-              %th Pontuação
-              %th Posição
-          %tbody
-            %tr
-              %td RII
-              %td 126874596.5454
-              %td 35º
-            %tr
-              %td Idoso
-              %td 126874596.5454
-              %td 12º
-            %tr
-              %td Deficiente
-              %td 126874596.5454
-              %td 12º            
+        .col-4
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Lista
+                %th Pontuação
+                %th Posição
+            %tbody
+              %tr
+                %td RII
+                %td 126874596.5454
+                %td 35º
+              %tr
+                %td Idoso
+                %td 126874596.5454
+                %td 12º
+              %tr
+                %td Deficiente
+                %td 126874596.5454
+                %td 12º            
 
-    %hr.divider
-    .row
-      .col-12
-        %p.title-xs.bold Situação do cadastro
-        .divider
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th Situação cadastral
-              %th Situação processual
-              %th Convocação (Ativa)
-              %th Pontuação (Hoje)
-              %th Renda familiar
-          %tbody
-            %tr
-              %td Habilitado - Documentação aprovada
-              %td Ordem para publicação
-              %td 1679
-              %td 5454654.5454
-              %td R$ 2500.55
+      %hr.divider
+      .row
+        .col-12
+          %p.title-xs.bold Situação do cadastro
+          .divider
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th Situação cadastral
+                %th Situação processual
+                %th Convocação (Ativa)
+                %th Pontuação (Hoje)
+                %th Renda familiar
+            %tbody
+              %tr
+                %td= @cadastre.current_situation
+                %td Ordem para publicação
+                %td= @cadastre.current_convocation
+                %td 5454654.5454
+                %td R$ 2500.55
 
-        %p.title-xs.bold Vínculo(s) com empreendimento
-        .divider
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th.collapsing Ùltima indicação
-              %th.collapsing Situação
-              %th Empreendimento
-          %tbody
-            %tr
-              %td.collapsing 12/01/2017
-              %td.collapsing Inativa em 13/01/2017
-              %td SAMABAIA H4 
+          %p.title-xs.bold Vínculo(s) com empreendimento
+          .divider
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th.collapsing Ùltima indicação
+                %th.collapsing Situação
+                %th Empreendimento
+            %tbody
+              %tr
+                %td.collapsing 12/01/2017
+                %td.collapsing Inativa em 13/01/2017
+                %td SAMABAIA H4 
 
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th.collapsing Endereço vínculado
-              %th.collapsing Data de vínculo
-          %tbody
-            %tr
-              %td= link_to "Samabaia - XS 01 CJ A CASA 01", "#"        
-              %td.collapsing 01/01/2018
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th.collapsing Endereço vínculado
+                %th.collapsing Data de vínculo
+            %tbody
+              %tr
+                %td= link_to "Samabaia - XS 01 CJ A CASA 01", "#"        
+                %td.collapsing 01/01/2018
 
-        %p.title-xs.bold Ocorrência(s)
-        .divider
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr.tr-danger
-              %th.collapsing ID
-              %th.collapsing Data / Hora
-              %th.collapsing Descrição
-              %th.collapsing Usuário
-          %tbody
-            %tr
-              %td 1     
-              %td 1     
-              %td 1     
-              %td 1     
+          %p.title-xs.bold Ocorrência(s)
+          .divider
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr.tr-danger
+                %th.collapsing ID
+                %th.collapsing Data / Hora
+                %th.collapsing Descrição
+                %th.collapsing Usuário
+            %tbody
+              %tr
+                %td 1     
+                %td 1     
+                %td 1     
+                %td 1     
 
-        %p.title-xs.bold Ùltimo atendimento
-        .divider
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr.tr-danger
-              %th.collapsing ID
-              %th.collapsing Data / Hora
-              %th.collapsing Descrição
-              %th.collapsing Usuário
-          %tbody
-            %tr
-              %td 1     
-              %td 1     
-              %td 1     
-              %td 1     
-                            
+          %p.title-xs.bold Ùltimo atendimento
+          .divider
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr.tr-danger
+                %th.collapsing ID
+                %th.collapsing Data / Hora
+                %th.collapsing Descrição
+                %th.collapsing Usuário
+            %tbody
+              %tr
+                %td 1     
+                %td 1     
+                %td 1     
+                %td 1     
+                              

@@ -20,7 +20,7 @@ Candidate::Engine.routes.draw do
     resources :cadastre_reservations
     resources :cadastre_contacts
     resources :cadastre_general
-    resources :cadastre_dependents
+    resources :dependents
     resources :cadastre_inheritors
     resources :cadastre_pontuations
     resources :cadastre_occurrences

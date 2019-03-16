@@ -1,0 +1,9 @@
+- if @dependent.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+  update_js();
+- else
+  $(".dependent-content").html("#{escape_javascript(render 'candidate/cadastres/partials/dependent')}");
+  $(".dependent-display").css('display','block');
+  $(".row-dependent-#{@dependent.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  update_js();

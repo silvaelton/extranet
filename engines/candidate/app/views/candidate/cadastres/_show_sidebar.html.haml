@@ -6,14 +6,14 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar situação cadastral", "#"
+      = link_to "Adicionar situação cadastral", candidate.new_cadastre_cadastre_situation_path(@cadastre), remote: true
       = link_to "Adicionar situação processual", "#"
-      = link_to "Adicionar convocação", "#"
+      = link_to "Adicionar convocação", candidate.new_cadastre_cadastre_convocation_path(@cadastre), remote: true
       = link_to "Adicionar reserva de endereço", "#"
       %hr.divider
       = link_to "Atualizar dados de contato", "#"
       = link_to "Atualizar dados gerais", "#"
-      = link_to "Adicionar dependente", "#"
+      = link_to "Adicionar dependente", candidate.new_cadastre_dependent_path(@cadastre),  remote: true
       = link_to "Adicionar herdeiro", "#"
       %hr.divider      
       = link_to "Gerar pontuação", "#"
