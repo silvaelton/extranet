@@ -1,8 +1,67 @@
-.modal-dialog
+.modal-dialog.modal-lg
   .modal-content
     .modal-header
       %h5.modal-title Detalhamento de presidente
       %a.close
         %i.fas.fa-times
     .modal-body
+      %table.table.table-bordered.table-striped.table-celled
+        %thead
+          %tr
+            %th Foto
+            %th{colspan: 2} Nome 
+            %th CPF
+        %tbody
+          %tr
+            %td
+              - if @president.photo?
+                = image_tag @president.photo_url, size: '70x70'
+              - else
+                = image_tag '/extranet/images/default-avatar.png', size: '50x50'
+            %td{colspan: 2}= @president.name
+            %td= @president.cpf
+        %thead
+          %tr
+            %th Data de Nascimento
+            %th Rg
+            %th Expeditor RG (secundário)
+            %th Rg uf
+        %tbody
+          %tr
+            %td= @president.born.format_date
+            %td= @president.rg
+            %td= @president.rg_org
+            %td= @president.rg_uf.name
+        %thead
+          %tr
+            %th{colspan: 2} E-mail
+            %th Telefone
+            %th Telefone (secundário)
+        %tbody
+          %tr
+            %td{colspan: 2}= @president.email
+            %td= @president.telephone
+            %td= @president.telephone_optional
+        %thead
+          %tr
+            %th{colspan: 2} Endereço 
+            %th CEP
+            %th Celular
+        %tbody
+          %tr
+            %td{colspan: 2}= @president.address
+            %td= @president.cep 
+            %td= @president.cell_phone
+        %thead
+          %tr
+            %th Cidade
+            %th Ceritficado civil-criminal
+            %th Status
+            %th Cargo
+        %tbody
+          %tr
+            %td= @president.city.name
+            %td= @president.certificate_civil_criminal
+            %td= @president.status.status_format
+            %td= @president.job.name 
       

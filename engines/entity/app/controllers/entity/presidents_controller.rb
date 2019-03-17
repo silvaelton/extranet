@@ -11,6 +11,7 @@ module Entity
     
     def create
       @president = @entity.presidents.new(set_params)
+      @president.job_id = 2
       @president.save
     end 
 
@@ -28,7 +29,9 @@ module Entity
 
     def set_params
       params.require(:president)
-            .permit(:name, :cpf, :rg, :telephone, :telephone_optional, :cell_phone, :email)
+      .permit(:cadastre_id, :name, :cpf, :rg, :rg_org, :rg_uf_id, :city_id, :address, 
+              :cep, :email, :born, :telephone, :telephone_optional, :cell_phone, 
+              :certificate_civil_criminal, :photo, :status, :job_id)
     end 
 
     def set_entity

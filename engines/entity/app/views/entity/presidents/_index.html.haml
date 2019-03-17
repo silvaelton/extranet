@@ -15,7 +15,11 @@
     - if @entity.presidents.present?
       - @entity.presidents.each do |president|
         %tr{class: "row-president-#{president.id}"}
-          %td= president.photo
+          %td
+            - if president.photo?
+              = image_tag president.photo_url, size: '70x70'
+            - else
+              = image_tag '/extranet/images/default-avatar.png', size: '50x50'
           %td
             = president.name
             = president.cpf

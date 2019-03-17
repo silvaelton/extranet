@@ -1,0 +1,9 @@
+- if @cadastre_inheritor.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".cadastre-inheritor-content").html("#{escape_javascript(render 'candidate/cadastres/partials/inheritor')}");
+  $(".inheritor-display").css('display','block');
+  $(".row-cadastre-inheritor-#{@cadastre_inheritor.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();
