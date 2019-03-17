@@ -4,7 +4,7 @@ module Helpdesk
     belongs_to :ticket_situation_type, required: false, foreign_key: :situation_type_id
     belongs_to :ticket_type
     belongs_to :ticket_subject, class_name: 'Helpdesk::TicketTypeSubject', foreign_key: :subject_id
-    belongs_to :staff, class_name: 'Pivotal::User'
+    belongs_to :user, class_name: 'Pivotal::User'
 
     has_many :ticket_attachments
     has_many :ticket_activities
@@ -20,6 +20,10 @@ module Helpdesk
 
     def self.current_user_types(current_user)
       TicketTypeUser.where(user_id: current_user.id).map(&:ticket_type_id)
+    end
+
+    def presenter
+      call_presenter('Helpdesk::TicketPresenter', self)
     end
 
   end

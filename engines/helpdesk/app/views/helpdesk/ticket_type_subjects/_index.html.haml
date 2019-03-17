@@ -16,7 +16,7 @@
               %td= subject.name
               %td.collapsing= subject.status ? 'Ativo' : 'Inativo'
               %td.collapsing
-                = link_to "<i class='fa fa-pencil'></i>".html_safe, helpdesk.edit_ticket_type_ticket_type_subject_path(@ticket_type, subject), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, helpdesk.edit_ticket_type_ticket_type_subject_path(@ticket_type, subject), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
                 = link_to "<i class='fa fa-trash'></i>".html_safe, helpdesk.ticket_type_ticket_type_subject_path(@ticket_type, subject), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
         - else
           %tr

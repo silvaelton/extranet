@@ -1,7 +1,9 @@
 Helpdesk::Engine.routes.draw do
   root 'tickets#index'
 
-  resources :tickets, path: 'chamados' do 
+  resources :tickets, path: 'chamados' do
+    get 'get_ticket'
+     
     resources :ticket_activities
   end
 
