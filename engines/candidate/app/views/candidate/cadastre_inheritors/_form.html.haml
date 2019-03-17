@@ -1,0 +1,32 @@
+= simple_form_for [@cadastre, @cadastre_inheritor], remote: true do |f|
+  .row
+    .col-8 
+      = f.input :name, as: :string, placeholder: 'Digite o nome'
+    .col-4 
+      = f.input :cpf, input_html: { class: 'cpf'}
+  .row
+    .col-3
+      = f.input :single_name, placeholder: 'Digite a justificativa'
+    .col-3 
+      = f.input :born, as: :string,  input_html: { class: 'date', value: (@cadastre_inheritor.born) ? localize(f.object.born) : nil}
+    .col-3 
+      = f.input :rg
+    .col-3 
+      = f.input :gender_id, as: :select, collection: Support::Common::Gender.all, include_blank: 'Selecione...'
+  .row
+    .col-3 
+      = f.input :civil_state_id, as: :select, collection: Support::Common::CivilState.all, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :estate, as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :percentage, placeholder: 'Digite o documento'
+    .col-3 
+      = f.input :place_birth, as: :string
+  .row
+    .col-12
+      = f.input :observation, placeholder: 'Digite a justificativa'
+
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: d301cca894dec86f3e685af6fd5126dabe52fe06
+  revision: a03bfaaa957018eb1b7fc2e5c2df5210b70306a1
   branch: master
   specs:
     support (0.1.0)
@@ -396,4 +396,4 @@ RUBY VERSION
    ruby 2.6.0p0
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

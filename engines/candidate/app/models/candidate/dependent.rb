@@ -1,4 +1,4 @@
-require_dependency "support/candidate/cadastre_situation"
+require_dependency "support/candidate/dependent"
 
 module Candidate
   class Dependent < Support::Candidate::Dependent
