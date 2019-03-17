@@ -1,0 +1,4 @@
+- if @ticket_activity.errors.any?
+  $(".form-content").html("#{escape_javascript(render 'form')}");
+  - else
+  $(".ticket-activity-content").html("#{escape_javascript(render 'helpdesk/ticket_activities/index')}");

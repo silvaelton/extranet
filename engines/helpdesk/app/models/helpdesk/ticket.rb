@@ -1,8 +1,15 @@
 module Helpdesk
   class Ticket < Support::Helpdesk::Ticket
+    belongs_to :ticket_location, required: false, foreign_key: :location_id
+    belongs_to :ticket_situation_type, required: false, foreign_key: :situation_type_id
     belongs_to :ticket_type
     belongs_to :ticket_subject, class_name: 'Helpdesk::TicketTypeSubject', foreign_key: :subject_id
     belongs_to :staff, class_name: 'Pivotal::User'
+
+    has_many :ticket_attachments
+    has_many :ticket_activities
+
+    accepts_nested_attributes_for :ticket_attachments, allow_destroy: true
 
     validates :ticket_type_id, :subject_id, :contact, :description, presence: true
     validates :schedule_date, presence: true, if: -> { self.schedule }

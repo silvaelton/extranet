@@ -1,7 +1,7 @@
 = simple_form_for [@cadastre, @cadastre_convocation], remote: true do |f|
   .row
     .col-8 
-      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active, include_blank: 'Selecione...'
+      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: 'Selecione...'
     .col-4 
       = f.input :status, as: :select,include_blank: 'Selecione...'
   

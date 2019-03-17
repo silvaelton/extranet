@@ -1,8 +1,8 @@
 - if @notice_document.errors.any?
   $("#modal").html("#{escape_javascript(render 'form')}");
-  updateJs();
+  update_js();
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
   $(".index-content").html("#{escape_javascript(render 'index')}");
 
-  updateJs();
+  update_js();

@@ -14,7 +14,8 @@ function update_js() {
   collapse();
   close_modal();
   mask();
-  initTinyMCE();
+  init_tiny_mce();
+  nested_form();
 }
 
 function collapse() {
@@ -62,8 +63,8 @@ function mask() {
   $('.money').mask('000.000.000.000,00', { reverse: true });
 }
 
-function initTinyMCE() {
-  //tinymce.remove();
+function init_tiny_mce() {
+  tinymce.remove();
   tinymce.init({
     selector: 'textarea.tinymce',
     language: 'pt_BR',
@@ -74,7 +75,7 @@ function initTinyMCE() {
       "styleselect | bold italic | alignleft aligncenter alignright alignjustify",
       "bullist numlist outdent indent | link image | code | codesample | fontsizeselect"
     ],
-    plugins: "image,link,code,codesample,imagetools,media,table,insertdatetime,charmap,print,preview,anchor,searchreplace,visualblocks,fullscreen",
+    plugins: "image,link,imagetools,media,table,insertdatetime,charmap,print,anchor,searchreplace,visualblocks",
 
     setup: function (editor) {
       editor.on('change', function () {
@@ -83,4 +84,21 @@ function initTinyMCE() {
     }
   });
 
+}
+
+
+function nested_form() {
+  $('form').on('click', '.remove_fields', function (event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+    return event.preventDefault();
+  });
+  
+  $('form').on('click', '.add_fields', function (event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+    return event.preventDefault();
+  });
 }

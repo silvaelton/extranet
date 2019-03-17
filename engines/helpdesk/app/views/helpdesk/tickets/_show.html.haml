@@ -1,64 +1,48 @@
-.modal-dialog.modal-lg
+.modal-dialog.modal-xl
   .modal-content
     .modal-header
-      %h5.modal-title Detalhamento de chamado
+      %h5.modal-title Detalhamento de chamado - ##{@ticket.id}
       %a.close
-        %i.fa.fa-close
+        %i.fas.fa-times
     .modal-body
+      .mt-4
+      %h6
+        %b Informações
       %table.table.table-striped.table-bordered
         %thead
           %tr
-            %th.collapsing Número
+            %th N°
             %th Data/Hora
             %th Tipo
             %th Assunto
         %tbody
           %tr
-            %td= @ticket.id
+            %td.collapsing= @ticket.id
             %td.collapsing= @ticket.created_at.strftime("%d/%m/%Y %H:%M")
             %td.collapsing= @ticket.ticket_type.name rescue t(:no_info)
             %td= @ticket.ticket_subject.name rescue t(:no_info)              
-      %table.table.table-striped.table-bordered
-        %thead
-          %tr
-        %tbody
-          %tr
-
 
       %table.table.table-striped.table-bordered
         %thead
           %tr
-            %th Solicitante
-            %th Atendente
+            %th.collapsing Solicitante
+            %th.collapsing Atendente
+            %th.collapsing Situação
         %tbody
           %tr
             %td= @ticket.staff.presenter.short_name rescue t(:no_info) 
             %td 
-
-      %table.table.table-striped.table-bordered
-        %thead
-          %tr
-            %th Situação
-        %tbody
-          %tr
-            %td              
-
+            %td= @ticket.ticket_situaton_type.name rescue t(:no_info)        
       %table.table.table-striped.table-bordered
         %thead
           %tr
             %th Local
-        %tbody
-          %tr
-            %td 
-
-      %table.table.table-striped.table-bordered
-        %thead
-          %tr
             %th Agendado
-            %th Data
-            %th Hora
+            %th Agendamento (Data)
+            %th Agendamento (Hora)
         %tbody
           %tr
+            %td= @ticket.ticket_location.name rescue t(:no_info)
             %td= @ticket.schedule ? "Sim" : "Não"
             %td= @ticket.schedule_date.strftime("%d/%m/%Y") rescue t(:no_info)
             %td= @ticket.schedule_hour.strftime("%H:%M") rescue t(:no_info)
@@ -72,36 +56,27 @@
             %td= @ticket.description.html_safe  
       
       .mt-4
-      %h6 Arquivos
+      %h6
+        %b Arquivos (#{@ticket.ticket_attachments.count})
       %table.table.table-striped.table-bordered
         %thead
           %tr
-            %th Descrição
+            %th #
             %th Link
         %tbody
-          %tr
-            %td{colspan: 2}
-              %i Nenhum arquivo anexo.
-          %tr
-            %td 
-            %td 
-      
+          - if @ticket.ticket_attachments.present?
+            - @ticket.ticket_attachments.order(:id).each_with_index do |attach, index|
+              %tr
+                %td.collapsing= index + 1
+                %td= link_to "Visualizar arquivo", attach.document_url, target: '_blank'
+          - else
+            %tr
+              %td{colspan: 2}
+                %i Nenhum arquivo anexo.
+
       .mt-4
-      %h6 
-        Interações
-        = link_to "Adicionar interação", "#", class: 'float-right'
-      %table.table.table-striped.table-bordered
-        %thead
-          %tr
-            %th Data/Hora
-            %th Conteúdo
-            %th
-        %tbody
-          %tr
-            %td{colspan: 3}
-              %i Nenhuma interação registrada.
-          %tr
-            %td 
-            %td 
-            %td 
-                     
+      .ticket-activity-content
+        = render 'helpdesk/ticket_activities/index'
+      .card
+        .card-body.ticket-activity-form
+          = render 'helpdesk/ticket_activities/form'

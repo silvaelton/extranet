@@ -1,9 +1,9 @@
 - if @situation_type.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
-  updateJs();
+  update_js();
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
   $(".index-content").html("#{escape_javascript(render 'attendance/ticket_situation_types/index')}");
   $(".row-situation-#{@situation_type.id}").addClass('table-success');
 
-  updateJs();
+  update_js();

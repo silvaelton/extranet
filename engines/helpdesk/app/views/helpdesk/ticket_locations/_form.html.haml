@@ -1,0 +1,16 @@
+= simple_form_for @ticket_location, remote: true do |f|
+  .row
+    .col-12 
+      = f.input :name, as: :string, placeholder: "Informe o nome do local"
+  .row
+    .col-12 
+      = f.input :status, as: :select, include_blank: false
+  .row
+    .col-6
+      = f.input :lat, as: :string, placeholder: "-15.54567"
+    .col-6 
+      = f.input :lng, as: :string, placeholder: "48.54567"
+  .divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }
