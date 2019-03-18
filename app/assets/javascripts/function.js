@@ -16,6 +16,7 @@ function update_js() {
   mask();
   init_tiny_mce();
   nested_form();
+  select2();
 }
 
 function collapse() {
@@ -100,5 +101,13 @@ function nested_form() {
     regexp = new RegExp($(this).data('id'), 'g');
     $(this).before($(this).data('fields').replace(regexp, time));
     return event.preventDefault();
+  });
+}
+
+
+function select2() {
+  $("#dinamic-select").select2({
+    theme: "bootstrap",
+    language: "pt-BR"
   });
 }

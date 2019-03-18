@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/agenda_reference_category': "Categoria"
+    attributes:
+      'attendance/agenda_reference_category':
+        name: "Nome"
+        description: "Descrição"
+        status: "Ativo?"

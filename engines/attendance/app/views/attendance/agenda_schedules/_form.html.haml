@@ -1,0 +1,40 @@
+= simple_form_for [@agenda, @schedule], remote: true do |f|
+  .row
+    .col-3
+      /= f.input :date, as: :select, input_html: { id: 'select2'}
+      %select#dinamic-select
+        %option OK
+        %option OK
+        %option OK
+    .col-3
+      = f.input :hour, as: :select
+    .col-6
+      = f.input :document_number       
+  .row
+    .col-6
+      = f.input :name
+    .col-3
+      - if @agenda.cnpj_required?
+        = f.input :cnpj
+      - else
+        = f.input :cpf, input_html: { class: 'cpf'}      
+    .col-3
+      = f.input :born, as: :string, input_html: { class: 'date', value: f.object.born.present? ? localize(f.object.born) : nil}
+  .row
+    .col-4
+      = f.input :city_id, as: :select, collection: Support::Common::City.federal_district, include_blank: t(:include_blank)
+    .col-8
+      = f.input :address
+  .row
+    .col-4
+      = f.input :email
+    .col-4
+      = f.input :telephone
+    .col-4
+      = f.input :celphone
+
+  .divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with)} 
+  

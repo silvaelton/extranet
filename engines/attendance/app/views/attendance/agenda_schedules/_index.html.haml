@@ -1,0 +1,21 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando () registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Título
+          %td Resumo
+          %td.collapsing Data Início
+          %td.collapsing Data Fim
+          %td.collapsing Hora Início
+          %td.collapsing Hora Fim
+          %td.collapsing Atendentes
+          %td
+      %tbody

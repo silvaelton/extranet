@@ -1,0 +1,10 @@
+= simple_form_for @agenda_category, remote: true do |f|
+  .row
+    .col-12 
+      = f.input :name, as: :string, placeholder: "Informe o nome da categoria"
+  .row
+    .col-4
+      = f.input :status, as: :select, include_blank: false
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

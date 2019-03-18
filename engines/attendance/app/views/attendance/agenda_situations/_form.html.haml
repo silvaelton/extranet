@@ -1,0 +1,13 @@
+= simple_form_for @agenda_situation, remote: true do |f|
+
+  .row
+    .col-12 
+      = f.input :name, as: :string
+
+  .row
+    .col-12 
+      = f.input :status, as: :string
+
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

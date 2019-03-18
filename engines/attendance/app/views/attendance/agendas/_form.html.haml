@@ -1,0 +1,106 @@
+= simple_form_for @agenda, remote: true do |f|
+  .row
+    .col-8
+      = f.input :category_id, as: :select, collection: Attendance::AgendaCategory.status_active.order(:name), include_blank: t(:include_blank)
+    .col-4
+      = f.input :status, as: :select, include_blank: false
+  .row
+    .col-12
+      = f.input :title, placeholder: "Informe um título"
+  .row
+    .col-12
+      = f.input :resume, as: :text, input_html: { rows: 2}, placeholder: "Informe um resumo sobre a agenda"
+  .row
+    .col-12
+      = f.input :content, as: :text, input_html: { rows: 2}
+  .row
+    .col-3
+      = f.input :started_at, as: :string, input_html: { class: 'date', value: f.object.started_at.present? ? localize(f.object.started_at) : nil}
+    .col-3
+      = f.input :ended_at, as: :string, input_html: { class: 'date', value: f.object.ended_at.present? ? localize(f.object.ended_at) : nil} 
+    .col-3
+      = f.input :hour_start, as: :string, input_html: { class: 'hour', value: f.object.hour_start.present? ? localize(f.object.hour_start) : nil}
+    .col-3
+      = f.input :hour_end, as: :string, input_html: { class: 'hour', value: f.object.hour_end.present? ? localize(f.object.hour_end) : nil}
+  .row
+    .col-3
+      = f.input :attendance_time, as: :integer
+    .col-3
+      = f.input :attendance_quantity, as: :integer
+  %hr/
+  .row
+    .col-3
+      = f.input :lunch, as: :select, include_blank: false, input_html: { id: 'lunch'}
+  #lunch-fields{style: f.object.lunch ? "display: block;" : "display: none;"}
+    .row
+      .col-3
+        = f.input :lunch_hour_start, as: :string, input_html: { class: 'hour'}
+      .col-3
+        = f.input :lunch_hour_end, as: :string, input_html: { class: 'hour'}
+      .col-3
+        = f.input :lunch_attendance_quantity
+  %hr/
+  .row
+    .col-12
+      = f.input :location_id
+
+  .row
+    .col-3
+      = f.input :cnpj_required, as: :select, include_blank: false
+  
+  %hr/
+  .row
+    .col-3
+      = f.input :restriction, as: :select, include_blank: false
+    .col-3
+      = f.input :restriction_presence, as: :select, include_blank: false
+  .row
+    .col-12
+      = f.input :restriction_sql, as: :text, input_html: { rows: 3 }
+  %hr/
+  .row
+    .col-3
+      = f.input :saturday, as: :select, include_blank: false, input_html: { id: "saturday"}
+  
+  #saturday-fields{style: f.object.saturday ? "display: block;" : "display: none;"}
+    .row
+      .col-4
+        = f.input :saturday_hour_start, as: :string, input_html: { class: 'hour'}
+      .col-4
+        = f.input :saturday_hour_end, as: :string, input_html: { class: 'hour'}
+      .col-4
+        = f.input :saturday_attendance_quantity, as: :integer
+
+  .row
+    .col-3
+      = f.input :sunday, as: :select, include_blank: false, input_html: { id: "sunday"}
+  
+  #sunday-fields{style: f.object.sunday ? "display: block;" : "display: none;"}
+    .row
+      .col-4
+        = f.input :sunday_hour_start, as: :string, input_html: { class: 'hour'}
+      .col-4
+        = f.input :sunday_hour_end, as: :string, input_html: { class: 'hour'}
+      .col-4
+        = f.input :sunday_attendance_quantity, as: :integer
+  
+  .divider
+
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }
+
+:javascript
+  $(document).ready(function() {
+    $("#lunch").on('change', function() {
+      $("#lunch-fields").toggle();
+    });
+
+    $("#saturday").on('change', function() {
+      $("#saturday-fields").toggle();
+    });    
+
+    $("#sunday").on('change', function() {
+      $("#sunday-fields").toggle();
+    });     
+  })

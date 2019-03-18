@@ -38,6 +38,7 @@ class CrudGenerator < Rails::Generators::Base
       update.js.haml
       _save.js.haml
       index.js.haml
+      index.html.haml
       _index.html.haml
       _index_sidebar.html.haml
       _form.html.haml

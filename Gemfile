@@ -32,6 +32,7 @@ gem 'file_validators', '~> 2.3.0'
 gem 'font_awesome5_rails'
 gem 'validates_cpf_cnpj', '~> 0.2.0'
 gem 'validates_timeliness', '~> 4.0.2'
+gem 'select2-rails'
 
 gem 'barby', '~> 0.6.5'
 gem 'chunky_png', '~> 1.3.10'
