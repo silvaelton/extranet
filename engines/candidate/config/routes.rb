@@ -17,6 +17,8 @@ Candidate::Engine.routes.draw do
   resources :occurrences,   path: 'ocorrencias'
   resources :notifications, path: 'notificacoes'
 
+  resources :update_contacts, path: 'atualizacao-contatos'
+  
   resources :cadastres, path: 'cadastros' do
     resources :cadastre_situations
     resources :cadastre_procedural_situations

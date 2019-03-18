@@ -10,7 +10,7 @@
       = link_to "Adicionar convocação", candidate.new_cadastre_cadastre_convocation_path(@cadastre), remote: true
       = link_to "Adicionar reserva de endereço", "#"
       %hr.divider
-      = link_to "Atualizar dados de contato", "#"
+      = link_to "Atualizar dados de contato", candidate.edit_update_contact_path(@cadastre), remote: true
       = link_to "Atualizar dados gerais", "#"
       = link_to "Adicionar dependente", candidate.new_cadastre_dependent_path(@cadastre),  remote: true
       = link_to "Adicionar herdeiro", candidate.new_cadastre_cadastre_inheritor_path(@cadastre),  remote: true

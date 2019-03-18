@@ -5,14 +5,11 @@
     .col-4 
       = f.input :date, as: :string,  input_html: { class: 'date', value: (@cadastre_activity.date) ? localize(f.object.date) : nil}
   .row
-    .col-6 
+    .col-4 
       = f.input :activity_type_id, as: :select, collection: Candidate::ActivityType.status_active, include_blank: 'Selecione...'
-    .col-6 
-      = f.input :computer, as: :select, include_blank: 'Selecione...'
-  .row
-    .col-6 
+    .col-4 
       = f.input :document, as: :string, placeholder: 'Número do documento'
-    .col-6 
+    .col-4 
       = f.input :critical, as: :select, include_blank: 'Selecione...'
   .row
     .col-12
