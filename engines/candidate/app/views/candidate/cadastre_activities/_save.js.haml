@@ -1,0 +1,9 @@
+- if @cadastre_activity.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+  update_js();
+- else
+  $(".cadastre-activity-content").html("#{escape_javascript(render = render 'candidate/cadastres/partials/activity')}");
+  $(".cadastre-activity-display").css('display','block');
+  $(".row-cadastre-activity-#{@cadastre_activity.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  update_js();

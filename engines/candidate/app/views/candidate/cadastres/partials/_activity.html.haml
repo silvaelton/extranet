@@ -3,15 +3,30 @@
   .card-body.card-header.border-left-yellow
     .card-title 
       = link_to "javascript:void(0)", class: "collapsing-content-link" do
-        17. Atividade (0)
-  .card-body{style: 'display: none'}
+        17. Atividade (#{@cadastre.cadastre_activities.count})
+  .card-body.cadastre-activity-display{style: 'display: none'}
     .row
-      .col-12
-        %table.table.table-striped.table-bordered.table-celled
+      .col-md-12
+        %h5 
+        = link_to "Adicionar atividade", new_cadastre_cadastre_activity_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
+        %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Titulo
+              %th Usuário
+              %th Justificativa
+              %th
+          %tbody
+            - if @cadastre.cadastre_activities.present? 
+              - @cadastre.cadastre_activities.order(:name).each do |cadastre_activity|
+                %tr{class: "row-cadastre-activity-#{cadastre_activity.id}"}
+                  %td= cadastre_activity.title
+                  %td= cadastre_activity.user.name
+                  %td= cadastre_activity.justify
+                  %td.collapsing
+                    = link_to "<i class='fa fa-pencil'></i>".html_safe, candidate.edit_cadastre_cadastre_activity_path(@cadastre, cadastre_activity), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                    = link_to "<i class='fa fa-trash'></i>".html_safe, candidate.cadastre_cadastre_activity_path(@cadastre, cadastre_activity), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

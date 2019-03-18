@@ -3,7 +3,7 @@ require_dependency 'candidate/application_controller'
 module Candidate
   class DependentsController < ApplicationController 
     before_action :set_cadastre
-    before_action :set_dependnet, only: [:edit, :update, :destroy]
+    before_action :set_dependent, only: [:edit, :update, :destroy]
 
     def new
       @dependent = @cadastre.dependents.new
@@ -38,7 +38,7 @@ module Candidate
       @cadastre = Candidate::Cadastre.find(params[:cadastre_id])
     end
 
-    def set_dependnet
+    def set_dependent
       @dependent = @cadastre.dependents.find(params[:id])
     end
   end
