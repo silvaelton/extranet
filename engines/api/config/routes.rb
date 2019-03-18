@@ -13,6 +13,9 @@ Api::Engine.routes.draw do
 
     namespace :external do
       resources :cadastres
+      resources :agenda do
+        get 'times', to: 'schedules#times', on: :collection
+      end
     end
   end
 

@@ -23,9 +23,9 @@
     .col-3
       = f.input :hour_end, as: :string, input_html: { class: 'hour', value: f.object.hour_end.present? ? localize(f.object.hour_end) : nil}
   .row
-    .col-3
+    .col-4
       = f.input :attendance_time, as: :integer
-    .col-3
+    .col-4
       = f.input :attendance_quantity, as: :integer
   %hr/
   .row
@@ -103,4 +103,5 @@
     $("#sunday").on('change', function() {
       $("#sunday-fields").toggle();
     });     
+
   })

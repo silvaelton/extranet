@@ -18,5 +18,9 @@ module Attendance
     validates :sunday_attendance_quantity, numericality: true, presence: true, if: -> { self.sunday? } 
     
     validates :restriction_sql, presence: true, if: -> { self.restriction? }
+
+    def presenter
+      call_presenter('Support::Attendance::AgendaPresenter', self)
+    end
   end
 end

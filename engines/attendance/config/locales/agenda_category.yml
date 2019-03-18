@@ -1,8 +1,8 @@
 pt-BR:
   activerecord:
     models:
-      'attendance/attendant_category': "Categoria"
+      'attendance/agenda_category': "Categoria"
     attributes:
-      'attendance/attendant_category':
+      'attendance/agenda_category':
         name: "Nome"
         status: "Ativo?"
