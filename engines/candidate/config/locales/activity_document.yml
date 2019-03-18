@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/activity_document' : "Documentos"
+    attributes:
+      'candidate/activity_document':
+        document: "Documento"

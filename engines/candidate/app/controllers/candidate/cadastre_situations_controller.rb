@@ -12,6 +12,8 @@ module Candidate
     def create
       @cadastre_situation = @cadastre.cadastre_situations.new(set_params)
       @cadastre_situation.user_id = current_user.id
+      # @cadastre_situation.cadastre_mirror_id = @cadastre.current_valid_mirror.id
+      @cadastre_situation.cadastre_mirror_id = Candidate::CadastreMirror.where(cadastre_id: @cadastre, status: true).order(created_at: :asc).last.id
       @cadastre_situation.save
     end
     
@@ -31,7 +33,7 @@ module Candidate
     def set_params
       params.require(:cadastre_situation).permit(:cadastre_id, :cadastre_mirror_id, :situation_type_id, 
                                                  :subscribe_id, :user_id, :observation, :computer, 
-                                                 :cadastre_convocation_id, :process_number, :process_sei)
+                                                 :cadastre_convocation_id, :process_number, :process_sei, :date)
     end
 
     def set_cadastre

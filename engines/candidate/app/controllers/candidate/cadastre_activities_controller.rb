@@ -3,7 +3,7 @@ require_dependency 'candidate/application_controller'
 module Candidate
   class CadastreActivitiesController < ApplicationController 
     before_action :set_cadastre
-    before_action :set_cadastre_activity, only: [:edit, :update, :destroy]
+    before_action :set_cadastre_activity, only: [:edit, :update, :destroy, :show]
 
     def new
       @cadastre_activity = @cadastre.cadastre_activities.new
@@ -15,8 +15,8 @@ module Candidate
       @cadastre_activity.save
     end
     
-    def edit
-    end
+    def edit; end
+    def show; end
 
     def update
       @cadastre_activity.update(set_params)
@@ -31,7 +31,7 @@ module Candidate
     def set_params
       params.require(:cadastre_activity).permit(:cadastre_id, :cadastre_mirror_id, :activity_type_id, 
                                                 :user_id, :date, :computer, :title, :justify, 
-                                                :document, :critical)
+                                                :document, :critical, activity_documents_attributes: [:document, :id, :_destroy])
     end
 
     def set_cadastre

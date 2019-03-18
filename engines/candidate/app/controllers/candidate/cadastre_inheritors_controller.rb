@@ -3,7 +3,7 @@ require_dependency 'candidate/application_controller'
 module Candidate
   class CadastreInheritorsController < ApplicationController 
     before_action :set_cadastre
-    before_action :set_cadastre_inheritor, only: [:edit, :update, :destroy]
+    before_action :set_cadastre_inheritor, only: [:edit, :update, :destroy, :show]
 
     def new
       @cadastre_inheritor = @cadastre.cadastre_inheritors.new
@@ -14,8 +14,9 @@ module Candidate
       @cadastre_inheritor.save
     end
     
-    def edit
-    end
+    def edit; end
+    
+    def show; end
 
     def update
       @cadastre_inheritor.update(set_params)

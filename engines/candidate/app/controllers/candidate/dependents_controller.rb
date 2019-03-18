@@ -3,7 +3,7 @@ require_dependency 'candidate/application_controller'
 module Candidate
   class DependentsController < ApplicationController 
     before_action :set_cadastre
-    before_action :set_dependent, only: [:edit, :update, :destroy]
+    before_action :set_dependent, only: [:edit, :update, :destroy, :show]
 
     def new
       @dependent = @cadastre.dependents.new
@@ -15,6 +15,8 @@ module Candidate
     end
     
     def edit
+    end
+    def show
     end
 
     def update

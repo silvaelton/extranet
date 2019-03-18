@@ -6,6 +6,7 @@ module Candidate
     has_many :cadastre_situations
     has_many :cadastre_inheritors
     has_many :cadastre_convocations
+    has_many :cadastre_activities
     has_many :dependents
 
   end

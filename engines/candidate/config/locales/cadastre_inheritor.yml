@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/cadastre_inheritor': Herdeiro
+    attributes:
+      'candidate/cadastre_inheritor':
+        name: "Nome Completo"
+        cpf: "CPF"
+        rg: "RG"
+        born: "Data de Nascimento"
+        civil_state_id: "Estado Civil"
+        gender_id: "Sexo"
+        single_name: "Nome de solteiro(a)"
+        percentage: "Porcentagem"
+        observation: "Observação"
+        place_birth: "Cidade de Nascimento"
+        estate: "Espólio?"

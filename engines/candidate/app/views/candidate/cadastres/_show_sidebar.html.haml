@@ -13,7 +13,7 @@
       = link_to "Atualizar dados de contato", "#"
       = link_to "Atualizar dados gerais", "#"
       = link_to "Adicionar dependente", candidate.new_cadastre_dependent_path(@cadastre),  remote: true
-      = link_to "Adicionar herdeiro", "#"
+      = link_to "Adicionar herdeiro", candidate.new_cadastre_cadastre_inheritor_path(@cadastre),  remote: true
       %hr.divider      
       = link_to "Gerar pontuação", "#"
       %hr.divider
@@ -24,7 +24,7 @@
       = link_to "Iniciar uma conversa", "#"         
       = link_to "Enviar notificação", "#"       
       = link_to "Enviar mensagem", "#"       
-      = link_to "Adicionar atividade", "#"
+      = link_to "Adicionar atividade", candidate.new_cadastre_cadastre_activity_path(@cadastre),  remote: true
       %hr.divider
       = link_to "Emitir ficha cadastral", "#"       
       %hr.divider

@@ -1,4 +1,3 @@
-
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
@@ -7,8 +6,8 @@
   .card-body.cadastre-activity-display{style: 'display: none'}
     .row
       .col-md-12
-        %h5 
-        = link_to "Adicionar atividade", new_cadastre_cadastre_activity_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
+        %h6 
+          = link_to "+ Adicionar atividade", new_cadastre_cadastre_activity_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
         %table.table.table-bordered.table-striped
           %thead
             %tr
@@ -18,14 +17,19 @@
               %th
           %tbody
             - if @cadastre.cadastre_activities.present? 
-              - @cadastre.cadastre_activities.order(:name).each do |cadastre_activity|
+              - @cadastre.cadastre_activities.order(:date).each do |cadastre_activity|
                 %tr{class: "row-cadastre-activity-#{cadastre_activity.id}"}
                   %td= cadastre_activity.title
                   %td= cadastre_activity.user.name
                   %td= cadastre_activity.justify
                   %td.collapsing
-                    = link_to "<i class='fa fa-pencil'></i>".html_safe, candidate.edit_cadastre_cadastre_activity_path(@cadastre, cadastre_activity), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
-                    = link_to "<i class='fa fa-trash'></i>".html_safe, candidate.cadastre_cadastre_activity_path(@cadastre, cadastre_activity), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Editar", candidate.edit_cadastre_cadastre_activity_path(@cadastre, cadastre_activity), remote: true, class: 'dropdown-item'
+                        = link_to "Excluir", candidate.cadastre_cadastre_activity_path(@cadastre, cadastre_activity), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
             - else
               %tr
                 %td{colspan: 3}
