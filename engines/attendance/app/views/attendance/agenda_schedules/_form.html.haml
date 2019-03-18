@@ -1,13 +1,9 @@
 = simple_form_for [@agenda, @schedule], remote: true do |f|
   .row
+    .col-2
+      = f.input :date, as: :string, collection: {}, input_html: { class: 'datepicker', id: "date"}
     .col-3
-      /= f.input :date, as: :select, input_html: { id: 'select2'}
-      %select#dinamic-select
-        %option OK
-        %option OK
-        %option OK
-    .col-3
-      = f.input :hour, as: :select
+      = f.input :hour, as: :select, input_html: { id: "time"}
     .col-6
       = f.input :document_number       
   .row
@@ -38,3 +34,27 @@
     .col-12
       = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with)} 
   
+:javascript
+
+  $(document).ready(function() {
+    $('.datepicker').datepicker({
+      startDate: "#{@agenda.presenter.start_date}",
+      endDate: "#{@agenda.presenter.end_date}",
+      daysOfWeekDisabled: "#{@agenda.presenter.disable_days}",
+      datesDisabled: "#{@agenda.presenter.dates_disabled}"
+    });
+
+
+    $("#date").on('change', function(){
+      api_url = "/api/v1/external/agenda/times?date=" + $(this).val() +  "&agenda_id=#{@agenda.id}"
+      $.getJSON(api_url, function(data) {
+        var html = "";
+
+        for(var i = 0; data.length > i; i++) {
+          html += "<option value='"+ data[i] +"'>"+ data[i] +"</option>";
+        }
+
+        $("#time").html(html);
+      });
+    });
+  });

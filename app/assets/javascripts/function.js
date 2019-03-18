@@ -17,6 +17,7 @@ function update_js() {
   init_tiny_mce();
   nested_form();
   select2();
+  datepicker();
 }
 
 function collapse() {
@@ -106,8 +107,15 @@ function nested_form() {
 
 
 function select2() {
-  $("#dinamic-select").select2({
+  $("#select2").select2({
     theme: "bootstrap",
     language: "pt-BR"
   });
+}
+
+
+function datepicker() {
+  $.fn.datepicker.defaults.format    = "mm/dd/yyyy";
+  $.fn.datepicker.defaults.language  = "pt-BR";
+  $.fn.datepicker.defaults.autoclose = true;
 }
