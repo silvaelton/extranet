@@ -4,6 +4,7 @@ Entity::Engine.routes.draw do
   resources :cadastres, path: 'cadastros' do 
     resources :members, path: 'membros'
     resources :presidents, path: 'presidentes'
+    resources :cadastre_activities, path: 'cadastro-atividades'
   end
 
   resources :cadastre_situations, path: 'cadastro-situacoes'

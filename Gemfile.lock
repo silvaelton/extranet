@@ -9,11 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-<<<<<<< HEAD
   revision: f5eeb00e4d2630fc509b3c047ec1c7adde7d9e32
-=======
-  revision: f884ff636222e6c5bc0c76e6bb5f52eb8b9d8197
->>>>>>> 7478b99959af88ee0171c8c5eac7cb3275370e9f
   branch: master
   specs:
     support (0.1.0)
@@ -314,7 +310,7 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    unicorn (5.4.1)
+    unicorn (5.5.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     validates_cpf_cnpj (0.2.0)
@@ -402,4 +398,4 @@ RUBY VERSION
    ruby 2.6.0p0
 
 BUNDLED WITH
-   1.17.3
+   2.0.1
