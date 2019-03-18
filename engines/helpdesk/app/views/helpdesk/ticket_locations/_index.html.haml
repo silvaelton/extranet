@@ -1,0 +1,40 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@ticket_locations.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Id
+          %td Nome
+          %td Lat
+          %td Lng
+          %td Ativo?
+          %td
+      %tbody
+        - if @ticket_locations.present?
+          - @ticket_locations.each do |ticket_location|
+            %tr{class: "row-ticket_location-#{ticket_location.id}"}
+              %td.collapsing= ticket_location.id
+              %td= ticket_location.name
+              %td.collapsing= ticket_location.lat
+              %td.collapsing= ticket_location.lng
+              %td.collapsing= ticket_location.status ? "Sim" : "Não"
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", helpdesk.edit_ticket_location_path(ticket_location), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", helpdesk.ticket_location_path(ticket_location), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              %i Nenhum registro encontrado.
+                  

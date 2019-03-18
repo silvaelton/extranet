@@ -26,7 +26,7 @@
                   %td= dependent.income
                   %td= dependent.kinship.name
                   %td.collapsing
-                    = link_to "<i class='fa fa-pencil'></i>".html_safe, candidate.edit_cadastre_dependent_path(@cadastre, dependent), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                    = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, candidate.edit_cadastre_dependent_path(@cadastre, dependent), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
                     = link_to "<i class='fa fa-trash'></i>".html_safe, candidate.cadastre_dependent_path(@cadastre, dependent), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
             - else
               %tr

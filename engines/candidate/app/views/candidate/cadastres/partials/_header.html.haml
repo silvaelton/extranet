@@ -60,9 +60,9 @@
                 %th Renda familiar
             %tbody
               %tr
-                %td= @cadastre.current_situation
+                %td= @cadastre.presenter.current_situation
                 %td Ordem para publicação
-                %td= @cadastre.current_convocation
+                %td= @cadastre.presenter.current_convocation rescue nil
                 %td 5454654.5454
                 %td R$ 2500.55
 

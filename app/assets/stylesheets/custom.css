@@ -155,7 +155,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .table thead th {
-  border-bottom: 2px solid #b5b5b5;
+  border-bottom: 1px solid #dee2e5;
 }
 
 .invisible {

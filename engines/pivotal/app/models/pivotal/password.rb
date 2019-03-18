@@ -1,5 +1,3 @@
-require_dependency 'support/person/staff'
-
 module Pivotal
   class Password
     include ActiveModel::Model

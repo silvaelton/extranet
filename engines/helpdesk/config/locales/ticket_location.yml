@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    modules:
+      'helpdesk/ticket_location': 'Local'
+    attributes:
+      'helpdesk/ticket_location':
+        name: "Nome"
+        status: "Ativo?"
+        lng: "Longitute"
+        lat: "Latitude"

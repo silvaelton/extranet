@@ -25,7 +25,7 @@
                   %td= cadastre_convocation.observation
                   %td.collapsing= cadastre_convocation.status ? 'Ativo' : 'Inativo'
                   %td.collapsing
-                    = link_to "<i class='fa fa-pencil'></i>".html_safe, candidate.edit_cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                    = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, candidate.edit_cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
                     = link_to "<i class='fa fa-trash'></i>".html_safe, candidate.cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
             - else
               %tr
