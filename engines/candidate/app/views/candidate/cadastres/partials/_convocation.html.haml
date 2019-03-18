@@ -6,8 +6,8 @@
   .card-body.convocation-display{style: 'display: none'}  
     .row
       .col-md-12 
-        %h5 
-        = link_to "Adicionar convocação", new_cadastre_cadastre_convocation_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
+        %h6
+          = link_to "+ Adicionar convocação", new_cadastre_cadastre_convocation_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
         %table.table.table-bordered.table-striped
           %thead
             %tr
@@ -25,8 +25,13 @@
                   %td= cadastre_convocation.observation
                   %td.collapsing= cadastre_convocation.status ? 'Ativo' : 'Inativo'
                   %td.collapsing
-                    = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, candidate.edit_cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
-                    = link_to "<i class='fa fa-trash'></i>".html_safe, candidate.cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Editar", candidate.edit_cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), remote: true, class: 'dropdown-item'
+                        = link_to "Excluir", candidate.cadastre_cadastre_convocation_path(@cadastre, cadastre_convocation), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
             - else
               %tr
                 %td{colspan: 3}

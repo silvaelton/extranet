@@ -6,7 +6,7 @@
       = f.input :cpf, input_html: { class: 'cpf'}
   .row
     .col-3
-      = f.input :single_name, placeholder: 'Digite a justificativa'
+      = f.input :single_name, placeholder: 'Digite o nome'
     .col-3 
       = f.input :born, as: :string,  input_html: { class: 'date', value: (@cadastre_inheritor.born) ? localize(f.object.born) : nil}
     .col-3 
@@ -19,12 +19,12 @@
     .col-3 
       = f.input :estate, as: :select, include_blank: 'Selecione...'
     .col-3 
-      = f.input :percentage, placeholder: 'Digite o documento'
+      = f.input :percentage, placeholder: 'Digite a porcentagem'
     .col-3 
       = f.input :place_birth, as: :string
   .row
     .col-12
-      = f.input :observation, placeholder: 'Digite a justificativa'
+      = f.input :observation, placeholder: 'Digite a observação'
 
   .divider-sm
   .row

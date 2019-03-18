@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/cadastre_activity' : "Atividade"
+    attributes:
+      'candidate/cadastre_activity':
+        activity_type_id: "Tipo de atividade"
+        title: "Titulo"
+        date: "Data"
+        justify: "Justificativa"
+        document: "Documento"
+        computer: "Conputador?"
+        critical: "Critico?"

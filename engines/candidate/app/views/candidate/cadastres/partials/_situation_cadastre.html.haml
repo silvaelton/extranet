@@ -6,26 +6,38 @@
   .card-body.situation-display{style: 'display: none'}  
     .row
       .col-md-12
-        %h5 
-        = link_to "Adicionar situação", new_cadastre_cadastre_situation_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
+        %h6
+          = link_to "+ Adicionar situação", new_cadastre_cadastre_situation_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
         %table.table.table-bordered.table-striped
           %thead
             %tr
+              %th Data
               %th Situação
               %th Usuário
+              %th Convocação
               %th Observação
               %th
           %tbody
             - if @cadastre.cadastre_situations.present? 
               - @cadastre.cadastre_situations.order(created_at: :desc).each do |cadastre_situation|
                 %tr{class: "row-cadastre-situation-#{cadastre_situation.id}"}
+                  - if cadastre_situation.date?
+                    %td= cadastre_situation.date.format_date
+                  - else
+                    %td= cadastre_situation.created_at.format_date
                   %td= cadastre_situation.situation_type.name
                   %td= cadastre_situation.user.name
-                  %td.collapsing= cadastre_situation.observation
+                  %td= cadastre_situation.cadastre_convocation.convocation.name rescue nil
+                  %td= cadastre_situation.observation
                   %td.collapsing
-                    = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, candidate.edit_cadastre_cadastre_situation_path(@cadastre, cadastre_situation), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
-                    = link_to "<i class='fa fa-trash'></i>".html_safe, candidate.cadastre_cadastre_situation_path(@cadastre, cadastre_situation), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Edita", candidate.edit_cadastre_cadastre_situation_path(@cadastre, cadastre_situation), remote: true, class: 'dropdown-item'
+                        = link_to "Excluir", candidate.cadastre_cadastre_situation_path(@cadastre, cadastre_situation), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
             - else
               %tr
-                %td{colspan: 3}
+                %td{colspan: 6}
                   Nenhum assunto registrado.

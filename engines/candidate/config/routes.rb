@@ -25,6 +25,7 @@ Candidate::Engine.routes.draw do
     resources :cadastre_contacts
     resources :cadastre_general
     resources :dependents
+    resources :cadastre_activities
     resources :cadastre_inheritors
     resources :cadastre_pontuations
     resources :cadastre_occurrences
@@ -33,7 +34,6 @@ Candidate::Engine.routes.draw do
     resources :cadastre_chats
     resources :cadastre_notifications
     resources :cadastre_communications
-    resources :cadastre_activities
     resources :cadastre_helps
   end
 end
