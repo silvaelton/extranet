@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/agenda_reference': "Cadastro referência"
+    attributes:
+      'attendance/agenda_reference':
+        cpf: "CPF"
+        cnpj: "CNPJ"
+        code: "Código"

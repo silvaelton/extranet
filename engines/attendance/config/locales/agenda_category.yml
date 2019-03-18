@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/attendant_category': "Categoria"
+    attributes:
+      'attendance/attendant_category':
+        name: "Nome"
+        status: "Ativo?"

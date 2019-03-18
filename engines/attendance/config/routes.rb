@@ -17,10 +17,18 @@ Attendance::Engine.routes.draw do
   resources :eventual_cadastres, path: 'inscricao-eventual'
   resources :cadastre_owners,    path: 'troca-titularidades'
   
+  # Agendamento
+  resources :agenda_categories, path: 'agenda-categorias'
+  resources :agenda_situations, path: 'agenda-situacoes'
   resources :agendas, path: 'agendas' do
-    resources :schedules, path: 'agendamentos'
+    resources :agenda_schedules, path: 'agendamentos'
   end
   
+  resources :agenda_reference_categories, path: 'agenda-referencia-categorias' do
+    resources :agenda_references, path: 'cadastros'
+  end
+
+  # Atendimento
   resources :ticket_categories do
     resources :ticket_category_steps do
       resources :step_documents

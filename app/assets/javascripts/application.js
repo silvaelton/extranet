@@ -6,5 +6,6 @@
 //= require bootstrap/bootstrap.min
 //= require bootstrap-datepicker
 //= require jquery/mask.min
+//= require select2-full
 //= require function
 //= require tinymce-jquery

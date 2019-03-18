@@ -1,0 +1,46 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@agendas.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Título
+          %td Resumo
+          %td.collapsing Data Início
+          %td.collapsing Data Fim
+          %td.collapsing Hora Início
+          %td.collapsing Hora Fim
+          %td.collapsing Atendentes
+          %td
+      %tbody
+        - if @agendas.present?
+          - @agendas.each do |agenda|
+            %tr{class: "row-agenda-#{agenda.id}"}
+              %td= agenda.title
+              %td= agenda.resume
+              %td.collapsing= agenda.started_at.format_date rescue t(:no_info)
+              %td.collapsing= agenda.ended_at.format_date rescue t(:no_info)
+              %td.collapsing= agenda.hour_start.format_time rescue t(:no_info)
+              %td.collapsing= agenda.hour_end.format_time rescue t(:no_info)
+              %td.collapsing= agenda.attendance_quantity
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Agendamentos", attendance.agenda_agenda_schedules_path(agenda), class: 'dropdown-item'
+                    = link_to "Detalhar", attendance.agenda_path(agenda), class: 'dropdown-item', remote: true
+                    = link_to "Editar", attendance.edit_agenda_path(agenda), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", attendance.agenda_path(agenda), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 2}
+              %i Nenhum registro encontrado.
+                  
