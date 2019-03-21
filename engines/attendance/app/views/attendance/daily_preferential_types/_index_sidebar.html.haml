@@ -20,6 +20,7 @@
             %i.fa.fa-minus
       .card-body.card-list
         = link_to "Adicionar tipo preferencial", new_daily_preferential_type_path, class: 'filter-nav-item',  remote: true
+        %hr/
         = link_to "Gestão de categorias", attendance.categories_path, class: 'filter-nav-item'
         = link_to "Gestão de atendimentos", attendance.dailies_path, class: 'filter-nav-item'
         = link_to "Gestão de tipos de atendimento" , attendance.daily_types_path, class: 'filter-nav-item'
