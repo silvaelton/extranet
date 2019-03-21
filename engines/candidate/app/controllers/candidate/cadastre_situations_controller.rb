@@ -12,8 +12,8 @@ module Candidate
     def create
       @cadastre_situation = @cadastre.cadastre_situations.new(set_params)
       @cadastre_situation.user_id = current_user.id
-      # @cadastre_situation.cadastre_mirror_id = @cadastre.current_valid_mirror.id
-      @cadastre_situation.cadastre_mirror_id = Candidate::CadastreMirror.where(cadastre_id: @cadastre, status: true).order(created_at: :asc).last.id
+      # @cadastre_situation.cadastre_mirror_id = @cadastre.current_valid_mirror
+      @cadastre_situation.cadastre_mirror_id = Candidate::CadastreMirror.where(cadastre_id: @cadastre, status: true).order(created_at: :asc).last.id rescue nil
       @cadastre_situation.save
     end
     

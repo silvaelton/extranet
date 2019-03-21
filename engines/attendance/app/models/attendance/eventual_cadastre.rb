@@ -2,28 +2,64 @@
 require_dependency 'support/attendance/eventual_cadastre'
 
 module Attendance
-  class EventualCadastre < Support::Attendance::EventualCadastre
-    belongs_to :cadastre, class_name: "Candidate::Cadastre", foreign_key: :cadastre_id
+  class EventualCadastre < Support::Candidate::Cadastre
+    attr_accessor :user_id
+    
+    default_scope -> {joins(:cadastre_situations).where('candidate_cadastre_situations.situation_type_id = 69' )}
+
     belongs_to :gender, class_name: "Support::Common::Gender", foreign_key: :gender_id
 
-    attr_accessor :name, :cpf, :born, :program_id, :convocation_id, :observation
+    scope :by_name, ->(name) { where("name ilike '%#{name}%'") }
+    scope :by_cpf,  ->(cpf) { where(cpf: cpf) }
 
-    validates :name, :born, :program_id, :convocation_id, :observation, :gender_id
+    validates :name, :born, :program_id, :gender_id, presence: true
     validates :cpf, cpf: true, presence: true
 
     validate  :cpf_valid?
-    validate  :program_allow?
-    
+    # validate  :program_allow?
+
+    after_create :eventual_situation
+
+
+    def eventual_situation
+
+      begin
+        @situation = Candidate::CadastreSituation.new(
+          cadastre_id: self.id,
+          user_id: self.user_id,
+          situation_type_id: 69,
+          observation: "Criação de cadastro eventual",
+          )
+      
+        if @situation.save
+          @activity = Candidate::CadastreActivity.new(
+            cadastre_id: self.id,
+            user_id: self.user_id,
+            title: "Criação de cadastro eventual",
+            activity_type_id:  1,
+            justify: "Candiadato não pussuia cadastro na Codhab"
+          )
+              
+          @activity.save
+        end
+
+      rescue Exception => e
+        p e
+      end
+    end
+
+      
+      
     private
 
-    def program_allow?
-      user_programs = Candidate::ProgramCandidate.where(user_id: self.user_id).map(&:program_id)
+    # def program_allow?
+    #   user_programs = Candidate::ProgramCandidate.where(user_id: self.user_id).map(&:program_id)
 
-      if !user.present? || user_programs.include?(self.program_id)
-        errors.add(:program_id, "Você não possui permissão para criar cadastros nessa lista.")
-      end
+    #   if !user.present? || user_programs.include?(self.program_id)
+    #     errors.add(:program_id, "Você não possui permissão para criar cadastros nessa lista.")
+    #   end
 
-    end
+    # end
 
     def cpf_valid?
       candidate_cadastre = Candidate::Cadastre.find_by(cpf: self.cpf)
