@@ -16,7 +16,7 @@
           %th
       %tbody
         - if @attendants.present?
-          -@attendants.each do |attendant|
+          - @attendants.each do |attendant|
             %tr{class: "row-attendant-#{attendant.id}"}
               %td.collapsing= attendant.id
               %td= attendant.staff.name
@@ -27,8 +27,8 @@
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Excluir", attendant_path(attendant), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
                     = link_to "Editar", edit_attendant_path(attendant), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", attendant_path(attendant), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
           %tfoot
             %tr
               %td.text-center{colspan: 6}
