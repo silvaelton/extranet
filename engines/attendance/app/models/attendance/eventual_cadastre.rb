@@ -3,7 +3,7 @@ require_dependency 'support/attendance/eventual_cadastre'
 
 module Attendance
   class EventualCadastre < Support::Candidate::Cadastre
-    attr_accessor :user_id
+    attr_accessor :user_id, :convocation_id
     
     default_scope -> {joins(:cadastre_situations).where('candidate_cadastre_situations.situation_type_id = 69' )}
 
@@ -16,7 +16,7 @@ module Attendance
     validates :cpf, cpf: true, presence: true
 
     validate  :cpf_valid?
-    # validate  :program_allow?
+    validate  :program_allow?
 
     after_create :eventual_situation
 
@@ -24,42 +24,50 @@ module Attendance
     def eventual_situation
 
       begin
+
+        @convocation = Candidate::CadastreConvocation.new(
+          cadastre_id: self.id,
+          user_id: self.user_id,
+          convocation_id: self.convocation_id,
+          observation: "Convocação adiconada a partir da criação do cadastro eventual"
+        )
+        
         @situation = Candidate::CadastreSituation.new(
           cadastre_id: self.id,
           user_id: self.user_id,
-          situation_type_id: 69,
-          observation: "Criação de cadastro eventual",
-          )
+          situation_type_id: 75,
+          cadastre_convocation_id: @convocation.id,
+          observation: "Criação de cadastro eventual"
+        )
       
-        if @situation.save
-          @activity = Candidate::CadastreActivity.new(
-            cadastre_id: self.id,
-            user_id: self.user_id,
-            title: "Criação de cadastro eventual",
-            activity_type_id:  1,
-            justify: "Candiadato não pussuia cadastro na Codhab"
-          )
+        @activity = Candidate::CadastreActivity.new(
+          cadastre_id: self.id,
+          user_id: self.user_id,
+          title: "Criação de cadastro eventual",
+          activity_type_id:  1,
+          justify: "Candiadato não pussuia cadastro na Codhab"
+        )
               
-          @activity.save
-        end
-
       rescue Exception => e
         p e
+      else
+        @convocation.save
+        @situation.save
+        @activity.save
       end
     end
 
       
-      
     private
 
-    # def program_allow?
-    #   user_programs = Candidate::ProgramCandidate.where(user_id: self.user_id).map(&:program_id)
+    def program_allow?
+      user_programs = Candidate::ProgramUser.where(user_id: self.user_id).map(&:program_id)
 
-    #   if !user.present? || user_programs.include?(self.program_id)
-    #     errors.add(:program_id, "Você não possui permissão para criar cadastros nessa lista.")
-    #   end
+      if !user_id.present? || !user_programs.include?(self.program_id)
+        errors.add(:program_id, "Você não possui permissão para criar cadastros nessa lista.")
+      end
 
-    # end
+    end
 
     def cpf_valid?
       candidate_cadastre = Candidate::Cadastre.find_by(cpf: self.cpf)

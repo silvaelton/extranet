@@ -18,6 +18,9 @@ Candidate::Engine.routes.draw do
   resources :notifications, path: 'notificacoes'
 
   resources :update_contacts, path: 'atualizacao-contatos'
+  resources :programs, path: 'programas' do
+    resources :program_users, path: 'programas-permissoes'
+  end
 
   resources :cadastres, path: 'cadastros' do
     resources :cadastre_situations

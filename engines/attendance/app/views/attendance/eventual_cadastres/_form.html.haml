@@ -7,14 +7,16 @@
       = f.input :cpf, input_html: { class: 'cpf' }
 
   .row
-    .col-4
+    .col-3
       = f.input :born, as: :string, input_html: { class: 'date' }
-    .col-4
+    .col-3
       = f.input :gender_id, as: :select, collection: Support::Common::Gender.status_active.order(:id), include_blank: false
-    .col-4
-      = f.input :program_id, as: :select, collection: Support::Common::Program.status_active.order(:id), include_blank: t(:include_blank)
+    .col-3
+      = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: t(:include_blank)
+    .col-3
+      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: t(:include_blank)
 
-      %hr.divider
+  %hr.divider
   .row
     .col-12
       = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

@@ -1,0 +1,39 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@programs.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Nome
+          %td Descrição
+          %td sub_programa?
+          %td Status
+          %td 
+      %tbody
+        - if @programs.present?
+          - @programs.each do |program|
+            %tr{class: "row-program-#{program.id}"}
+              %td= program.name
+              %td= program.description
+              %td= program.sub_program? ? "Sim" : "Não"
+              %td= program.status.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", candidate.program_path(program), class: 'dropdown-item'
+                    = link_to "Editar", candidate.edit_program_path(program), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", candidate.program_path(program), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 4}
+              %i Nenhum registro encontrado.
+                  
