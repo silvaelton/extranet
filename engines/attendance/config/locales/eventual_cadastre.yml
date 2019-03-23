@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/eventual_cadastre': "Cadastro eventual"
+    attributes:
+      'attendance/eventual_cadastre':
+        name: "Nome"
+        cpf: "Cpf"
+        born: "Data de nascimento"
+        gender_id: "Sexo"
+        program_id: "Programa"
+        convocation_id: "Convocação"

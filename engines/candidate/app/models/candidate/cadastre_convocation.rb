@@ -6,7 +6,6 @@ module Candidate
     belongs_to :user, class_name: 'Pivotal::User', required: false
     belongs_to :convocation, class_name: 'Candidate::Convocation', required: false
 
-    validates :convocation_id, :observation, presence: true
 
   end
 end

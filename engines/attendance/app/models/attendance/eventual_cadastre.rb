@@ -3,6 +3,7 @@ require_dependency 'support/attendance/eventual_cadastre'
 
 module Attendance
   class EventualCadastre < Support::Candidate::Cadastre
+
     attr_accessor :user_id, :convocation_id
     
     default_scope -> {joins(:cadastre_situations).where('candidate_cadastre_situations.situation_type_id = 69' )}
@@ -12,10 +13,10 @@ module Attendance
     scope :by_name, ->(name) { where("name ilike '%#{name}%'") }
     scope :by_cpf,  ->(cpf) { where(cpf: cpf) }
 
-    validates :name, :born, :program_id, :gender_id, presence: true
+    validates :name, :born, :program_id, :gender_id, :convocation_id, presence: true
     validates :cpf, cpf: true, presence: true
 
-    validate  :cpf_valid?
+    #validate  :cpf_valid?
     validate  :program_allow?
 
     after_create :eventual_situation
@@ -23,38 +24,40 @@ module Attendance
 
     def eventual_situation
 
-      begin
+      @convocation = Candidate::CadastreConvocation.new(
+        cadastre_id: self.id,
+        user_id: self.user_id,
+        convocation_id: self.convocation_id,
+        observation: "Convocação criada a partir da criação do cadastro eventual"
+      )
 
-        @convocation = Candidate::CadastreConvocation.new(
-          cadastre_id: self.id,
-          user_id: self.user_id,
-          convocation_id: self.convocation_id,
-          observation: "Convocação adiconada a partir da criação do cadastro eventual"
-        )
-        
-        @situation = Candidate::CadastreSituation.new(
-          cadastre_id: self.id,
-          user_id: self.user_id,
-          situation_type_id: 75,
-          cadastre_convocation_id: @convocation.id,
-          observation: "Criação de cadastro eventual"
-        )
-      
-        @activity = Candidate::CadastreActivity.new(
-          cadastre_id: self.id,
-          user_id: self.user_id,
-          title: "Criação de cadastro eventual",
-          activity_type_id:  1,
-          justify: "Candiadato não pussuia cadastro na Codhab"
-        )
-              
-      rescue Exception => e
-        p e
-      else
-        @convocation.save
-        @situation.save
-        @activity.save
-      end
+      if @convocation.save
+
+        begin
+          @situation = Candidate::CadastreSituation.new(
+            cadastre_id: self.id,
+            user_id: self.user_id,
+            situation_type_id: 69,
+            cadastre_convocation_id: @convocation.id,
+            observation: "Criação de cadastro eventual",
+          )
+
+          if @situation.save
+            @activity = Candidate::CadastreActivity.new(
+              cadastre_id: self.id,
+              user_id: self.user_id,
+              title: "Criação de cadastro eventual",
+              activity_type_id:  1,
+              justify: "Candiadato não pussuia cadastro na Codhab"
+            )
+
+            @activity.save
+          end
+
+        rescue Exception => e
+          p e
+        end
+      end   
     end
 
       
