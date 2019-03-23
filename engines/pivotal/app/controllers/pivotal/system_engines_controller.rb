@@ -1,11 +1,12 @@
 require_dependency 'pivotal/application_controller'
 
 module Pivotal
-  class EnginesController < ApplicationController
+  class SystemEnginesController < ApplicationController
     before_action :set_engines
-    before_action :set_engine, only: [:edit, :update, :destroy]
+    before_action :set_engine, only: [:edit, :update, :destroy, :show]
     
     def index; end
+    def show; end
     
     def new
       @engine = Pivotal::SystemEngine.new
@@ -29,7 +30,7 @@ module Pivotal
     private
 
     def set_params
-      params.require(:engine).permit(:name)
+      params.require(:system_engine).permit(:name, :description, :code , :status)
     end
 
     def set_engine
@@ -37,7 +38,7 @@ module Pivotal
     end
 
     def set_engines
-      @engines = Pivotal::SystemEngine.all.order(:name)
+      @pagy, @engines = pagy(Pivotal::SystemEngine.all.order(:name))
     end
   end
 end

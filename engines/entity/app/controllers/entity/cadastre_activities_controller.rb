@@ -1,7 +1,7 @@
 require_dependency 'entity/application_controller'
 
 module Entity
-  class CadastreActivitesController < ApplicationController
+  class CadastreActivitiesController < ApplicationController
     before_action :set_entity
     before_action :set_cadastre_activity, only: [:edit, :update, :destroy, :show]
 

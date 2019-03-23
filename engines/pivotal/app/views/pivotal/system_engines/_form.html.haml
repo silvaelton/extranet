@@ -1,0 +1,15 @@
+= simple_form_for @engine, remote: true do |f|
+  .row
+    .col-12
+      = f.input :name, placeholder: 'Informe o nome da engine'
+  .row
+    .col-6
+      = f.input :code, placeholder: 'Digite o código'  
+    .col-6
+      = f.input :status, as: :select, include_blank: false
+  .row
+    .col-12
+      = f.input :description, placeholder: 'Digite uma descrição'
+
+  %hr.divider
+    = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with)}

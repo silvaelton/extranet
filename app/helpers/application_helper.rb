@@ -14,12 +14,12 @@ module ApplicationHelper
 
       permissions = Pivotal::EnginePermission.where(path: attr_options, status: true) rescue nil
 
-      #if permissions.present?
-        #user_permissions = Pivotal::UserPermission.where(user_id: current_user.id).where(permission_id: permissions)
-       # user_permitted   = user_permissions.present? ? true : false
-      #else
-      #  user_permitted = true
-     # end
+      if permissions.present?
+        user_permissions = Pivotal::UserPermission.where(user_id: current_user.id).where(permission_id: permissions)
+        user_permitted   = user_permissions.present? ? true : false
+      else
+        user_permitted = true
+      end
     end
 
     if !user_permitted

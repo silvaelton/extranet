@@ -14,8 +14,8 @@ Pivotal::Engine.routes.draw do
     resources :permissions
   end
 
-  resources :engines do
-    resources :permissions
+  resources :system_engines do
+    resources :engine_permissions
   end
 
   resources :sectors, path: 'setores'

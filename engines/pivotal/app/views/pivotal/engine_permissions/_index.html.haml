@@ -1,0 +1,29 @@
+.row
+  .col-md-12
+    %h5 
+      %b Permissões (#{@engine.engine_permissions.count})
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %th Código
+          %th Nome
+          %th Target_method
+          %th Link
+          %th Status
+          %th
+      %tbody
+        - if @engine.engine_permissions.present? 
+          - @engine.engine_permissions.order(:name).each do |engine_permission|
+            %tr{class: "row-engine-permission-#{engine_permission.id}"}
+              %td= engine_permission.code
+              %td= engine_permission.name
+              %td= engine_permission.target_method
+              %td= engine_permission.url
+              %td.collapsing= engine_permission.status.status_format
+              %td.collapsing
+                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, pivotal.edit_system_engine_engine_permission_path(@engine, engine_permission), remote: true, class: 'btn btn-info btn-icon btn-sm', pivotal: { disable_with: t(:edit_engine_engine_permission_path)}
+                = link_to "<i class='fa fa-trash'></i>".html_safe, pivotal.system_engine_engine_permission_path(@engine, engine_permission), method: :delete, remote: true, class: 'btn btn-danger btn-icon pivotal-engine_engine_permission_path', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 3}
+              Nenhum assunto registrado.
