@@ -4,14 +4,16 @@ require_dependency 'support/attendance/eventual_cadastre'
 module Attendance
   class EventualCadastre < Support::Candidate::Cadastre
 
+
     attr_accessor :user_id, :convocation_id, :observation
     
-    default_scope -> {joins(:cadastre_situations).where('candidate_cadastre_situations.situation_type_id = 69' )}
+    # TODO: Verificar e corrigir numeracao das situacoes
+    default_scope -> {joins(:cadastre_situations).where('candidate_cadastre_situations.situation_type_id = ?', 69)}
 
     belongs_to :gender, class_name: "Support::Common::Gender", foreign_key: :gender_id
 
     scope :by_name, ->(name) { where("name ilike '%#{name}%'") }
-    scope :by_cpf,  ->(cpf) { where(cpf: cpf) }
+    scope :by_cpf,  ->(cpf) { where(cpf: cpf.unformat_cpf) }
 
     validates :name, :born, :program_id, :gender_id, :observation, presence: true
     validates :cpf, cpf: true, presence: true

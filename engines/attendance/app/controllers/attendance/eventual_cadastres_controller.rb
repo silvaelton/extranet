@@ -8,6 +8,8 @@ module Attendance
     has_scope :by_name
     has_scope :by_cpf
     
+    def index; end
+    
     def new
       @eventual = Attendance::EventualCadastre.new
     end

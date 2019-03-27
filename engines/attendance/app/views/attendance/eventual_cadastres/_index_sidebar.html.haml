@@ -7,8 +7,8 @@
           %i.fa.fa-minus  
     .card-body
       = simple_form_for url_for, method: :get, remote: true  do |f|
-        = f.input :by_name, label: "Por nome", input_html: {name: 'by_name', value: params[:by_name]}, placeholder: 'Digit o nome'
-        = f.input :by_cpf, label: "Por CPF", input_html: {class: 'cpf', name: 'by_cpf', value: params[:by_cpf]}, prompt: 'Selecione'
+        = f.input :by_name, label: "Por nome", input_html: {name: 'by_name', value: params[:by_name]}, placeholder: 'Digite o nome'
+        = f.input :by_cpf, label: "Por CPF", input_html: {class: 'cpf', name: 'by_cpf', value: params[:by_cpf]}, include_blank: t(:include_blank)
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
