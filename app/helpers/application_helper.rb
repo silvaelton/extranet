@@ -12,7 +12,7 @@ module ApplicationHelper
     else
       attr_options = options.present? ? options : nil
 
-      permissions = Pivotal::EnginePermission.where(path: attr_options, status: true) rescue nil
+      permissions = Pivotal::EnginePermission.where(url: attr_options, status: true) rescue nil
 
       if permissions.present?
         user_permissions = Pivotal::UserPermission.where(user_id: current_user.id).where(permission_id: permissions)
