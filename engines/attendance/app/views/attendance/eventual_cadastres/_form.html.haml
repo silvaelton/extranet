@@ -15,7 +15,9 @@
       = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: t(:include_blank)
     .col-3
       = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: t(:include_blank)
-
+  .row
+    .col-12
+      = f.input :observation, as: :text, input_html: { rows: 4}
   %hr.divider
   .row
     .col-12

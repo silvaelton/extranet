@@ -29,7 +29,7 @@ module Attendance
 
     def set_params
       params.require(:eventual_cadastre)
-        .permit(:name, :cpf, :gender_id, :program_id, :born, :convocation_id)
+        .permit(:name, :cpf, :gender_id, :program_id, :born, :convocation_id, :observation)
     end
 
     def set_eventuals
