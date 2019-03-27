@@ -11,28 +11,16 @@ $(document).ready(ready);
 
 function update_js() {
   sidebar_collapsed();
-  collapse();
   close_modal();
   mask();
   init_tiny_mce();
   nested_form();
   select2();
   datepicker();
+  collapsing_form();
 }
 
-function collapse() {
-  $(".collapsing-content-link").unbind().click(function () {
-    $(this).closest(".card").children(".card-body:nth-child(2)").toggle();
 
-    if ($(this).children("i").hasClass('fa-plus')) {
-      $(this).children("i").removeClass('fa-plus');
-      $(this).children("i").addClass('fa-minus');
-    } else {
-      $(this).children("i").addClass('fa-plus');
-      $(this).children("i").removeClass('fa-minus');
-    }
-  });
-}
 function sidebar_collapsed() {
   $(".collapsing-link").unbind().click(function() {
     $(this).closest(".card").children(".card-body:nth-child(2)").toggle();
@@ -118,4 +106,10 @@ function datepicker() {
   $.fn.datepicker.defaults.format    = "mm/dd/yyyy";
   $.fn.datepicker.defaults.language  = "pt-BR";
   $.fn.datepicker.defaults.autoclose = true;
+}
+
+function collapsing_form() {
+  $(".collapse-input").unbind().on("change", function() {
+    $($(this).data('collapse-target')).toggle();
+  });
 }

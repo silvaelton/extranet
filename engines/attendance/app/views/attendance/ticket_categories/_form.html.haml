@@ -3,38 +3,68 @@
     .col-md-8
       = f.input :name, placeholder: 'Digite o nome'
     .col-md-4
-      = f.input :status, as: :select, include_blank: 'selecione...'
+      = f.input :status, as: :select, include_blank: false
   .row
     .col-md-3
-      = f.input :started_at, as: :string, input_html: {class: 'date'}
+      = f.input :due, as: :select, include_blank: false, input_html: { class: 'collapse-input', data: { collapse_target: "#due-content"}}
     .col-md-3
-      = f.input :ended_at, as: :string, input_html: {class: 'date'}
-    .col-md-3
-      = f.input :unique, as: :select, include_blank: 'selecione...'
-    .col-md-3
-      = f.input :due, as: :select, include_blank: 'selecione...'
+      = f.input :unique, as: :select, include_blank: false
+
+  #due-content{style: "display: #{f.object.due ? "block" : "none"}"}
+    .row
+      .col-md-3
+        = f.input :started_at, as: :string, input_html: {class: 'date'}
+      .col-md-3
+        = f.input :ended_at, as: :string, input_html: {class: 'date'}
+  %hr
   .row
     .col-md-3
-      = f.input :filter_situation, as: :select, include_blank: 'selecione...'
+      = f.input :filter_situation, as: :select, include_blank: false, input_html: { class: 'collapse-input', data: { collapse_target: "#situation-content"}}
+
+  #situation-content{style: "display: #{f.object.filter_situation ? "block" : "none"}"}
+    .row
+      .col-md-12
+        = f.input :filter_situation_id, placeholder: "Separe os ID's com (;)"
+    %hr/
+
+  .row
     .col-md-3
-      = f.input :filter_convocation, as: :select, include_blank: 'selecione...'
+      = f.input :filter_convocation, as: :select, include_blank: false, input_html: { class: 'collapse-input', data: { collapse_target: "#convocation-content"}}
+      
+  #convocation-content{style: "display: #{f.object.filter_convocation ? "block" : "none"}"}
+    .row
+      .col-md-12
+        = f.input :filter_convocation_id, placeholder: "Separe os ID's com (;)"
+      %hr/
+  .row 
+    .col-md-3 
+      = f.input :filter_program, as: :select, include_blank: false, input_html: { class: 'collapse-input', data: { collapse_target: "#program-content"}}
+      
+  #program-content{style: "display: #{f.object.filter_program ? "block" : "none"}"}
+    .row
+      .col-md-12
+        = f.input :filter_program_id, placeholder: "Separe os ID's com (;)"
+    %hr/
+
+  .row 
+    .col-md-3 
+      = f.input :filter_sub_program, as: :select, include_blank: false , input_html: { class: 'collapse-input', data: { collapse_target: "#subprogram-content"}}     
+
+  #subprogram-content{style: "display: #{f.object.filter_sub_program ? "block" : "none"}"}
+    .row
+      .col-md-12
+        = f.input :filter_sub_program_id, placeholder: "Separe os ID's com (;)"
+  .row 
     .col-md-3
-      = f.input :filter_program, as: :select, include_blank: 'selecione...'
-    .col-md-3
-      = f.input :filter_sql, as: :select, include_blank: 'selecione...'
-  .row
-    .col-md-12
-      = f.input :filter_situation_id, placeholder: 'Digite o nome'
-  .row
-    .col-md-12
-      = f.input :filter_convocation_id, placeholder: 'Digite o código'
-  .row
-    .col-md-12
-      = f.input :filter_program_id, placeholder: 'Digite o código'
-  .row
-    .col-md-12
-      = f.input :filter_sql_content, placeholder: 'Digite o código'
+      = f.input :filter_sql, as: :select, include_blank: false, input_html: { class: 'collapse-input', data: { collapse_target: "#sql-content"}}
+
+  #sql-content{style: "display: #{f.object.filter_sql ? "block" : "none"}"}
+    .row
+      .col-md-12
+        = f.input :filter_sql_content, placeholder: 'Informe o SQL colocando WHERE cpf = ? '
+
   %hr.divider
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
+
