@@ -35,8 +35,11 @@ module Attendance
     private
 
     def set_params
-      params.require(:ticket_category).permit(:name, :status, :description, :observation, :label,
-                                            :code, :help_text, :sei_tranning_id, :sei_production_id)
+      params.require(:ticket_category)
+            .permit(:name, :status, :due, :unique, :started_at, :ended_at, 
+                    :filter_situation, :filter_situation_id, :filter_convocation, 
+                    :filter_convocation_id, :filter_program, :filter_program_id, 
+                    :filter_sub_program, :filter_sub_program_id, :filter_sql, :filter_sql_content)
     end
 
     def set_ticket_categories

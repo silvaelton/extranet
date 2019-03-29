@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/program_user': Permissao
+    attributes:
+      'candidate/program_user':
+        user_id: "Usuário"
+        ticket_id: "Nº chamado"
+        observation: "Observação"

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/carrierwaveuploader/carrierwave.git
-  revision: a91ab69fdd8052cdf5a5e48ef8baf40939e441fb
+  revision: 14c86501fd889944f73f2f4a2ca779dcef1d086e
   specs:
     carrierwave (1.3.1)
       activemodel (>= 4.0.0)
@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: d9190cf7516c73f840e88ca487741a4795e70168
+  revision: 161c20fcdcedc59c27235c892f4ef7ea08646d0c
   branch: master
   specs:
     support (0.1.0)
@@ -123,7 +123,7 @@ GEM
     bootstrap-datepicker-rails (1.8.0.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (11.0.0)
+    byebug (11.0.1)
     capybara (2.18.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -136,16 +136,16 @@ GEM
       mime-types (~> 3.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (2.1.0)
+    chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
     chunky_png (1.3.11)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     debug_inspector (0.0.3)
-    dotenv (2.7.1)
-    dotenv-rails (2.7.1)
-      dotenv (= 2.7.1)
+    dotenv (2.7.2)
+    dotenv-rails (2.7.2)
+      dotenv (= 2.7.2)
       railties (>= 3.2, < 6.1)
     email_validator (1.6.0)
       activemodel
@@ -155,7 +155,7 @@ GEM
     file_validators (2.3.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    font_awesome5_rails (0.5.0)
+    font_awesome5_rails (0.6.0)
       railties (>= 4.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -208,13 +208,13 @@ GEM
     msgpack (1.2.9)
     multi_json (1.13.1)
     nio4r (2.3.1)
-    nokogiri (1.10.1)
+    nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
     nori (2.6.0)
     pagy (1.3.3)
     pg (1.1.4)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.1)
     rack (2.0.6)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)

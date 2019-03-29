@@ -1,0 +1,5 @@
+- if @ticket_create.valid?
+- else
+  $("#modal").html("#{escape_javascript(render 'new')}");
+
+update_js();
