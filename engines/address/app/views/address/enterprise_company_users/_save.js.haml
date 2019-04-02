@@ -2,8 +2,8 @@
   $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
 
 - else
-  $(".index-content").html("#{escape_javascript(render 'index')}");
-  $(".row-enterprise_company_user-#{@enterprise_company_user.id}").addClass('table-success');
+  $(".index_company_user").html("#{escape_javascript(render 'address/enterprise_company_users/index')}");
+  $(".row-enterprise-company-user-#{@enterprise_company_user.id}").addClass('table-success');
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
 
 update_js();

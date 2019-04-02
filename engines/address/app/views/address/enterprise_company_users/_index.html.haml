@@ -1,64 +1,28 @@
-.card
-  .card-body.card-header.border-left-yellow
-    .card-title
-      Listando (#{@enterprise_company_users.count}) registro(s)
-      .float-right.group-action
-        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
-  
-  .card-body
-    %table.table.table-bordered.table-striped.table-celled
+.row
+  .col-md-12
+    %h5 
+      %b Assuntos (#{@enterprise_company.enterprise_company_users.count})
+    = link_to "Adicionar usuario", new_enterprise_company_enterprise_company_user_path(@enterprise_company), remote: true, data: { disable_with: t(:disable_with)}
+    %table.table.table-bordered.table-striped
       %thead
         %tr
-
-          %td name
-        
-          %td email
-        
-          %td administrator
-        
-          %td password
-        
-          %td passwor_expires_at
-        
-          %td last_password
-        
-          %td remember_token_expires_at
-        
-          %td status
-        
+          %td Nome
+          %td E-mail
+          %td Administrador?
+          %td Status
+          %td 
       %tbody
         - if @enterprise_company_users.present?
           - @enterprise_company_users.each do |enterprise_company_user|
-            %tr{class: "row-enterprise_company_user-#{enterprise_company_user.id}"}
-
+            %tr{class: "row-enterprise-company-user-#{enterprise_company_user.id}"}
               %td= enterprise_company_user.name
-            
               %td= enterprise_company_user.email
-            
-              %td= enterprise_company_user.administrator
-            
-              %td= enterprise_company_user.password
-            
-              %td= enterprise_company_user.passwor_expires_at
-            
-              %td= enterprise_company_user.last_password
-            
-              %td= enterprise_company_user.remember_token_expires_at
-            
-              %td= enterprise_company_user.status
-            
-              %td
-                .dropdown
-                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                    %i.fa.fa-cog
-                    %i.ti-angle-down
-                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Detalhar", address.enterprise_company_user_path(enterprise_company_user), class: 'dropdown-item'
-                    = link_to "Editar", address.edit_enterprise_company_user_path(enterprise_company_user), remote: true, class: 'dropdown-item'
-                    = link_to "Remover", address.enterprise_company_user_path(enterprise_company_user), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+              %td= enterprise_company_user.administrator.status_format
+              %td= enterprise_company_user.status.status_format
+              %td.collapsing
+                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, address.edit_enterprise_company_enterprise_company_user_path(@enterprise_company, enterprise_company_user), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                = link_to "<i class='fa fa-trash'></i>".html_safe, address.enterprise_company_enterprise_company_user_path(@enterprise_company, enterprise_company_user), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
         - else
           %tr
-            %td{colspan: 8}
-              %i Nenhum registro encontrado.
-                  
+            %td{colspan: 3}
+              Nenhum registro registrado.

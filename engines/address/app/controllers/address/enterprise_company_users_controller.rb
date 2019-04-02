@@ -32,7 +32,8 @@ module Address
     private
 
     def set_params
-      params.require(:enterprise_company_user).permit()
+      params.require(:enterprise_company_user).permit(:name, :password,:remenber_token_expire_at, 
+                                                      :status, :email, :password_expires_at, :administrator, :last_password)
     end
     
     def enterprise_company
