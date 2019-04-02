@@ -10,10 +10,10 @@
     .col-3 
       = f.input :quantity
     .col-3 
-      = f.input :program_id, as: :select, collection: Support::Common::Program.all, include_blank: 'Selecione...'
+      = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: 'Selecione...'
   .row
     .col-3 
-      = f.input :sub_program_id, as: :select, collection: Support::Common::Program.all, include_blank: 'Selecione...'
+      = f.input :sub_program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: 'Selecione...'
     .col-3 
       = f.input :document, placeholder: 'Digite o documento'
     .col-3 

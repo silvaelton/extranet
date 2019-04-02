@@ -2,7 +2,7 @@
   $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
 - else
   $(".index-cadastre-activity-content").html("#{escape_javascript(render 'entity/cadastre_activities/index')}");
-  $(".row-cadastre_activity-#{@cadastre_activity.id}").addClass('table-success');
+  $(".row-cadastre-activity-#{@cadastre_activity.id}").addClass('table-success');
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
 
 

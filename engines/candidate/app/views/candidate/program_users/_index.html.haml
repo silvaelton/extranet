@@ -1,0 +1,32 @@
+.row
+  .col-md-12
+    %h5
+      %b= @program.name
+    %h6
+      Usuários permitidos usar este programa
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Usuário
+          %td Chamado
+          %td Observação
+          %td 
+      %tbody
+        - if @program.program_users.present?
+          - @program.program_users.each do |program_user|
+            %tr{class: "row-program-user-#{program_user.id}"}
+              %td= program_user.user.name
+              %td= program_user.ticket_id
+              %td= program_user.observation
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Remover", candidate.program_program_user_path(@program, program_user), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 4}
+              %i Nenhum registro encontrado.
+                  

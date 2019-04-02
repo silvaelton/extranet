@@ -1,0 +1,9 @@
+- if @program_user.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+
+- else
+  $(".index-program-user").html("#{escape_javascript(render 'candidate/program_users/index')}");
+  $(".row-program-user-#{@program_user.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();

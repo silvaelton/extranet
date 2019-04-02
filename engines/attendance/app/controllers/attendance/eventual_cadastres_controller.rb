@@ -8,6 +8,8 @@ module Attendance
     has_scope :by_name
     has_scope :by_cpf
     
+    def index; end
+    
     def new
       @eventual = Attendance::EventualCadastre.new
     end
@@ -15,6 +17,7 @@ module Attendance
     def create
       @eventual = Attendance::EventualCadastre.new(set_params)
       @eventual.user_id = current_user.id
+      @eventual.convocation_id = @eventual.convocation_id
       @eventual.save
     end
      
@@ -28,7 +31,7 @@ module Attendance
 
     def set_params
       params.require(:eventual_cadastre)
-        .permit(:name, :cpf, :gender_id, :program_id, :born)
+        .permit(:name, :cpf, :gender_id, :program_id, :born, :convocation_id, :observation)
     end
 
     def set_eventuals

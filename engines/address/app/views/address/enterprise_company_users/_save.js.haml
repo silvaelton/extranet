@@ -1,0 +1,9 @@
+- if @enterprise_company_user.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+
+- else
+  $(".index_company_user").html("#{escape_javascript(render 'address/enterprise_company_users/index')}");
+  $(".row-enterprise-company-user-#{@enterprise_company_user.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();

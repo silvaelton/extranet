@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    modules:
+      'pivotal/system_engine': 'Engine'
+    attributes:
+      'pivotal/system_engine':
+        name: "Nome"
+        description: "Descrição"
+        code: "Código"
+        status: "Ativo?"

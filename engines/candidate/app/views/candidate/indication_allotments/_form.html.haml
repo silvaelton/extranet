@@ -11,7 +11,7 @@
       = f.input :enterprise_id, as: :select, collection: Address::Enterprise.all, include_blank: 'Selecione...'
   .row
     .col-4 
-      = f.input :program_id, as: :select, collection: Support::Common::Program.all, include_blank: 'Selecione...'
+      = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: 'Selecione...'
     .col-4 
       = f.input :evaluation_entity, as: :select, include_blank: 'Selecione...'
     .col-4 

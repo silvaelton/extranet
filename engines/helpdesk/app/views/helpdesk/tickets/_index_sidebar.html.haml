@@ -10,8 +10,8 @@
         = f.input :by_id, as: :string, label: "Por Nº", placeholder: "Informe o número"
         = f.input :by_ticket_type, as: :select, label: "Por tipo", collection: {}, include_blank: t(:include_blank)
         = f.input :by_situation, as: :select,label: "Por situação", include_blank: t(:include_blank)
-        = f.input :by_staff_id, as: :select, collection: Support::Common::Program.all, label: "Por solicitante", include_blank: t(:include_blank)
-        = f.input :by_attendant_id, as: :select, collection: Support::Common::Program.all, label: "Por atendente", include_blank: t(:include_blank)
+        = f.input :by_staff_id, as: :select, collection: Candidate::Program.status_active.order(:id), label: "Por solicitante", include_blank: t(:include_blank)
+        = f.input :by_attendant_id, as: :select, collection: Candidate::Program.status_active.order(:id), label: "Por atendente", include_blank: t(:include_blank)
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
   .divider

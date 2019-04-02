@@ -1,0 +1,32 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_cpf, label: "Por CPF", input_html: {name: :by_name, value: params[:by_name], placeholder: 'Digite o nome'}
+        = f.input :by_convocation,as: :select, label: "Por convocação", input_html: { name: :by_status, value: params[:by_status]}, include_blank: 'Selecione'
+        = f.input :by_situation,as: :select, label: "Por situação", input_html: { name: :by_status, value: params[:by_status]}, include_blank: 'Selecione'
+        = f.input :by_program,as: :select, label: "Por programa", input_html: { name: :by_status, value: params[:by_status]}, include_blank: 'Selecione'
+        = f.input :by_subprogram,as: :select, label: "Por sub-programa", input_html: { name: :by_status, value: params[:by_status]}, include_blank: 'Selecione'
+        = f.input :by_attendant, as: :select, label: "Por atendente", input_html: { name: :by_status, value: params[:by_status]}, include_blank: 'Selecione'
+        = f.input :by_supervisor, as: :select, label: "Por supervisor", input_html: { name: :by_status, value: params[:by_status]}, include_blank: 'Selecione'
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
+  .divider
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Iniciar um novo atendimento", attendance.new_ticket_path, remote: true, data: { disable_with: t(:disable_with)}
+      %hr.divider
+      = link_to "Gestão de categorias", attendance.ticket_categories_path, data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de situações", root_path, data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de documentos", root_path, data: { disable_with: t(:disable_with)}
