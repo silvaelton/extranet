@@ -1,10 +1,6 @@
 GIT
   remote: https://github.com/carrierwaveuploader/carrierwave.git
-<<<<<<< HEAD
-  revision: 664e99e7ad2d6f1e0410c99eeba82ee0afd2fb11
-=======
-  revision: 14c86501fd889944f73f2f4a2ca779dcef1d086e
->>>>>>> e2d922408aa3647f0b53f64775af6c0cd9a82fa0
+  revision: f84672ac9110d84d94d8afbe1b38ec7fd2e831c3
   specs:
     carrierwave (2.0.0.alpha)
       activemodel (>= 5.0.0)
@@ -14,11 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-<<<<<<< HEAD
-  revision: 1b389b5112515a30ae993497d0f71a281f84a11e
-=======
-  revision: b1d89311eec50b8b6b56765952b9eccbdd0667b5
->>>>>>> e2d922408aa3647f0b53f64775af6c0cd9a82fa0
+  revision: 966e9c9268727761305f2ed0839d48f2e3dd8b45
   branch: master
   specs:
     support (0.1.0)
