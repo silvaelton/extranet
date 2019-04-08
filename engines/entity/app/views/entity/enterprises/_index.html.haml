@@ -1,16 +1,30 @@
-%h6 
-  = link_to "<i class='fa fa-plus'></i>".html_safe, "#" 
-  Empreendimentos vínculados
+%h6
+  = link_to "<i class='fa fa-plus'></i>".html_safe, entity.edit_enterprise_path(entity_id: @entity.id), remote: true 
+  Empreendimentos vínculados (#{@entity.enterprises.count})
 %table.table.table-bordered.table-striped.table-celled
   %thead
     %tr
-      %th Telefone
-      %th Telefone (secundário)
-      %th Celular
-      %th Email
+      %th Nome
+      %th Número do processo
+      %th Valor
+      %th Status
+      %th
   %tbody
-    %tr
-      %td
-      %td
-      %td
-      %td
+    - if @entity.enterprises.present?
+      - @entity.enterprises.each do |enterprise|
+        %tr{class: "row-enterprise-#{enterprise.id}"}
+          %td
+            = enterprise.name
+          %td= enterprise.number_assessment
+          %td= enterprise.status.status_format
+          %td.collapsing
+            .dropdown
+              %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-cog
+                %i.ti-angle-down
+              .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                = link_to "Remover", entity.cadastre_cadastre_activity_path(@entity, enterprise), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+    - else
+      %tr
+        %td{colspan: 7}
+          %i Nenhum registro vínculado.

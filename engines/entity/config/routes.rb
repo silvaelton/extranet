@@ -8,6 +8,7 @@ Entity::Engine.routes.draw do
   end
 
   resources :cadastre_situations, path: 'cadastro-situacoes'
+  resources :enterprises, path: 'vinculo-empreendimentos'
   resources :member_jobs, path: 'diretoria-cargos'
 
   resources :raffles, path: 'sorteios' do
