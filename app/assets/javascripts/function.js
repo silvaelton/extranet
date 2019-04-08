@@ -18,6 +18,7 @@ function update_js() {
   select2();
   datepicker();
   collapsing_form();
+  magnify();
 }
 
 
@@ -112,4 +113,25 @@ function collapsing_form() {
   $(".collapse-input").unbind().on("change", function() {
     $($(this).data('collapse-target')).toggle();
   });
+}
+
+function magnify() {
+
+  $('[data-magnify]').magnify({
+    headToolbar: [
+      'close'
+    ],
+    footToolbar: [
+      'zoomIn',
+      'zoomOut',
+      'prev',
+      'fullscreen',
+      'next',
+      'actualSize',
+      'rotateRight'
+    ],
+    title: false
+  });
+
+
 }

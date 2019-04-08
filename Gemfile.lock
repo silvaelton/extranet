@@ -20,6 +20,7 @@ GIT
       pg
       rails (~> 5.2.0)
       rake
+      rmagick
 
 GIT
   remote: https://github.com/mshibuya/remotipart.git
@@ -252,6 +253,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rmagick (3.0.0)
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)

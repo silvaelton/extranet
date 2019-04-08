@@ -3,7 +3,8 @@ Attendance::Engine.routes.draw do
 
   resources :tickets,      path: 'atendimentos'
   resources :requeriments, path: 'requerimentos'
-
+  resources :requeriment_categories, path: 'requerimento-categorias'
+  
   resources :categories
   resources :daily_types
   resources :daily_preferential_types

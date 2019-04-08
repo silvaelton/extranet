@@ -1,7 +1,6 @@
 Candidate::Engine.routes.draw do
   root 'home#index'
 
-
   resources :activity_types,             path: 'atividade-tipos'
   resources :cadins,                     path: 'imobiliario-cadastros'
   resources :indication_allotments,      path: 'indicacao-lotes'
@@ -22,6 +21,7 @@ Candidate::Engine.routes.draw do
     resources :program_users, path: 'programas-permissoes'
   end
 
+  resources :search_cadastres
   resources :cadastres, path: 'cadastros' do
     resources :cadastre_situations
     resources :cadastre_procedural_situations

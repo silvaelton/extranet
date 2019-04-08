@@ -8,5 +8,6 @@
 //= require datepicker/js/bootstrap-datepicker.pt-BR.min
 //= require jquery/mask.min
 //= require select2-full
-//= require function
 //= require tinymce-jquery
+//= require image-viewer/dist/jquery.magnify.min
+//= require function
