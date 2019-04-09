@@ -1,4 +1,4 @@
 = simple_form_for [@ticket_type, @ticket_type_user], remote: true do |f|
   = f.input :staff_id, as: :select, collection: Pivotal::User.status_active.where.not(id: @ticket_type.ticket_type_users.map(&:staff_id)).order(:name), include_blank: t(:include_blank) 
   .divider-sm
-  = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with)}
+  = f.button :submit, class: 'btn btn-success'

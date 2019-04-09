@@ -3,7 +3,7 @@
     %h5 
       %b Usuários (#{@topic.page_users.count})
     %h6
-      = link_to "<i class='fa fa-plus'></i>".html_safe, new_topic_page_user_path(@topic), remote: true, data: { disable_with: t(:disable_with)}
+      = link_to "<i class='fa fa-plus'></i>".html_safe, new_topic_page_user_path(@topic), remote: true
       Usuários
     %table.table.table-bordered.table-striped
       %thead

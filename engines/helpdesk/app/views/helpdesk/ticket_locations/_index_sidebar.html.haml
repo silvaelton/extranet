@@ -6,7 +6,7 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar local", helpdesk.new_ticket_location_path, remote: true, data: { disable_with: t(:disable_with)}
+      = link_to "Adicionar local", helpdesk.new_ticket_location_path, remote: true
       %hr.divider
-      = link_to "Gestão de chamados", helpdesk.tickets_path, data: { disable_with: t(:disable_with)}
-      = link_to "Gestão de tipos", helpdesk.ticket_types_path, data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de chamados", helpdesk.tickets_path
+      = link_to "Gestão de tipos", helpdesk.ticket_types_path

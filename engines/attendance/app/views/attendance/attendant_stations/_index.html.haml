@@ -2,7 +2,7 @@
   .col-md-12
     %h5 
       %b Atendentes (#{@station.attendant_stations.count})
-    = link_to "Adicionar atendente", new_station_attendant_station_path(@station), remote: true, data: { disable_with: t(:disable_with)}
+    = link_to "Adicionar atendente", new_station_attendant_station_path(@station), remote: true
 .content
   %table.table.table-bordered.table-striped.table-celled
     %thead

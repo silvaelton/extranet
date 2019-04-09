@@ -3,7 +3,7 @@
     %h5 
       %b Páginas (#{@topic.pages.count rescue 0}) 
     %h6
-      = link_to "<i class='fa fa-plus'></i>".html_safe, new_topic_page_path(@topic), remote: true, data: { disable_with: t(:disable_with)}
+      = link_to "<i class='fa fa-plus'></i>".html_safe, new_topic_page_path(@topic), remote: true
       Páginas
     %table.table.table-bordered.table-striped
       %thead
@@ -22,7 +22,7 @@
               %td= page.iframe.status_format
               %td= page.status.status_format
               %td.collapsing
-                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, wiki.edit_topic_page_path(@topic, page), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, wiki.edit_topic_page_path(@topic, page), remote: true, class: 'btn btn-info btn-icon btn-sm'
                 = link_to "<i class='fa fa-trash'></i>".html_safe, wiki.topic_page_path(@topic, page), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
         - else
           %tr

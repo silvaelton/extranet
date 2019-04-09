@@ -6,6 +6,6 @@ module Helpdesk
     belongs_to :user,  class_name: 'Pivotal::User'
 
     validates :staff_id, presence: true
-    validates_uniqueness_of :staff_id, conditions: -> { not_deleted }
+    validates_uniqueness_of :staff_id, scope: :ticket_type_id, conditions: -> { not_deleted }
   end
 end

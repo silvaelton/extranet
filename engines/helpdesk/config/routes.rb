@@ -7,6 +7,8 @@ Helpdesk::Engine.routes.draw do
     resources :ticket_activities
   end
 
+  resources :ticket_situations, path: 'situacoes'
+  
   resources :ticket_types, path: 'tipos' do
     get 'subject', on: :collection
 

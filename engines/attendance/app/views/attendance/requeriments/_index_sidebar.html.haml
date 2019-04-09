@@ -11,8 +11,8 @@
         = f.input :by_situation, as: :select, label: "Por situação", collection: Pivotal::User.all, selected: params[:by_responsible], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_responsible'}, prompt: 'Selecione'
         = f.input :by_category, as: :select, label: "Por categoria", collection: Attendance::RequerimentCategory.status_active, selected: params[:by_responsible], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_responsible'}, prompt: 'Selecione'
         .mt-4
-        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: { disable_with: t(:disable_with)}
-        = link_to "Limpar filtro", attendance.requeriments_path, class: 'btn btn-dark btn-block', data: { disable_with: t(:disable_with)}
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar filtro", attendance.requeriments_path, class: 'btn btn-dark btn-block'
   .divider
     .card
       .card-body.card-header.border-left-yellow
@@ -21,5 +21,5 @@
           = link_to "javascript:void(0)", class: "collapsing-link" do
             %i.fa.fa-minus
       .card-body.card-list
-        = link_to "Gestão de categorias", attendance.requeriment_categories_path, class: 'filter-nav-item', data: { disable_with: t(:disable_with)}
+        = link_to "Gestão de categorias", attendance.requeriment_categories_path, class: 'filter-nav-item'
         

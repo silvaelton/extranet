@@ -5,5 +5,5 @@
       = f.input :ticket_category_id, as: :select, collection: Attendance::TicketCategory.status_active.order(:name), inlude_blank: "Selecione..."
       %hr.divider
 
-      = f.submit "Iniciar atendimento", class: 'btn btn-success btn-block', data: { disable_with: t(:disable_with)} 
+      = f.submit "Iniciar atendimento", class: 'btn btn-success btn-block' 
   .col-6

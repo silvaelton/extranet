@@ -19,7 +19,7 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar cadastro", attendance.new_agenda_reference_category_agenda_reference_path(@reference_category), remote: true, data: { disable_with: t(:disable_with)}
+      = link_to "Adicionar cadastro", attendance.new_agenda_reference_category_agenda_reference_path(@reference_category), remote: true
       %hr/
       = link_to "Voltar para listagem", attendance.agenda_reference_categories_path, data: { disable_with: t(:disable_with) }
       = link_to "Gestão de agendas", attendance.agendas_path, data: { disable_with: t(:disable_with) }

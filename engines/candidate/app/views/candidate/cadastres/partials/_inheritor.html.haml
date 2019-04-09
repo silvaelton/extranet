@@ -7,7 +7,7 @@
     .row
       .col-md-12 
         %h6
-          = link_to "+ Adicionar herdeiro", new_cadastre_cadastre_inheritor_path(@cadastre), remote: true, data: { disable_with: t(:disable_with)}
+          = link_to "+ Adicionar herdeiro", new_cadastre_cadastre_inheritor_path(@cadastre), remote: true
         %table.table.table-bordered.table-striped
           %thead
             %tr
@@ -32,8 +32,8 @@
                         %i.fa.fa-cog
                         %i.ti-angle-down
                       .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
-                        = link_to "Detalhar", candidate.cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), remote: true,  class: 'dropdown-item', data: { disable_with: t(:disable_with)}
-                        = link_to "Editar", candidate.edit_cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), remote: true, class: 'dropdown-item', data: { disable_with: t(:disable_with)}
+                        = link_to "Detalhar", candidate.cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), remote: true,  class: 'dropdown-item'
+                        = link_to "Editar", candidate.edit_cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), remote: true, class: 'dropdown-item'
                         = link_to "Excluir", candidate.cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), method: :delete, remote: true,  class: 'dropdown-item', data: { confirm: t(:confirm)}
             - else
               %tr
