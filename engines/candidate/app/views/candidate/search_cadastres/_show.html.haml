@@ -1,0 +1,88 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Pesquisa rápida
+      %a.close
+        %i.fas.fa-times
+    .modal-body
+      - if @cadastre.nil?
+        %p.text-center 
+          Nenhum cadastro encontrado no CPF informado.
+      - else
+        %p Dados básicos
+        %table.table.table-striped.table-bordered.table-celled
+          %thead
+            %tr
+              %th Nome
+              %th CPF
+              %th Situação cadastral
+          %tbody
+            %tr
+              %td
+              %td
+              %td
+
+        %table.table.table-striped.table-bordered.table-celled
+          %thead
+            %tr
+              %th Condição especial
+              %th Data de nascimento
+              %th Idade
+              %th Renda familiar
+              
+          %tbody
+            %tr
+              %td
+              %td
+
+        %p Cônjuge
+        %table.table.table-striped.table-bordered.table-celled
+          %thead
+            %tr
+              %th Nome
+              %th CPF
+              %th Situação cadastral
+          %tbody
+            %tr
+              %td
+              %td
+              %td
+
+        %p Indicação
+        %table.table.table-striped.table-bordered.table-celled
+          %thead
+            %tr
+              %th Nome
+              %th CPF
+              %th Situação cadastral
+          %tbody
+            %tr
+              %td
+              %td
+              %td                
+
+        %p Endereço vínculado
+        %table.table.table-striped.table-bordered.table-celled
+          %thead
+            %tr
+              %th Nome
+              %th CPF
+              %th Situação cadastral
+          %tbody
+            %tr
+              %td
+              %td
+              %td    
+                                                            
+        %p Ocorrência
+        %table.table.table-striped.table-bordered.table-celled
+          %thead
+            %tr
+              %th Nome
+              %th CPF
+              %th Situação cadastral
+          %tbody
+            %tr
+              %td
+              %td
+              %td                             

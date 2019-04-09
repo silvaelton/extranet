@@ -21,5 +21,5 @@
     .card-body.card-list
       = link_to "Adicionar agenda", attendance.new_agenda_path, remote: true, data: { disable_with: t(:disable_with) }
       %hr/
-      = link_to "Gestão de categorias", attendance.agenda_categories_path, data: { disable_with: t(:disable_with)}
-      = link_to "Gestão de restrições", attendance.agenda_reference_categories_path, data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de categorias", attendance.agenda_categories_path
+      = link_to "Gestão de restrições", attendance.agenda_reference_categories_path

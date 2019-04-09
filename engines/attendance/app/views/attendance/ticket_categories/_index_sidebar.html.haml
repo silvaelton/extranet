@@ -6,7 +6,7 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar categoria", new_ticket_category_path, class: 'filter-nav-item',  remote: true, data: { disable_with: t(:disable_with)}
+      = link_to "Adicionar categoria", new_ticket_category_path, class: 'filter-nav-item',  remote: true
       %hr.divider
-      = link_to "Gestão de situações", "#", class: 'filter-nav-item', data: { disable_with: t(:disable_with)}
-      = link_to "Gestão de ticket", attendance.tickets_path, class: 'filter-nav-item', data: { disable_with: t(:disable_with)}
+      = link_to "Gestão de situações", "#", class: 'filter-nav-item'
+      = link_to "Gestão de ticket", attendance.tickets_path, class: 'filter-nav-item'

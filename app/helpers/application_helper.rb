@@ -36,6 +36,9 @@ module ApplicationHelper
       url = url_for(options)
     end
 
+    html_options[:data] = html_options[:data].present? ? html_options[:data] : {}
+    html_options[:data][:disable_with] = I18n.t(:disable_with)
+
     html_options = convert_options_to_data_attributes(options, html_options)
 
     html_options["href".freeze] ||= url

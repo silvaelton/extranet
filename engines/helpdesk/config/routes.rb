@@ -3,9 +3,13 @@ Helpdesk::Engine.routes.draw do
 
   resources :tickets, path: 'chamados' do
     get 'get_ticket'
-     
+    
+    get 'answer'
+    
     resources :ticket_activities
   end
+
+  resources :ticket_situation_types, path: 'situacoes'
 
   resources :ticket_types, path: 'tipos' do
     get 'subject', on: :collection

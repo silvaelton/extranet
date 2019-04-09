@@ -1,0 +1,73 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Detalhamento de requerimento
+      %a.close
+        %i.fas.fa-times
+    .modal-body
+      .row
+        .col-md-12
+          %table.table.table-striped.table-celled.table-bordered
+            %thead
+              %tr
+                %th Data/Hora
+                %th Situação
+                %th Categoria      
+            %tbody
+              %tr
+                %td= @requeriment.created_at.format_date
+                %td                    
+                %td= @requeriment.requeriment_category.name rescue t(:no_info)
+
+          %table.table.table-striped.table-celled.table-bordered
+            %thead
+              %tr
+                %th Nome
+                %th CPF
+                %th Telefone
+                %th Celular
+            %tbody
+              %tr
+                %td= @requeriment.name
+                %td= @requeriment.cpf                  
+                %td= @requeriment.telephone                  
+                %td= @requeriment.celphone
+
+          %table.table.table-striped.table-celled.table-bordered
+            %thead
+              %tr                  
+                %th Cidade
+                %th Endereço
+            %tbody
+              %tr
+                %td= @requeriment.city_id
+                %td= @requeriment.address
+
+          %table.table.table-striped.table-celled.table-bordered
+            %thead
+              %tr                  
+                %th Conteúdo
+            %tbody
+              %tr
+                %td= @requeriment.content
+      %hr/
+      %p Anexo(s)                  
+      .row
+        .col-md-12
+          - @requeriment.requeriment_attachments.each do |attach|
+            = link_to image_tag("http://localhost:3001/#{attach.attachment_url}",class: 'img-thumbnail'), "http://localhost:3001/#{attach.attachment_url}", data: { magnify: "gallery", capition: "Anexo"}
+      %hr/
+      %p Requerimentos vínculados ao CPF                  
+      .row
+        .col-md-12
+          %table.table.table-striped.table-celled.table-bordered
+            %thead
+              %tr                  
+                %th Nº            
+                %th Data/Hora            
+                %th Categoria            
+                %th Situação
+            %tbody
+              %tr
+                %td{colspan: 4}
+                  %i Nenhum requerimento vínculado          

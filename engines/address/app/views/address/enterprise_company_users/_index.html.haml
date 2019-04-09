@@ -2,7 +2,7 @@
   .col-md-12
     %h5 
       %b Assuntos (#{@enterprise_company.enterprise_company_users.count})
-    = link_to "Adicionar usuario", new_enterprise_company_enterprise_company_user_path(@enterprise_company), remote: true, data: { disable_with: t(:disable_with)}
+    = link_to "Adicionar usuario", new_enterprise_company_enterprise_company_user_path(@enterprise_company), remote: true
     %table.table.table-bordered.table-striped
       %thead
         %tr
@@ -20,7 +20,7 @@
               %td= enterprise_company_user.administrator.status_format
               %td= enterprise_company_user.status.status_format
               %td.collapsing
-                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, address.edit_enterprise_company_enterprise_company_user_path(@enterprise_company, enterprise_company_user), remote: true, class: 'btn btn-info btn-icon btn-sm', data: { disable_with: t(:disable_with)}
+                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, address.edit_enterprise_company_enterprise_company_user_path(@enterprise_company, enterprise_company_user), remote: true, class: 'btn btn-info btn-icon btn-sm'
                 = link_to "<i class='fa fa-trash'></i>".html_safe, address.enterprise_company_enterprise_company_user_path(@enterprise_company, enterprise_company_user), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
         - else
           %tr

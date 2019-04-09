@@ -18,6 +18,12 @@ module Helpdesk
       where(ticket_type_id: current_user_types(current_user))  
     }
 
+
+    def set_answer user_id
+      # 2 => Em execução
+      update(situation_type_id: 2, attendant_id: user_id)
+    end
+
     def self.current_user_types(current_user)
       TicketTypeUser.where(user_id: current_user.id).map(&:ticket_type_id)
     end

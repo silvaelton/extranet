@@ -37,6 +37,9 @@
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
                     = link_to "Detalhar", helpdesk.ticket_path(ticket), remote: true, class: 'dropdown-item'
+                    = link_to "Atender", helpdesk.ticket_answer_path(ticket), remote: true, class: 'dropdown-item'
+                    = link_to "Finalizar", helpdesk.ticket_path(ticket), remote: true, class: 'dropdown-item'
+                    = link_to "Cancelar", helpdesk.ticket_path(ticket), remote: true, class: 'dropdown-item'
           %tfoot
             %tr
               %td.text-center{colspan: 8}
