@@ -10,10 +10,13 @@ Pivotal::Engine.routes.draw do
       resources :passwords
     end 
 
+    resources :reset_passwords
+    resources :user_navs
+    resources :user_permissions
+
     resources :tickets
     resources :logs
     resources :session_logs
-    resources :permissions
   end
 
   resources :system_engines do

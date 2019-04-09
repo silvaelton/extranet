@@ -10,6 +10,7 @@ Address::Engine.routes.draw do
   resources :unit_situation_types,     path: 'unidade-tipo-situacoes'
   resources :unit_cadastre_situations, path: 'unidade-cadastro-situacoes'
   resources :labels,                   path: 'etiquetas'
+  
   resources :enterprise_companies,     path: 'empresas' do
     resources :enterprise_company_users,     path: 'empresas-usuarios'
   end

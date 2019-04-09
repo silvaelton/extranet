@@ -32,6 +32,12 @@ module Helpdesk
       @ticket.destroy
     end
 
+
+    def answer
+      @ticket = Helpdesk::Ticket.find(params[:ticket_id])
+      @ticket.set_answer!(current_user.id)
+    end
+
     private
 
     def set_params
