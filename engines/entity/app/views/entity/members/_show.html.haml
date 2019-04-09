@@ -23,11 +23,11 @@
             %th Cidade
         %tbody
           %tr
-            %td= @member.born.format_date
+            %td= @member.born.format_date rescue nil
             %td= @member.rg
             %td= @member.rg_org
-            %td= @member.rg_uf.name
-            %td= @member.city.name
+            %td= @member.rg_uf.name rescue nil
+            %td= @member.city.name rescue nil
         %thead
           %tr
             %th{colspan: 2} E-mail

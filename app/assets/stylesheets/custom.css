@@ -11,6 +11,19 @@ body::-webkit-scrollbar-thumb {
   background: #f5b302;
 }
 
+table a {
+  color: #666666 !important;
+}
+
+table .dropdown a {
+  color: black !important;
+}
+
+.dark {
+  background-color: #666769 !important;
+  color: white;
+}
+
 .collapsing {
   width: 1px;
   white-space: nowrap;
@@ -84,7 +97,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .dropdown-item {
-  font-size: 17px !important;
+  font-size: 14px !important;
   padding-left: 15px;
   padding-top: 3px;  
 
@@ -173,6 +186,6 @@ body::-webkit-scrollbar-thumb {
 
 .navbar-light .navbar-nav .nav-link {
   color: rgb(53, 53, 53);
-  font-size: 17px;
+  font-size: 15px;
 }
 

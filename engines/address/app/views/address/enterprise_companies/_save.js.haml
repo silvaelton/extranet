@@ -3,7 +3,7 @@
 
 - else
   $(".index-content").html("#{escape_javascript(render 'index')}");
-  $(".row-enterprise_company-#{@enterprise_company.id}").addClass('table-success');
+  $(".row-enterprise-company-#{@enterprise_company.id}").addClass('table-success');
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
 
 update_js();

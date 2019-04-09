@@ -5,9 +5,11 @@ Pivotal::Engine.routes.draw do
   
   resources :users, path: 'usuarios' do
     resources :bookmarks
+    
     collection do 
       resources :passwords
     end 
+
     resources :tickets
     resources :logs
     resources :session_logs
@@ -20,4 +22,6 @@ Pivotal::Engine.routes.draw do
 
   resources :sectors, path: 'setores'
   resources :jobs,    path: 'cargos'
+
+  resources :navs,    path: 'menus'
 end

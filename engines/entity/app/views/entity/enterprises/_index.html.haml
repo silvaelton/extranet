@@ -1,6 +1,6 @@
 %h6
   = link_to "<i class='fa fa-plus'></i>".html_safe, entity.edit_enterprise_path(entity_id: @entity.id), remote: true 
-  Empreendimentos vínculados (#{@entity.enterprises.count})
+  Empreendimentos vínculados (#{@enterprises})
 %table.table.table-bordered.table-striped.table-celled
   %thead
     %tr
@@ -10,8 +10,8 @@
       %th Status
       %th
   %tbody
-    - if @entity.enterprises.present?
-      - @entity.enterprises.each do |enterprise|
+    - if @enterprises.present?
+      - @enterprises.each do |enterprise|
         %tr{class: "row-enterprise-#{enterprise.id}"}
           %td
             = enterprise.name

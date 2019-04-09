@@ -1,37 +1,24 @@
-= simple_form_for @enterprise_company_user, remote: true do |f|
-
+= simple_form_for [@enterprise_company, @enterprise_company_user], remote: true do |f|
+  .row
+    .col-8 
+      = f.input :name, placeholder: 'Digite o nome'
+    .col-4 
+      = f.input :administrator, as: :select, include_blank: 'Selecione...'
   .row
     .col-12 
-      = f.input :name, as: :string
-
+      = f.input :email, placeholder: 'Digite o e-mail'
   .row
-    .col-12 
-      = f.input :email, as: :string
-
+    .col-6 
+      = f.input :password, as: :string, placeholder: 'Digite a senha'
+    .col-6 
+      = f.input :password_expires_at, as: :string, input_html: {class: 'date'}
   .row
-    .col-12 
-      = f.input :administrator, as: :string
-
-  .row
-    .col-12 
-      = f.input :password, as: :string
-
-  .row
-    .col-12 
-      = f.input :passwor_expires_at, as: :string
-
-  .row
-    .col-12 
-      = f.input :last_password, as: :string
-
-  .row
-    .col-12 
+    .col-4 
+      = f.input :last_password, as: :string, placeholder: 'Digite a senha'
+    .col-4 
       = f.input :remember_token_expires_at, as: :string
-
-  .row
-    .col-12 
-      = f.input :status, as: :string
-
+    .col-4 
+      = f.input :status, as: :select, include_blank: 'Selecione...'
   .row
     .col-12
       = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

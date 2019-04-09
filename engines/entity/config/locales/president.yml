@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models:
+      'entity/president' : "Presidente"
+    attributes:
+      'entity/president':
+        name: "Nome"
+        cpf: "Cpf"
+        born: "Data de nascimento"
+        rg: "Rg"
+        rg_org: "Expeditor"
+        rg_uf_id: "Uf do RG"
+        city_id: "Cidade"
+        telephone: "Telefone"
+        telephone_optional: "Telefone(opcional)"
+        cel_phone: "Celular"
+        address: "Endereço"
+        cep: "Cep"
+        status: "Status"
+        photo: "Foto"
+        certificate_civil_criminal: "Certificado civil-criminal"

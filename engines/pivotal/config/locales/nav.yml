@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    modules:
+      'pivotal/nav': 'Menu'
+    attributes:
+      'pivotal/nav':
+        label: "Nome"
+        position: "Posição"
+        url: "Link"
+        description: "Descrição"
+        status: "Ativo?"
