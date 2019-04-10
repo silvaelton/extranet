@@ -8,7 +8,8 @@
     .card-body.card-list
       = link_to "Adicionar situação cadastral", candidate.new_cadastre_cadastre_situation_path(@cadastre), remote: true
       = link_to "Adicionar convocação", candidate.new_cadastre_cadastre_convocation_path(@cadastre), remote: true
-      = link_to "Adicionar reserva de endereço", "#"
+      %hr.divider
+      = link_to "Resetar senha", candidate.edit_cadastre_cadastre_password_path(@cadastre), remote: true
       %hr.divider
       = link_to "Atualizar dados de contato", candidate.edit_update_contact_path(@cadastre), remote: true
       = link_to "Atualizar dados gerais", "#"
@@ -21,11 +22,11 @@
       = link_to "Adicionar indicação", "#"
       %hr.divider
       = link_to "Agendar atendimento", "#"         
-      = link_to "Iniciar uma conversa", "#"         
       = link_to "Enviar notificação", "#"       
-      = link_to "Enviar mensagem", "#"       
+      = link_to "Enviar sms", "#"       
+      = link_to "Enviar e-mail", "#"       
+      %hr.divider
       = link_to "Adicionar atividade", candidate.new_cadastre_cadastre_activity_path(@cadastre),  remote: true
       %hr.divider
       = link_to "Emitir ficha cadastral", "#"       
-      %hr.divider
-      = link_to "Alertar inconsistência cadastral", "#"       
+      

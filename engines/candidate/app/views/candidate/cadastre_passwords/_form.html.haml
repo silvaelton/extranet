@@ -1,0 +1,4 @@
+= simple_form_for @cadastre_password, remote: true, url: candidate.cadastre_cadastre_password_path(@cadastre), method: :put do |f|
+  = f.input :password, placeholder: "Informe uma nova senha"
+  = f.input :password_confirmation, placeholder: "Informe uma nova senha"
+  = f.button :submit, class: 'btn btn-success' 
