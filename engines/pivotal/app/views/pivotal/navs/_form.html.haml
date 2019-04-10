@@ -1,0 +1,25 @@
+= simple_form_for @nav, remote: true do |f|
+  .row
+    .col-12
+      = f.input :label, placeholder: 'Informe o menu'
+  .row
+    .col-6
+      = f.input :status, as: :select, include_blank: 'Selecione...'
+    .col-6
+      = f.input :position 
+  .row
+    .col-12
+      = f.input :father_id, as: :select, collection: Pivotal::Nav.where(father_id: nil).status_active.order(:label), label_method: lambda {|father_id| "#{father_id.label}"}, include_blank: t(:include_blank)
+  
+  .row
+    .col-12
+      = f.input :url, placeholder: 'Informe o link'
+  
+  .row
+    .col-12
+      = f.input :description,  placeholder: 'Informe uma descrição'
+
+  %hr.divider
+    .row
+      .col-12
+        = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

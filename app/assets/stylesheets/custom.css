@@ -19,6 +19,10 @@ table .dropdown a {
   color: black !important;
 }
 
+.dark {
+  background-color: #666769 !important;
+  color: white;
+}
 
 .collapsing {
   width: 1px;

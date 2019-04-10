@@ -20,6 +20,9 @@
     .col-4
       = f.input :code
     .col-4
-      = f.input :color  
-  .divider
-  = f.button :submit, class: 'btn btn-success'
+      = f.input :color 
+
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with)}

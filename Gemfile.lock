@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: d9690e37a864aad06c6ec4e52dcfd8857cbed613
+  revision: b1d89311eec50b8b6b56765952b9eccbdd0667b5
   branch: master
   specs:
     support (0.1.0)
@@ -20,7 +20,6 @@ GIT
       pg
       rails (~> 5.2.0)
       rake
-      rmagick
 
 GIT
   remote: https://github.com/mshibuya/remotipart.git
@@ -175,7 +174,7 @@ GEM
       socksify
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    image_processing (1.8.0)
+    image_processing (1.9.0)
       mini_magick (>= 4.9.3, < 5)
       ruby-vips (>= 2.0.13, < 3)
     io-like (0.3.0)
@@ -253,7 +252,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    rmagick (3.0.0)
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)

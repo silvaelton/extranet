@@ -1,0 +1,9 @@
+- if @link_enterprise.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".index-enterprise-content").html("#{escape_javascript(render 'entity/link_enterpries/index')}");
+  (".row-link-enterprise-#{@link_enterprise.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();
+ 
