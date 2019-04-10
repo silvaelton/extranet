@@ -19,8 +19,22 @@ function update_js() {
   datepicker();
   collapsing_form();
   magnify();
+  collapse();
 }
 
+function collapse() {
+  $(".collapsing-content-link").unbind().click(function () {
+    $(this).closest(".card").children(".card-body:nth-child(2)").toggle();
+
+    if ($(this).children("i").hasClass('fa-plus')) {
+      $(this).children("i").removeClass('fa-plus');
+      $(this).children("i").addClass('fa-minus');
+    } else {
+      $(this).children("i").addClass('fa-plus');
+      $(this).children("i").removeClass('fa-minus');
+    }
+  });
+}
 
 function sidebar_collapsed() {
   $(".collapsing-link").unbind().click(function() {

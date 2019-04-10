@@ -1,0 +1,9 @@
+- if @update_general.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".basic-content").html("#{escape_javascript(render 'candidate/cadastres/partials/basic')}");
+  $(".basic-display").css('display','block');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();
+ 

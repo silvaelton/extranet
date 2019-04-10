@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: 398891d416b3cdc1039d2ef1a6f1b02f7d480ace
+  revision: 8d53f6dfe77a503e6c61de220ec2b6bd40a376aa
   branch: master
   specs:
     support (0.1.0)
@@ -253,11 +253,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-<<<<<<< HEAD
-    rmagick (2.16.0)
-=======
     rmagick (3.0.0)
->>>>>>> f7072241b74c7faa3fd04636b14b4ee3d0761c2a
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)

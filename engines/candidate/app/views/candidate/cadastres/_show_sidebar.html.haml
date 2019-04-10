@@ -12,7 +12,7 @@
       = link_to "Resetar senha", candidate.edit_cadastre_cadastre_password_path(@cadastre), remote: true
       %hr.divider
       = link_to "Atualizar dados de contato", candidate.edit_update_contact_path(@cadastre), remote: true
-      = link_to "Atualizar dados gerais", "#"
+      = link_to "Atualizar dados gerais", candidate.edit_update_general_path(@cadastre), remote: true
       = link_to "Adicionar dependente", candidate.new_cadastre_dependent_path(@cadastre),  remote: true
       = link_to "Adicionar herdeiro", candidate.new_cadastre_cadastre_inheritor_path(@cadastre),  remote: true
       %hr.divider      
@@ -21,7 +21,6 @@
       = link_to "Adicionar ocorrência", "#"
       = link_to "Adicionar indicação", "#"
       %hr.divider
-      = link_to "Agendar atendimento", "#"         
       = link_to "Enviar notificação", "#"       
       = link_to "Enviar sms", "#"       
       = link_to "Enviar e-mail", "#"       
