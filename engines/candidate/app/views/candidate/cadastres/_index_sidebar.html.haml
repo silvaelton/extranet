@@ -20,20 +20,8 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Gestão de convocações", helpdesk.new_ticket_path, remote: true
-      = link_to "Gestão de sorteios", helpdesk.new_ticket_path, remote: true
-      %hr.divider
+      = link_to "Gestão de convocações", candidate.convocations_path, remote: true
       = link_to "Gestão de situação cadastral", entity.cadastre_situations_path
-      = link_to "Gestão de situação processual", entity.cadastre_situations_path
-      = link_to "Gestão de listas", entity.cadastre_situations_path
-      %hr.divider
-      = link_to "Gestão de cadastreo imobiliário", entity.cadastre_situations_path
-      = link_to "Gestão de convocação", entity.cadastre_situations_path
-      = link_to "Gestão de tipos de indicação", entity.cadastre_situations_path
-      = link_to "Gestão de lotes de indicação", entity.cadastre_situations_path
-      = link_to "Gestão de iptu", entity.cadastre_situations_path
-      = link_to "Gestão de listas", entity.cadastre_situations_path
-      = link_to "Gestão de ocorrêcia", entity.cadastre_situations_path
-      = link_to "Gestão de tipos de processos", entity.cadastre_situations_path
-      = link_to "Gestão de tipos de situação", entity.cadastre_situations_path
+      = link_to "Gestão de listas", candidate.lists_path
+      = link_to "Gestão de programas", candidate.programs_path
       

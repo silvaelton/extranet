@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/codhab/support.git
-  revision: b1d89311eec50b8b6b56765952b9eccbdd0667b5
+  revision: 398891d416b3cdc1039d2ef1a6f1b02f7d480ace
   branch: master
   specs:
     support (0.1.0)
@@ -20,6 +20,7 @@ GIT
       pg
       rails (~> 5.2.0)
       rake
+      rmagick
 
 GIT
   remote: https://github.com/mshibuya/remotipart.git
@@ -252,6 +253,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rmagick (3.0.0)
     roo (2.7.1)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
