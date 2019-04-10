@@ -1,0 +1,32 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listagem
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nome
+          %th CPF
+          %th Situação
+          %th Programa
+          %th Ocorrências
+      %tbody
+        - if @cadastres.present?
+          - @cadastres.each do |cadastre|
+            %tr
+              %td
+                %small ID: #{cadastre.id}
+                %br/
+                %h6
+                  %b= link_to cadastre.name, candidate.cadastre_path(cadastre), remote: true
+              %td.collapsing= cadastre.cpf.format_cpf
+              %td.collapsing
+                Situação
+              %td.collapsing
+                = cadastre.program.name rescue t(:no_info)
+              %td.collapsing

@@ -8,12 +8,12 @@
         .col-8
           .row
             .col-12
-              %p.title-sm RII (Ch. do padre)
+              %p.title-sm= @cadastre.program.name
               %p.title 
-                OSVALDO PEREIRA DA CUNHA
+                = @cadastre.name.upcase
                 = link_to "#", class: 'btn-icon bookmark-link' do
                   %i.far.fa-heart 
-              %p.title-sm 610.211.991-68
+              %p.title-sm= @cadastre.cpf.format_cpf
               %p.title-sm 
                 %span.badge.badge-primary{title: 'Possui condição especial'}
                   %i.fa.fa-wheelchair
