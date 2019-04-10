@@ -15,10 +15,20 @@ module Attendance
     scope :by_station,   ->(station) { where(station_id: station) }
     scope :by_category,  ->(category) { where(category_id: category) }
 
-    private
+    validate  :attendant?
 
     def current_attendant
-      Attendance::Attendant.where(staff_id: current_user.id, deleted: false).last.id
+      Attendance::Attendant.where(staff_id: current_user.id, deleted: false).last.id 
+    end
+
+    private
+
+    def attendant?
+
+      if !current_attendant.present? 
+        errors.add(:cpf, "não foi cadastrado. Você nao possui permissão de atendente para essa ação.")
+      end
+
     end
     
   end

@@ -6,14 +6,16 @@
           Dashboard
           %span.sr-only (current)
       - each_navs.order(:position).each do |nav|
-        - if nav.childrens.present?
-          %li.nav-item.dropdown
-            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              = nav.label
-            .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-              - nav.childrens.each do |child|
-                %a.dropdown-item{:href => "#{child.url}"}= child.label
-        - else
-          %li.nav-item
-            %a.nav-link{:href => "#{nav.url}"}
-              = nav.label
+        - if current_user.user_navs.where(nav_id: nav.id).present? || current_user.administrator?
+          - if nav.childrens.present?
+            %li.nav-item.dropdown
+              %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = nav.label
+              .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+                - nav.childrens.each do |child|
+                  - if current_user.user_navs.where(nav_id: child.id).present? || current_user.administrator?
+                    %a.dropdown-item{:href => "#{child.url}"}= child.label
+          - else
+            %li.nav-item
+              %a.nav-link{:href => "#{nav.url}"}
+                = nav.label
