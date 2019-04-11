@@ -1,0 +1,9 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Voltar para página inicial", pivotal.root_path

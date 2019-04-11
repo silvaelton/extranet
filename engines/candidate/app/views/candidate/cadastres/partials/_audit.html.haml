@@ -1,17 +1,37 @@
-
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
       %a.collapsing-content-link{href:"javascript:void(0)"}
         18. Histórico de modificações
-  .card-body{style: 'display: none'}
+  .card-body.cadastre-activity-display{style: 'display: none'}
     .row
-      .col-12
-        %table.table.table-striped.table-bordered.table-celled
+      .col-md-12
+        %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Data de modificação
+              %th Hora de modificação
+              %th Usuario
+              %th Tipo de ação
+              %th IP
+              %th
+          %tbody
+            - if @cadastre.audits.present? 
+              - @cadastre.audits.order(:created_at).each do |audit|
+                %tr
+                  %td= audit.created_at.format_date
+                  %td= audit.created_at.format_time
+                  %td= audit.user.name rescue nil
+                  %td= audit.action_name
+                  %td= audit.remote_address
+                  %td.collapsing
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Detalhar", candidate.cadastre_cadastre_audit_path(@cadastre, audit), remote: true,  class: 'dropdown-item'
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

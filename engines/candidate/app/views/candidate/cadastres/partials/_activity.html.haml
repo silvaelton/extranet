@@ -13,7 +13,9 @@
             %tr
               %th Titulo
               %th Usuário
-              %th Justificativa
+              %th Conteúdo
+              %th tipo 
+              %th Data
               %th
           %tbody
             - if @cadastre.cadastre_activities.present? 
@@ -22,6 +24,11 @@
                   %td= cadastre_activity.title
                   %td= cadastre_activity.user.name
                   %td= cadastre_activity.justify
+                  %td= cadastre_activity.activity_type.name
+                  - if cadastre_activity.date?
+                    %td= cadastre_activity.date.format_date
+                  - else
+                    %td= cadastre_activity.created_at.format_date
                   %td.collapsing
                     .dropdown
                       %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

@@ -1,0 +1,37 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Detalhamento de alterações
+      %a.close
+        %i.fas.fa-times
+    .modal-body
+      %table.table.table-bordered.table-striped.table-celled
+        %thead
+          %tr
+            %th{colspan: 2} Usuário
+            %th Tipo de ação
+            %th Data 
+            %th Hora
+            %th IP
+        %tbody
+          %tr
+            %td{colspan: 2}= @audit.born.user.name rescue nil
+            %td= @audit.action_name
+            %td= @audit.created_at.format_date
+            %td= @audit.created_at.format_time
+            %td= @audit.remote_address
+        %thead
+          %tr
+            %th{colspan: 3} Alterado de:
+            %th{colspan: 3} Alterado para:
+        %tbody
+          %tr
+            %td{colspan: 3}
+              - @audit.audited_changes.each do |k, v|
+                = "#{k} - #{v[0]}"
+                %br
+            %td{colspan: 3}
+              - @audit.audited_changes.each do |k, v|
+                = "#{k} - #{v[1]}"
+                %br
+
