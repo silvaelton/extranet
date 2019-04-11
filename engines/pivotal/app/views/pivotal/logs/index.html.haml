@@ -1,29 +1,12 @@
-.container-fluid
-  .page-title
-  .row
+.fluid-container
+  .row.mt-4
     .col-md-12
-      .card
-        .card-block
-          %h3 Histórico de uso
-          .divider-sm
-          %table.table.table-bordered
-            %thead
-              %tr
-                %td{colspan: 4}
-                  = pagy_bootstrap_nav(@pagy).html_safe
-              %tr
-                %td Data/Hora
-                %td Metódo
-                %td URL
-                %td IP
-            %tbody
-              - @logs.each do |log|
-                %tr
-                  %td.collapsing= log.created_at.strftime('%d/%m/%Y %H:%M')
-                  %td.collapsing= log.http_method
-                  %td= log.fullpath
-                  %td.collapsing= log.remote_ip
-            %tfoot
-              %tr
-                %td{colspan: 4}
-                  = pagy_bootstrap_nav(@pagy).html_safe
+      .card#header.border-left-yellow
+        .card-body
+          .title Configuração
+          .subtitle Histórico de uso
+  .row.mt-4
+    .col-md-2.index-sidebar
+      = render 'index_sidebar'
+    .col-md-10.index-content
+      = render 'index'

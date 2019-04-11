@@ -104,4 +104,4 @@
             .row
               .col-md-12
                 %h6= step.ticket_category_step.name.humanize
-                = render "attendance/tickets/step_#{step.ticket_category_step.view_form}"
+                = render "attendance/tickets/step_#{step.ticket_category_step.view_form}", step: step

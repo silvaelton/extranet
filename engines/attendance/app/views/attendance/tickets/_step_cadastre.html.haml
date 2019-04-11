@@ -8,11 +8,16 @@
       %th RG UF
   %tbody
     %tr
-      %td= @ticket.cadastre_mirror.name.upcase
-      %td= @ticket.cadastre_mirror.cpf.format_cpf
-      %td= @ticket.cadastre_mirror.rg
-      %td= @ticket.cadastre_mirror.rg_org
-      %td= @ticket.cadastre_mirror.rg_uf_id
+      %td{class: @ticket.cadastre_mirror.changed(:name) ? 'table-success' : '', title: @ticket.cadastre_mirror.changed_value(:name)}
+        = @ticket.cadastre_mirror.name.upcase
+      %td{class: @ticket.cadastre_mirror.changed(:cpf) ? 'table-success' : '', title: @ticket.cadastre_mirror.changed_value(:cpf)}
+        = @ticket.cadastre_mirror.cpf.format_cpf
+      %td{class: @ticket.cadastre_mirror.changed(:rg) ? 'table-success' : '', title: @ticket.cadastre_mirror.changed_value(:rg)}
+        = @ticket.cadastre_mirror.rg
+      %td{class: @ticket.cadastre_mirror.changed(:rg_org) ? 'table-success' : '', title: @ticket.cadastre_mirror.changed_value(:rg_org)}
+        = @ticket.cadastre_mirror.rg_org
+      %td{class: @ticket.cadastre_mirror.changed(:rg_uf_id) ? 'table-success' : '', title: @ticket.cadastre_mirror.changed_value(:rg_uf_id)}
+        = @ticket.cadastre_mirror.rg_uf_id
 
 %table.table.table-striped.table-bordered.table-celled
   %thead
@@ -20,7 +25,11 @@
       %th Documento
       %th Arquivos/Imagens
   %tbody
-    %tr
-      %td 
-      %td 
-    
+    - step.ticket_category_step.step_documents.each do |document|
+      %tr
+        %td= document.document_type.name
+        %td 
+          - step.ticket_documents.where(document_type_id: document.document_type_id).each do |ticket_document|
+            = link_to "http://localhost:3001/#{ticket_document.attachment_url}", data: { magnify: "gallery", capition: "Anexo"} do
+              %i.fas.fa-image
+      
