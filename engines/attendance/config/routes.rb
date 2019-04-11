@@ -1,7 +1,10 @@
 Attendance::Engine.routes.draw do
   root 'dashboard#index'
 
-  resources :tickets,      path: 'atendimentos'
+  resources :tickets, path: 'atendimentos' do
+    resources :ticket_viewers
+  end
+
   resources :requeriments, path: 'requerimentos'
   resources :requeriment_categories, path: 'requerimento-categorias'
   

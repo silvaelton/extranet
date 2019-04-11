@@ -1,0 +1,26 @@
+%table.table.table-striped.table-bordered.table-celled
+  %thead
+    %tr
+      %th Nome
+      %th CPF
+      %th RG
+      %th RG ORG
+      %th RG UF
+  %tbody
+    %tr
+      %td= @ticket.cadastre_mirror.name.upcase
+      %td= @ticket.cadastre_mirror.cpf.format_cpf
+      %td= @ticket.cadastre_mirror.rg
+      %td= @ticket.cadastre_mirror.rg_org
+      %td= @ticket.cadastre_mirror.rg_uf_id
+
+%table.table.table-striped.table-bordered.table-celled
+  %thead
+    %tr
+      %th Documento
+      %th Arquivos/Imagens
+  %tbody
+    %tr
+      %td 
+      %td 
+    

@@ -1,22 +1,32 @@
 = simple_form_for [@ticket_category, @category_step], remote: true do |f|
   .row
-    .col-md-8
+    .col-md-6
       = f.input :name, placeholder: 'Digite o nome'
-    .col-md-4
-      = f.input :resume, placeholder: 'Digite o código'
+    .col-md-6
+      = f.input :view_form, as: :select, collection: Attendance::TicketCategoryStep.view_forms, placeholder: 'Código do formulário', include_blank: t(:include_blank)
   .row
     .col-md-12
-      = f.input :document_required, as: :select, include_blank: 'selecione...'
+      = f.input :resume, placeholder: 'Digite um resumo'
   .row
-    .col-md-12
+    .col-md-6
+      = f.input :document_required, as: :select, include_blank: 'selecione...', include_blank: false
+    .col-md-6
+      = f.input :step_required, as: :select, include_blank: 'selecione...', include_blank: false
+  
+  .row
+    .col-md-6
       = f.input :screen_order, placeholder: 'Digite um texto de ajuda'
+    .col-md-6
+      = f.input :status, as: :select, include_blank: 'selecione...', include_blank: false
   .row
     .col-md-6
-      = f.input :status, as: :select, include_blank: 'selecione...'
-    .col-md-6
-      = f.input :allow_confirmation, as: :select, include_blank: 'selecione...'
-    .col-md-6
-      = f.input :required, as: :select, include_blank: 'selecione...'
+      = f.input :allow_confirmation, as: :select, include_blank: 'selecione...', include_blank: false
+  .row
+    .col-md-12 
+      = f.input :message_success
+  .row
+    .col-md-12
+      = f.input :message_pendent 
   %hr.divider
   .row
     .col-md-12
