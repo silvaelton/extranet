@@ -1,0 +1,10 @@
+pt-BR:
+  activemodel:
+    models:
+      'candidate/cadastre_send_email' : "Notifcação"
+    attributes:
+      'candidate/cadastre_send_email':
+        title: "Titulo"
+        content: "Conteúdo"
+        from: "Remetente"
+

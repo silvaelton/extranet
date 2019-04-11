@@ -43,5 +43,11 @@ Candidate::Engine.routes.draw do
     resources :cadastre_notifications
     resources :cadastre_communications
     resources :cadastre_helps
+    resources :indication_unitaries
+
+    resources :cadastre_push_notifications
+    resources :cadastre_send_emails
+    resources :cadastre_send_menssages
+
   end
 end

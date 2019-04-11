@@ -40,7 +40,7 @@ module Address
       params.require(:enterprise).permit(:name, :value, :company_id, :number_document,
                                          :entity_id, :entity, :status, :web_url,
                                          :number_assessment, :manifestation_allow, :city_id,
-                                         :lat, :lng)
+                                         :lat, :lng, :unit_quantity)
     end
 
     def set_enterprises

@@ -13,6 +13,7 @@ module Candidate
     has_many :cadastre_convocations
     has_many :cadastre_activities
     has_many :dependents
+    has_many :indication_unitaries
 
     scope :by_cpf, -> (value) {
       where(cpf: value.to_s.unformat_cpf)

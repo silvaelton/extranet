@@ -19,11 +19,11 @@
       = link_to "Gerar pontuação", "#"
       %hr.divider
       = link_to "Adicionar ocorrência", "#"
-      = link_to "Adicionar indicação", "#"
+      = link_to "Adicionar indicação", candidate.new_cadastre_indication_unitary_path(@cadastre), remote: true
       %hr.divider
-      = link_to "Enviar notificação", "#"       
-      = link_to "Enviar sms", "#"       
-      = link_to "Enviar e-mail", "#"       
+      = link_to "Enviar notificação", candidate.new_cadastre_cadastre_push_notification_path(@cadastre), remote: true       
+      = link_to "Enviar sms", candidate.new_cadastre_cadastre_send_menssage_path(@cadastre), remote: true     
+      = link_to "Enviar e-mail", candidate.new_cadastre_cadastre_send_email_path(@cadastre), remote: true     
       %hr.divider
       = link_to "Adicionar atividade", candidate.new_cadastre_cadastre_activity_path(@cadastre),  remote: true
       %hr.divider

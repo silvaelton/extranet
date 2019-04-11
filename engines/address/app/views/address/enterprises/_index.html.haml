@@ -27,7 +27,7 @@
               %td= enterprise.name
               %td= enterprise.enterprise_typologies.count rescue 0
               %td= enterprise.company.name rescue t(:no_info)
-              %td= enterprise.enterprise_typologies.sum(:unit_quantity) rescue 0
+              %td= enterprise.unit_quantity rescue 0
               %td= enterprise.number_document
               %td= enterprise.status.status_format
               %td
