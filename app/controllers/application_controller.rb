@@ -14,10 +14,6 @@ class ApplicationController < ActionController::Base
     Pivotal::User.find_by(id: session[:user_id])
   end
 
-  def current_attendant
-    Attendance::Attendant.where(staff_id: current_user.id, deleted: false).last 
-  end
-
   def authenticate_user!
     if current_user.nil? && (controller_name != 'sessions')
       redirect_to pivotal.new_session_path

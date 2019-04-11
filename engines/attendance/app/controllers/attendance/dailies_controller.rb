@@ -19,7 +19,7 @@ module Attendance
 
     def create
       @daily = Attendance::Daily.new(set_params)
-      @daily.attendant_id = current_attendant.id
+      @daily.attendant_id = @daily.current_attendant(current_user.id)
       @daily.save
     end
 
