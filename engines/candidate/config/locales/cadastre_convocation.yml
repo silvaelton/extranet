@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/cadastre_convocation' : "Convocação"
+    attributes:
+      'candidate/cadastre_convocation':
+        convocation_id: "Convocação"
+        status: "Ativo?"
+        observation: "Observação"

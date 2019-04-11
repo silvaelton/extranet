@@ -1,0 +1,8 @@
+pt-BR:
+  activemodel:
+    models:
+      'candidate/cadastre_push_notification' : "Notifcação"
+    attributes:
+      'candidate/cadastre_push_notification':
+        title: "Titulo"
+        content: "Conteúdo"

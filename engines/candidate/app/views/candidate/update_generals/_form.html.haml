@@ -13,7 +13,7 @@
     .col-3
       = f.input :rg_uf_id, collection: Support::Common::State.all, include_blank: 'Selecione...'
     .col-3
-      = f.input :born, as: :string, input_html:{class: 'date'}
+      = f.input :born, as: :string, input_html:{class: 'date', value: (@update_general.born) ? localize(f.object.born) : nil}
 
   .row
     .col-3
@@ -23,7 +23,7 @@
     .col-3
       = f.input :place_birth, placeholder: 'Digite o local de nascimento'
     .col-3
-      = f.input :arrival_df, as: :string, input_html:{class: 'date'}
+      = f.input :arrival_df, as: :string, input_html:{class: 'date', value: (@update_general.arrival_df) ? localize(f.object.arrival_df) : nil}
 
   .row
     .col-3
@@ -48,9 +48,9 @@
     .col-6
       = f.input :address, placeholder: 'Digite o endereço'
     .col-3
-      = f.input :city_id, collection: Support::Common::City.all, include_blank: 'Selecione...'
-    .col-3
       = f.input :state_id, collection: Support::Common::State.all, include_blank: 'Selecione...'
+    .col-3
+      = f.input :city_id, collection: Support::Common::City.all, include_blank: 'Selecione...'
 
   .row
     .col-4
@@ -78,9 +78,9 @@
     .col-4
       = f.input :wedding_regime, placeholder: 'Regime de casamento'
     .col-4
-      = f.input :wedding_date, as: :string, input_html:{class: 'date'}
+      = f.input :wedding_date, as: :string, input_html:{class: 'date', value: (@update_general.wedding_date) ? localize(f.object.wedding_date) : nil}
     .col-4
-      = f.input :admission_date, as: :string, input_html:{class: 'date'}
+      = f.input :admission_date, as: :string, input_html:{class: 'date', value: (@update_general.admission_date) ? localize(f.object.admission_date) : nil}
 
   .row
     .col-12

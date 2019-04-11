@@ -15,12 +15,14 @@
     .col-md-6
       = f.input :entity_id, collection: Entity::Cadastre.all, prompt: 'Selecione'
   .row
-    .col-md-4
+    .col-md-3
       = f.input :number_assessment
-    .col-md-4
+    .col-md-3
       = f.input :manifestation_allow, as: :select, prompt: 'Selecione'
-    .col-md-4
+    .col-md-3
       = f.input :web_url
+    .col-md-3
+      = f.input :unit_quantity
   .row
     .col-md-4
       = f.input :city_id, collection: Support::Common::City.where(state_id: 7), prompt: 'Selecione'
