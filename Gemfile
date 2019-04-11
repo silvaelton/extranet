@@ -75,5 +75,6 @@ path 'engines' do
   gem 'pivotal'
   gem 'protocol'
   gem 'sefaz'
+  gem 'social'
   gem 'wiki'
 end
