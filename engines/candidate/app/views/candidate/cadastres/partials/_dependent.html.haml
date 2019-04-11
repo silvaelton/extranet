@@ -2,7 +2,7 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      = link_to "javascript:void(0)", class: "collapsing-content-link" do
+      %a.collapsing-content-link{href:"javascript:void(0)"}
         2. Dependente (#{@cadastre.dependents.count})
   .card-body.dependent-display{style: 'display: none'} 
     .row

@@ -23,6 +23,10 @@ table .dropdown a {
   background-color: #666769 !important;
   color: white;
 }
+.dark-modal {
+  background-color: #2e2e2e !important;
+  color: white;
+}
 
 .collapsing {
   width: 1px;
@@ -134,8 +138,6 @@ table .dropdown a {
   width: 100%;
   height: 100%;
 }
-
-<<<<<<< HEAD
 
 .title {
   font-size: 28px;

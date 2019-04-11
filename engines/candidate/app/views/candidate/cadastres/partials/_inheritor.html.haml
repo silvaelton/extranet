@@ -1,7 +1,7 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      = link_to "javascript:void(0)", class: "collapsing-content-link" do
+      %a.collapsing-content-link{href:"javascript:void(0)"}
         3. Herdeiro (#{@cadastre.cadastre_inheritors.count})
   .card-body.inheritor-display{style: 'display: none'}  
     .row
