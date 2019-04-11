@@ -1,0 +1,31 @@
+%h6
+  = link_to "<i class='fa fa-plus'></i>".html_safe, entity.new_cadastre_cadastre_activity_path(@entity), remote: true 
+  Atividads (#{@entity.cadastre_activities.count})
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Tipo
+      %th Usuário
+      %th Descrição
+      %th
+  %tbody
+    - if @entity.cadastre_activities.present?
+      - @entity.cadastre_activities.each do |cadastre_activity|
+        %tr{class: "row-cadastre-activity-#{cadastre_activity.id}"}
+          %td
+            = cadastre_activity.activity_type.name
+          %td= cadastre_activity.user.name
+          %td= cadastre_activity.description
+          %td.collapsing
+            .dropdown
+              %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-cog
+                %i.ti-angle-down
+              .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                = link_to "Detalhar", entity.cadastre_cadastre_activity_path(@entity, cadastre_activity), remote: true, class: 'dropdown-item'
+                = link_to "Editar", entity.edit_cadastre_cadastre_activity_path(@entity, cadastre_activity), remote: true, class: 'dropdown-item'
+                = link_to "Remover", entity.cadastre_cadastre_activity_path(@entity, cadastre_activity), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+    - else
+      %tr
+        %td{colspan: 7}
+          %i Nenhum membro vínculado.

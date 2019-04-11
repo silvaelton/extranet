@@ -2,7 +2,8 @@ require_dependency 'pivotal/application_controller'
 
 module Pivotal
   class UsersController < ApplicationController
-
+    before_action :set_users
+    
     def index 
     end
     
@@ -19,6 +20,10 @@ module Pivotal
     private
 
     def set_user
+    end
+
+    def set_users
+      @users = Pivotal::User.all.order(:name)
     end
 
   end

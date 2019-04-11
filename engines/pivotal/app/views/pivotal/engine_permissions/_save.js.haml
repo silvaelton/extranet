@@ -1,0 +1,8 @@
+- if @engine_permission.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".index_engine_permission").html("#{escape_javascript(render 'pivotal/engine_permissions/index')}");
+  $(".row-engine-permission-#{@engine_permission.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();

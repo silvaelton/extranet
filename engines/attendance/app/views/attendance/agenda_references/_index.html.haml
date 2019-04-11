@@ -1,0 +1,38 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@agenda_references.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td CPF
+          %td CNPJ
+          %td Código
+          %td.collapsing Cadastro feito em
+          %td 
+        
+      %tbody
+        - if @agenda_references.present?
+          - @agenda_references.each do |agenda_reference|
+            %tr{class: "row-agenda_reference-#{agenda_reference.id}"}
+              %td.collapsing= agenda_reference.cpf.format_cpf
+              %td.collapsing= agenda_reference.cnpj.format_cnpj ||= t(:no_info)
+              %td= agenda_reference.code
+              %td.collapsing= agenda_reference.created_at.format_date
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Remover", attendance.agenda_reference_category_agenda_reference_path(@reference_category, agenda_reference), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 4}
+              %i Nenhum registro encontrado.
+                  

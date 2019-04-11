@@ -1,37 +1,41 @@
 = simple_form_for @ticket, remote: true do |f|
   .row
-    .col-md-12
+    .col-md-4
       = f.input :ticket_type_id, as: :select, collection: Helpdesk::TicketType.status_active.order(:name), include_blank: t(:include_blank), input_html: { id: "ticket_type_id"}
-  .row
-    .col-md-12
+    .col-md-8
       = f.input :subject_id, as: :select, collection: f.object.ticket_type_id.present? ? Helpdesk::TicketTypeSubject.by_ticket_type(f.object.ticket_type_id) : {}, include_blank: 'Selecione o tipo...', input_html: { id: "ticket_subject_id"}
   .row
-    .col-md-6
-      = f.input :location_id, as: :select, include_blank: t(:include_blank)
-    .col-md-6
+    .col-md-4
+      = f.input :location_id, as: :select, collection: Helpdesk::TicketLocation.status_active.order(:name), include_blank: t(:include_blank)
+    .col-md-4
       = f.input :contact, as: :string, placeholder: ''
-  %hr/
-  .row
     .col-md-4
       = f.input :schedule, as: :select, include_blank: false, input_html: { id: 'schedule'}
+  .row
     .col-md-4.schedule{style: "display: #{f.object.schedule ? 'block' : 'none'}"}
       = f.input :schedule_date, as: :string, input_html: { class: 'date', value: f.object.schedule_date.present? ? localize(f.object.schedule_date) : nil }
     .col-md-4.schedule{style: "display: #{f.object.schedule ? 'block' : 'none'}"}
       = f.input :schedule_hour, as: :string, input_html: { class: 'hour' }
-  %hr/
+  .divider
   .row
     .col-md-12
-      = f.input :description, as: :text
-  .divider-sm
+      = f.input :description, as: :text, input_html: {class: 'tinymce', rows: 5}
+  .divider
+  .row
+    .col-md-12
+      = f.simple_fields_for :ticket_attachments do |builder|
+        = render 'ticket_attachment_fields', f: builder
+      = link_to_add_fields "Adicionar arquivo", f, :ticket_attachments
+  %hr.divider
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
 
 :javascript
-
   $("#schedule").on('change', function() {
-    $(".schedule").toggle();
-  })
+    $(".schedule").toggle();  
+  });
+
   $("#ticket_type_id").on("change", function() {
 
     $.getJSON("#{helpdesk.subject_ticket_types_path}?by_type_id=" + $(this).val(), function(data) {

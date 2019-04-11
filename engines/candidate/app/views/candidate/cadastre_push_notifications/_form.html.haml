@@ -1,0 +1,11 @@
+= simple_form_for [@cadastre, @push_notification], remote: true do |f|
+  .row
+    .col-12
+      = f.input :title, placeholder: 'Digite o nome'
+    .col-12
+      = f.input :content,as: :text, input_html:{rows: 5, cols: 5}
+
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

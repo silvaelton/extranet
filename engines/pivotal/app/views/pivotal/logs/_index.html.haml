@@ -1,0 +1,30 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title 
+      Listagen de histórico de uso
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td{colspan: 4}
+            = pagy_bootstrap_nav(@pagy).html_safe
+        %tr
+          %td Data/Hora
+          %td Metódo
+          %td URL
+          %td IP
+      %tbody
+        - @logs.each do |log|
+          %tr
+            %td.collapsing= log.created_at.strftime('%d/%m/%Y %H:%M')
+            %td.collapsing= log.http_method
+            %td= log.fullpath
+            %td.collapsing= log.remote_ip
+    %tfoot
+      %tr
+        %td{colspan: 4}
+          = pagy_bootstrap_nav(@pagy).html_safe

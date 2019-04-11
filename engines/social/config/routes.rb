@@ -1,4 +1,6 @@
 Social::Engine.routes.draw do
+  root 'cadastres#index'
+  
   resources :cadastres, path: 'cadastros' do
     resources :cadastre_schedules, path: 'agendamentos'
     resources :dependents,         path: 'dependentes'

@@ -11,6 +11,23 @@ body::-webkit-scrollbar-thumb {
   background: #f5b302;
 }
 
+table a {
+  color: #666666 !important;
+}
+
+table .dropdown a {
+  color: black !important;
+}
+
+.dark {
+  background-color: #666769 !important;
+  color: white;
+}
+.dark-modal {
+  background-color: #2e2e2e !important;
+  color: white;
+}
+
 .collapsing {
   width: 1px;
   white-space: nowrap;
@@ -122,8 +139,6 @@ body::-webkit-scrollbar-thumb {
   height: 100%;
 }
 
-<<<<<<< HEAD
-
 .title {
   font-size: 28px;
   font-weight: bold;
@@ -155,7 +170,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .table thead th {
-  border-bottom: 2px solid #b5b5b5;
+  border-bottom: 1px solid #dee2e5;
 }
 
 .invisible {
@@ -166,16 +181,13 @@ body::-webkit-scrollbar-thumb {
 #candidate-content .content {
   margin-top: 15px;
 }
-=======
-.my-button {
-  background-color: green;
-  border: 0;
-  margin-top: 3px;
-  margin-left: -6px;
-}
 
 .no-padding{
   padding: 0px !important;
 }
 
->>>>>>> 563999ab2bee0cb4dca9f1259d106da670383238
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(53, 53, 53);
+  font-size: 15px;
+}
+

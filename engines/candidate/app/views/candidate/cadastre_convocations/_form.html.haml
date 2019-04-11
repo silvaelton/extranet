@@ -1,0 +1,14 @@
+= simple_form_for [@cadastre, @cadastre_convocation], remote: true do |f|
+  .row
+    .col-8 
+      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: 'Selecione...'
+    .col-4 
+      = f.input :status, as: :select,include_blank: 'Selecione...'
+  
+  .row
+    .col-12
+      = f.input :observation, placeholder: 'Digite uma observação'
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

@@ -2,24 +2,11 @@
   .card
     .card-body.card-header.border-left-yellow
       .card-title 
-        Filtro
+        Operações
         = link_to "javascript:void(0)", class: "collapsing-link" do
-          %i.fa.fa-minus  
-    .card-body
-      = simple_form_for url_for, method: :get, remote: true, html: { id: 'attendance-filter'}  do |f|
-        = f.input :by_name, label: "Por nome",  input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_name', value: params[:by_name], placeholder: 'Digite o nome'}
-        = f.input :by_status, as: :select, label: "Por status", selected: params[:by_status] , input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_status'}, prompt: 'Selecione'
-        .mt-4
-        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
-  .divider
-    .card
-      .card-body.card-header.border-left-yellow
-        .card-title 
-          Operações
-          = link_to "javascript:void(0)", class: "collapsing-link" do
-            %i.fa.fa-minus
-      .card-body.card-list
-        = link_to "Adicionar categoria", new_ticket_category_path, class: 'filter-nav-item',  remote: true
-        %hr.divider
-        = link_to "Gestão de situação", "#", class: 'filter-nav-item'
-        = link_to "Gestão de ticket", "#", class: 'filter-nav-item'
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar categoria", new_ticket_category_path, class: 'filter-nav-item',  remote: true
+      %hr.divider
+      = link_to "Gestão de situações", "#", class: 'filter-nav-item'
+      = link_to "Gestão de ticket", attendance.tickets_path, class: 'filter-nav-item'

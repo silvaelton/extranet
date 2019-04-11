@@ -4,8 +4,10 @@ module Entity
   class Cadastre < ::Support::Entity::Cadastre
     has_many :presidents, foreign_key: :cadastre_id
     has_many :members, foreign_key: :cadastre_id
+    has_many :cadastre_activities, foreign_key: :cadastre_id
+    has_many :enterprises, foreign_key: :entity_id
 
-    validates :cnpj, cnpj: true, uniqueness: true
+    validates :cnpj, cnpj: true
     
     scope :by_acron, -> (value) {
       where("acron ilike ?", "%#{value}%")

@@ -1,0 +1,8 @@
+- if @requeriment_category.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-category-#{@requeriment_category.id}").addClass('table-success');
+
+update_js();

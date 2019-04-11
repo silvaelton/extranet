@@ -1,3 +1,47 @@
 = simple_form_for [@entity, @member], remote: true do |f|
-  = f.input :name
-  = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with)}
+  .row
+    .col-8 
+      = f.input :name
+    .col-4 
+      = f.input :cpf,  input_html: { class: 'cpf'} 
+
+  .row
+    .col-3 
+      = f.input :rg
+    .col-3 
+      = f.input :rg_org
+    .col-3 
+      = f.input :rg_uf_id, as: :select, collection: Support::Common::State.all, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :city_id,as: :select, collection: Support::Common::City.all, include_blank: 'Selecione...'
+
+  .row
+    .col-3 
+      = f.input :born, as: :string,  input_html: { class: 'date', value: (@member.born) ? localize(f.object.born) : nil}
+    .col-3 
+      = f.input :telephone
+    .col-3 
+      = f.input :telephone_optional
+    .col-3 
+      = f.input :cell_phone
+
+  .row
+    .col-8 
+      = f.input :address
+    .col-4
+      = f.input :cep
+
+  .row
+    .col-3 
+      = f.input :certificate_civil_criminal
+    .col-3 
+      = f.input :photo, as: :file
+    .col-3 
+      = f.input :status,as: :select, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :job_id, as: :select, collection: Entity::MemberJob.status_active.where.not(id: 2), include_blank: 'Selecione...'
+
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success'

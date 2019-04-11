@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/indication_unitary' : "Indicação unitária"
+    attributes:
+      'candidate/indication_unitary':
+        enterprise_id: "Empreendimento"
+        justify: "Justificativa"

@@ -11,16 +11,18 @@
       = f.input :number_document
   .row
     .col-md-6
-      = f.input :entity, as: :select
+      = f.input :entity, as: :select, prompt: 'Selecione'
     .col-md-6
       = f.input :entity_id, collection: Entity::Cadastre.all, prompt: 'Selecione'
   .row
-    .col-md-4
+    .col-md-3
       = f.input :number_assessment
-    .col-md-4
-      = f.input :manifestation_allow, as: :select
-    .col-md-4
+    .col-md-3
+      = f.input :manifestation_allow, as: :select, prompt: 'Selecione'
+    .col-md-3
       = f.input :web_url
+    .col-md-3
+      = f.input :unit_quantity
   .row
     .col-md-4
       = f.input :city_id, collection: Support::Common::City.where(state_id: 7), prompt: 'Selecione'
@@ -29,7 +31,8 @@
     .col-md-3
       = f.input :lat
     .col-md-2
-      = f.input :status, as: :select
+      = f.input :status, as: :select, prompt: 'Selecione'
+  %hr.divider
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

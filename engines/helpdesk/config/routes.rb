@@ -1,7 +1,15 @@
 Helpdesk::Engine.routes.draw do
-  root 'dashboard#index'
+  root 'tickets#index'
 
-  resources :tickets, path: 'chamados'
+  resources :tickets, path: 'chamados' do
+    get 'get_ticket'
+    
+    get 'answer'
+    
+    resources :ticket_activities
+  end
+
+  resources :ticket_situation_types, path: 'situacoes'
 
   resources :ticket_types, path: 'tipos' do
     get 'subject', on: :collection
@@ -10,6 +18,5 @@ Helpdesk::Engine.routes.draw do
     resources :ticket_type_subjects
   end
 
-
-
+  resources :ticket_locations, path: 'locais'
 end

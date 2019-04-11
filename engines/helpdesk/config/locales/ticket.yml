@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    modules:
+      'helpdesk/ticket': 'Chamado'
+    attributes:
+      'helpdesk/ticket':
+        ticket_type_id: 'Tipo'
+        subject_id: 'Assunto'
+        location_id: 'Localização'
+        contact: 'Contato / Ramal'
+        schedule: 'Agendar?'
+        schedule_date: 'Agendamento (data)'
+        schedule_hour: 'Agendamento (hora)'
+        description: 'Descrição'

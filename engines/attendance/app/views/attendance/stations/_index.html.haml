@@ -12,7 +12,6 @@
         %tr
           %th Nº 
           %th Nome
-          %th Responsável
           %th Descrição
           %th status
           %th
@@ -22,7 +21,6 @@
             %tr{class: "row-station-#{station.id}"}
               %td.collapsing= station.id
               %td= station.name
-              %td= station.responsible.name
               %td= station.description
               %td.collapsing= station.status.status_format
               %td.collapsing

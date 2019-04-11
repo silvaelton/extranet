@@ -25,7 +25,7 @@
       = f.input :special_condition,as: :select, include_blank: 'Selecione...'
     .col-md-4
       = f.input :special_condition_id,as: :select, collection: Support::Common::SpecialConditionType.all, include_blank: 'Selecione...'
-  .divider-sm
+  %hr.divider
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

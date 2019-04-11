@@ -1,0 +1,27 @@
+= simple_form_for [@cadastre, @cadastre_activity], remote: true do |f|
+  .row
+    .col-8
+      = f.input :title, as: :string, placeholder: 'Digite o titulo'
+    .col-4 
+      = f.input :date, as: :string,  input_html: { class: 'date', value: (@cadastre_activity.date) ? localize(f.object.date) : nil}
+  .row
+    .col-4 
+      = f.input :activity_type_id, as: :select, collection: Candidate::ActivityType.status_active, include_blank: 'Selecione...'
+    .col-4 
+      = f.input :document, as: :string, placeholder: 'Número do documento'
+    .col-4 
+      = f.input :critical, as: :select, include_blank: 'Selecione...'
+  .row
+    .col-12
+      = f.input :justify, placeholder: 'Digite a justificativa'
+  .divider
+  .row
+    .col-md-12
+      = f.simple_fields_for :activity_documents do |builder|
+        = render 'activity_document_fields', f: builder
+      = link_to_add_fields "Adicionar arquivo", f, :activity_documents
+
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

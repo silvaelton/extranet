@@ -1,0 +1,60 @@
+= simple_form_for [@agenda, @schedule], remote: true do |f|
+  .row
+    .col-2
+      = f.input :date, as: :string, collection: {}, input_html: { class: 'datepicker', id: "date"}
+    .col-3
+      = f.input :hour, as: :select, input_html: { id: "time"}
+    .col-6
+      = f.input :document_number       
+  .row
+    .col-6
+      = f.input :name
+    .col-3
+      - if @agenda.cnpj_required?
+        = f.input :cnpj
+      - else
+        = f.input :cpf, input_html: { class: 'cpf'}      
+    .col-3
+      = f.input :born, as: :string, input_html: { class: 'date', value: f.object.born.present? ? localize(f.object.born) : nil}
+  .row
+    .col-4
+      = f.input :city_id, as: :select, collection: Support::Common::City.federal_district, include_blank: t(:include_blank)
+    .col-8
+      = f.input :address
+  .row
+    .col-4
+      = f.input :email
+    .col-4
+      = f.input :telephone
+    .col-4
+      = f.input :celphone
+
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success' 
+  
+:javascript
+
+  $(document).ready(function() {
+    $('.datepicker').datepicker({
+      startDate: "#{@agenda.presenter.start_date}",
+      endDate: "#{@agenda.presenter.end_date}",
+      daysOfWeekDisabled: "#{@agenda.presenter.disable_days}",
+      datesDisabled: "#{@agenda.presenter.dates_disabled}"
+    });
+
+
+    $("#date").on('change', function(){
+      api_url = "/api/v1/external/agenda/times?date=" + $(this).val() +  "&agenda_id=#{@agenda.id}"
+      $.getJSON(api_url, function(data) {
+        var html = "";
+
+        for(var i = 0; data.length > i; i++) {
+          html += "<option value='"+ data[i] +"'>"+ data[i] +"</option>";
+        }
+
+        $("#time").html(html);
+      });
+    });
+  });

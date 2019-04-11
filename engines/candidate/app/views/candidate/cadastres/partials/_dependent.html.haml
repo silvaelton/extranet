@@ -2,16 +2,39 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      = link_to "javascript:void(0)", class: "collapsing-content-link" do
-        2. Dependente (0)
-  .card-body{style: 'display: none'}
+      %a.collapsing-content-link{href:"javascript:void(0)"}
+        2. Dependente (#{@cadastre.dependents.count})
+  .card-body.dependent-display{style: 'display: none'} 
     .row
-      .col-12
-        %table.table.table-striped.table-bordered.table-celled
+      .col-md-12
+        %h6 
+          = link_to "+ Adicionar dependente", new_cadastre_dependent_path(@cadastre), remote: true
+        %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th ID
               %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Cpf
+              %th Renda
+              %th Parentesco
+              %th
+          %tbody
+            - if @cadastre.dependents.present? 
+              - @cadastre.dependents.order(:name).each do |dependent|
+                %tr{class: "row-dependent-#{dependent.id}"}
+                  %td= dependent.name
+                  %td= dependent.cpf
+                  %td= dependent.income
+                  %td= dependent.kinship.name
+                  %td.collapsing
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Detalhar", candidate.cadastre_dependent_path(@cadastre, dependent), remote: true,  class: 'dropdown-item'
+                        = link_to "Editar", candidate.edit_cadastre_dependent_path(@cadastre, dependent), remote: true,  class: 'dropdown-item'
+                        = link_to "Remover", candidate.cadastre_dependent_path(@cadastre, dependent), method: :delete, remote: true,  class: 'dropdown-item', data: { confirm: t(:confirm)}
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

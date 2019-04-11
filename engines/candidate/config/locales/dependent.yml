@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/dependent': Dependente
+    attributes:
+      'candidate/dependent':
+        name: "Nome Completo"
+        cpf: "CPF"
+        rg: "Rg"
+        rg_org: "Expeditor Rg"
+        rg_uf_id: "Uf Rg"
+        gender_id: "Sexo"
+        born: "Data de Nascimento"
+        place_birth: "Cidade de Nascimento"
+        civil_state_id: "Estado Civil"
+        income: "Renda"
+        special_condition: "Condição Especial?"
+        special_condition_type_id: "Condição Especial"
+        nis: "NIS"
+        cid: "CID"
+        kinship_id: "Parentesco"
+        employment: "Profissão"
+        nationality: "Nacionalidade"

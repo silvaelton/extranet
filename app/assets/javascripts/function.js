@@ -11,10 +11,15 @@ $(document).ready(ready);
 
 function update_js() {
   sidebar_collapsed();
-  collapse();
   close_modal();
   mask();
-  initTinyMCE();
+  init_tiny_mce();
+  nested_form();
+  select2();
+  datepicker();
+  collapsing_form();
+  magnify();
+  collapse();
 }
 
 function collapse() {
@@ -30,6 +35,7 @@ function collapse() {
     }
   });
 }
+
 function sidebar_collapsed() {
   $(".collapsing-link").unbind().click(function() {
     $(this).closest(".card").children(".card-body:nth-child(2)").toggle();
@@ -62,8 +68,8 @@ function mask() {
   $('.money').mask('000.000.000.000,00', { reverse: true });
 }
 
-function initTinyMCE() {
-  //tinymce.remove();
+function init_tiny_mce() {
+  tinymce.remove();
   tinymce.init({
     selector: 'textarea.tinymce',
     language: 'pt_BR',
@@ -74,7 +80,7 @@ function initTinyMCE() {
       "styleselect | bold italic | alignleft aligncenter alignright alignjustify",
       "bullist numlist outdent indent | link image | code | codesample | fontsizeselect"
     ],
-    plugins: "image,link,code,codesample,imagetools,media,table,insertdatetime,charmap,print,preview,anchor,searchreplace,visualblocks,fullscreen",
+    plugins: "image,link,imagetools,media,table,insertdatetime,charmap,print,anchor,searchreplace,visualblocks",
 
     setup: function (editor) {
       editor.on('change', function () {
@@ -82,5 +88,64 @@ function initTinyMCE() {
       });
     }
   });
+
+}
+
+
+function nested_form() {
+  $('form').on('click', '.remove_fields', function (event) {
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+    return event.preventDefault();
+  });
+  
+  $('form').on('click', '.add_fields', function (event) {
+    var regexp, time;
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+    return event.preventDefault();
+  });
+}
+
+
+function select2() {
+  $("#select2").select2({
+    theme: "bootstrap",
+    language: "pt-BR"
+  });
+}
+
+
+function datepicker() {
+  $.fn.datepicker.defaults.format    = "mm/dd/yyyy";
+  $.fn.datepicker.defaults.language  = "pt-BR";
+  $.fn.datepicker.defaults.autoclose = true;
+}
+
+function collapsing_form() {
+  $(".collapse-input").unbind().on("change", function() {
+    $($(this).data('collapse-target')).toggle();
+  });
+}
+
+function magnify() {
+
+  $('[data-magnify]').magnify({
+    headToolbar: [
+      'close'
+    ],
+    footToolbar: [
+      'zoomIn',
+      'zoomOut',
+      'prev',
+      'fullscreen',
+      'next',
+      'actualSize',
+      'rotateRight'
+    ],
+    title: false
+  });
+
 
 }

@@ -1,0 +1,29 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title 
+      Listando (#{@eventuals.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nome
+          %th CPF
+          %th Situação
+          %th Data de criação
+      %tbody
+        - if @eventuals.present?
+          - @eventuals.each do |eventual|
+            %tr
+              %td= eventual.name
+              %td
+                = link_to "#{eventual.cpf.format_cpf}", candidate.cadastre_path(eventual.id), target:'_blank'
+              %td= eventual.current_situation
+              %td= eventual.created_at.format_date
+        - else
+          %tr
+            %td
+              %i Nenhum registro encontrado. 

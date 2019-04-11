@@ -12,9 +12,9 @@ module ApplicationHelper
     else
       attr_options = options.present? ? options : nil
 
-      permissions = Pivotal::EnginePermission.where(path: attr_options, status: true) rescue nil
+      permissions = Pivotal::EnginePermission.where(url: attr_options, status: true) rescue nil
 
-      if permissions.present?
+      if current_user.present? && permissions.present?
         user_permissions = Pivotal::UserPermission.where(user_id: current_user.id).where(permission_id: permissions)
         user_permitted   = user_permissions.present? ? true : false
       else
@@ -35,6 +35,9 @@ module ApplicationHelper
     else
       url = url_for(options)
     end
+
+    html_options[:data] = html_options[:data].present? ? html_options[:data] : {}
+    html_options[:data][:disable_with] = I18n.t(:disable_with)
 
     html_options = convert_options_to_data_attributes(options, html_options)
 

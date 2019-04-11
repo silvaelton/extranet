@@ -1,0 +1,18 @@
+= simple_form_for [@cadastre, @cadastre_situation], remote: true do |f|
+  .row
+    .col-8
+      = f.input :situation_type_id, as: :select, collection: Candidate::SituationType.status_active.where(program_id: @cadastre.program_id).order(:name), include_blank: 'Selecione...'
+    .col-4
+      = f.input :date, as: :string,  input_html: { class: 'date', value: (@cadastre_situation.date) ? localize(f.object.date) : nil}
+  .row
+    .col-6
+      = f.input :cadastre_convocation_id, as: :select, collection: Candidate::CadastreConvocation.status_active.where(cadastre_id: @cadastre).order(:id), label_method: lambda {|cadastre_convocation_id| "#{cadastre_convocation_id.convocation.id} - #{cadastre_convocation_id.convocation.name}"}, include_blank: 'Selecione...'
+    .col-6 
+      = f.input :process_number, placeholder: 'Digite o número do processo'
+  .row
+    .col-12 
+      = f.input :observation, placeholder: 'Digite uma observação'
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

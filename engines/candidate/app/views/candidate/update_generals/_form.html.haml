@@ -1,0 +1,92 @@
+= simple_form_for @update_general, remote: true do |f|
+  .row
+    .col-8
+      = f.input :name, placeholder: 'Digite o nome'
+    .col-4
+      = f.input :cpf, input_html:{class: 'cpf'}
+
+  .row
+    .col-3
+      = f.input :rg, placeholder: 'Digite o rg'
+    .col-3
+      = f.input :rg_org, placeholder: 'Digite o expedidor'
+    .col-3
+      = f.input :rg_uf_id, collection: Support::Common::State.all, include_blank: 'Selecione...'
+    .col-3
+      = f.input :born, as: :string, input_html:{class: 'date', value: (@update_general.born) ? localize(f.object.born) : nil}
+
+  .row
+    .col-3
+      = f.input :born_uf_id, collection: Support::Common::State.all, include_blank: 'Selecione...'
+    .col-3
+      = f.input :gender_id, collection: Support::Common::Gender.status_active, include_blank: 'Selecione...'
+    .col-3
+      = f.input :place_birth, placeholder: 'Digite o local de nascimento'
+    .col-3
+      = f.input :arrival_df, as: :string, input_html:{class: 'date', value: (@update_general.arrival_df) ? localize(f.object.arrival_df) : nil}
+
+  .row
+    .col-3
+      = f.input :telephone, placeholder: 'Digite o telefone'
+    .col-3
+      = f.input :telephone_optional, placeholder: 'Digite o telefone(Opcinal)'
+    .col-3
+      = f.input :celphone, placeholder: 'Digite o celular'
+    .col-3
+      = f.input :email, placeholder: 'Digite o e-mail'
+
+  .row
+    .col-3
+      = f.input :special_condition, as: :select, include_blank: 'Selecione...'
+    .col-3
+      = f.input :special_condition_type_id, collection: Support::Common::SpecialConditionType.status_active, include_blank: 'Selecione...'
+    .col-3
+      = f.input :adapted_property, as: :select, include_blank: 'Selecione...'
+    .col-3
+      = f.input :cep, placeholder: 'Digite o cep'
+  .row
+    .col-6
+      = f.input :address, placeholder: 'Digite o endereço'
+    .col-3
+      = f.input :state_id, collection: Support::Common::State.all, include_blank: 'Selecione...'
+    .col-3
+      = f.input :city_id, collection: Support::Common::City.all, include_blank: 'Selecione...'
+
+  .row
+    .col-4
+      = f.input :address_complement, placeholder: 'Digite o complemento'
+    .col-4
+      = f.input :personal_income, placeholder: 'Digite a renda do candidato'
+    .col-4
+      = f.input :civil_state_id, collection: Support::Common::CivilState.status_active, include_blank: 'Selecione...'
+
+  .row
+    .col-4
+      = f.input :work_employment, placeholder: 'Digite o emprego'
+    .col-4
+      = f.input :nis, placeholder: 'Digite o Nis'
+    .col-4
+      = f.input :cid, placeholder: 'Digite o Cid'
+
+  .row
+    .col-8
+      = f.input :mother_name, placeholder: 'Digite o nome da mãe'
+    .col-4
+      = f.input :nationality, placeholder: 'Digite a naturalidae'
+
+  .row
+    .col-4
+      = f.input :wedding_regime, placeholder: 'Regime de casamento'
+    .col-4
+      = f.input :wedding_date, as: :string, input_html:{class: 'date', value: (@update_general.wedding_date) ? localize(f.object.wedding_date) : nil}
+    .col-4
+      = f.input :admission_date, as: :string, input_html:{class: 'date', value: (@update_general.admission_date) ? localize(f.object.admission_date) : nil}
+
+  .row
+    .col-12
+      = f.input :introduce, placeholder: ''
+  
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

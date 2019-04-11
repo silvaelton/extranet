@@ -1,0 +1,23 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@ticket_situation_types.count}) registro(s)
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th ID
+          %th Nome
+          %th Situação
+      %tbody
+        - if @ticket_situation_types.present?
+          - @ticket_situation_types.each do |situation_type|
+            %tr
+              %td.collapsing= situation_type.id
+              %td= situation_type.name
+              %td.collapsing= situation_type.status.status_format      
+        - else
+          %tr
+            %td{colspan: 8}
+              %i Nenhum chamado registrado.

@@ -5,4 +5,4 @@ pt-BR:
     attributes:
       'attendance/category':
         name: "Nome"
-        status: "Status"
+        status: "Ativo?"

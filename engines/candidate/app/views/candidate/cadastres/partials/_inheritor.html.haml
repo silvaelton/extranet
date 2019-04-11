@@ -1,0 +1,41 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title 
+      %a.collapsing-content-link{href:"javascript:void(0)"}
+        3. Herdeiro (#{@cadastre.cadastre_inheritors.count})
+  .card-body.inheritor-display{style: 'display: none'}  
+    .row
+      .col-md-12 
+        %h6
+          = link_to "+ Adicionar herdeiro", new_cadastre_cadastre_inheritor_path(@cadastre), remote: true
+        %table.table.table-bordered.table-striped
+          %thead
+            %tr
+              %th Nome
+              %th CPF
+              %th Observação
+              %th Status
+              %th.collapsing Data de cadastro
+              %th
+          %tbody
+            - if @cadastre.cadastre_inheritors.present? 
+              - @cadastre.cadastre_inheritors.order(created_at: :desc).each do |cadastre_inheritor|
+                %tr{class: "row-cadastre-inheritor-#{cadastre_inheritor.id}"}
+                  %td= cadastre_inheritor.name
+                  %td.collapsing= cadastre_inheritor.cpf
+                  %td= cadastre_inheritor.observation
+                  %td.collapsing= cadastre_inheritor.estate ? 'Ativo' : 'Inativo'
+                  %td.collapsing= cadastre_inheritor.created_at.format_date
+                  %td.collapsing
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Detalhar", candidate.cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), remote: true,  class: 'dropdown-item'
+                        = link_to "Editar", candidate.edit_cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), remote: true, class: 'dropdown-item'
+                        = link_to "Excluir", candidate.cadastre_cadastre_inheritor_path(@cadastre, cadastre_inheritor), method: :delete, remote: true,  class: 'dropdown-item', data: { confirm: t(:confirm)}
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

@@ -1,18 +1,18 @@
 = simple_form_for @station, remote: true do |f|
   .row
     .col-md-12
-      = f.input :name, placeholder: 'Digit o nome'
+      = f.input :name, placeholder: 'Digite o nome'
   .row
     .col-md-4
-      = f.input :lat, placeholder: 'Digit a latitude'
+      = f.input :lat, placeholder: 'Digite a latitude'
     .col-md-4
-      = f.input :lng, placeholder: 'Digit a longitude'
+      = f.input :lng, placeholder: 'Digite a longitude'
     .col-md-4
       = f.input :status,as: :select, includ_blank: 'Selecione...'
   .row
     .col-md-12
-      = f.input :description, placeholder: 'Digit uma descrição'
-  .divider-sm
+      = f.input :description, placeholder: 'Digite uma descrição'
+  %hr.divider
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

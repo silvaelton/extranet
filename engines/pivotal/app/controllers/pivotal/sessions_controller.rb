@@ -37,7 +37,7 @@ module Pivotal
     private
 
     def set_params
-      params.require(:session).permit(:code, :password)
+      params.require(:session).permit(:username, :password)
     end
   end
 end

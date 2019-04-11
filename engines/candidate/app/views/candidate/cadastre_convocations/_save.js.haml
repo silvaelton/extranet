@@ -1,0 +1,10 @@
+- if @cadastre_convocation.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".convocation-content").html("#{escape_javascript(render 'candidate/cadastres/partials/convocation')}");
+  $(".header-content").html("#{escape_javascript(render 'candidate/cadastres/partials/header')}");
+  $(".convocation-display").css('display','block');
+  $(".row-cadastre-convocation-#{@cadastre_convocation.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+update_js();
+ 

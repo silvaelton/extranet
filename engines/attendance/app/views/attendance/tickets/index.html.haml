@@ -1,30 +1,13 @@
-.full-container
-  .row
-    .col-md-2
-      .filter-sidebar
-        .filter
-          .row
-            .col-md-12
-              %h4 
-                = link_to "<i class='ei-up-chevron'></i>".html_safe, "javascript:void(0)", class: 'collapsing-filter'
-                Filtro
-          .row.form-filter
-            .col-md-12
-              = simple_form_for url_for, method: :get, remote: true do |f|
-                %ul
-                  %li
-                    = f.input :by_convocation, as: :select, label: "Por convocação", include_blank: t(:include_blank)
-                  %li
-                    = f.input :by_situation, as: :select,label: "Por situação", include_blank: t(:include_blank)
-                  %li
-                    = f.input :by_cpf, as: :string, label: "Por CPF"
-                  %li
-                    = f.input :by_program, as: :select, collection: Support::Common::Program.all, label: "Por Lista", include_blank: t(:include_blank)
-                  %li
-                    = f.submit "Filtrar", name: nil, class: 'btn btn-success btn-block'
-          .row.mrg-top-20
-            .col-md-12
-              %h4 Operações  
-              %ul
-                %li
-                  %span= link_to "Iniciar novo atendimento", "#", class: 'filter-nav-item'
+.fluid-container
+  .row.mt-4
+    .col-md-12
+      .card#header.border-left-yellow
+        .card-body
+          .title Atendimento
+          .subtitle Atendimento cadastral
+  .row.mt-4
+    .col-md-2.index-sidebar
+      = render 'index_sidebar'
+    .col-md-10.index-content
+      = render 'index'
+

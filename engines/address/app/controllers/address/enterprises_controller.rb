@@ -3,7 +3,7 @@ require_dependency 'address/application_controller'
 module Address
   class EnterprisesController < ApplicationController
     before_action :set_enterprises
-    before_action :set_enterprise, only: %i[edit update destroy show]
+    before_action :set_enterprise, only: %i[edit update destroy show link_enterprise]
 
     has_scope :by_name
     has_scope :by_edital
@@ -40,7 +40,7 @@ module Address
       params.require(:enterprise).permit(:name, :value, :company_id, :number_document,
                                          :entity_id, :entity, :status, :web_url,
                                          :number_assessment, :manifestation_allow, :city_id,
-                                         :lat, :lng)
+                                         :lat, :lng, :unit_quantity)
     end
 
     def set_enterprises

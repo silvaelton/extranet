@@ -1,0 +1,9 @@
+.row
+  .col-6
+    = simple_form_for @ticket_create, url: tickets_path, method: :post, remote: true do |f|
+      = f.input :cpf, input_html: { class: 'cpf'}
+      = f.input :ticket_category_id, as: :select, collection: Attendance::TicketCategory.status_active.order(:name), inlude_blank: "Selecione..."
+      %hr.divider
+
+      = f.submit "Iniciar atendimento", class: 'btn btn-success btn-block' 
+  .col-6

@@ -1,0 +1,25 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Filtro
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_name, as: :string, label: "Por nome", input_html: { class: '', name: :by_name, value: params[:by_name], placeholder: "Informe o nome"}
+        .mt-4
+        = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
+  .divider
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title 
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar agenda", attendance.new_agenda_path, remote: true, data: { disable_with: t(:disable_with) }
+      %hr/
+      = link_to "Gestão de categorias", attendance.agenda_categories_path
+      = link_to "Gestão de restrições", attendance.agenda_reference_categories_path

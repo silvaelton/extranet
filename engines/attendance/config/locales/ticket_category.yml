@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/ticket_category': "Categorias"
+    attributes:
+      'attendance/ticket_category':
+        name: "Nome"
+        status: "Ativo?"
+        started_at: "Início em"
+        ended_at: "Fim em"
+        unique: "Somente um"
+        due: "Possui prazo"
+        filter_situation: "Filtrar por situacao?"
+        filter_convocation: "Filtrar por convocacao?"
+        filter_program: "Filtrar por programa?"
+        filter_sub_program: "Filtrar por sub-programa?"
+        filter_sql: "Filtrar por SQL?"
+        filter_situation_id: "Situações (Filtro)"
+        filter_convocation_id: "Convocações (Filtro)"
+        filter_program_id: "Programas (Filtro)"
+        filter_sub_program_id: "Sub-programs (Filtro)"
+        filter_sql_content: "SQL (Filtro)"

@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    models:
+      'entity/member' : "Membros"
+    attributes:
+      'entity/member':
+        name: "Nome"
+        cpf: "Cpf"
+        born: "Data de nascimento"
+        rg: "Rg"
+        rg_org: "Expeditor"
+        rg_uf_id: "Uf do RG"
+        city_id: "Cidade"
+        telephone: "Telefone"
+        telephone_optional: "Telefone(opcional)"
+        cel_phone: "Celular"
+        address: "Endereço"
+        cep: "Cep"
+        status: "Status"
+        photo: "Foto"
+        job_id: "Cargo"
+        certificate_civil_criminal: "Certificado civil-criminal"

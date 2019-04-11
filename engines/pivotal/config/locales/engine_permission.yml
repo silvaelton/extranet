@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    modules:
+      'pivotal/engine_permission': 'Permissão de engine'
+    attributes:
+      'pivotal/engine_permission':
+        name: "Nome"
+        targer_method: "targer_method"
+        url: "Link"
+        code: "Código"
+        status: "Ativo?"

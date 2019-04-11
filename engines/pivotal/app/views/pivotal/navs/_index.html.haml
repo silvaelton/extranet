@@ -1,0 +1,53 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando #{@navs.count} registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %th Nome
+          %th Posição
+          %th Link
+          %th Descrição
+          %th Status
+          %th 
+      - if @navs.present?
+        - @navs.each do |nav|
+          %thead
+            %tr.dark{class: "row-#{nav.id}"}
+              %th.collapsing= nav.label
+              %th.collapsing= nav.position
+              %th= nav.url
+              %th= nav.description
+              %th.collapsing= nav.status.status_format
+              %th.collapsing
+                .dropdown
+                  %button.btn.btn-light.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Adicionar", pivotal.new_nav_path(father_id: nav.id), remote: true, class: 'dropdown-item'
+                    = link_to "Editar", pivotal.edit_nav_path(nav), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", pivotal.nav_path(nav), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+          - if nav.childrens.present?
+            - nav.childrens.each do |children|
+              %tbody                  
+                %tr{class: "row-#{children.id}"}
+                  %td.collapsing= children.label
+                  %td.collapsing= children.position
+                  %td= children.url
+                  %td= children.description
+                  %td.collapsing= children.status.status_format
+                  %td.collapsing
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Editar", pivotal.edit_nav_path(children), remote: true, class: 'dropdown-item'
+                        = link_to "Remover", pivotal.nav_path(children), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+      

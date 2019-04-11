@@ -1,0 +1,16 @@
+= simple_form_for [@engine, @engine_permission], remote: true do |f|
+  .row
+    .col-8
+      = f.input :name, placeholder: 'Informe o nome da permissão'
+    .col-4
+      = f.input :code, placeholder: 'Digite o código'  
+  .row
+    .col-4
+      = f.input :status, as: :select, include_blank: false
+    .col-4
+      = f.input :url, placeholder: 'Digito o link'
+    .col-4
+      = f.input :target_method, placeholder: ''
+
+  %hr.divider
+    = f.button :submit, class: 'btn btn-success'

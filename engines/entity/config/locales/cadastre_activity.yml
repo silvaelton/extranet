@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'entity/cadastre_activity' : "Atividades"
+    attributes:
+      'entity/cadastre_activity':
+        activity_type_id: "Tipo de atividade"
+        entity: "Entidade?"
+        description: "Descriçao"

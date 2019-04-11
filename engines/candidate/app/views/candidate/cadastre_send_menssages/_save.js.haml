@@ -1,0 +1,8 @@
+- if @send_menssage.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".show-content").html("#{escape_javascript(render 'candidate/cadastres/show')}");
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();
+ 

@@ -1,8 +1,63 @@
-.modal-dialog
+.modal-dialog.modal-lg
   .modal-content
     .modal-header
       %h5.modal-title Detalhamento de membro
       %a.close
-        %i.fa.fa-close
+        %i.fas.fa-times
     .modal-body
+      %table.table.table-bordered.table-striped.table-celled
+        %thead
+          %tr
+            %th{colspan: 3} Nome 
+            %th{colspan: 2} CPF
+        %tbody
+          %tr
+            %td{colspan: 3}= @member.name
+            %td{colspan: 2}= @member.cpf
+        %thead
+          %tr
+            %th Data de Nascimento
+            %th Rg
+            %th Expeditor RG (secundário)
+            %th Rg uf
+            %th Cidade
+        %tbody
+          %tr
+            %td= @member.born.format_date rescue nil
+            %td= @member.rg
+            %td= @member.rg_org
+            %td= @member.rg_uf.name rescue nil
+            %td= @member.city.name rescue nil
+        %thead
+          %tr
+            %th{colspan: 2} E-mail
+            %th Telefone
+            %th Telefone (secundário)
+            %th Celular
+        %tbody
+          %tr
+            %td{colspan: 2}= @member.email
+            %td= @member.telephone
+            %td= @member.telephone_optional
+            %td= @member.cell_phone
+        %thead
+          %tr
+            %th{colspan: 3} Endereço 
+            %th{colspan: 2} CEP
+        %tbody
+          %tr
+            %td{colspan: 3}= @member.address
+            %td{colspan: 2}= @member.cep 
+        %thead
+          %tr
+            %th Ceritficado civil-criminal
+            %th Foto
+            %th Status
+            %th Cargo
+        %tbody
+          %tr
+            %td= @member.certificate_civil_criminal
+            %td= @member.photo
+            %td= @member.status.status_format
+            %td= @member.job.name 
       

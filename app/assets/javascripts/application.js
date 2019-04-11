@@ -4,7 +4,10 @@
 //= require jquery.remotipart
 //= require bootstrap/popper.min
 //= require bootstrap/bootstrap.min
-//= require bootstrap-datepicker
+//= require datepicker/js/bootstrap-datepicker.min
+//= require datepicker/js/bootstrap-datepicker.pt-BR.min
 //= require jquery/mask.min
-//= require function
+//= require select2-full
 //= require tinymce-jquery
+//= require image-viewer/dist/jquery.magnify.min
+//= require function

@@ -2,9 +2,9 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      = link_to "javascript:void(0)", class: "collapsing-content-link" do
+      %a.collapsing-content-link{href:"javascript:void(0)"}
         1. Informações básicas
-  .card-body{style: 'display: none'}
+  .card-body.basic-display{style: 'display: none'}
     .row
       .col-12
         %p.title-xs.bold Dados básicos
@@ -129,11 +129,11 @@
             
           %tbody
             %tr
-              %td.collapsing 81000-00
-              %td.collapsing Brasília
-              %td.collapsing DF
-              %td.collapsing QS 02 CJ A CS 99
-              %td.collapsing 
+              %td.collapsing= @cadastre.cep
+              %td.collapsing= @cadastre.city.name rescue nil
+              %td.collapsing= @cadastre.state.name rescue nil
+              %td.collapsing= @cadastre.address
+              %td.collapsing= @cadastre.address_complement
         .divider
         %table.table.table-striped.table-bordered.table-celled
           %thead
@@ -146,8 +146,8 @@
             
           %tbody
             %tr
-              %td.collapsing (61) 99999999
-              %td.collapsing (61) 99999999
-              %td.collapsing (61) 99999999
-              %td.collapsing candidato@candidato.com
+              %td.collapsing= @cadastre.telephone
+              %td.collapsing= @cadastre.telephone_optional
+              %td.collapsing= @cadastre.celphone
+              %td.collapsing= @cadastre.email
               %td.collapsing Sim            

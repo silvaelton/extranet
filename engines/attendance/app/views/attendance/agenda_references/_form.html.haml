@@ -1,0 +1,14 @@
+= simple_form_for [@reference_category, @agenda_reference], remote: true do |f|
+  .row
+    .col-12 
+      = f.input :cpf, as: :string, input_html: { class: 'cpf' }
+  .row
+    .col-12 
+      = f.input :cnpj, as: :string, input_html: { class: 'cnpj' }
+  .row
+    .col-12 
+      = f.input :code, as: :string, input_html: { placeholder: "Informe um código (Opcional)"}
+  .divider-sm
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

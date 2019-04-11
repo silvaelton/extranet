@@ -1,9 +1,9 @@
 - if @daily_type.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
-  updateJs();
+
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
   $(".index-content").html("#{escape_javascript(render 'attendance/daily_types/index')}");
   $(".row-daily-#{@daily_type.id}").addClass('table-success');
 
-  updateJs();
+update_js();

@@ -1,9 +1,9 @@
-.modal-dialog
+.modal-dialog.modal-lg
   .modal-content
     .modal-header
       %h5.modal-title Adicionar presidente
       %a.close
-        %i.fa.fa-close
+        %i.fas.fa-times
     .modal-body
       - if @entity.presidents.reject(&:new_record?).present?
         %h6.text-center Já existe um presidente vínculado. É necessário remover o registro antes de adicionar um novo.

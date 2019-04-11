@@ -1,17 +1,43 @@
-
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      = link_to "javascript:void(0)", class: "collapsing-content-link" do
-        4. Situação cadastral (0)
-  .card-body{style: 'display: none'}
+      %a.collapsing-content-link{href:"javascript:void(0)"}
+        4. Situação cadastral (#{@cadastre.cadastre_situations.count})
+  .card-body.situation-display{style: 'display: none'}  
     .row
-      .col-12
-        %table.table.table-striped.table-bordered.table-celled
+      .col-md-12
+        %h6
+          = link_to "+ Adicionar situação", new_cadastre_cadastre_situation_path(@cadastre), remote: true
+        %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Data
+              %th Situação
+              %th Usuário
+              %th Convocação
+              %th Observação
+              %th
+          %tbody
+            - if @cadastre.cadastre_situations.present? 
+              - @cadastre.cadastre_situations.order(created_at: :desc).each do |cadastre_situation|
+                %tr{class: "row-cadastre-situation-#{cadastre_situation.id}"}
+                  - if cadastre_situation.date?
+                    %td= cadastre_situation.date.format_date
+                  - else
+                    %td= cadastre_situation.created_at.format_date
+                  %td= cadastre_situation.situation_type.name
+                  %td= cadastre_situation.user.name
+                  %td= cadastre_situation.cadastre_convocation.convocation.name rescue nil
+                  %td= cadastre_situation.observation
+                  %td.collapsing
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Edita", candidate.edit_cadastre_cadastre_situation_path(@cadastre, cadastre_situation), remote: true, class: 'dropdown-item'
+                        = link_to "Excluir", candidate.cadastre_cadastre_situation_path(@cadastre, cadastre_situation), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+            - else
+              %tr
+                %td{colspan: 6}
+                  Nenhum assunto registrado.

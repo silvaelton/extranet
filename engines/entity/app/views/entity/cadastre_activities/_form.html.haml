@@ -1,0 +1,14 @@
+= simple_form_for [@entity, @cadastre_activity], remote: true do |f|
+  .row
+    .col-6 
+      = f.input :activity_type_id, as: :select, collection: Candidate::ActivityType.status_active, include_blank: 'Selecione...'
+    .col-6 
+      = f.input :entity,as: :select, include_blank: 'Selecione...'
+  .row
+    .col-12
+      = f.input :description, placeholder: 'Digite a descrição'
+
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success'

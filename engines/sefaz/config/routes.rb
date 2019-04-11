@@ -1,4 +1,6 @@
 Sefaz::Engine.routes.draw do
+  root 'allotments#index'
+
   resources :exemption_types,    path: 'isencao-tipos'
   resources :request_types,      path: 'solicitacao-tipos'
   resources :request_situations, path: 'solicitacao-situacoes'

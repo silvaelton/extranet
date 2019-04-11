@@ -1,0 +1,16 @@
+= simple_form_for [@program, @program_user], remote: true do |f|
+
+  .row
+    .col-6 
+      = f.input :user_id, collection: Pivotal::User.status_active.where.not(id: @program.program_users.map(&:user_id)).order(:name), include_blank: t(:include_blank)
+    .col-6 
+      = f.input :ticket_id, as: :string
+
+  .row
+    .col-12 
+      = f.input :observation, placeholder: 'Digite uma observação'
+
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

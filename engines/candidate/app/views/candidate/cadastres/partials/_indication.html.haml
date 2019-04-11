@@ -2,16 +2,29 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      = link_to "javascript:void(0)", class: "collapsing-content-link" do
-        7. Indicações (0)
-  .card-body{style: 'display: none'}
+      %a.collapsing-content-link{href:"javascript:void(0)"}
+        7. Indicações (#{@cadastre.indication_unitaries.count})
+  .card-body.convocation-display{style: 'display: none'}  
     .row
-      .col-12
-        %table.table.table-striped.table-bordered.table-celled
+      .col-md-12 
+        %h6
+          = link_to "+ Adicionar indicação", new_cadastre_indication_unitary_path(@cadastre), remote: true
+        %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Empreendimento
+              %th Usuário
+              %th Justificativa
+              %th Status
+          %tbody
+            - if @cadastre.indication_unitaries.present? 
+              - @cadastre.indication_unitaries.order(created_at: :desc).each do |indication|
+                %tr{class: "row-indication-#{indication.id}"}
+                  %td= indication.enterprise.name
+                  %td= indication.user.name
+                  %td= indication.justify
+                  %td.collapsing= indication.status ? 'Ativo' : 'Inativo'
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

@@ -1,0 +1,39 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      Listando (#{@enterprise_companies.count}) registro(s)
+      .float-right.group-action
+        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
+        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+  
+  .card-body
+    %table.table.table-bordered.table-striped.table-celled
+      %thead
+        %tr
+          %td Sigla
+          %td Nome
+          %td Cnpj
+          %td Status
+          %td 
+      %tbody
+        - if @enterprise_companies.present?
+          - @enterprise_companies.each do |enterprise_company|
+            %tr{class: "row-enterprise-company-#{enterprise_company.id}"}
+              %td= enterprise_company.fantasy_name
+              %td= enterprise_company.name
+              %td= enterprise_company.cnpj
+              %td= enterprise_company.status.status_format
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Detalhar", address.enterprise_company_path(enterprise_company), class: 'dropdown-item'
+                    = link_to "Editar", address.edit_enterprise_company_path(enterprise_company), remote: true, class: 'dropdown-item'
+                    = link_to "Remover", address.enterprise_company_path(enterprise_company), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+        - else
+          %tr
+            %td{colspan: 5}
+              %i Nenhum registro encontrado.
+                  

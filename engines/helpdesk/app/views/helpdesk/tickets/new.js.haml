@@ -1,4 +1,4 @@
 $('#modal').html("#{escape_javascript(render 'new')}");
-$('#modal').modal('show');
+$('#modal').modal('show', function() { $(document).off('focusin.modal'); });
 
 update_js();

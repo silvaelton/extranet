@@ -26,9 +26,9 @@
     .col-3 
       = f.input :status, as: :select
     .col-3 
-      = f.input :program_id, as: :select, collection: Support::Common::Program.all
+      = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id)
     .col-3 
-      = f.input :sub_program_id, as: :select, collection: Support::Common::Program.all
+      = f.input :sub_program_id, as: :select, collection: Candidate::Program.status_active.order(:id)
   .row
     .col-3 
       = f.input :external, as: :select
