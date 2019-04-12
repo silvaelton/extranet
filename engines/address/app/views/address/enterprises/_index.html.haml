@@ -29,7 +29,7 @@
               %td= enterprise.company.name rescue t(:no_info)
               %td= enterprise.unit_quantity rescue 0
               %td= enterprise.number_document
-              %td= enterprise.status.status_format
+              %td= enterprise.status.status_format rescue t(:no_info)
               %td
               %td.collapsing
                 .dropdown

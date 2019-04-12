@@ -6,15 +6,20 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body
-      = simple_form_for url_for, method: :get, remote: true, html: { id: 'invoice-filter'} do |f|
-        = f.input :by_city_id,  as: :select, label: 'Por cidade' , include_blank: t(:include_blank)
-        = f.input :by_burgh_id, as: :select, label: 'Por bairro' , include_blank: t(:include_blank)
-        = f.input :by_group_id, as: :select, label: 'Por quadra', include_blank: t(:include_blank)
-        = f.input :by_block_id, as: :select, label: 'Por conjunto', include_blank: t(:include_blank)
-        = f.input :by_unit_id,  as: :select, label: 'Por unidade', include_blank: t(:include_blank)
-        = f.input :by_unit_id,  as: :select, label: 'Por situação', include_blank: t(:include_blank)
-        = f.input :by_unit_id,  as: :select, label: 'Por etiqueta(s)', include_blank: t(:include_blank)
-        = f.input :by_unit_id,  as: :select, label: 'Por registro', include_blank: t(:include_blank)
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_city, collection: Support::Common::City.federal_district.order(:name), selected: params[:by_city],
+                   label: 'Por cidade', include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_city'}
+        = f.input :by_burgh, collection: params[:by_burgh].present? ? Address::Unit.select(:burgh).where(burgh: params[:by_burgh]).distinct : Address::Unit.select(:burgh).where(city_id: params[:by_city]).distinct,
+                   selected: params[:by_burgh], label: 'Por bairro', label_method: :burgh, value_method: :burgh, include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_burgh'}
+        = f.input :by_block, collection: params[:by_block].present? ? Address::Unit.select(:block).where(block: params[:by_block]).distinct : Address::Unit.select(:block).where(city_id: params[:by_city], burgh: params[:by_burgh]).distinct,
+                   selected: params[:by_block], label_method: :block, value_method: :block, label: 'Por quadra', include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_block'}
+        = f.input :by_group, collection: params[:by_group].present? ? Address::Unit.select(:group).where(group: params[:by_group]).distinct : Address::Unit.select(:group).where(city_id: params[:by_city], burgh: params[:by_burgh], block: params[:by_block]).distinct,
+                   selected: params[:by_group], label_method: :group, value_method: :group, label: 'Por conjunto', include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_group'}
+        = f.input :by_unit, collection: params[:by_unit].present? ? Address::Unit.select(:unit).where(group: params[:by_unit]).distinct : Address::Unit.select(:unit).where(city_id: params[:by_city], burgh: params[:by_burgh], block: params[:by_block], group: params[:by_group]).distinct,
+                   selected: params[:by_unit], label_method: :unit, value_method: :unit, label: 'Por unidade', include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_unit'}
+        = f.input :by_situation, collection: Support::Address::UnitSituationType.all, label: 'Por situação', include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_situation'}
+        = f.input :by_label,  as: :select, label: 'Por etiqueta(s)', include_blank: t(:include_blank)
+        = f.input :by_registry, collection: Support::Address::RegistryType.all, label: 'Por registro', include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_registry'}
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: {  disable_with:  t(:disable_with)}
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
