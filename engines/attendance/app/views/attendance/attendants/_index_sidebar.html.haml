@@ -11,6 +11,7 @@
         = f.input :by_type, as: :select, label: "Por tipo", collection: Attendance::AttendantType.all, selected: params[:by_type] , input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_type'}, prompt: 'Selecione'
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
   .divider
     .card
       .card-body.card-header.border-left-yellow

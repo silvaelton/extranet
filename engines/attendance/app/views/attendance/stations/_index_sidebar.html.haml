@@ -8,10 +8,10 @@
     .card-body
       = simple_form_for url_for, method: :get, remote: true, html: { id: 'attendance-filter'}  do |f|
         = f.input :by_name, label: "Por nome", input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_name', value: params[:by_name]}, prompt: 'Selecione'
-        = f.input :by_responsible, as: :select, label: "Por responsável", collection: Pivotal::User.all, selected: params[:by_responsible], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_responsible'}, prompt: 'Selecione'
         = f.input :by_status, as: :select, label: "Por status", selected: params[:by_status], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_status'}, prompt: 'Selecione'
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
+        = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
   .divider
     .card
       .card-body.card-header.border-left-yellow
