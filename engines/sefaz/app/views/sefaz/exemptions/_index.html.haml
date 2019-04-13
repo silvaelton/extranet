@@ -26,6 +26,12 @@
       %tbody
         %tr
           %td{colspan: 2}= @allotment.observation
+      %thead
+        %tr
+          %th{colspan: 2} Protocolo de retorno
+      %tbody
+        %tr
+          %td{colspan: 2}= @allotment.protocol_return
       - if @allotment.request_situation_id == 4
         %thead
           %tr

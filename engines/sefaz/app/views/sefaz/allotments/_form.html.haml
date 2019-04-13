@@ -1,10 +1,10 @@
 = simple_form_for @allotment, remote: true do |f|
   .row
+    .col-md-12
+      = f.input :notifier_id, as: :select, collection: Sefaz::Notifier.status_active, label_method: lambda {|c| "#{c.name rescue nil} - #{c.cnpj.format_cnpj rescue nil}"}, prompt: 'Selecione'
+  .row
     .col-md-6
       = f.input :exemption_type_id, as: :select, collection: Sefaz::ExemptionType.status_active, prompt: 'Selecione'
-    .col-md-6
-      = f.input :notifier_id, as: :select, collection: Sefaz::Notifier.status_active, prompt: 'Selecione'
-  .row
     .col-md-6
       = f.input :request_type_id, as: :select, collection: Sefaz::RequestType.status_active, prompt: 'Selecione'
   .row

@@ -7,7 +7,7 @@ module Sefaz
     belongs_to :request_type,      required: false
     belongs_to :exemption_type,    required: false
 
-    validates :exemption_type_id,  presence: true
+    validates :exemption_type_id, :request_type_id, presence: true
     validates :notifier_id,  presence: true
 
     has_many :exemptions
@@ -16,6 +16,7 @@ module Sefaz
     scope :by_date,              ->(date) { where("created_at::date = to_date(?, 'dd/MM/YYYY')", date) }
     scope :by_notifier,          ->(notifier) { where(notifier_id: notifier)}
     scope :by_request_situation, ->(request) { where(request_situation_id: request) }
+    scope :by_exemption_type,    ->(exemption_type) { where(exemption_type_id: exemption_type) }
     scope :by_cpf,               ->(cpf) { joins(:exemptions).where('sefaz_exemptions.cpf = ?', cpf.gsub('-','').gsub('.','')) }
   end
 end

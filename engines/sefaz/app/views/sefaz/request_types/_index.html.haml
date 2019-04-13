@@ -27,8 +27,9 @@
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Excluir", request_type_path(request_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
                     = link_to "Editar", edit_request_type_path(request_type), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", request_type_path(request_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
+
         - else
           %tr
             %td{colspan: 6}

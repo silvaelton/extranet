@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'sefaz/exemption_type': "tipo isenção"
+    attributes:
+      'sefaz/exemption_type':
+        name: "Nome"
+        status: "Ativo?"

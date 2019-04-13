@@ -100,10 +100,8 @@ module Sefaz
       @alltoment.update(request_situation_id: 3, send_date: DateTime.now, send_staff_id: user, protocol_return: protocol)
     end
 
-    private
-
-    def self.set_client
-			@client = Savon.client(wsdl: 'http://publica.agencianet.fazenda.df.gov.br/codhab/ConsessaoImovel.asmx?wsdl', namespace: nil,encoding: "UTF-8", env_namespace: :soap,open_timeout: 900,read_timeout:900)
+    def set_client
+			@client = Savon.client(wsdl: 'http://wscodhab.fazenda.df.gov.br/ConcessaoImovel.asmx?wsdl', namespace: nil,encoding: "UTF-8", env_namespace: :soap,open_timeout: 900,read_timeout:900)
 		end
   end
 end

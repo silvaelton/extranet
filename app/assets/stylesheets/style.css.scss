@@ -182,6 +182,14 @@ input::placeholder, option {
 
 }
 
+.card .card-list .disabled  {
+  display: block;
+  margin-top: 5px;
+  color: #BDBDBD;
+  font-size: 14px;
+
+}
+
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
@@ -215,4 +223,3 @@ input::placeholder, option {
   font-weight: bold;
   margin-top: 10px;
 }
-

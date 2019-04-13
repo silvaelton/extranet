@@ -12,6 +12,7 @@ module Sefaz
 
     def icon_color
       self.allotment[:request_situation] != 4 && self[:system_message].present? ? "btn btn-danger btn-sm" : "btn btn-success btn-sm"
+      self[:return_message].present? ? "btn btn-danger btn-sm" : "btn btn-success btn-sm"
     end
   end
 end
