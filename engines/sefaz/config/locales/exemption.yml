@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      'sefaz/exemption': "isenção"
+    attributes:
+      'sefaz/exemption':
+        name: "Nome"
+        cpf: "CPF"
+        city: "Cidade"
+        address: "Endereço"
+        realty_number: "Nº de IPTU"
+        realty_value: "Valor"

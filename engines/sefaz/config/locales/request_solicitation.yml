@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'sefaz/request_situation': "situação da solicitação"
+    attributes:
+      'sefaz/request_situation':
+        name: "Nome"
+        status: "Ativo?"

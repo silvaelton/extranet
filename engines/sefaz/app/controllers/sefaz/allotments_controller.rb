@@ -3,12 +3,13 @@ require_dependency 'sefaz/application_controller'
 module Sefaz
   class AllotmentsController < ApplicationController # :nodoc:
     before_action :set_allotments
-    before_action :set_allotment, only: %i[edit update destroy]
+    before_action :set_allotment, only: %i[edit update destroy to_process send_exemption send_parcial_cancelation send_total_cancelation]
 
     has_scope :by_protocol
     has_scope :by_date
     has_scope :by_notifier
     has_scope :by_request_situation
+    has_scope :by_exemption_type
     has_scope :by_cpf
 
     def index; end
@@ -74,10 +75,12 @@ module Sefaz
     end
 
     def set_allotments
-      @pagy, @allotments = pagy(apply_scopes(Sefaz::Allotment).all)
+      @allotments_all = apply_scopes(Sefaz::Allotment.order(id: :desc))
+      @pagy, @allotments = pagy(@allotments_all)
     end
 
     def set_allotment
+      params[:id] = params[:id].present? ? params[:id] : params[:allotment_id]
       @allotment = Sefaz::Allotment.find(params[:id])
     end
   end
