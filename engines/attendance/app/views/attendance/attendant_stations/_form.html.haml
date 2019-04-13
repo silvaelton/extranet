@@ -1,7 +1,7 @@
 = simple_form_for [@station, @attendant_station], remote: true do |f|
   .row
     .col-md-12
-      = f.input :attendant_id, as: :select, collection: Attendance::Attendant.where.not(id: @station.attendant_stations.map(&:attendant_id)).order(:staff_id), label_method: lambda {|by_attendant| "#{by_attendant.staff.name}"}, prompt: 'Selecione'
+      = f.input :attendant_id, as: :select, collection: Attendance::Attendant.where.not(id: @station.attendant_stations.map(&:attendant_id)).order(:user_id), label_method: lambda {|by_attendant| "#{by_attendant.user.name}"}, prompt: 'Selecione'
   %hr.divider
   .row
     .col-md-12

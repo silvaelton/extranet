@@ -1,8 +1,6 @@
 .row
   .col-md-12
-    %h5 
-      %b Atendentes (#{@station.attendant_stations.count})
-    = link_to "Adicionar atendente", new_station_attendant_station_path(@station), remote: true
+    %b Atendentes (#{@station.attendant_stations.count})
 .content
   %table.table.table-bordered.table-striped.table-celled
     %thead
@@ -17,7 +15,7 @@
         -@station.attendant_stations.each do |attendant_station|
           %tr{class: "row-attendant-station-#{attendant_station.id}"}
             %td.collapsing= attendant_station.id
-            %td= attendant_station.attendant.staff.name rescue "Sem informação"
+            %td= attendant_station.attendant.user.name rescue "Sem informação"
             %td= attendant_station.created_at.format_datetime
             %td= attendant_station.creator.name
             %td.collapsing= link_to "<i class='fa fa-trash'></i>".html_safe, station_attendant_station_path(@station, attendant_station), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
@@ -27,8 +25,7 @@
             %i Nenhum atendente registrado.
 .row
   .col-md-12
-    %h5 
-      %b Histórico de atendentes (#{@station.attendant_stations.undelete_scope.where.not(deleted_at: nil).count})
+    %b Histórico de atendentes (#{@station.attendant_stations.undelete_scope.where.not(deleted_at: nil).count})
 .content
   %table.table.table-bordered.table-striped.table-celled
     %thead

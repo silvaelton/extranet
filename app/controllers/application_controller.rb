@@ -6,12 +6,28 @@ class ApplicationController < ActionController::Base
   before_action :get_params_for_filter
 
   helper Pivotal::NavHelper
-  helper_method :current_user, :authenticate_user!, :filter_params, :engine_name
+  helper_method :current_user, :authenticate_user!, :filter_params, :engine_name, :attendant_current, :attendant_stations_current, :stations_situation
 
   private
 
   def current_user
     Pivotal::User.find_by(id: session[:user_id])
+  end
+
+  def current_attendant
+    Attendance::Attendant.find_by(user_id: current_user.id)
+  end
+
+  def current_attendat_stations
+    Attendance::AttendantStation.where(attendant_id: attendant_current.id)
+  end
+
+  def current_stations_open
+    Attendance::ControlStation.where(station_id: current_attendant_statiosn.map(&:station_id), status: true)
+  end
+  
+  def current_stations_closed
+    Attendance::ControlStation.where(station_id: current_attendant_statiosn.map(&:station_id), status: false)
   end
 
   def authenticate_user!

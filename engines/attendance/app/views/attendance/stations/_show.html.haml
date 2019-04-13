@@ -1,18 +1,13 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title
-      .h5
-        -if @station.status == true
-          %i.fa.fa-circle{style: "color: #068840"}
-        -else
-          %i.fa.fa-circle
-        %b
-          = @station.name
+      -if @station.status == true
+        %i.fa.fa-circle{style: "color: #068840"}
+      -else
+        %i.fa.fa-circle
+      %b
+        = @station.name
       =@station.description
-      %br
-      .float-right.group-action
-        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm' 
   .card-body      
     .index_attendant_stations
       = render 'attendance/attendant_stations/index'

@@ -24,7 +24,7 @@
     .col-md-4
       = f.input :special_condition,as: :select, include_blank: 'Selecione...'
     .col-md-4
-      = f.input :special_condition_id,as: :select, collection: Support::Common::SpecialConditionType.all, include_blank: 'Selecione...'
+      = f.input :special_condition_type_id,as: :select, collection: Support::Common::SpecialConditionType.all, include_blank: 'Selecione...'
   %hr.divider
   .row
     .col-md-12

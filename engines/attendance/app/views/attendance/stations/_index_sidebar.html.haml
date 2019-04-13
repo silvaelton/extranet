@@ -6,9 +6,9 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus  
     .card-body
-      = simple_form_for url_for, method: :get, remote: true, html: { id: 'attendance-filter'}  do |f|
-        = f.input :by_name, label: "Por nome", input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_name', value: params[:by_name]}, prompt: 'Selecione'
-        = f.input :by_status, as: :select, label: "Por status", selected: params[:by_status], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_status'}, prompt: 'Selecione'
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_name, label: "Por nome", selected: params[:by_name], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_name'}
+        = f.input :by_status, as: :select, label: "Por status", selected: params[:by_status], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_status'}
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
@@ -24,4 +24,3 @@
         %hr/
         = link_to "Gestão de atendentes", attendance.attendants_path, class: 'filter-nav-item'
         = link_to "Gestão de atendimentos", attendance.dailies_path, class: 'filter-nav-item'
-        = link_to "Gestão de tipos de atendentes", attendance.attendant_types_path, class: 'filter-nav-item'
