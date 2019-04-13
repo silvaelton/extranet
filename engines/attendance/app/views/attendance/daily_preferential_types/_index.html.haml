@@ -10,7 +10,6 @@
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
-          %th Nº 
           %th Nome
           %th Descrição
           %th Status
@@ -19,7 +18,6 @@
         - if @daily_preferential_types.present?
           -@daily_preferential_types.order(:name).each do |daily_preferential_type|
             %tr{class: "row-preferential-#{daily_preferential_type.id}"}
-              %td.collapsing= daily_preferential_type.id
               %td= daily_preferential_type.name
               %td= daily_preferential_type.description
               %td.collapsing= daily_preferential_type.status.status_format

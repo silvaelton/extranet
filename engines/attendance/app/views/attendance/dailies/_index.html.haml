@@ -33,8 +33,9 @@
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Excluir", daily_path(daily), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
-                    = link_to "Editar", edit_daily_path(daily), class: 'dropdown-item', remote: true
+                    = link_to "Detalhar", attendance.daily_path(daily), remote: true,  class: 'dropdown-item'
+                    = link_to "Editar", attendance.edit_daily_path(daily), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", attendance.daily_path(daily), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
           %tfoot
             %tr
               %td.text-center{colspan: 7}

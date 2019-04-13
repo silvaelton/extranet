@@ -1,4 +1,4 @@
 = simple_form_for @attendant, remote: true do |f|
-  = f.input :staff_id,as: :select, collection: Pivotal::User.all, include_blank: 'Selecione...'
-  = f.input :attendant_type_id,as: :select, collection: Attendance::AttendantType.all, include_blank: 'Selecione...'
+  = f.input :user_id,as: :select, collection: Pivotal::User.all, include_blank: 'Selecione...'
+  = f.input :attendant_type, collection: Attendance::Attendant.attendant_types.map { |k,v| [k.humanize, k]}, include_blank: 'Selecione...'
   = f.button :submit, class: 'btn btn-success'

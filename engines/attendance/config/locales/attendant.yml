@@ -4,5 +4,5 @@ pt-BR:
       'attendance/attendant': "Atendentes"
     attributes:
       'attendance/attendant':
-        staff_id: "Nome"
-        attendant_type_id: "Tipo de atendente"
+        user_id: "Nome"
+        attendant_type: "Tipo de atendente"

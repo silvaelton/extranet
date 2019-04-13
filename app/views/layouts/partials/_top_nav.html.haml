@@ -41,6 +41,16 @@
         %a.dropdown-item{:href => "http://sei.df.gov.br", :target => '_blank'}
           %i.fa.fa-file.btn.btn-info
           SEI-GDF
+        
+        - if attendant_current.present? && attendant_stations_current.present?
+          .dropdown-divider
+          %a.dropdown-item{:href => "#{attendance.new_control_station_path(situation: "Aberto")}", :data => { :remote => true }}
+            %i.fa.fa-file.btn.btn-info
+            Abrir posto
+          .dropdown-divider
+          %a.dropdown-item{:href => "#{attendance.new_control_station_path(situation: "Fechado")}", :data => { :remote => true }}
+            %i.fa.fa-file.btn.btn-info
+            Fechar posto
     
     %li.nav-item.dropdown
       %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

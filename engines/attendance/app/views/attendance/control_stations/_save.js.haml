@@ -1,0 +1,9 @@
+- if @control_station.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+  update_js();
+- else
+  $(".index_attendant_stations").html("#{escape_javascript(render 'attendance/attendant_stations/index')}");
+  $(".row-attendant-station-#{@attendant_station.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+  update_js();

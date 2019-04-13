@@ -7,5 +7,6 @@ module Attendance
 
     scope :by_name,       ->(name) { where("name ilike '%#{name}%'") }
     scope :by_status,      ->(status) { where(status: status) }
+
   end
 end
