@@ -1,8 +1,7 @@
 - if @allotment.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
-  update_js();
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".row-type-#{@allotment.id}").addClass('table-success');
   $(".index-content").html("#{escape_javascript(render 'index')}");
-
-  update_js();
+update_js();

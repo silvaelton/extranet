@@ -2,13 +2,13 @@ Pivotal::Engine.routes.draw do
   root 'dashboard#index'
 
   resources :sessions, except: [:edit, :update, :show], path: 'acesso'
-  
+
   resources :users, path: 'usuarios' do
     resources :bookmarks
-    
-    collection do 
+
+    collection do
       resources :passwords
-    end 
+    end
 
     resources :reset_passwords
     resources :user_navs
@@ -27,4 +27,7 @@ Pivotal::Engine.routes.draw do
   resources :jobs,    path: 'cargos'
 
   resources :navs,    path: 'menus'
+
+  get 'inactivate',     to: "users#inactivate",     as: 'inactivate'
+  get 'reset_password', to: "users#reset_password", as: 'reset_password'
 end
