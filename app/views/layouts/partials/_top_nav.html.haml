@@ -42,16 +42,12 @@
           %i.fa.fa-file.btn.btn-info
           SEI-GDF
         
-        - if attendant_current.present? && attendant_stations_current.present?
+        - if current_attendant.present? && current_attendat_stations.present?
           .dropdown-divider
-          %a.dropdown-item{:href => "#{attendance.new_control_station_path(situation: "Aberto")}", :data => { :remote => true }}
+          %a.dropdown-item{:href => "#{attendance.control_stations_path()}", :data => { :remote => true }}
             %i.fa.fa-file.btn.btn-info
-            Abrir posto
-          .dropdown-divider
-          %a.dropdown-item{:href => "#{attendance.new_control_station_path(situation: "Fechado")}", :data => { :remote => true }}
-            %i.fa.fa-file.btn.btn-info
-            Fechar posto
-    
+            Abrir/fechar posto
+
     %li.nav-item.dropdown
       %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         = current_user.presenter.short_name

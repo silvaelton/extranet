@@ -10,7 +10,11 @@ Attendance::Engine.routes.draw do
   resources :daily_preferential_types
   
   resources :ticket_situation_types
+
   resources :control_stations
+  
+  get 'update_control', to: 'control_stations#update_control'
+
   resources :document_types
   resources :attendants
 

@@ -5,7 +5,6 @@ module Attendance
 
     validates :station_id, presence: true
 
-    enum situation: ["Aberto",  "Fechado"]
-
   end
 end
+ 

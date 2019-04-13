@@ -6,8 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :get_params_for_filter
 
   helper Pivotal::NavHelper
-  helper_method :current_user, :authenticate_user!, :filter_params, :engine_name, :attendant_current, :attendant_stations_current, :stations_situation
-
+  helper_method :current_user, :authenticate_user!, :filter_params, :engine_name, :current_attendant, :current_attendat_stations
   private
 
   def current_user
@@ -19,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_attendat_stations
-    Attendance::AttendantStation.where(attendant_id: attendant_current.id)
+    Attendance::AttendantStation.where(attendant_id: current_attendant.id)
   end
 
   def current_stations_open

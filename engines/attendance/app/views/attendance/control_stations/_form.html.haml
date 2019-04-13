@@ -1,9 +1,0 @@
-= simple_form_for @control_station, remote: true do |f|
-  = f.input :situation, as: :hidden, input_html:{value: params[:situation]}
-  .row
-    .col-md-12
-      = f.input :station_id, as: :select, collection: Attendance::Station.status_active.where(id: stations_situation.map(&:station_id)).order(:name), include_blank: 'Selecione...'
-  %hr.divider
-  .row
-    .col-md-12
-      = f.button :submit, class: 'btn btn-success'

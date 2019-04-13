@@ -1,0 +1,25 @@
+.index-permission
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title Abrir/Fechar posto
+        %a.close
+          %i.fas.fa-times
+      .modal-body
+        %table.table.table-striped.table-celled.table-bordered
+          %thead
+            %tr
+              %th Nome
+              %th Status
+              %th Situação 
+          - @stations.each do |station|
+            - @control = Attendance::ControlStation.where(station_id: station.id).last
+            %thead
+              %tr
+                %td= station.name
+                %td.collapsing= station.status.status_format
+                %td.collapsing
+                  - if @control.present? && @control.status == true
+                    = link_to "Abrir posto", attendance.update_control_path(station_id: station), remote: true, class: 'btn btn-success', data: {confirm: t(:confirm)}
+                  - else
+                    = link_to "Fechar posto", attendance.update_control_path(station_id: station), remote: true, class: 'btn btn-danger', data: {confirm: t(:confirm)}
