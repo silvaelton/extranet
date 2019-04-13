@@ -10,7 +10,6 @@
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
-          %th Nº 
           %th Nome
           %th Status
           %th
@@ -18,7 +17,6 @@
         - if @categories.present?
           -@categories.order(:name).each do |category|
             %tr{class: "row-category-#{category.id}"}
-              %td.collapsing= category.id
               %td= category.name
               %td.collapsing= category.status.status_format
               %td.collapsing

@@ -6,12 +6,12 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus  
     .card-body
-      = simple_form_for url_for, method: :get, remote: true, html: { id: 'attendance-filter'}  do |f|
-        = f.input :by_name, label: "Por nome", input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_name', value: params[:by_name], placeholder: "Digite o nome"}
-        = f.input :by_cpf, label: "Por cpf", input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_cpf', value: params[:by_cpf], class: 'cpf'}
-        = f.input :by_attendant, as: :select, label: "Por atendente", collection: Attendance::Attendant.all, label_method: lambda {|by_attendant| "#{by_attendant.staff.name}"}, selected: params[:by_attendant], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_attendant'}, prompt: 'Selecione'
-        = f.input :by_station, as: :select, label: "Por posto", collection: Attendance::Station.all, selected: params[:by_station] , input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_station'}, prompt: 'Selecione'
-        = f.input :by_category, as: :select, label: "Por categoria", collection: Attendance::Category.all, selected: params[:by_category] , input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_category'}, prompt: 'Selecione'
+      = simple_form_for url_for, method: :get, remote: true do |f|
+        = f.input :by_name, label: "Por nome",  selected: params[:by_name], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_name'}
+        = f.input :by_cpf, label: "Por cpf", selected: params[:by_cpf], include_blank: t(:include_blank), input_html: {class: 'cpf', onchange: "Rails.fire(this.form, 'submit');", name: 'by_cpf'}
+        = f.input :by_attendant, as: :select, label: "Por atendente", collection: Attendance::Attendant.all, label_method: lambda {|by_attendant| "#{by_attendant.user.name}"}, selected: params[:by_attendant], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_attendant'}
+        = f.input :by_station, as: :select, label: "Por posto", collection: Attendance::Station.all, selected: params[:by_station], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_station'}
+        = f.input :by_category, as: :select, label: "Por categoria", collection: Attendance::Category.all, selected: params[:by_category], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_category'}
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'

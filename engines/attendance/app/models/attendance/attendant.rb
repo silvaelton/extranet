@@ -3,10 +3,12 @@ require_dependency 'support/attendance/attendant_type'
 module Attendance
   class Attendant < Support::Attendance::Attendant
 
-    validates :staff_id,:attendant_type_id, presence: true
+    validates :user_id,:attendant_type, presence: true
+    validates :user_id, uniqueness: { scope: :deleted}
 
-    belongs_to :staff, class_name: 'Pivotal::User'
-    belongs_to :attendant_type, class_name: 'Attendance::AttendantType'
+    enum attendant_type: ["Atendente", "Supervisor", "Visualuzador"]
+
+    belongs_to :user, class_name: 'Pivotal::User', required: false
 
     scope :by_name, ->(name) { where(staff_id: name) }
     scope :by_type, ->(type) { where(attendant_type_id: type) }

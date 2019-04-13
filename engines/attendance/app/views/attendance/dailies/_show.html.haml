@@ -1,0 +1,48 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Detalhamento de atendimento
+      %a.close
+        %i.fas.fa-times
+    .modal-body
+      %table.table.table-bordered.table-striped.table-celled
+        %thead
+          %tr
+            %th{colspan: 2} Nome
+            %th Cpf
+        %tbody
+          %tr
+            %td{colspan: 2}= @daily.name
+            %td= @daily.cpf
+        %thead
+          %tr
+            %th Número do documento
+            %th Posto
+            %th Agendado?
+        %tbody
+          %tr
+            %td= @daily.document_number
+            %td= @daily.station.name
+            %td= @daily.scheduled.status_format
+        %thead
+          %tr
+            %th Tipo de atendimento
+            %th Categoria
+            %th Preferencial?
+        %tbody
+          %tr
+            %td= @daily.daily_type.name
+            %td= @daily.category.name
+            %td= @daily.preferential.status_format
+        %thead
+          %tr
+            %th Tipo preferencial
+            %th Condicção especial?
+            %th Condição especial
+        %tbody
+          %tr
+            %td= @daily.preferential_type.name rescue nil
+            %td= @daily.special_condition.status_format
+            %td= @daily.special_condition_type.name rescue nil
+            
+

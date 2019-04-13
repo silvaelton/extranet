@@ -5,5 +5,5 @@ pt-BR:
     attributes:
       'attendance/daily_preferential_type':
         name: "Nome"
-        status: "Status"
+        status: "Ativo?"
         description: "Descrição"

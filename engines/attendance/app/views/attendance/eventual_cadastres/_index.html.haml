@@ -11,6 +11,7 @@
           %th CPF
           %th Situação
           %th Data de criação
+          %th 
       %tbody
         - if @eventuals.present?
           - @eventuals.each do |eventual|
@@ -20,6 +21,13 @@
                 = link_to "#{eventual.cpf.format_cpf}", candidate.cadastre_path(eventual.id), target:'_blank'
               %td= eventual.current_situation
               %td= eventual.created_at.format_date
+              %td.collapsing
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Excluir", eventual_cadastre_path(eventual), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
         - else
           %tr
             %td{colspan: 4}

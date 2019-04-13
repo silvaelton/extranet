@@ -1,7 +1,7 @@
+%h6
+  = link_to "<i class='fa fa-plus'></i>".html_safe, new_legal_advice_complement_path(@legal_advice), remote: true
+  Complemento
 - if @return.present? && !@return.empty?
-  %h6
-    = link_to "<i class='fa fa-plus'></i>".html_safe, new_legal_advice_complement_path(@legal_advice), remote: true
-    Complemento
   %table.table.table-bordered.table-striped.table-celled
     %thead
       %tr

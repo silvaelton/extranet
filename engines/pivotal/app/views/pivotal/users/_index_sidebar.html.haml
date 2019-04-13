@@ -1,7 +1,7 @@
 #sidebar
   .card
     .card-body.card-header.border-left-yellow
-      .card-title 
+      .card-title
         Filtro
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
@@ -10,19 +10,19 @@
         = f.input :by_name, as: :string, label: "Por nome", input_html: { name: :by_name, value: params[:by_name] }
         = f.input :by_cpf, as: :string, label: "Por CPF", input_html: { class: 'cpf', name: :by_cpf, value: params[:by_cpf]}
         = f.input :by_situation, as: :select,  label: "Por situação", include_blank: t(:include_blank_all), input_html: { name: :by_situation }
-        = f.input :by_sector, as: :select, collection: Pivotal::Sector.status_active.order(:name), label: "Por situação", include_blank: t(:include_blank_all), input_html: { name: :by_situation }
+        = f.input :by_sector, as: :select, collection: Pivotal::Sector.status_active.order(:name), label: "Por setor", include_blank: t(:include_blank_all), input_html: { name: :by_situation }
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
   .divider
   .card
     .card-body.card-header.border-left-yellow
-      .card-title 
+      .card-title
         Operações
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar usuário", pivotal.system_engines_path
+      = link_to "Adicionar usuário", pivotal.new_user_path, remote: true
       %hr.divider
       = link_to "Gestão de engines", pivotal.system_engines_path
       = link_to "Gestão de setores", pivotal.sectors_path

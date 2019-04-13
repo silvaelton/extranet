@@ -3,7 +3,7 @@ require_dependency 'support/attendance/attendant_type'
 module Attendance
   class Station < Support::Attendance::Station
 
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: { scope: :deleted}
 
     has_many :attendant_stations
 

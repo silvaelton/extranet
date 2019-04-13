@@ -17,7 +17,7 @@ module Attendance
     def create
       @attendant = Attendance::Attendant.new(set_params)
       @attendant.creator_id = current_user.id
-      @attendant.save
+      @attendant.save!
     end
 
     def edit; end
@@ -34,7 +34,7 @@ module Attendance
     private
 
     def set_params
-      params.require(:attendant).permit(:creator_id, :staff_id, :attendant_type_id, :creator_id)
+      params.require(:attendant).permit(:creator_id, :user_id, :attendant_type, :creator_id)
     end
 
     def set_attendants

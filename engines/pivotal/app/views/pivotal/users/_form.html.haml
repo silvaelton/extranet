@@ -1,0 +1,57 @@
+= simple_form_for @user, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, placeholder: 'Digite um nome'
+    .col-md-4
+      = f.input :username, placeholder: 'Digite a mátricula'
+  .row
+    .col-md-4
+      = f.input :cpf, input_html: { class: 'cpf' }
+    .col-md-4
+      = f.input :born, as: :string, input_html: { class: 'date', value: (@user.born) ? localize(f.object.born) : nil }
+    .col-md-4
+      = f.input :born_uf_id, collection: Support::Common::State.all, label_method: :acronym, prompt: 'Selecione'
+  .row
+    .col-md-4
+      = f.input :gender_id, collection: Support::Common::Gender.all, prompt: 'Selecione'
+    .col-md-4
+      = f.input :civil_state_id, collection: Support::Common::CivilState.all, prompt: 'Selecione'
+    .col-md-4
+      = f.input :birth_place, placeholder: 'Digite um local nascimento'
+  .row
+    .col-md-4
+      = f.input :branch_line, placeholder: 'Digite um ramal'
+    .col-md-4
+      = f.input :avatar, as: :file
+    .col-md-4
+      = f.input :curriculum, as: :file
+  .row
+    .col-md-6
+      = f.input :email, placeholder: 'Digite o email corporativo'
+    .col-md-6
+      = f.input :private_email, placeholder: 'Digite o email privado'
+  .row
+    .col-md-6
+      = f.input :telephone, placeholder: '(xx) 99999-9999'
+    .col-md-6
+      = f.input :celphone, placeholder: '(xx) 99999-9999'
+  .row
+    .col-md-4
+      = f.input :sector_id, collection: Pivotal::Sector.all, prompt: 'Selecione'
+    .col-md-4
+      = f.input :job_id, collection: Pivotal::Job.order(:name).all, prompt: 'Selecione'
+    .col-md-4
+      = f.input :password, placeholder: 'Digite uma senha'
+  .row
+    .col-md-6
+      = f.input :status, as: :select, include_blank: 'selecione...'
+    .col-md-6
+      = f.input :administrator, as: :select, include_blank: 'selecione...'
+  .row
+    .col-md-4
+      = f.input :external, as: :select, include_blank: 'selecione...'
+    .col-md-8
+      = f.input :external_observation, placeholder: 'Digite uma observação'
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

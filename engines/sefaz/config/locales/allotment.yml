@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      'sefaz/allotment': "lote"
+    attributes:
+      'sefaz/allotment':
+        exemption_type_id: "Tipo de isenção"
+        notifier_id: "Transmitente"
+        request_type_id: "Tipo de solicitação"
+        observation: "Observação"

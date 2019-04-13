@@ -3,7 +3,7 @@ require_dependency 'attendance/application_controller'
 module Attendance
   class DailiesController < ApplicationController
     before_action :set_dailies
-    before_action :set_daily, only: %i[edit update destroy]
+    before_action :set_daily, only: %i[edit update destroy show]
 
     has_scope :by_name
     has_scope :by_cpf
@@ -24,9 +24,11 @@ module Attendance
     end
 
     def edit; end
+    def show; end
 
     def update
       @daily.update(set_params)
+      @daily.attendant_id = @daily.current_attendant(current_user.id)
       @daily.save
     end
 
@@ -39,7 +41,7 @@ module Attendance
     def set_params
       params.require(:daily).permit(:station_id, :attendant_id, :name, :cpf, :document_number,
                                     :scheduled, :category_id, :daily_type_id, :preferential,
-                                    :preferential_type_id, :special_condition, :special_condition_id)
+                                    :preferential_type_id, :special_condition, :special_condition_type_id)
     end
 
     def set_dailies
