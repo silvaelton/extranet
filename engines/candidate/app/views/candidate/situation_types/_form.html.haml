@@ -2,13 +2,15 @@
 
   .row
     .col-8 
-      = f.input :name, as: :string
+      = f.input :name, as: :string, placeholder: "Informe um nome"
     .col-4 
       = f.input :status, as: :select
-
+  .row
+    .col-12
+      = f.input :program_id, as: :select, collection: ::Support::Candidate::Program.status_active, include_blank: t(:include_blank)
   .row
     .col-12 
-      = f.input :description, as: :string
+      = f.input :description, as: :string, placeholder: "Informe uma descrição"
 
   .row
     .col-12

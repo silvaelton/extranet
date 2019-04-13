@@ -33,11 +33,11 @@ module Attendance
     private
 
     def set_params
-      params.require(:ticket_situation_type).permit(:name, :status, :code, :allowed_view_candidate)
+      params.require(:ticket_situation_type).permit(:name, :status, :code, :label_view_candidate)
     end
 
     def set_situation_types
-      @pagy, @situation_types = pagy(apply_scopes(Attendance::TicketSituationType).all.order(:name))
+      @pagy, @situation_types = pagy(apply_scopes(Attendance::TicketSituationType).all.order(:id))
     end
 
     def set_situation_type

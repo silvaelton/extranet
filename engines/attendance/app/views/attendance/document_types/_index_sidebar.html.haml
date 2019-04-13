@@ -8,5 +8,5 @@
     .card-body.card-list
       = link_to "Adicionar tipo de documento", new_document_type_path, class: 'filter-nav-item',  remote: true
       %hr.divider
-      = link_to "Gestão de situação", "#", class: 'filter-nav-item'
-      = link_to "Gestão de ticket", "#", class: 'filter-nav-item'
+      = link_to "Gestão de categorias", attendance.ticket_categories_path, class: 'filter-nav-item'
+      = link_to "Gestão de atendimento", attendance.tickets_path, class: 'filter-nav-item'

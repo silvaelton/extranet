@@ -2,9 +2,6 @@
   .card-body.card-header.border-left-yellow
     .card-title 
       Listando (#{@situation_types.count}) registro(s)
-      .float-right.group-action
-        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
 
   .card-body
     %table.table.table-bordered.table-striped.table-celled
@@ -12,15 +9,17 @@
         %tr
           %th Nº 
           %th Nome
+          %th Label candidato
           %th Código
           %th Status
           %th
       %tbody
         - if @situation_types.present?
-          -@situation_types.order(:name).each do |situation_type|
+          - @situation_types.each do |situation_type|
             %tr{class: "row-situation-#{situation_type.id}"}
               %td.collapsing= situation_type.id
               %td= situation_type.name
+              %td= situation_type.label_view_candidate
               %td= situation_type.code
               %td.collapsing= situation_type.status.status_format
               %td.collapsing
@@ -29,8 +28,8 @@
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Excluir", ticket_situation_type_path(situation_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
                     = link_to "Editar", edit_ticket_situation_type_path(situation_type), class: 'dropdown-item', remote: true
+                    = link_to "Excluir", ticket_situation_type_path(situation_type), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
           %tfoot
             %tr
               %td.text-center{colspan: 6}

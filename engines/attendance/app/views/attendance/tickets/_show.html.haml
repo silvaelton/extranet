@@ -13,17 +13,13 @@
           - else 
             = link_to "Marcar em atendimento", attendance.ticket_ticket_viewer_path(@ticket), class: 'btn btn-info', remote: true
           
-          - if !@ticket.wait_cadastre
-            = link_to "Devolver atendimento", "#", class: 'btn btn-info'
+          = link_to "Devolver atendimento", "#", class: 'btn btn-info'
           
-          - if !@ticket.wait_cadastre && @ticket.attendant_status.nil?
-            = link_to "Parecer (atendente)", "#", class: 'btn btn-success'
+          = link_to "Parecer (atendente)", "#", class: 'btn btn-success'
           
-          - if !@ticket.wait_cadastre && !@ticket.attendant_status.nil? && @ticket.supervisor_status.nil?  
-            = link_to "Parecer (supervisor)", "#", class: 'btn btn-success'
+          = link_to "Parecer (supervisor)", "#", class: 'btn btn-success'
 
-          - if !@ticket.attendant_status.nil? && !@ticket.supervisor_status.nil?
-            = link_to "Gerar processo SEI", "#", class: 'btn btn-danger'
+          = link_to "Gerar processo SEI", "#", class: 'btn btn-danger'
       %hr.divider
       .row
         .col-md-12
@@ -55,6 +51,7 @@
 
             %tbody
               %tr
+                %td Nenhuma marcação
                 
 
 
@@ -72,9 +69,9 @@
                 %th Situação
             %tbody
               %tr
-                %td              
-                %td              
-                %td              
+                %td{colspan: 2}
+                  Nenhuma ocorrência encontrada.          
+            
       
       .row
         .col-md-12
@@ -89,8 +86,8 @@
                 %th Conteúdo
             %tbody
               %tr
-                %td              
-                %td              
+                %td{colspan: 2}
+                  Nenhuma solicitação realizada.          
 
       %hr.divider
 

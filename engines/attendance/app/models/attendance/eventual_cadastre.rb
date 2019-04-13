@@ -63,6 +63,11 @@ module Attendance
     private
 
     def program_allow?
+
+      user  = Pivotal::User.find_by(id: self.user_id)
+
+      return true if user.administrator?
+      
       user_programs = Candidate::ProgramUser.where(user_id: self.user_id).map(&:program_id)
 
       if !user_id.present? || !user_programs.include?(self.program_id)

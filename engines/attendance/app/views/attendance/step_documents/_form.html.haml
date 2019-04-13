@@ -1,8 +1,8 @@
 = simple_form_for @step_document, url:ticket_category_ticket_category_step_step_documents_path(@ticket_category, @category_step), method: :post, remote: true do |f|
   .row
-    .col-md-11
+    .col-10
       = f.input :document_type_id, as: :select, collection: Attendance::DocumentType.where.not(id: @category_step.step_documents.map(&:document_type_id)), prompt: 'Selecione', label: false
-    .col-md-1.no-padding
-      = button_tag :submit, class: 'button my-button' do
+    .col-2
+      = button_tag :submit, class: 'btn btn-success' do
         %i.fa.fa-plus{:style => "color: #fff "}
 

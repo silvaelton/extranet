@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/situation_type': situação
+    attributes:
+      'candidate/situation_type':
+        name: "Nome"
+        status: "Ativo?"
+        description: "Descrição"
+        program_id: "Programa"

@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/document_type': "tipo de documento"
+    attributes:
+      'attendance/document_type':
+        name: "Nome"
+        code: "Código"
+        introduction: "Introdução"
+        status: "Ativo?"
+        help_text: "Texto de ajuda"
+

@@ -6,6 +6,8 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Voltar para listagem", attendance.ticket_categories_path
+      = link_to "Voltar para categorias", attendance.ticket_categories_path
+      %hr.divider
+      = link_to "Adicionar etapa", attendance.new_ticket_category_ticket_category_step_path(@ticket_category), remote: true
       %hr.divider
       = link_to "Gestão de tipos de documento", attendance.document_types_path

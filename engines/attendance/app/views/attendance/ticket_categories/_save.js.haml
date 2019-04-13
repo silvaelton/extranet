@@ -1,9 +1,9 @@
 - if @ticket_category.errors.any?
   $("#modal").html("#{escape_javascript(render 'new')}");
-  update_js();
+ 
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
   $(".index-content").html("#{escape_javascript(render 'attendance/ticket_categories/index')}");
   $(".row-ticket-category-#{@ticket_category.id}").addClass('table-success');
 
-  update_js();
+update_js();
