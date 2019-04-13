@@ -39,7 +39,7 @@ module Cms
     end
 
     def set_navs
-      @pagy, @navs = pagy(apply_scopes(Cms::Nav).all)
+      @pagy, @navs = pagy(apply_scopes(Cms::Nav).all.order(:name))
     end
 
     def set_nav

@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      'cms/nav' : "Menu"
+    attributes:
+      'cms/nav':
+        name: "Nome"
+        url: "Link"
+        category_id: "Categoria"
+        publish: "Publicado?"
+        target_blank: "Abrir em outra página"
+        position: "Posição"

@@ -23,7 +23,7 @@
               %td= nav.name
               %td= nav.url
               %td= nav.category_id
-              %td= nav.order
+              %td= nav.position
               %td= nav.publish? ? "Sim": "Não"
               %td.collapsing
                 .dropdown
@@ -31,7 +31,6 @@
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Detalhar", cms.nav_path(nav), class: 'dropdown-item'
                     = link_to "Editar", cms.edit_nav_path(nav), remote: true, class: 'dropdown-item'
                     = link_to "Remover", cms.nav_path(nav), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
         - else

@@ -1,0 +1,27 @@
+pt-BR:
+  activerecord:
+    models:
+      'cms/post' : "Menu"
+    attributes:
+      'cms/post':
+        title: "Nome"
+        content: "Conteúdo"
+        description: "Descrição"
+        publish: "Publicado?"
+        image: "Imagem"
+        external: "Externo"
+        internal: "Internal"
+        image_slide: "Imagem do slide"
+        slide: "Slide"
+        image_header: "Imagem de cabeçalho"
+        author_image: "Autor da imagem"
+        slide_color: "Cor do slide"
+        external_content_url: "Link externo"
+        publish_date: "Data de publicação"
+        post_author: "Autor da postagem"
+        draft: "não sei"
+        slug: "não sei"
+        layout: "Layout"
+        iframe: "Página externa?"
+        iframe_url: "Link da página externa"
+        post_category_id: "Categoria"

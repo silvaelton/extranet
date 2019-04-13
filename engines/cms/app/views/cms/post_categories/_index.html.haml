@@ -27,7 +27,6 @@
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Detalhar", cms.post_category_path(post_category), class: 'dropdown-item'
                     = link_to "Editar", cms.edit_post_category_path(post_category), remote: true, class: 'dropdown-item'
                     = link_to "Remover", cms.post_category_path(post_category), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
         - else
