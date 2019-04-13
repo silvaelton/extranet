@@ -17,7 +17,7 @@
       %tbody
         - if @request_situations.present?
           - @request_situations.each do |request_situation|
-            %tr
+            %tr{class: "row-type-#{request_situation.id}"}
               %td.collapsing= request_situation.id
               %td= request_situation.name
               %td.collapsing= request_situation.status.status_format

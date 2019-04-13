@@ -17,7 +17,7 @@
       %tbody
         - if @exemption_types.present?
           - @exemption_types.each do |exemption_type|
-            %tr
+            %tr{class: "row-type-#{exemption_type.id}"}
               %td.collapsing= exemption_type.id
               %td= exemption_type.name
               %td.collapsing= exemption_type.status.status_format

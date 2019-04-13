@@ -23,9 +23,9 @@
       %tbody
         - if @allotments.present?
           -@allotments.each do |allotment|
-            %tr
+            %tr{class: "row-type-#{allotment.id}"}
               %td.collapsing= allotment.id
-              %td
+              %td= allotment.user.sector.name rescue t(:no_info)
               %td= allotment.notifier.name rescue t(:no_info)
               %td= allotment.exemptions.count rescue t(:no_info)
               %td= allotment.exemption_type.name rescue t(:no_info)

@@ -6,6 +6,7 @@ module Sefaz
     belongs_to :notifier,          required: false
     belongs_to :request_type,      required: false
     belongs_to :exemption_type,    required: false
+    belongs_to :user,              required: false, class_name: 'Pivotal::User'
 
     validates :exemption_type_id, :request_type_id, presence: true
     validates :notifier_id,  presence: true

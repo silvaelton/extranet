@@ -1,5 +1,5 @@
 module Pivotal
-  class StaffMailer < ActionMailer::Base
+  class UserMailer < ActionMailer::Base
     default from: 'gepes@codhab.df.gov.br'
 
     def user_create(staff)

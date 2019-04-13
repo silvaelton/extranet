@@ -18,7 +18,7 @@
       %tbody
         - if @notifiers.present?
           - @notifiers.each do |notifier|
-            %tr
+            %tr{class: "row-type-#{notifier.id}"}
               %td.collapsing= notifier.id
               %td= notifier.name
               %td= notifier.cnpj
