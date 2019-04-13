@@ -7,8 +7,7 @@
           %i.fa.fa-minus
     .card-body
       = simple_form_for url_for, method: :get, remote: true do |f|
-        = f.input :by_name, label: "Por nome", input_html: {name: :by_name, value: params[:by_name]}
-        = f.input :by_status,as: :select, label: "Por status", input_html: { name: :by_status, value: params[:by_status]}
+        = f.input :by_program_id,as: :select, label: "Por programa", collection: Support::Candidate::Program.status_active, selected: params[:by_program_id], input_html: { name: :by_program_id }, include_blank: t(:include_blank_all)
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'
@@ -20,4 +19,5 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar Tipo de situação", candidate.new_situation_type_path, remote: true
+      = link_to "Adicionar tipo de situação", candidate.new_situation_type_path, remote: true
+      = link_to "Ir para pesquisa geral", candidate.root_path

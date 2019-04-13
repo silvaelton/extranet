@@ -37,8 +37,8 @@ module Attendance
     private
 
     def set_params
-      params.require(:ticket_category_step).permit(:ticket_category_id, :name, :resume, :document_required, :step_required,
-                                            :screen_order, :message_success, :message_pendent, :allow_confirmation)
+      params.require(:ticket_category_step).permit(:ticket_category_id, :name, :resume, :document_required, :step_required, :view_form,
+                                            :screen_order, :message_success, :message_pendent, :allow_confirmation, :status)
     end
 
     def set_category_step

@@ -1,7 +1,7 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      Listando ) registro(s)
+      Listando (#{@tickets.count}) registro(s)
       .float-right.group-action
         = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
         = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
@@ -12,6 +12,19 @@
         %tr
           %th Nº 
           %th Nome
-          %th Código
-          %th Status
+          %th CPF
+          %th Categoria
+          %th Situação
+          %th Situação (atendimento)
           %th
+      %tbody
+        - @tickets.each do |row|
+          - row.presenter do |ticket|
+            %tr
+              %td.collapsing= link_to ticket.id, attendance.ticket_path(ticket), remote: true
+              %td= link_to (ticket.cadastre.name rescue t(:no_info)), attendance.ticket_path(ticket), remote: true
+              %td.collapsing= link_to (ticket.cadastre.cpf.format_cpf), attendance.ticket_path(ticket), remote: true
+              %td= ticket.ticket_category.name rescue t(:no_info)
+              %td Pendente com candidato
+              %td Pendente
+              %td

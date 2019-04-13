@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/ticket_category_step': "categoria"
+    attributes:
+      'attendance/ticket_category_step':
+        name: "Nome"
+        view_form: "Formulário"
+        resume: "Resumo"
+        screen_order: "Ordem na tela"
+        step_required: "Obrigatório?"
+        document_required: "Documentação obrigatória?"
+        status: "Ativo?"
+        allow_confirmation: "Permitido confirmar?"

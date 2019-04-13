@@ -4,15 +4,11 @@ module Attendance
   class TicketsController < ApplicationController
 
     def index
+      @pagy, @tickets = pagy(apply_scopes(Attendance::Ticket).all) 
     end
 
-    def new
-      @ticket_create = Attendance::TicketCreate.new
-    end
-    
-    def create
-      @ticket_create = Attendance::TicketCreate.new(set_create_params)
-      @ticket_create.valid?
+    def show
+      @ticket = Attendance::Ticket.find(params[:id])
     end
 
     private

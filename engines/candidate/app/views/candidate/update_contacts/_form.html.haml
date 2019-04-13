@@ -1,11 +1,9 @@
 = simple_form_for [@update_contact], remote: true do |f|
   .row
-    .col-4
+    .col-3
       = f.input :cep, as: :string, placeholder: 'Digite o CEP'
-    .col-4 
-      = f.input :city_id, collection: Support::Common::City.all, include_blank: 'Selecione...'
-    .col-4 
-      = f.input :state_id, collection: Support::Common::State.all, include_blank: 'Selecione...'
+    .col-3 
+      = f.input :city_id, collection: Support::Common::City.federal_district, include_blank: 'Selecione...'
   .row
     .col-6
       = f.input :address, as: :string, placeholder: 'Digite o endereço'

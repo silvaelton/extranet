@@ -4,17 +4,16 @@
 %table.table.table-bordered.table-striped.table-celled
   %thead
     %tr
-      %th Nº 
+      %th Código
       %th Documento
       %th
   %tbody
-
     - if @category_step.step_documents.present?
       -@category_step.step_documents.reject(&:new_record?).each do |document|
         %tr{class: "row-document-#{document.id}"}
-          %td.collapsing= document.id
+          %td.collapsing= document.document_type.code
           %td= document.document_type.name
-          %td.collapsing= link_to "<i class='fa fa-trash'></i>".html_safe,ticket_category_ticket_category_step_step_document_path(@ticket_category, @category_step, document), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
+          %td.collapsing= link_to "<i class='fa fa-trash' style='color: white'></i>".html_safe,ticket_category_ticket_category_step_step_document_path(@ticket_category, @category_step, document), method: :delete, remote: true, class: 'btn btn-danger btn-icon btn-sm', data: { confirm: t(:confirm)}
 
     - else
       %tr

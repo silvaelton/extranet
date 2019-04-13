@@ -24,7 +24,7 @@
                   %td= cadastre_activity.title
                   %td= cadastre_activity.user.name
                   %td= cadastre_activity.justify
-                  %td= cadastre_activity.activity_type.name
+                  %td= cadastre_activity.activity_type.name rescue t(:no_info)
                   - if cadastre_activity.date?
                     %td= cadastre_activity.date.format_date
                   - else

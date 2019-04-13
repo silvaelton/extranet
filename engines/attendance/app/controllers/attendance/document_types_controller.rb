@@ -38,7 +38,7 @@ module Attendance
     end
 
     def set_document_types
-      @pagy, @document_types = pagy(apply_scopes(Attendance::DocumentType).all.order(:name))
+      @document_types = apply_scopes(Attendance::DocumentType).all.order(code: :asc)
     end
 
     def set_document_type

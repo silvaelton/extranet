@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/update_contact' : "Atualizar dados"
+    attributes:
+      'candidate/update_contact':
+        cep: "CEP"
+        city_id: "Cidade"
+        address: "Endereço"
+        address_complement: "Contemplado"
+        telephone: "Telefone"
+        email: "E-mail"
+        telephone_optional: "Telefone (opcional)"
+        celphone: "Celular"

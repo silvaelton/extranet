@@ -15,3 +15,7 @@
               %th CPF
               %th RG
               %th Dt. Nascimento
+          %tbody
+            - @cadastre.cadastre_mirrors.order(created_at: :desc).each do |cadastre_mirror|
+              %tr
+                %td
