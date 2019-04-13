@@ -8,4 +8,4 @@ pt-BR:
         description: "Descrição"
         lat: "Latitude"
         lng: "Longitude"
-        status: "Status"
+        status: "Ativo?"

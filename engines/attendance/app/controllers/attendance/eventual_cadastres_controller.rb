@@ -3,7 +3,7 @@ require_dependency 'attendance/application_controller'
 module Attendance
   class EventualCadastresController < ApplicationController
     before_action :set_eventuals
-    before_action :set_eventual, only: %i[edit update]
+    before_action :set_eventual, only: %i[edit update destroy]
 
     has_scope :by_name
     has_scope :by_cpf
@@ -27,11 +27,16 @@ module Attendance
       @eventual.update(set_params)
     end
 
+    def destroy
+      @eventual.destroy
+    end
+
     private
 
     def set_params
       params.require(:eventual_cadastre)
-        .permit(:name, :cpf, :gender_id, :program_id, :born, :convocation_id, :observation)
+        .permit(:name, :cpf, :gender_id, :program_id, :born, :convocation_id, :observation, 
+                :password, :password_confirmation, :sub_program_id)
     end
 
     def set_eventuals

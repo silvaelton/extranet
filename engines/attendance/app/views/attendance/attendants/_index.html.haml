@@ -19,8 +19,8 @@
           - @attendants.each do |attendant|
             %tr{class: "row-attendant-#{attendant.id}"}
               %td.collapsing= attendant.id
-              %td= attendant.staff.name
-              %td.collapsing= attendant.attendant_type.name
+              %td= attendant.staff.name 
+              %td.collapsing= attendant.attendant_type.name rescue nil
               %td.collapsing
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
