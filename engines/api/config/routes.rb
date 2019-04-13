@@ -5,10 +5,10 @@ Api::Engine.routes.draw do
       resources :cadastres
     end
 
-    namespace :attendance do 
+    namespace :attendance do
     end
 
-    namespace :entity do 
+    namespace :entity do
     end
 
     namespace :external do
