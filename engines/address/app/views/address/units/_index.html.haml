@@ -1,7 +1,7 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title
-      Listando (#{@units.count rescue 0}) registro(s)
+      Listando (#{@units_all.count rescue 0}) registro(s)
       .float-right.group-action
         = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
         = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
@@ -19,9 +19,9 @@
                 %h6= unit.city.name.upcase rescue t(:no_info)
                 %h4
                   %b= link_to unit.complete_address, address.unit_path(unit), remote: true rescue t(:no_info)
-                %h6 
+                %h6
                   %b Morador:
-                  = link_to "BREJETUBA BREJETUBA (000.000.000-00)", "#" 
+                  = link_to "BREJETUBA BREJETUBA (000.000.000-00)", "#"
                 .badge.badge-info Situação do endereço
                 .badge.badge-warning Etiqueta
                 .badge.badge-warning Etiqueta

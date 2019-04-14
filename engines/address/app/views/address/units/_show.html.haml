@@ -1,16 +1,25 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title
-      Detalhamento
-      .float-right.group-action
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
-  .card-body
-    %table.table.table-bordered.table-striped.table-celled
-      %thead
-        %tr
-          %th Cidade
-          %th Endereço
-      %tbody
-        %tr
-          %td= @unit.city.name rescue t(:no_info)
-          %td= @unit.complete_address
+      Visão geral
+  .header-content-new
+    .card-body
+      .row
+        .col-8
+          .row
+            .col-12
+              %p.title-sm= @unit.city.name rescue t(:no_info)
+              %p.title
+                = @unit.complete_address
+              %p.title-sm= @unit.current_situation rescue t(:no_info)
+        .col-4
+          %table.table.table-striped.table-bordered
+            %thead
+              %tr
+                %th Nome
+                %th CPF
+            %tbody
+              %tr
+                %td RII
+                %td 126874596.5454
+                

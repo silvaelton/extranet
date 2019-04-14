@@ -1,0 +1,34 @@
+= simple_form_for @unit, remote: true do |f|
+  .row
+    .col-md-6
+      = f.input :enterprise_id, collection: Address::Enterprise.status_active, prompt: 'Selecione'
+    .col-md-6
+      = f.input :enterprise_typology_id, collection: Address::EnterpriseTypology.all, prompt: 'Selecione'
+  .row
+    .col-md-3
+      = f.input :area_front, placeholder: 'Ex. 20'
+    .col-md-3
+      = f.input :area_back, placeholder: 'Ex. 20'
+    .col-md-3
+      = f.input :area_right, placeholder: 'Ex. 20'
+    .col-md-3
+      = f.input :area_left, placeholder: 'Ex. 20'
+  .row
+    .col-md-3
+      = f.input :limit_front, placeholder: 'Digite um limite'
+    .col-md-3
+      = f.input :limit_back, placeholder: 'Digite um limite'
+    .col-md-3
+      = f.input :limit_right, placeholder: 'Digite um limite'
+    .col-md-3
+      = f.input :limit_left, placeholder: 'Digite um limite'
+  .row
+    .col-md-4
+      = f.input :sefaz_certificate, placeholder: 'Digite o certificado'
+    .col-md-4
+      = f.input :sefaz_certificate_date, as: :string,  input_html: { class: 'date', value: (@unit.sefaz_certificate_date) ? localize(f.object.sefaz_certificate_date) : nil}
+    .col-md-4
+      = f.input :sefaz_certificate_validate_date, as: :string,  input_html: { class: 'date', value: (@unit.sefaz_certificate_validate_date) ? localize(f.object.sefaz_certificate_validate_date) : nil}
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
