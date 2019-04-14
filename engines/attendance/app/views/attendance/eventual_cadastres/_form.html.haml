@@ -15,13 +15,15 @@
       = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: t(:include_blank)
     .col-3
       = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: t(:include_blank)
-
+  - # TODO: Verficacao sobre ID correto
   .row
-    .col-4
+    .col-3
+      = f.input :situation_id, as: :select, collection: Candidate::SituationType.where('id in (2,11)').status_active.order(:id), include_blank: t(:include_blank)
+    .col-3
       = f.input :password, placeholder: 'Digite a senha'
-    .col-4
+    .col-3
       = f.input :password_confirmation, placeholder: 'Confirme a senha'
-    .col-4
+    .col-3
       = f.input :sub_program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: t(:include_blank)
   .row
     .col-12

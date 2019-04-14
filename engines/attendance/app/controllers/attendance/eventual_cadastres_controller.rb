@@ -36,15 +36,15 @@ module Attendance
     def set_params
       params.require(:eventual_cadastre)
         .permit(:name, :cpf, :gender_id, :program_id, :born, :convocation_id, :observation, 
-                :password, :password_confirmation, :sub_program_id)
+                :password, :password_confirmation, :sub_program_id,:situation_id)
     end
 
     def set_eventuals
-      @pagy, @eventuals = pagy(apply_scopes(Attendance::EventualCadastre).all.order(:name))
+      @pagy, @eventuals = pagy(apply_scopes(Candidate::Cadastre).joins(:cadastre_situations).where('candidate_cadastre_situations.situation_type_id in (2,11)'))
     end
 
     def set_eventual
-      @eventual = Attendance::EventualCadastre.find(params[:id])
+      @eventual = Candidate::Cadastre.find(params[:id])
     end
 
   end
