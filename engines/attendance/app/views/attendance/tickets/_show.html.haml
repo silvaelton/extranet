@@ -1,0 +1,104 @@
+.modal-dialog.modal-xl
+  .modal-content
+    .modal-header
+      %h5.modal-title Detalhamento de atendimento
+      %a.close
+        %i.fas.fa-times
+    .modal-body
+                                       
+      .row
+        .col-md-12
+          - if @ticket.viewer
+            = link_to "Desmarcar atendimento", attendance.ticket_ticket_viewer_path(@ticket), class: 'btn btn-dark', remote: true
+          - else 
+            = link_to "Marcar em atendimento", attendance.ticket_ticket_viewer_path(@ticket), class: 'btn btn-info', remote: true
+          
+          = link_to "Devolver atendimento", "#", class: 'btn btn-info'
+          
+          = link_to "Parecer (atendente)", "#", class: 'btn btn-success'
+          
+          = link_to "Parecer (supervisor)", "#", class: 'btn btn-success'
+
+          = link_to "Gerar processo SEI", "#", class: 'btn btn-danger'
+      %hr.divider
+      .row
+        .col-md-12
+          %h6 
+            %b Informação      
+      .row
+        .col-md-12
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th.collapsing Protocolo
+                %th Nome
+                %th CPF
+                %th Situação
+                %th Marcado por
+            %tbody
+              %tr
+                %td= @ticket.id
+                %td= @ticket.cadastre.name.upcase rescue t(:no_info)
+                %td.collapsing= @ticket.cadastre.cpf.format_cpf rescue t(:no_info) 
+                %td
+                %td= @ticket.viewer ? (@ticket.viewer_user.name rescue t(:no_info)) : "Não marcado"
+      .row
+        .col-md-12
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th Marcado por
+
+            %tbody
+              %tr
+                %td Nenhuma marcação
+                
+
+
+      .row
+        .col-md-12
+          %h6 
+            %b Ocorrências   
+      .row
+        .col-md-12
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th.collapsing Nº
+                %th Conteúdo
+                %th Situação
+            %tbody
+              %tr
+                %td{colspan: 2}
+                  Nenhuma ocorrência encontrada.          
+            
+      
+      .row
+        .col-md-12
+          %h6 
+            %b Solicitações  
+      .row
+        .col-md-12
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th.collapsing Data/Hora
+                %th Conteúdo
+            %tbody
+              %tr
+                %td{colspan: 2}
+                  Nenhuma solicitação realizada.          
+
+      %hr.divider
+
+      .row
+        .col-md-12
+          %h6 
+            %b Etapas
+      .row
+        .col-md-12
+          - @ticket.ticket_steps.each do |step|
+            .row
+              .col-md-12
+                %h6= step.ticket_category_step.name.humanize
+                = render "attendance/tickets/step_#{step.ticket_category_step.view_form}", step: step

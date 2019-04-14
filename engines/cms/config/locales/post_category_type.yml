@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'cms/post_category_type' : "Tipo de categoria"
+    attributes:
+      'cms/post_category_type':
+        name: "Nome"
+        status: "Ativo?"

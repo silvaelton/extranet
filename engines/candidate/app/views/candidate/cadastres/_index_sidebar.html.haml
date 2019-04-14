@@ -20,8 +20,8 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Gestão de convocações", candidate.convocations_path, remote: true
-      = link_to "Gestão de situação cadastral", entity.cadastre_situations_path
+      = link_to "Gestão de convocações", candidate.convocations_path
+      = link_to "Gestão de situação cadastral", candidate.situation_types_path
       = link_to "Gestão de listas", candidate.lists_path
       = link_to "Gestão de programas", candidate.programs_path
       

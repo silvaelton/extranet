@@ -10,7 +10,7 @@ module Attendance
 
     belongs_to :user, class_name: 'Pivotal::User', required: false
 
-    scope :by_name, ->(name) { where(staff_id: name) }
+    scope :by_name, ->(name) { where(user_id: name) }
     scope :by_type, ->(type) { where(attendant_type_id: type) }
     
   end

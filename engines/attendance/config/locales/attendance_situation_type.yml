@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/ticket_situation_type': "situação"
+    attributes:
+      'attendance/ticket_situation_type':
+        name: "Nome"
+        code: "Código"
+        status: "Ativo?"
+        status: "Ativo?"
+        label_view_candidate: "Label visualizado pelo candidato"

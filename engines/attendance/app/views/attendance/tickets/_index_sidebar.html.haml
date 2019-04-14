@@ -28,5 +28,5 @@
       = link_to "Iniciar um novo atendimento", attendance.new_ticket_path, remote: true
       %hr.divider
       = link_to "Gestão de categorias", attendance.ticket_categories_path
-      = link_to "Gestão de situações", root_path
-      = link_to "Gestão de documentos", root_path
+      = link_to "Gestão de situações", attendance.ticket_situation_types_path
+      = link_to "Gestão de documentos", attendance.document_types_path

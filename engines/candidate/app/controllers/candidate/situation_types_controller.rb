@@ -5,8 +5,7 @@ module Candidate
     before_action :set_situation_types
     before_action :set_situation_type, only: [:edit, :show, :update, :destroy]
     
-    has_scope :by_name
-    has_scope :by_status
+    has_scope :by_program_id
 
     def index;end
 
@@ -34,11 +33,12 @@ module Candidate
     private
 
     def set_params
-      params.require(:situation_type).permit(:name, :description, :status)
+      params.require(:situation_type).permit(:name, :description, :status, :program_id)
     end
 
     def set_situation_types
-      @pagy, @situation_types = pagy(apply_scopes(Candidate::SituationType).all)
+      @situation_types_all = apply_scopes(Candidate::SituationType).all.order(id: :asc)
+      @pagy, @situation_types = pagy(@situation_types_all)
     end
 
     def set_situation_type

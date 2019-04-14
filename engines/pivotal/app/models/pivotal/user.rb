@@ -6,7 +6,7 @@ module Pivotal
     belongs_to :job,    required: false
 
     has_many :session_logs, -> { where(target_model: 'Pivotal::User') }, class_name: 'Pivotal::LogSession', foreign_key: :target_id
-    has_many :user_permisions
+    has_many :user_permissions
     has_many :user_navs
 
     scope :by_name,     ->(name) {where("name ILIKE ?", "%#{name}%")}

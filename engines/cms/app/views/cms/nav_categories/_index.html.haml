@@ -19,7 +19,7 @@
           - @nav_categories.each do |nav_category|
             %tr{class: "row-nav-category-#{nav_category.id}"}
               %td= nav_category.name
-              %td= nav_category.category_type.name
+              %td= nav_category.category_type.name rescue nil
               %td= nav_category.status.status_format
               %td.collapsing
                 .dropdown
@@ -27,7 +27,6 @@
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Detalhar", cms.nav_category_path(nav_category), class: 'dropdown-item'
                     = link_to "Editar", cms.edit_nav_category_path(nav_category), remote: true, class: 'dropdown-item'
                     = link_to "Remover", cms.nav_category_path(nav_category), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
         - else

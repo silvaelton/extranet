@@ -21,3 +21,6 @@
           %i.fa.fa-minus
     .card-body.card-list
       = link_to "Adicionar menu",cms.new_nav_path, remote: true
+      %hr/
+      = link_to "Gestão de tipos",cms.nav_category_types_path
+      = link_to "Gestão de categoria",cms.nav_categories_path

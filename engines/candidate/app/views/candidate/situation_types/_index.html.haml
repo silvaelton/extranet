@@ -2,33 +2,27 @@
   .card-body.card-header.border-left-yellow
     .card-title
       Listando (#{@situation_types.count}) registro(s)
-      .float-right.group-action
-        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
   
   .card-body
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
-
+          %td ID
+          %td Programa
           %td Nome
-        
           %td Descrição
-        
-          %td Status
-          
+          %td Situação
           %td
           
       %tbody
         - if @situation_types.present?
           - @situation_types.each do |situation_type|
             %tr{class: "row-situation-type-#{situation_type.id}"}
-
-              %td= situation_type.name
-            
+              %td.collapsing= situation_type.id
+              %td.collapsing= situation_type.program.name rescue t(:no_info)
+              %td.collapsing= situation_type.name
               %td= situation_type.description
-            
-              %td= situation_type.status.status_format
+              %td.collapsing= situation_type.status.status_format
               
               %td.collapsing
                 .dropdown

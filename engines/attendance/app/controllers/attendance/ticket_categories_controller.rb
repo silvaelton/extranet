@@ -43,7 +43,7 @@ module Attendance
     end
 
     def set_ticket_categories
-      @pagy, @ticket_categories = pagy(apply_scopes(Attendance::TicketCategory).all.order(:name))
+      @pagy, @ticket_categories = pagy(apply_scopes(Attendance::TicketCategory).all.order(:id))
     end
 
     def set_ticket_category

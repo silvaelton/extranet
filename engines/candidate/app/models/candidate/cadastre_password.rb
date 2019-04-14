@@ -6,7 +6,7 @@ module Candidate
 
     attr_accessor :cadastre_id, :password, :password_confirmation
     
-    validates :password, :password_confirmation, presence: true, numericality: true
+    validates :password, :password_confirmation, presence: true, numericality: true, length: { minimum: 6, maximum: 24}
     validate  :password_equal
 
     def save 

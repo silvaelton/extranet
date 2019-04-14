@@ -38,7 +38,7 @@ module Cms
     end
 
     def set_nav_categories
-      @pagy, @nav_categories = pagy(apply_scopes(Cms::NavCategory).all)
+      @pagy, @nav_categories = pagy(apply_scopes(Cms::NavCategory).all.order(:name))
     end
 
     def set_nav_category

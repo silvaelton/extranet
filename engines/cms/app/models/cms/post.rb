@@ -5,6 +5,8 @@ module Cms
     belongs_to :post_category, class_name: 'Cms::PostCategory'
 
     validates :title, :post_category_id, :content, :slug, presence: true
+    validates :title, uniqueness: { scope: :deleted}
+    
     scope :by_title,       ->(title) { where("title ilike '%#{title}%'") }
     scope :by_status,     ->(status) { where(status: status) }
 
