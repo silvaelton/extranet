@@ -2,12 +2,14 @@ require_dependency 'support/entity/cadastre'
 
 module Entity
   class Cadastre < ::Support::Entity::Cadastre
+    belongs_to :situation, class_name: 'Entity::CadastreSituation', required: false
     has_many :presidents, foreign_key: :cadastre_id
     has_many :members, foreign_key: :cadastre_id
     has_many :cadastre_activities, foreign_key: :cadastre_id
     has_many :enterprises, foreign_key: :entity_id
+    has_many :cadastre_audits
 
-    validates :cnpj, cnpj: true
+    validates :cnpj, presence: true,  cnpj: true
     
     scope :by_acron, -> (value) {
       where("acron ilike ?", "%#{value}%")

@@ -27,10 +27,10 @@
                     %br/
                     %small 
                       %b Presidente:
-                      Teste 123
+                      = row.presidents.last.name rescue t(:no_info)
                     %br/
                     .badge.badge-success
-                      Credenciada                    
+                      = row.situation.name rescue t(:no_info)
                 %td.collapsing
                   .dropdown
                     %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -40,6 +40,10 @@
                       = link_to "Visualizar", entity.cadastre_path(e), remote: true, class: 'dropdown-item'
                       = link_to "Detalhar", entity.cadastre_path(e), class: 'dropdown-item'
                       = link_to "Editar", entity.edit_cadastre_path(e), remote: true, class: 'dropdown-item'
+          %tfoot
+            %tr
+              %td{colspan: 4}
+                = pagy_bootstrap_nav(@pagy).html_safe
         - else
           %tr
             %td{colspan: 2}
