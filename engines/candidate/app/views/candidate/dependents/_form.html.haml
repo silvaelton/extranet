@@ -1,49 +1,55 @@
 = simple_form_for [@cadastre,@dependent], remote: true do |f|
   .row
-    .col-8 
+    .col-8
       = f.input :name, as: :string, placeholder: 'Digite o nome'
-    .col-4 
+    .col-4
       = f.input :cpf, input_html: { class: 'cpf'}
   .row
-    .col-3 
+    .col-3
       = f.input :born, as: :string,  input_html: { class: 'date', value: (@dependent.born) ? localize(f.object.born) : nil}
-    .col-3 
+    .col-3
       = f.input :rg
-    .col-3 
+    .col-3
       = f.input :rg_org
-    .col-3 
+    .col-3
       = f.input :rg_uf_id, as: :select, collection: Support::Common::State.all, include_blank: 'Selecione...'
 
   .row
-    .col-3 
+    .col-3
       = f.input :admission_date, as: :string,  input_html: { class: 'date', value: (@dependent.admission_date) ? localize(f.object.admission_date) : nil}
-    .col-3 
+    .col-3
       = f.input :gender_id, as: :select, collection: Support::Common::Gender.all, include_blank: 'Selecione...'
-    .col-3 
+    .col-3
       = f.input :civil_state_id, as: :select, collection: Support::Common::CivilState.all, include_blank: 'Selecione...'
-    .col-3 
+    .col-3
       = f.input :kinship_id, as: :select, collection: Support::Common::Kinship.all, include_blank: 'Selecione...'
   .row
     .col-3
-      = f.input :nationality, placeholder: 'Digite a justificativa'
+      = f.input :nationality, placeholder: 'Nacionalidade'
 
-    .col-3 
-      = f.input :income, placeholder: 'Digite o documento'
-    .col-3 
-      = f.input :place_birth, as: :string
-    .col-3 
-      = f.input :employment, placeholder: 'Digite a justificativa'
+    .col-3
+      = f.input :income, placeholder: 'Digite a renda'
+    .col-3
+      = f.input :place_birth, placeholder: 'Digite a cidade'
+    .col-3
+      = f.input :employment, placeholder: 'Digite a profissão'
   .row
     .col-3
       = f.input :special_condition, as: :select,include_blank: 'Selecione...'
     .col-3
       = f.input :special_condition_type_id, as: :select, collection: Support::Common::SpecialConditionType.all, include_blank: 'Selecione...'
-    .col-3 
-      = f.input :cid, placeholder: 'Digite uma descrição'
-    .col-3 
-      = f.input :nis, placeholder: 'Digite a justificativa'
-  
-
+    .col-3
+      = f.input :cid, placeholder: 'Digite um cid'
+    .col-3
+      = f.input :nis, placeholder: 'Digite im NIS'
+  .row
+    .col-6
+      = f.input :deceased, as: :select, include_blank: 'Selecione...'
+    .col-6
+      = f.input :deceased_date, as: :string,  input_html: { class: 'date', value: (@dependent.deceased_date) ? localize(f.object.deceased_date) : nil}
+  .row
+    .col-12
+      = f.input :deceased_observation
   .divider-sm
   .row
     .col-12

@@ -1,10 +1,10 @@
 = simple_form_for [@cadastre, @cadastre_convocation], remote: true do |f|
   .row
-    .col-8 
-      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: 'Selecione...'
-    .col-4 
+    .col-12
+      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), label_method: lambda {|c| "#{c.id} - #{c.name}"} ,include_blank: 'Selecione...'
+  .row
+    .col-12
       = f.input :status, as: :select,include_blank: 'Selecione...'
-  
   .row
     .col-12
       = f.input :observation, placeholder: 'Digite uma observação'

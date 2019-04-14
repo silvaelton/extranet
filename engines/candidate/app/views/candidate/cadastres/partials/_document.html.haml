@@ -1,17 +1,28 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
-        9. Documento / Processo (0)
+        9. Documento / Processo (#{@cadastre.assessments.count})
   .card-body{style: 'display: none'}
     .row
       .col-12
         %table.table.table-striped.table-bordered.table-celled
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Data do documento
+              %th Número do documento
+              %th Tipo de documento
+              %th Assunto
+          %tbody
+            - if @cadastre.assessments.present?
+              - @cadastre.assessments.each do |assessment|
+                %tr
+                  %td= assessment.created_at.format_date rescue t(:no_info)
+                  %td= link_to assessment.document_number, protocol.assessment_path(assessment.id), target: '_blank'
+                  %td= assessment.document_type.name.mb_chars.upcase  rescue t(:no_info)
+                  %td= assessment.subject.name.mb_chars.upcase rescue t(:no_info)
+            - else
+              %tr
+                %td{colspan: 4}
+                  %i Nenhum processo ou documento vínculado a este cadastro.
