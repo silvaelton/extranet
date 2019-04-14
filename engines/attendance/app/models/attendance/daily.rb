@@ -24,8 +24,8 @@ module Attendance
 
     validate :attendant?
 
-    def current_attendant(user)
-      self.attendant_validation = Attendance::Attendant.where(staff_id: user, deleted: false).last.id rescue nil
+    def current_attendant_id(user)
+      self.attendant_validation = Attendance::Attendant.where(user_id: user, deleted: false).last.id rescue nil
     end
 
     private
