@@ -1,17 +1,30 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
-        14. SEFAZ (ITCD/ITBI) (0)
+        14. SEFAZ (ITCD/ITBI) (#{@cadastre.exemptions.count})
   .card-body{style: 'display: none'}
     .row
       .col-12
         %table.table.table-striped.table-bordered.table-celled
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Endereço
+              %th Nº IPTU
+              %th Número do Ato
+              %th Mensagem de Retorno
+              %th Data
+          %tbody
+            - if @cadastre.exemptions.present?
+              - @cadastre.exemptions.each do |exemption|
+                %tr
+                  %td= exemption.address rescue t(:no_info)
+                  %td= exemption.realty_number rescue t(:no_info)
+                  %td= exemption.act_number rescue t(:no_info)
+                  %td= exemption.return_message rescue t(:no_info)
+                  %td= exemption.created_at.format_date
+            - else
+              %tr
+                %td{colspan: 5}
+                  %i Não há pedido de isenção para este candidato.

@@ -1,12 +1,12 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
         7. Indicações (#{@cadastre.indication_unitaries.count})
-  .card-body.convocation-display{style: 'display: none'}  
+  .card-body.convocation-display{style: 'display: none'}
     .row
-      .col-md-12 
+      .col-md-12
         %h6
           = link_to "+ Adicionar indicação", new_cadastre_indication_unitary_path(@cadastre), remote: true
         %table.table.table-bordered.table-striped
@@ -17,11 +17,11 @@
               %th Justificativa
               %th Status
           %tbody
-            - if @cadastre.indication_unitaries.present? 
+            - if @cadastre.indication_unitaries.present?
               - @cadastre.indication_unitaries.order(created_at: :desc).each do |indication|
                 %tr{class: "row-indication-#{indication.id}"}
-                  %td= indication.enterprise.name
-                  %td= indication.user.name
+                  %td= indication.enterprise.name rescue t(:no_info)
+                  %td= indication.user.name rescue t(:no_info)
                   %td= indication.justify
                   %td.collapsing= indication.status ? 'Ativo' : 'Inativo'
             - else

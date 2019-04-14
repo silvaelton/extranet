@@ -21,3 +21,7 @@ pt-BR:
         kinship_id: "Parentesco"
         employment: "Profissão"
         nationality: "Nacionalidade"
+        admission_date: "Data de admissão"
+        deceased: "Falecido?"
+        deceased_date: "Data de falecimento"
+        deceased_observation: "Observação falecimento"

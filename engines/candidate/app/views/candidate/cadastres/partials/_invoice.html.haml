@@ -1,17 +1,34 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
-        13. Cobrança (0)
+        13. Cobrança (#{@cadastre.invoices.count})
   .card-body{style: 'display: none'}
     .row
       .col-12
         %table.table.table-striped.table-bordered.table-celled
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Tipo
+              %th Categoria
+              %th Valor
+              %th Emitido em
+              %th Vencimento
+              %th Liquidação
+              %th Status
+          %tbody
+            - if @cadastre.invoices.present?
+              - @cadastre.invoices.each do |invoice|
+                %tr{class: "invoice-cadastre-row-#{invoice.id}"}
+                  %td= invoice.invoice_type.name.humanize rescue t(:no_info)
+                  %td= invoice.category.name.upcase rescue t(:no_info)
+                  %td= number_to_currency invoice.value
+                  %td= invoice.created_at.format_date
+                  %td= invoice.due.format_date
+                  %td= invoice.payment.format_date rescue t(:no_info)
+                  %td= invoice.situaiton.name rescue t(:no_info)
+            - else
+              %tr
+                %td{colspan: 7}
+                  %i Nenhum boleto gerado para esse cadastro.

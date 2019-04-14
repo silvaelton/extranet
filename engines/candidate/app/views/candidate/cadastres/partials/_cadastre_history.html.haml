@@ -1,17 +1,26 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
-        6. Espelho cadastral (0)
+        6. Espelho cadastral (#{@cadastre.cadastre_mirrors.count})
   .card-body{style: 'display: none'}
     .row
       .col-12
         %table.table.table-striped.table-bordered.table-celled
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Data
+              %th Ativo?
+              %th
+          %tbody
+            - if @cadastre.cadastre_mirrors.present?
+              - @cadastre.cadastre_mirrors.order(created_at: :desc).each do |mirror|
+                %tr
+                  %td= mirror.created_at.format_date
+                  %td= mirror.status.boolean_format
+                  %td= link_to "Visualizar", "#"
+            - else
+              %tr
+                %td{colspan: 3}
+                  %i Nenhum registro encontrado.

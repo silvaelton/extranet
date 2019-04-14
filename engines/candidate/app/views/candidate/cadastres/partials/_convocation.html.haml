@@ -1,11 +1,11 @@
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
         3. Convocação (#{@cadastre.cadastre_convocations.count})
-  .card-body.convocation-display{style: 'display: none'}  
+  .card-body.convocation-display{style: 'display: none'}
     .row
-      .col-md-12 
+      .col-md-12
         %h6
           = link_to "+ Adicionar convocação", new_cadastre_cadastre_convocation_path(@cadastre), remote: true
         %table.table.table-bordered.table-striped
@@ -17,11 +17,11 @@
               %th Status
               %th
           %tbody
-            - if @cadastre.cadastre_convocations.present? 
+            - if @cadastre.cadastre_convocations.present?
               - @cadastre.cadastre_convocations.order(created_at: :desc).each do |cadastre_convocation|
                 %tr{class: "row-cadastre-convocation-#{cadastre_convocation.id}"}
-                  %td= cadastre_convocation.convocation.name
-                  %td= cadastre_convocation.user.name
+                  %td= "#{cadastre_convocation.convocation.id} - #{cadastre_convocation.convocation.name}" rescue t(:no_info)
+                  %td= cadastre_convocation.user.name rescue t(:no_info)
                   %td= cadastre_convocation.observation
                   %td.collapsing= cadastre_convocation.status ? 'Ativo' : 'Inativo'
                   %td.collapsing

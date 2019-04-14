@@ -1,34 +1,32 @@
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
         17. Atividade (#{@cadastre.cadastre_activities.count})
   .card-body.cadastre-activity-display{style: 'display: none'}
     .row
       .col-md-12
-        %h6 
+        %h6
           = link_to "+ Adicionar atividade", new_cadastre_cadastre_activity_path(@cadastre), remote: true
         %table.table.table-bordered.table-striped
           %thead
             %tr
-              %th Titulo
               %th Usuário
               %th Conteúdo
-              %th tipo 
+              %th tipo
               %th Data
               %th
           %tbody
-            - if @cadastre.cadastre_activities.present? 
+            - if @cadastre.cadastre_activities.present?
               - @cadastre.cadastre_activities.order(:date).each do |cadastre_activity|
-                %tr{class: "row-cadastre-activity-#{cadastre_activity.id}"}
-                  %td= cadastre_activity.title
-                  %td= cadastre_activity.user.name
+                %tr{class: "row-cadastre-activity-#{cadastre_activity.id}"}                
+                  %td= cadastre_activity.user.name rescue t(:no_info)
                   %td= cadastre_activity.justify
-                  %td= cadastre_activity.activity_type.name
+                  %td= cadastre_activity.activity_type.name rescue t(:no_info)
                   - if cadastre_activity.date?
-                    %td= cadastre_activity.date.format_date
+                    %td= cadastre_activity.date.format_date rescue t(:no_info)
                   - else
-                    %td= cadastre_activity.created_at.format_date
+                    %td= cadastre_activity.created_at.format_date rescue t(:no_info)
                   %td.collapsing
                     .dropdown
                       %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
