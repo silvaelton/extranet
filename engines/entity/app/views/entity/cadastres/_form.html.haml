@@ -1,17 +1,41 @@
 = simple_form_for @entity, remote: true do |f|
-  = f.input :name
-  = f.input :cnpj
-  = f.input :acron
-  = f.input :telephone
-  = f.input :telephone_optional
-  = f.input :cell_phone
-  = f.input :email
-  = f.input :address
-  = f.input :address_number
-  = f.input :address_complement
-  = f.input :cep
-  = f.input :observation
-  = f.input :status
-  = f.input :password
-  = f.input :lat
-  = f.input :lng
+  .row
+    .col-8
+      = f.input :name
+    .col-4
+      = f.input :cnpj, input_html:{class: 'cnpj'}
+  .row
+    .col-4  
+      = f.input :acron
+    .col-4  
+      = f.input :telephone
+    .col-4  
+      = f.input :telephone_optional
+  .row
+    .col-4
+      = f.input :cell_phone
+    .col-4
+      = f.input :email
+    .col-4
+      = f.input :address
+  .row
+    .col-4
+      = f.input :address_number
+    .col-4
+      = f.input :address_complement
+    .col-4
+      = f.input :cep
+  .row
+    .col-4
+      = f.input :status, as: :select
+    .col-4
+      = f.input :lat
+    .col-4
+      = f.input :lng
+  .row
+    .col-12
+      = f.input :observation
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success'

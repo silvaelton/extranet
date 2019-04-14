@@ -22,7 +22,6 @@
                 %i.fa.fa-cog
                 %i.ti-angle-down
               .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
-                = link_to "Detalhar", entity.cadastre_cadastre_activity_path(@entity, cadastre_activity), remote: true, class: 'dropdown-item'
                 = link_to "Editar", entity.edit_cadastre_cadastre_activity_path(@entity, cadastre_activity), remote: true, class: 'dropdown-item'
                 = link_to "Remover", entity.cadastre_cadastre_activity_path(@entity, cadastre_activity), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
     - else

@@ -1,17 +1,30 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
-        5. Situação processual (0)
+        5. Situação processual (#{@cadastre.cadastre_procedurals.count rescue 0})
   .card-body{style: 'display: none'}
     .row
       .col-12
         %table.table.table-striped.table-bordered.table-celled
           %thead
             %tr
-              %th ID
-              %th Nome
-              %th CPF
-              %th RG
-              %th Dt. Nascimento
+              %th Data
+              %th Situação
+              %th Usuário
+              %th Convocação
+              %th Observação
+          %tbody
+            - if @cadastre.cadastre_procedurals.present?
+              - @cadastre.cadastre_procedurals.order(created_at: :desc).each do |cadastre_procedural|
+                %tr
+                  %td= cadastre_procedural.created_at.format_date rescue t(:no_info)
+                  %td= cadastre_procedural.procedural_type.name rescue t(:no_info)
+                  %td= cadastre_procedural.user.name rescue t(:no_info)
+                  %td= cadastre_procedural.cadastre_convocation.convocation.name rescue t(:no_info)
+                  %td= cadastre_procedural.observation
+            - else
+              %tr
+                %td{colspan: 6}
+                  Nenhuma situação registrada.

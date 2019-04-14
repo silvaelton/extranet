@@ -1,0 +1,31 @@
+%h6 
+  Logs de alterações
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Data de modificação
+      %th Hora de modificação
+      %th Usuario
+      %th Tipo de ação
+      %th IP
+      %th
+  %tbody
+    - if @entity.audits.present? 
+      - @entity.audits.order(:created_at).each do |audit|
+        %tr
+          %td= audit.created_at.format_date
+          %td= audit.created_at.format_time
+          %td= audit.user.name rescue nil
+          %td= audit.action_name
+          %td= audit.remote_address
+          %td.collapsing
+            .dropdown
+              %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %i.fa.fa-cog
+                %i.ti-angle-down
+              .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                = link_to "Detalhar", entity.cadastre_cadastre_audit_path(@entity, audit), remote: true,  class: 'dropdown-item'
+    - else
+      %tr
+        %td{colspan: 3}
+          Nenhum assunto registrado.

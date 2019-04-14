@@ -1,13 +1,13 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
         2. Dependente (#{@cadastre.dependents.count})
-  .card-body.dependent-display{style: 'display: none'} 
+  .card-body.dependent-display{style: 'display: none'}
     .row
       .col-md-12
-        %h6 
+        %h6
           = link_to "+ Adicionar dependente", new_cadastre_dependent_path(@cadastre), remote: true
         %table.table.table-bordered.table-striped
           %thead
@@ -18,13 +18,13 @@
               %th Parentesco
               %th
           %tbody
-            - if @cadastre.dependents.present? 
+            - if @cadastre.dependents.present?
               - @cadastre.dependents.order(:name).each do |dependent|
                 %tr{class: "row-dependent-#{dependent.id}"}
                   %td= dependent.name
-                  %td= dependent.cpf
-                  %td= dependent.income
-                  %td= dependent.kinship.name
+                  %td= dependent.cpf.format_cpf rescue t(:no_info)
+                  %td= number_to_currency dependent.income rescue t(:no_info)
+                  %td= dependent.kinship.name rescue t(:no_info)
                   %td.collapsing
                     .dropdown
                       %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}

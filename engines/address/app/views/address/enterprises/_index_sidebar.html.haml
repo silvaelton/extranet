@@ -7,11 +7,11 @@
           %i.fa.fa-minus
     .card-body
       = simple_form_for url_for, method: :get, remote: true do |f|
-        = f.input :by_name, as: :string, label: "Por nome", input_html: {  name: :by_name, value: params[:by_name]}
-        = f.input :by_edital, as: :string, label: "Por edital", input_html: { name: :by_acron, value: params[:by_edital] }
-        = f.input :by_process, as: :string, label: "Por processo", input_html: { name: :by_acron, value: params[:by_process] }
-        = f.input :by_status, as: :select, label: "Por situação", input_html: { name: :by_acron, value: params[:by_status] }, prompt: 'Ativo?'
-        = f.input :by_company, collection: Address::EnterpriseCompany.all, label: "Por empresa", input_html: { name: :by_company }, prompt: 'Selecione'
+        = f.input :by_name, as: :string, label: "Por nome", selected: params[:by_name], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_name'}, placeholder: 'Digite o nome'
+        = f.input :by_edital, as: :string, label: "Por edital", selected: params[:by_edital], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_edital'}, placeholder: 'Digite o edital'
+        = f.input :by_process, as: :string, label: "Por processo", selected: params[:by_process], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_process'}, placeholder: 'Digite o processo'
+        = f.input :by_status, as: :select, label: "Por situação", selected: params[:by_status], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_status'}
+        = f.input :by_company, collection: Address::EnterpriseCompany.all, label: "Por empresa", selected: params[:by_company], include_blank: t(:include_blank), input_html: { onchange: "Rails.fire(this.form, 'submit');", name: 'by_company'}
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', remote: true
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block'

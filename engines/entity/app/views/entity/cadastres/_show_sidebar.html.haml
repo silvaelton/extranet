@@ -10,6 +10,7 @@
       %hr.divider
         = link_to "Atualizar informações (Geral)", entity.edit_cadastre_path(@entity), remote: true
         = link_to "Atualizar dados de contato", "#"
+        = link_to "Atualizar senha", entity.edit_cadastre_cadastre_password_path(@entity), remote: true
         = link_to "Atualizar situação", entity.edit_cadastre_path(@entity), remote: true
       %hr.divider
         = link_to "Atualizar presidencia", "#"

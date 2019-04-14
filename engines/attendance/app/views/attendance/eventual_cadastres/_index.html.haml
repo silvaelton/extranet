@@ -19,7 +19,7 @@
               %td= eventual.name
               %td
                 = link_to "#{eventual.cpf.format_cpf}", candidate.cadastre_path(eventual.id), target:'_blank'
-              %td= eventual.current_situation
+              %td= eventual.presenter.current_situation_name
               %td= eventual.created_at.format_date
               %td.collapsing
                 .dropdown
