@@ -6,6 +6,6 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
-      = link_to "Adicionar permissão", pivotal.new_system_engine_engine_permission_path(@engine), remote: true
-      %hr.divider
-      = link_to "Voltar para listagem", pivotal.system_engines_path
+      = link_to "Voltar para gestão de usuários", pivotal.users_path
+      = link_to "Gestão de engines", pivotal.system_engines_path
+

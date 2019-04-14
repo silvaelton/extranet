@@ -36,7 +36,7 @@
                   = link_to "Editar", edit_user_path(user), class: 'dropdown-item', remote: true
                   = link_to (user.status ? "Inativar" : "Ativar"), inactivate_path(id: user), class: 'dropdown-item', remote: true
                   = link_to "Menus", user_user_navs_path(user), class: 'dropdown-item', remote: true
-                  = link_to "Permissões", user_user_permissions_path(user), class: 'dropdown-item', remote: true
+                  = link_to "Permissões", user_user_permissions_path(user), class: 'dropdown-item'
                   = link_to "Resetar senha", reset_password_path(id: user), class: 'dropdown-item', remote: true
       %tfoot
         %tr

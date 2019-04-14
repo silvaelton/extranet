@@ -21,8 +21,13 @@
               %td= engine_permission.url
               %td.collapsing= engine_permission.status.status_format
               %td.collapsing
-                = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, pivotal.edit_system_engine_engine_permission_path(@engine, engine_permission), remote: true, class: 'btn btn-info btn-icon btn-sm', pivotal: { disable_with: t(:edit_engine_engine_permission_path)}
-                = link_to "<i class='fa fa-trash'></i>".html_safe, pivotal.system_engine_engine_permission_path(@engine, engine_permission), method: :delete, remote: true, class: 'btn btn-danger btn-icon pivotal-engine_engine_permission_path', data: { confirm: t(:confirm)}
+                .dropdown
+                  %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                    %i.fa.fa-cog
+                    %i.ti-angle-down
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
+                    = link_to "Editar", pivotal.edit_system_engine_engine_permission_path(@engine, engine_permission), remote: true, class: 'dropdown-item', pivotal: { disable_with: t(:edit_engine_engine_permission_path)}
+                    = link_to "Excluir", pivotal.system_engine_engine_permission_path(@engine, engine_permission), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
         - else
           %tr
             %td{colspan: 3}
