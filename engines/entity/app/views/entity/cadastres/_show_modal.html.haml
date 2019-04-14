@@ -16,7 +16,7 @@
           %h6= @entity.presenter.name
           %h6= @entity.presenter.cnpj
           .badge.badge-success
-            Credenciada
+            = @entity.situation.name rescue t(:no_info)
       .row.mt-4
         .col-12
 
@@ -28,7 +28,12 @@
                 %th Nome
                 %th CPF
             %tbody
-              %tr
+              - if @entity.presidents.present?
+                - @entity.presidents.each do |presi|
+                  %tr
+                    %td= presi.name
+                    %td= presi.cpf
+              - else
                 %td{colspan: 2}
                   %i Nenhum presidente vínculado.
       .row
@@ -41,8 +46,14 @@
                 %th CPF
                 %th Cargo
             %tbody
-              %tr
-                %td{colspan: 3}
+              - if @entity.members.present?
+                - @entity.members.each do |member|
+                  %tr
+                    %td= member.name
+                    %td= member.cpf
+                    %td= member.job.name
+              - else
+                %td{colspan: 2}
                   %i Nenhum membro vínculado.
       .row
         .col-12

@@ -5,6 +5,8 @@ Entity::Engine.routes.draw do
     resources :members, path: 'membros'
     resources :presidents, path: 'presidentes'
     resources :cadastre_activities, path: 'cadastro-atividades'
+    resources :cadastre_audits
+    resources :cadastre_passwords
   end
 
   resources :cadastre_situations, path: 'cadastro-situacoes'
@@ -19,7 +21,6 @@ Entity::Engine.routes.draw do
   end
 
   resources :provisional_cadastres, path: 'cadastro-eventuais'
-  resources :audits, path: 'atividades'
 
   resources :apps, path: 'aplicativo'
 end

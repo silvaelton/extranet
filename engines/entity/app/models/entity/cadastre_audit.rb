@@ -1,6 +1,6 @@
-require_dependency "support/candidate/cadastre_activity"
+require_dependency "support/audit"
 
-module Candidate
+module Entity
   class CadastreAudit < Support::Audit
 
     belongs_to :user, class_name: 'Pivotal::User', foreign_key: :user_id
