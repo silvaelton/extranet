@@ -14,7 +14,7 @@
     .col-3
       = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: t(:include_blank)
     .col-3
-      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: t(:include_blank)
+      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), label_method: :full_name, include_blank: t(:include_blank)
 
   .row
     .col-4

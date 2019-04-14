@@ -20,7 +20,7 @@ module Attendance
 
     validate  :program_allow?
     validate  :cpf_valid?
-    validate :password_equal
+    validate  :password_equal
     
     after_create :eventual_situation
 
@@ -78,10 +78,6 @@ module Attendance
       end
 
     end
-
-    def confirmation
-        self.password_confirmation = BCrypt::Password.create(self.password_confirmation)
-      end
 
     def cpf_valid?
       candidate_cadastre = Candidate::Cadastre.find_by(cpf: self.cpf)

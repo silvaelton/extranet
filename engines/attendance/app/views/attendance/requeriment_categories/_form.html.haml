@@ -1,9 +1,26 @@
 = simple_form_for @requeriment_category, remote: true do |f|
-  = f.input :name
-  = f.input :description
-  = f.input :outside_cadastre, as: :select, include_blank: false
-  = f.input :program, as: :select, include_blank: false
-  = f.input :program_id, as: :string
-  = f.input :status, as: :select, include_blank: false
+  = f.input :name, placeholder: 'Informe o nome'
+  = f.input :description, placeholder: "informe uma descrição"
+  = f.input :outside_cadastre, as: :select, include_blank: false, input_html: { id: "outside_cadastre" } 
+  
+  #outside_cadastre_content{style: "display: #{f.object.outside_cadastre? ? 'none' : 'block'}"}
+    = f.input :program_id, as: :string
+    = f.input :situation, as: :select, include_blank: t(:include_blank), input_html: { id: "situation" } 
+    
+    #situation_id{style: "display: #{f.object.situation ? 'block' : 'none'}"}
+      = f.input :situation_id, as: :string
+
+  .row
+    .col-4
+      = f.input :status, as: :select, include_blank: false
   %hr.divider
   = f.button :submit, class: 'btn btn-success'
+
+:javascript
+  $("#situation").on("change", function() {
+    $("#situation_id").toggle();
+  })
+  
+  $("#outside_cadastre").on("change", function() {
+    $("#outside_cadastre_content").toggle();
+  })

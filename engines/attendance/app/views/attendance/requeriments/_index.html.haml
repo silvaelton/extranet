@@ -1,29 +1,31 @@
 .card
   .card-body.card-header.border-left-yellow
     .card-title 
-      Listando (#{@requeriments.count}) registro(s)
-      .float-right.group-action
-        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
+      Listando (#{@requeriments_all.count}) registro(s)
+
 
   .card-body
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
-          %th Nº 
-          %th Nome
-          %th Descrição
           %th Situação
+          %th Data
+          %th Protocolo
+          %th Nome
+          %th CPF
+          %th Categoria
       %tbody
         - if @requeriments.present?
           - @requeriments.each do |requeriment|
             %tr
-              %td.collapsing= requeriment.id
+              %td.collapsing= link_to (requeriment.attendant_answer? ? "Respondido" : (requeriment.cancelled? ? "Cancelado" : "Pendente")), attendance.requeriment_path(requeriment), remote: true
+              %td.collapsing= link_to requeriment.created_at.format_date, attendance.requeriment_path(requeriment), remote: true
+              %td.collapsing= link_to requeriment.id, attendance.requeriment_path(requeriment), remote: true
+              %td= link_to requeriment.name.mb_chars.upcase, attendance.requeriment_path(requeriment), remote: true
               %td.collapsing= link_to requeriment.cpf.format_cpf, attendance.requeriment_path(requeriment), remote: true
-              %td= requeriment.name
-              %td.collapsing= requeriment.category.name rescue t(:no_info)               
+              %td.collapsing= requeriment.requeriment_category.name                
 
         - else
           %tr
-            %td
+            %td{colspan: 6}
               Nenhum requerimento listado.

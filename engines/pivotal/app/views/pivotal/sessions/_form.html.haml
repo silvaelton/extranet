@@ -1,4 +1,4 @@
-= simple_form_for @session, remote: true, html: { id: 'form' } do |f|
+= simple_form_for @session, html: { id: 'form' } do |f|
   - if @session.errors.any?
     .alert.alert-danger.text-center
       Matrícula ou senha inválidos.
