@@ -9,6 +9,9 @@ Entity::Engine.routes.draw do
     resources :cadastre_passwords
   end
 
+  resources :update_contacts, path: 'atualizacao-contatos'
+  resources :update_situations, path: 'atualizacao-situacao'
+
   resources :cadastre_situations, path: 'cadastro-situacoes'
   resources :enterprises, path: 'vinculo-empreendimentos'
   resources :member_jobs, path: 'diretoria-cargos'

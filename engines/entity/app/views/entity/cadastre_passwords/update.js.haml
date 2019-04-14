@@ -1,4 +1,4 @@
-- if @cadastre_password.errors.any?
+- if @entity_password.errors.any?
   $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
 - else
   $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
