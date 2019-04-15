@@ -5,8 +5,6 @@ module Address
     attr_accessor :enterprise_id
     belongs_to :city, required: false, class_name: 'Support::Common::City'
 
-    has_many
-
     scope :by_city,  ->(city) { where(city_id: city) }
     scope :by_burgh, ->(burgh) { where(burgh: burgh) }
     scope :by_group, ->(group) { where(group: group) }

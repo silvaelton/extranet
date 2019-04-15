@@ -5,7 +5,7 @@
       .float-right.group-action
         = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
         = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
-  
+
   .card-body
     %table.table.table-bordered.table-striped.table-celled
       %thead
@@ -13,14 +13,14 @@
           %td Nome
           %td Tipo de categoria
           %td Status
-          %td 
+          %td
       %tbody
         - if @post_categories.present?
           - @post_categories.each do |post_category|
             %tr{class: "row-post_category-#{post_category.id}"}
               %td= post_category.name
-              %td= post_category.category_type.name
-              %td= post_category.status.status_format
+              %td= post_category.category_type.name rescue t(:no_info)
+              %td= post_category.status.status_format rescue t(:no_info)
               %td.collapsing
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
@@ -33,4 +33,3 @@
           %tr
             %td{colspan: 4}
               %i Nenhum registro encontrado.
-                  
