@@ -34,7 +34,7 @@ module Attendance
 
     def set_params
       params.require(:document_type).permit(:name, :status, :description, :observation, :label,
-                                            :code, :help_text, :sei_tranning_id, :sei_production_id)
+                                            :code, :help_text, :sei_tranning_id, :sei_production_id, :min_file)
     end
 
     def set_document_types

@@ -36,24 +36,14 @@
       .col-md-12
         = f.input :filter_convocation_id, as: :string, placeholder: "Separe os ID's com (;)"
       %hr/
-  .row 
-    .col-md-3 
-      = f.input :filter_program, as: :select, include_blank: false, input_html: { class: 'collapse-input', data: { collapse_target: "#program-content"}}
-      
-  #program-content{style: "display: #{f.object.filter_program ? "block" : "none"}"}
-    .row
-      .col-md-12
-        = f.input :filter_program_id, as: :string, placeholder: "Separe os ID's com (;)"
-    %hr/
+  .row
+    .col-md-12
+      = f.input :filter_program_id, as: :string, placeholder: "Separe os ID's com (;)"
+  %hr/
 
-  .row 
-    .col-md-3 
-      = f.input :filter_sub_program, as: :select, include_blank: false , input_html: { class: 'collapse-input', data: { collapse_target: "#subprogram-content"}}     
-
-  #subprogram-content{style: "display: #{f.object.filter_sub_program ? "block" : "none"}"}
-    .row
-      .col-md-12
-        = f.input :filter_sub_program_id, as: :string, placeholder: "Separe os ID's com (;)"
+  .row
+    .col-md-12
+      = f.input :filter_sub_program_id, as: :string, placeholder: "Separe os ID's com (;)"
   .row 
     .col-md-3
       = f.input :filter_sql, as: :select, include_blank: false, input_html: { class: 'collapse-input', data: { collapse_target: "#sql-content"}}

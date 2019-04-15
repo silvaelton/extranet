@@ -2,9 +2,6 @@
   .card-body.card-header.border-left-yellow
     .card-title 
       Listando (#{@document_types.count}) registro(s)
-      .float-right.group-action
-        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
 
   .card-body
     %table.table.table-bordered.table-striped.table-celled
@@ -14,6 +11,7 @@
           %th Nome
           %th Código
           %th Introdução
+          %th.collapsing Min Arquivos
           %th Status
           %th
       %tbody
@@ -24,6 +22,7 @@
               %td= document_type.name
               %td= document_type.code
               %td= document_type.introduction
+              %td= document_type.min_file
               %td.collapsing= document_type.status.status_format
               %td.collapsing
                 .dropdown

@@ -14,13 +14,7 @@
     .col-3
       = f.input :program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: t(:include_blank)
     .col-3
-<<<<<<< HEAD
-      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), label_method: :full_name, include_blank: t(:include_blank)
-
-=======
-      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), include_blank: t(:include_blank)
-  - # TODO: Verficacao sobre ID correto
->>>>>>> b3e84ad4e7cbe38397a830f9924e748f956cb9f2
+      = f.input :convocation_id, as: :select, collection: Candidate::Convocation.status_active.order(:id), label_method: :id, include_blank: t(:include_blank)
   .row
     .col-3
       = f.input :situation_id, as: :select, collection: Candidate::SituationType.where('id in (2,11)').status_active.order(:id), include_blank: t(:include_blank)
