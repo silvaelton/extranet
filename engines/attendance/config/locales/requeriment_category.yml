@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/requeriment_category': "categoria"
+    attributes:
+      'attendance/requeriment_category':
+        name: "Nome"
+        description: "Descrição"
+        outside_cadastre: "Cadastro externo"
+        program_id: "Programas"
+        situation: "Filtra por situação cadastral"
+        situation_id: "Situações"
+        status: "Ativo?"

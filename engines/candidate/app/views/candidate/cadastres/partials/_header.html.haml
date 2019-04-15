@@ -8,21 +8,22 @@
         .col-8
           .row
             .col-12
-              %p.title-sm= @cadastre.program_id
+              %p.title-sm= @cadastre.presenter.current_program_name
               %p.title 
                 = @cadastre.name.upcase
-                = link_to "#", class: 'btn-icon bookmark-link' do
-                  %i.far.fa-heart 
               %p.title-sm= @cadastre.cpf.format_cpf
               %p.title-sm 
-                %span.badge.badge-primary{title: 'Possui condição especial'}
-                  %i.fa.fa-wheelchair
-                
-                %span.badge.badge-warning{title: 'Idoso'}
-                  + 60
 
-                %span.badge.badge-danger{title: 'Possui ocorrências não resolvidas'}
-                  %i.fa.fa-exclamation-triangle
+                - if @cadastre.special_condition
+                  %span.badge.badge-primary{title: 'Possui condição especial'}
+                    %i.fa.fa-wheelchair
+                  
+                - if @cadastre.age >=60
+                  %span.badge.badge-warning{title: 'Idoso'}
+                    + 60
+
+                /%span.badge.badge-danger{title: 'Possui ocorrências não resolvidas'}
+                / %i.fa.fa-exclamation-triangle
 
         .col-4
           %table.table.table-striped.table-bordered

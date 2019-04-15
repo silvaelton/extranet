@@ -23,7 +23,7 @@
                 %small ID: #{cadastre.id}
                 %br/
                 %h6
-                  %b= link_to cadastre.name, candidate.cadastre_path(cadastre), remote: true
+                  %b= link_to cadastre.name, candidate.cadastre_path(cadastre)
               %td.collapsing= cadastre.cpf.format_cpf
               %td.collapsing
                 Situação
