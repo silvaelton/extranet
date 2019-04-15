@@ -21,7 +21,9 @@ module Address
       @unit.update(set_params)
     end
 
-    def show; end
+    def show
+      @unit_image = @unit.unit_images.new
+    end
 
     private
 

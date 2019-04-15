@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    models:
+      'entity/cadastre' : "Entidade"
+    attributes:
+      'entity/cadastre':
+        address: "Endereço"
+        name: "Nome"
+        cnpj: "Cnpj"
+        acron: "Sigla"
+        status: "Ativo?"
+        lat: "Latitude"
+        lng: "Longitude"
+        observation: "Observação"
+        address_complement: "Complemento"
+        address_number: "Número"
+        cep: "Cep"
+        city_id: "Cidade"
+        telephone: "Telefone"
+        telephone_optional: "Telefone(Opcional)"
+        emial: "E-mail"
+        cell_phone: "Celular"

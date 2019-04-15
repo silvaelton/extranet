@@ -3,9 +3,13 @@ require_dependency 'support/address/unit'
 module Address
   class Unit < Support::Address::Unit
     attr_accessor :enterprise_id
+
     belongs_to :city, required: false, class_name: 'Support::Common::City'
 
-    has_many
+    has_many :unit_activities
+    has_many :unit_registries
+    has_many :unit_labels
+    has_many :unit_images
 
     scope :by_city,  ->(city) { where(city_id: city) }
     scope :by_burgh, ->(burgh) { where(burgh: burgh) }

@@ -1,0 +1,38 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      %a.collapsing-content-link{href:"javascript:void(0)"}
+        1. Atividade (#{@unit.unit_activities.count})
+  .card-body.unit-activity-display{style: 'display: none'}
+    .row
+      .col-md-12
+        %h6
+          = link_to "+ Adicionar observação", address.new_unit_unit_activity_path(@unit), remote: true
+        %table.table.table-bordered.table-striped
+          %thead
+            %tr
+              %th Tipo
+              %th Usuario
+              %th Descrição
+              %th Documento
+              %th
+          %tbody
+            - if @unit.unit_activities.present?
+              - @unit.unit_activities.order(created_at: :desc).each do |unit_activity|
+                %tr{class: "row-activity-#{unit_activity.id}"}
+                  %td= unit_activity.actvity_type.name rescue t(:no_info)
+                  %td= unit_activity.user.name rescue t(:no_info)
+                  %td= unit_activity.description
+                  %td= link_to "http://www.codhab.df.gov.br#{unit_activity.document.to_s}", unit_activity.document.to_s, target: '_blank'
+                  %td.collapsing
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Editar", address.edit_unit_unit_activity_path(@unit, unit_activity), remote: true, class: 'dropdown-item'
+                        = link_to "Excluir", address.unit_unit_activity_path(@unit, unit_activity), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

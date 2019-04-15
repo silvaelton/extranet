@@ -1,0 +1,13 @@
+= simple_form_for [@unit, @unit_activity], remote: true do |f|
+  .row
+    .col-6
+      = f.input :actvity_type_id, collection: Address::ActivityType.status_active, include_blank:'Selecione...'
+    .col-6
+      = f.input :document, as: :file
+  .row
+    .col-12
+      = f.input :description, placeholder: 'Degite uma observação'
+  %hr.divider
+    .row
+      .col-6
+        = f.button :submit, class: 'btn btn-success'

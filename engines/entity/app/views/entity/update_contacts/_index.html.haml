@@ -1,0 +1,28 @@
+%h6 
+  = link_to "<i class='fas fa-pencil-alt'></i>".html_safe, entity.edit_update_contact_path(@entity), remote: true
+  Dados de contato / Localização
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th Telefone
+      %th Telefone (secundário)
+      %th Celular
+      %th Email
+  %tbody
+    %tr
+      %td= @entity.telephone
+      %td= @entity.telephone_optional
+      %td= @entity.cell_phone
+      %td= @entity.email
+
+%table.table.table-bordered.table-striped.table-celled
+  %thead
+    %tr
+      %th CEP
+      %th Cidade
+      %th Endereço
+  %tbody
+    %tr
+      %td= @entity.cep
+      %td= @entity.city_id
+      %td= @entity.address      

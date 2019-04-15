@@ -1,0 +1,11 @@
+= simple_form_for [@unit, @unit_label], remote: true do |f|
+  .row
+    .col-12
+      = f.input :label_id, collection: Address::Label.status_active, include_blank:'Selecione...'
+  .row
+    .col-12
+      = f.input :observation, placeholder: 'Degite uma observação'
+  %hr.divider
+    .row
+      .col-6
+        = f.button :submit, class: 'btn btn-success'
