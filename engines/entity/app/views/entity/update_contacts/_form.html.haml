@@ -1,0 +1,28 @@
+= simple_form_for @update_contact, remote: true do |f|
+  
+  .row
+    .col-6
+      = f.input :address, as: :string, placeholder: 'Digite o endereço'
+    .col-6
+      = f.input :address_complement, as: :string, placeholder: 'Digite o complemento'
+    
+  .row
+    .col-4
+      = f.input :cep, as: :string, placeholder: 'Digite o CEP'
+    .col-4 
+      = f.input :city_id, collection: Support::Common::City.federal_district, include_blank: 'Selecione...'
+    .col-4
+      = f.input :telephone, as: :string, placeholder: 'Digite o telefone'
+      
+  .row
+    .col-6 
+      = f.input :email, as: :string, placeholder: 'Digite o e-mail'
+    .col-3
+      = f.input :telephone_optional, as: :string, placeholder: 'Digite o telefone(Opcional)'
+    .col-3
+      = f.input :cell_phone, as: :string, placeholder: 'Digite o celular'
+
+  %hr.divider
+  .row
+    .col-12
+      = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

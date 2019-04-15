@@ -17,6 +17,10 @@ Address::Engine.routes.draw do
 
   resources :units, path: 'unidades' do
     resources :bookings, path: 'reservas', only: %i[new create]
+    resources :unit_activities, path: 'observacoes'
+    resources :unit_labels, path: 'etiqueta'
+    resources :unit_registries, path: 'registro'
+    resources :unit_images, path: 'imagens'
   end
 
   resources :unit_details, path: 'detalhes'

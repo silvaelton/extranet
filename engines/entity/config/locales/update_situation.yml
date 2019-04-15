@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      'entity/update_situation' : "Situação"
+    attributes:
+      'entity/update_situation':
+        situation_id: "Situação"

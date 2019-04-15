@@ -1,0 +1,10 @@
+- if @unit_image.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".image-content").html("#{escape_javascript(render 'address/units/partials/image')}");
+  $(".unit-image-display").css('display','block');
+  $(".row-image-#{@unit_image.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  
+update_js();
+ 

@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: production
+  database: development
 
 test:
   <<: *default

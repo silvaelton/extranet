@@ -1,0 +1,9 @@
+- if @unit_registry.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".registry-content").html("#{escape_javascript(render 'address/units/partials/registry')}");
+  $(".unit-registry-display").css('display','block');
+  $(".row-registry-#{@unit_registry.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+update_js();
+ 
