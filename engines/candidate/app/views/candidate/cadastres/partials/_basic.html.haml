@@ -1,7 +1,7 @@
 
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
         1. Informações básicas
   .card-body.basic-display{style: 'display: none'}
@@ -16,20 +16,20 @@
               %th Nome
               %th CPF
               %th RG
-              %th.collapsing RG ORG
+              %th.collapsing Expedidor
               %th.collapsing RG UF
               %th.collapsing Data de nascimento
               %th Idade
           %tbody
             %tr
-              %td.collapsing 1
-              %td OSVALDO PEREIRA DA CUNHA
-              %td.collapsing 610.211.991-68
-              %td.collapsing 454654
-              %td.collapsing SSP 
-              %td.collapsing DF
-              %td.collapsing Sem informação
-              %td.collapsing 65 ano(s)
+              %td.collapsing= @cadastre.id
+              %td= @cadastre.name
+              %td.collapsing= @cadastre.cpf.format_cpf rescue t(:no_info)
+              %td.collapsing= @cadastre.rg
+              %td.collapsing= @cadastre.rg_org
+              %td.collapsing= @cadastre.rg_uf.acronym rescue t(:no_info)
+              %td.collapsing= @cadastre.born.format_date rescue t(:no_info)
+              %td.collapsing= @cadastre.age rescue t(:no_info)
     .row
       .col-12
         %table.table.table-striped.table-bordered.table-celled
@@ -42,78 +42,81 @@
               %th.collapsing Condição especial
               %th NIS
               %th CID
-            
+
           %tbody
             %tr
-              %td.collapsing 
-              %td.collapsing R$ 2560.00
-              %td.collapsing R$ 3000.00
-              %td.collapsing 
+              %td.collapsing= @cadastre.civil_state.name rescue t(:no_info)
+              %td.collapsing= number_to_currency @cadastre.personal_income
+              %td.collapsing= number_to_currency @cadastre.family_income
+              %td.collapsing= @cadastre.place_birth
               %td.collapsing Deficiente físico
-              %td.collapsing 610.211.991-68
-              %td.collapsing 454654
+              %td.collapsing= @cadastre.nis
+              %td.collapsing= @cadastre.cid
 
         %table.table.table-striped.table-bordered.table-celled
           %thead
             %tr
               %th.collapsing Nome (Mãe)
-            
-          %tbody
-            %tr
-              %td.collapsing                
-    .row
-      .col-12
-        .title-xs.bold Cônjuge
-        .divider
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th.collapsing Nome
-              %th.collapsing CPF
-              %th.collapsing Dt. nascimento
-              %th.collapsing Idade
-              %th.collapsing RG
-              %th.collapsing RG ORG
-              %th.collapsing RG UF
-              %th.collapsing Condição especial
-            
-          %tbody
-            %tr
-              %td.collapsing OSVALDO PEREIRA DA CUNHA
-              %td.collapsing 610.211.991-68
-              %td.collapsing 01/01/2012
-              %td.collapsing 75 ano(s)
-              %td.collapsing 454654            
-              %td.collapsing SSP            
-              %td.collapsing DF            
-              %td.collapsing Não 
+              %th.collapsing Nome (Pai)
 
-    .row
-      .col-12
-        .title-xs.bold Dependentes
-        .divider
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th.collapsing Nome
-              %th.collapsing CPF
-              %th.collapsing Dt. nascimento
-              %th.collapsing Idade
-              %th.collapsing RG
-              %th.collapsing RG ORG
-              %th.collapsing RG UF
-              %th.collapsing Condição especial
-            
           %tbody
             %tr
-              %td.collapsing OSVALDO PEREIRA DA CUNHA
-              %td.collapsing 610.211.991-68
-              %td.collapsing 01/01/2012
-              %td.collapsing 75 ano(s)
-              %td.collapsing 454654            
-              %td.collapsing SSP            
-              %td.collapsing DF            
-              %td.collapsing Não   
+              %td.collapsing= @cadastre.mother_name
+              %td.collapsing= @cadastre.father_name
+    - if @cadastre.spouse.present?
+      .row
+        .col-12
+          .title-xs.bold Cônjuge
+          .divider
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th.collapsing Nome
+                %th.collapsing CPF
+                %th.collapsing Dt. nascimento
+                %th.collapsing Idade
+                %th.collapsing RG
+                %th.collapsing Expedidor
+                %th.collapsing RG UF
+                %th.collapsing Condição especial
+
+            %tbody
+              %tr
+                %td.collapsing= @cadastre.spouse.name rescue t(:no_info)
+                %td.collapsing= @cadastre.spouse.cpf.format_cpf rescue t(:no_info)
+                %td.collapsing= @cadastre.spouse.born.format_date rescue t(:no_info)
+                %td.collapsing= @cadastre.spouse.age rescue t(:no_info)
+                %td.collapsing= @cadastre.spouse.rg rescue t(:no_info)
+                %td.collapsing= @cadastre.spouse.rg_org rescue t(:no_info)
+                %td.collapsing= @cadastre.spouse.rg_uf.name rescue t(:no_info)
+                %td.collapsing Não
+    - if @cadastre.dependents.present?
+      .row
+        .col-12
+          .title-xs.bold Dependentes
+          .divider
+          %table.table.table-striped.table-bordered.table-celled
+            %thead
+              %tr
+                %th.collapsing Nome
+                %th.collapsing CPF
+                %th.collapsing Dt. nascimento
+                %th.collapsing Idade
+                %th.collapsing RG
+                %th.collapsing RG ORG
+                %th.collapsing RG UF
+                %th.collapsing Condição especial
+            %tbody
+              - @cadastre.dependents.each do |dependent|
+                %tr
+                  %td.collapsing= dependent.name
+                  %td.collapsing= dependent.cpf.format_cpf rescue t(:no_info)
+                  %td.collapsing= dependent.born.format_date rescue t(:no_info)
+                  %td.collapsing= dependent.age rescue t(:no_info)
+                  %td.collapsing= dependent.rg
+                  %td.collapsing= dependent.rg_org
+                  %td.collapsing= dependent.rg_uf.name rescue t(:no_info)
+                  %td.collapsing= dependent.special_condition_type.name rescue t(:no_info)
     .row
       .col-12
         .title-xs.bold Contato
@@ -126,12 +129,12 @@
               %th.collapsing UF
               %th.collapsing Endereço
               %th.collapsing Complemento
-            
+
           %tbody
             %tr
               %td.collapsing= @cadastre.cep
-              %td.collapsing= @cadastre.city.name rescue nil
-              %td.collapsing= @cadastre.state.name rescue nil
+              %td.collapsing= @cadastre.city.name rescue t(:no_info)
+              %td.collapsing= @cadastre.state.name rescue t(:no_info)
               %td.collapsing= @cadastre.address
               %td.collapsing= @cadastre.address_complement
         .divider
@@ -143,11 +146,11 @@
               %th.collapsing Celular
               %th.collapsing E-mail
               %th.collapsing Possui App?
-            
+
           %tbody
             %tr
               %td.collapsing= @cadastre.telephone
               %td.collapsing= @cadastre.telephone_optional
               %td.collapsing= @cadastre.celphone
               %td.collapsing= @cadastre.email
-              %td.collapsing Sim            
+              %td.collapsing Sim

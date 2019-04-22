@@ -3,14 +3,14 @@ module Entity
     before_action :set_entity
 
     def edit
-      @cadastre_password = Candidate::CadastrePassword.new
-      @cadastre_password.cadastre_id = params[:cadastre_id]
+      @entity_password = Entity::CadastrePassword.new
+      @entity_password.cadastre_id = params[:cadastre_id]
     end
     
     def update
-      @cadastre_password = Candidate::CadastrePassword.new(set_params)
-      @cadastre_password.cadastre_id = params[:cadastre_id]
-      @cadastre_password.save
+      @entity_password = Entity::CadastrePassword.new(set_params)
+      @entity_password.cadastre_id = params[:cadastre_id]
+      @entity_password.save
     end
 
     private

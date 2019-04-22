@@ -1,4 +1,4 @@
-= simple_form_for @cadastre_password, remote: true, url: entity.cadastre_cadastre_password_path(@entity), method: :put do |f|
+= simple_form_for @entity_password, remote: true, url: entity.cadastre_cadastre_password_path(@entity), method: :put do |f|
   = f.input :password, placeholder: "Informe uma nova senha"
   = f.input :password_confirmation, placeholder: "Informe uma nova senha"
   .row.mt-4

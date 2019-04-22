@@ -1,0 +1,37 @@
+= simple_form_for @unit, remote: true do |f|
+  .row
+    .col-md-6
+      = f.input :city_id, collection: Support::Common::City.federal_district, prompt: 'Selecione'
+  .row
+    .col-md-3
+      = f.input :acron_block, placeholder: 'Ex. QD, QNR'
+    .col-md-3
+      = f.input :block, placeholder: 'Digite a quadra'
+    .col-md-3
+      = f.input :acron_group, placeholder: 'Ex. CJ'
+    .col-md-3
+      = f.input :group, placeholder: 'Digite um conjunto'
+  .row
+    .col-md-3
+      = f.input :acron_unit, placeholder: 'Ex. LT, APT'
+    .col-md-3
+      = f.input :unit, placeholder: 'Digite o n°'
+    .col-md-3
+      = f.input :burgh, placeholder: 'Digite um bairro'
+    .col-md-3
+      = f.input :cep, placeholder: 'Digite um cep'
+  .row
+    .col-md-12
+      = f.input :complete_address, placeholder: 'Digite o endereço completo'
+  .row
+    .col-md-3
+      = f.input :area, placeholder: 'Ex. 250'
+    .col-md-3
+      = f.input :donate, as: :select, prompt: 'Selecione'
+    .col-md-3
+      = f.input :iptu_number, placeholder: 'Nº IPTU'
+    .col-md-3
+      = f.input :iptu_date, as: :string,  input_html: { class: 'date', value: (@unit.iptu_date) ? localize(f.object.iptu_date) : nil}
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

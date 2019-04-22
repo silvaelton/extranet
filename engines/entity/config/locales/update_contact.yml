@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      'entity/update_contact' : "Contatos"
+    attributes:
+      'entity/update_contact':
+        address: "Endereço"
+        address_complement: "Complemento"
+        cep: "Cep"
+        city_id: "Cidade"
+        telephone: "Telefone"
+        telephone_optional: "Telefone(Opcional)"
+        emial: "E-mail"
+        cell_phone: "Celular"

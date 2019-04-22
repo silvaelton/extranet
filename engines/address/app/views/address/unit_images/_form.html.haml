@@ -1,0 +1,7 @@
+= simple_form_for [@unit, @unit_image], url: unit_unit_images_path(@unit), method: :post, remote: true do |f|
+  .row
+    .col-1
+      = f.submit "Salvar", class: 'btn btn-success'
+    .col-4
+      = f.input :image, as: :file, label: false
+    

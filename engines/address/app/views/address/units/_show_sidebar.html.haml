@@ -11,8 +11,8 @@
       = link_to "Adicionar imagem", "#", class: 'filter-nav-item'
       = link_to "Adicionar observação", "#", class: 'filter-nav-item'
       = link_to "Adicionar etiqueta", "#", class: 'filter-nav-item'
-      = link_to "Editar detalhes imóvel", "#", class: 'filter-nav-item'
-      = link_to "Editar dados de cartório", "#", class: 'filter-nav-item'
+      = link_to "Editar detalhes imóvel", edit_unit_detail_path(@unit), remote: true, class: 'filter-nav-item'
+      = link_to "Editar dados de cartório", edit_office_path(@unit), remote: true, class: 'filter-nav-item'
       = link_to "Editar dados de registro", "#", class: 'filter-nav-item'
       %hr.divider
       = link_to "Distribuir", "#", class: 'filter-nav-item'

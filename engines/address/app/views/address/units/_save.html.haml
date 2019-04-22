@@ -1,0 +1,8 @@
+- if @unit.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+- else
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-type-#{@unit.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();

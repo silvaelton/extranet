@@ -3,7 +3,7 @@ require_dependency 'address/application_controller'
 module Address
   class UnitsController < ApplicationController
     before_action :set_units, only: %i[index]
-    before_action :set_unit,  only: %i[show]
+    before_action :set_unit,  only: %i[edit update show]
 
     has_scope :by_city
     has_scope :by_burgh
@@ -15,12 +15,27 @@ module Address
 
     def index; end
 
-    def show; end
+    def edit; end
+
+    def update
+      @unit.update(set_params)
+    end
+
+    def show
+      @unit_image = @unit.unit_images.new
+    end
 
     private
 
+    def set_params
+      params.require(:unit).permit(:block, :acron_block, :group, :acron_group, :acron_unit,
+                                   :unit, :complete_address, :cep, :burgh, :area, :donate, :iptu_date,
+                                   :iptu_number)
+    end
+
     def set_units
-      @pagy, @units = pagy(apply_scopes(Address::Unit.all))
+      @units_all = apply_scopes(Address::Unit.all)
+      @pagy, @units = pagy(@units_all)
     end
 
     def set_unit

@@ -1,6 +1,6 @@
 .card
   .card-body.card-header.border-left-yellow
-    .card-title 
+    .card-title
       Visão geral
   .header-content-new
     .card-body
@@ -44,7 +44,7 @@
               %tr
                 %td Deficiente
                 %td 126874596.5454
-                %td 12º            
+                %td 12º
 
       %hr.divider
       .row
@@ -63,23 +63,24 @@
               %tr
                 %td= @cadastre.presenter.current_situation_name
                 %td Ordem para publicação
-                %td= @cadastre.presenter.current_convocation.name rescue nil
-                %td 5454654.5454
-                %td R$ 2500.55
-
-          %p.title-xs.bold Vínculo(s) com empreendimento
-          .divider
-          %table.table.table-striped.table-bordered.table-celled
-            %thead
-              %tr
-                %th.collapsing Ùltima indicação
-                %th.collapsing Situação
-                %th Empreendimento
-            %tbody
-              %tr
-                %td.collapsing 12/01/2017
-                %td.collapsing Inativa em 13/01/2017
-                %td SAMABAIA H4 
+                %td= @cadastre.presenter.current_convocation.name rescue t(:no_info)
+                %td= @cadastre.presenter.current_pontuation.total rescue t(:no_info)
+                %td= number_to_currency @cadastre.family_income
+                  
+          - if @cadastre.presenter.last_indication.present?
+            %p.title-xs.bold Vínculo(s) com empreendimento
+            .divider
+            %table.table.table-striped.table-bordered.table-celled
+              %thead
+                %tr
+                  %th.collapsing Última indicação
+                  %th.collapsing Situação
+                  %th Empreendimento
+              %tbody
+                %tr
+                  %td.collapsing= @cadastre.presenter.last_indication.created_at.format_date rescue t(:no_info)
+                  %td.collapsing
+                  %td= @cadastre.presenter.last_indication.enterprise.name rescue t(:no_info)
 
           %table.table.table-striped.table-bordered.table-celled
             %thead
@@ -88,38 +89,37 @@
                 %th.collapsing Data de vínculo
             %tbody
               %tr
-                %td= link_to "Samabaia - XS 01 CJ A CASA 01", "#"        
+                %td= link_to "Samabaia - XS 01 CJ A CASA 01", "#"
                 %td.collapsing 01/01/2018
 
-          %p.title-xs.bold Ocorrência(s)
-          .divider
-          %table.table.table-striped.table-bordered.table-celled
-            %thead
-              %tr.tr-danger
-                %th.collapsing ID
-                %th.collapsing Data / Hora
-                %th.collapsing Descrição
-                %th.collapsing Usuário
-            %tbody
-              %tr
-                %td 1     
-                %td 1     
-                %td 1     
-                %td 1     
+          -# %p.title-xs.bold Ocorrência(s)
+          -# .divider
+          -# %table.table.table-striped.table-bordered.table-celled
+          -#   %thead
+          -#     %tr.tr-danger
+          -#       %th.collapsing ID
+          -#       %th.collapsing Data / Hora
+          -#       %th.collapsing Descrição
+          -#       %th.collapsing Usuário
+          -#   %tbody
+          -#     %tr
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1
 
-          %p.title-xs.bold Ùltimo atendimento
-          .divider
-          %table.table.table-striped.table-bordered.table-celled
-            %thead
-              %tr.tr-danger
-                %th.collapsing ID
-                %th.collapsing Data / Hora
-                %th.collapsing Descrição
-                %th.collapsing Usuário
-            %tbody
-              %tr
-                %td 1     
-                %td 1     
-                %td 1     
-                %td 1     
-                              
+          -# %p.title-xs.bold Último atendimento
+          -# .divider
+          -# %table.table.table-striped.table-bordered.table-celled
+          -#   %thead
+          -#     %tr.tr-danger
+          -#       %th.collapsing ID
+          -#       %th.collapsing Data / Hora
+          -#       %th.collapsing Descrição
+          -#       %th.collapsing Usuário
+          -#   %tbody
+          -#     %tr
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1

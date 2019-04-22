@@ -1,0 +1,34 @@
+.card
+  .card-body.card-header.border-left-yellow
+    .card-title
+      %a.collapsing-content-link{href:"javascript:void(0)"}
+        1. Imagens (#{@unit.unit_images.count})
+  .card-body.unit-image-display{style: 'display: none'}
+    .row
+      .col-md-12
+        %h6
+          = render 'address/unit_images/form'
+        %table.table.table-bordered.table-striped
+          %thead
+            %tr
+              %th imagem
+              %th Descrição
+              %th
+          %tbody
+            - if @unit.unit_images.present?
+              - @unit.unit_images.order(created_at: :desc).each do |unit_image|
+                %tr{class: "row-image-#{unit_image.id}"}
+                  %td= link_to "http://www.codhab.df.gov.br#{unit_image.image.to_s}", unit_image.image.to_s, target: '_blank'
+                  %td= unit_image.description
+                  %td.collapsing
+                    .dropdown
+                      %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                        %i.fa.fa-cog
+                        %i.ti-angle-down
+                      .dropdown-menu.dropdown-menu-left{"aria-labelledby" => "dropdownMenuButton"}
+                        = link_to "Editar", address.edit_unit_unit_image_path(@unit, unit_image), remote: true, class: 'dropdown-item'
+                        = link_to "Excluir", address.unit_unit_image_path(@unit, unit_image), method: :delete, remote: true, class: 'dropdown-item', data: { confirm: t(:confirm)}
+            - else
+              %tr
+                %td{colspan: 3}
+                  Nenhum assunto registrado.

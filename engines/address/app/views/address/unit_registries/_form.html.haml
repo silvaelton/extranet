@@ -1,0 +1,8 @@
+= simple_form_for [@unit, @unit_registry], remote: true, method: :post do |f|
+  .row
+    .col-12
+      = f.input :registry_type_id, collection: Address::RegistryType.status_active, include_blank:'Selecione...'
+  %hr.divider
+    .row
+      .col-6
+        = f.button :submit, class: 'btn btn-success'

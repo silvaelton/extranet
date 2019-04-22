@@ -1,0 +1,9 @@
+- if @unit_activity.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".activity-content").html("#{escape_javascript(render 'address/units/partials/activity')}");
+  $(".unit-activity-display").css('display','block');
+  $(".row-activity-#{@unit_activity.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+update_js();
+ 

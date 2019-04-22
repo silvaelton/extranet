@@ -1,0 +1,38 @@
+= simple_form_for @unit, remote: true do |f|
+  .row
+    .col-md-4
+      = f.input :unit_code, placeholder: 'Digite a matrícula'
+    .col-md-4
+      = f.input :notary_office, placeholder: 'Digite o cartório'
+    .col-md-4
+      = f.input :contract_office, placeholder: 'Digite o cartório'
+  .row
+    .col-md-3
+      = f.input :contract_date, as: :string,  input_html: { class: 'date', value: (@unit.contract_date) ? localize(f.object.contract_date) : nil}
+    .col-md-3
+      = f.input :code_date, as: :string,  input_html: { class: 'date', value: (@unit.code_date) ? localize(f.object.code_date) : nil}
+    .col-md-3
+      = f.input :petition_date, as: :string,  input_html: { class: 'date', value: (@unit.petition_date) ? localize(f.object.petition_date) : nil}
+    .col-md-3
+      = f.input :signature_date, as: :string,  input_html: { class: 'date', value: (@unit.signature_date) ? localize(f.object.signature_date) : nil}
+  .row
+    .col-md-3
+      = f.input :anoreg_date, as: :string,  input_html: { class: 'date', value: (@unit.anoreg_date) ? localize(f.object.anoreg_date) : nil}
+    .col-md-3
+      = f.input :devolution_date, as: :string,  input_html: { class: 'date', value: (@unit.devolution_date) ? localize(f.object.devolution_date) : nil}
+    .col-md-3
+      = f.input :requirement, placeholder: 'Digite um limite'
+    .col-md-3
+      = f.input :requirement_date, as: :string,  input_html: { class: 'date', value: (@unit.requirement_date) ? localize(f.object.requirement_date) : nil}
+  .row
+    .col-md-3
+      = f.input :declaratory_act_number, placeholder: 'Digite um limite'
+    .col-md-3
+      = f.input :declaratory_act_date, as: :string,  input_html: { class: 'date', value: (@unit.declaratory_act_date) ? localize(f.object.declaratory_act_date) : nil}
+    .col-md-3
+      = f.input :rejection_number, placeholder: 'Digite um limite'
+    .col-md-3
+      = f.input :rejection_date, as: :string,  input_html: { class: 'date', value: (@unit.rejection_date) ? localize(f.object.rejection_date) : nil}
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

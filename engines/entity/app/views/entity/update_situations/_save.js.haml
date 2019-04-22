@@ -1,0 +1,8 @@
+- if @update_situation.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".index-content").html("#{escape_javascript(render 'entity/cadastres/show')}");
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+
+update_js();
+ 

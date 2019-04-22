@@ -1,0 +1,9 @@
+- if @unit_label.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $(".label-content").html("#{escape_javascript(render 'address/units/partials/label')}");
+  $(".unit-label-display").css('display','block');
+  $(".row-label-#{@unit_label.id}").addClass('table-success');
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+update_js();
+ 

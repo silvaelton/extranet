@@ -75,17 +75,18 @@ module Brb
     end
 
     def set_update_params
-      params.require(:invoice).permit(:situation_id, :cpf, :name, :address, :city, :state_id, :cep, 
+      params.require(:invoice).permit(:situation_id, :cpf, :name, :address, :city, :state_id, :cep,
                                       :message, :bank_return, :payment, :status, :invoice_focus, :cnpj)
     end
 
     def set_invoices
-      @pagy, @invoices = pagy(apply_scopes(Brb::Invoice).all.order('created_at DESC'))
+      @invoices_all = apply_scopes(Brb::Invoice.order(created_at: :desc))
+      @pagy, @invoices = pagy(@invoices_all)
     end
 
     def set_invoice
       @invoice = Brb::Invoice.find(params[:id])
     end
-    
+
   end
 end

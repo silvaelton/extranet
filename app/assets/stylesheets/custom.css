@@ -1,5 +1,5 @@
 body {
-  background-color: #f6f8fd !important;
+  background-color: whitesmoke !important;
 }
 
 
@@ -179,6 +179,10 @@ table .dropdown a {
 
 
 #candidate-content .content {
+  margin-top: 15px;
+}
+
+#unit-content .content {
   margin-top: 15px;
 }
 

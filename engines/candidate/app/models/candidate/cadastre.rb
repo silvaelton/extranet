@@ -3,10 +3,12 @@ require_dependency "support/candidate/cadastre"
 module Candidate
   class Cadastre < Support::Candidate::Cadastre
 
-    belongs_to :city,       class_name: 'Support::Common::City'
-    belongs_to :state,      class_name: 'Support::Common::State'
-    belongs_to :program,    class_name: 'Support::Candidate::Program'
-    belongs_to :subprogram, class_name: 'Support::Candidate::Program'
+    belongs_to :city,        required: false, class_name: 'Support::Common::City'
+    belongs_to :state,       required: false, class_name: 'Support::Common::State'
+    belongs_to :program,     required: false, class_name: 'Support::Candidate::Program'
+    belongs_to :subprogram,  required: false, class_name: 'Support::Candidate::Program'
+    belongs_to :civil_state, required: false, class_name: 'Support::Common::CivilState'
+    belongs_to :rg_uf,       required: false, class_name: 'Support::Common::State', foreign_key: :rg_uf_id
 
     has_many :cadastre_situations
     has_many :cadastre_inheritors
