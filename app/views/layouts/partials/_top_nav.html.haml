@@ -6,7 +6,7 @@
   #search
     = simple_form_for url_for, url: candidate.search_cadastres_path, method: :get, remote: true do
       .input-group
-        %input.form-control{"aria-describedby" => "basic-addon2", "aria-label" => "Pesquisa", :placeholder => "Pesquisa", :type => "text"}/
+        %input.form-control{"aria-describedby" => "basic-addon2", "aria-label" => "Pesquisa CPF", :class => "cpf", :name => 'cpf', :placeholder => "Pesquisa", :type => "text"}/
         .input-group-append
           %button.btn.btn-primary.btn-sm{type:"submit"}
             %i.fa.fa-search
@@ -54,9 +54,6 @@
       .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdown"}
         %a.dropdown-item{:href => "#{pivotal.user_path(current_user)}"} Meu perfil
         %a.dropdown-item{:href => "#{pivotal.edit_password_path(current_user)}", :data => { :remote => true }} Alterar minha senha
-        .dropdown-divider
-        %a.dropdown-item{:href => "#{pivotal.user_bookmarks_path(current_user)}"} Favoritos
-        %a.dropdown-item{:href => "#"} Notificações
         .dropdown-divider
         %a.dropdown-item{:href => "#{pivotal.user_session_logs_path(current_user)}"} Histórico de acesso
         %a.dropdown-item{:href => "#{pivotal.user_logs_path(current_user)}"} Histórico de uso

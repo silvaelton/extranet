@@ -8,7 +8,10 @@ module Helpdesk
       @ticket_activity = @ticket.ticket_activities.new(set_params)
       @ticket_activity.attendant = (@ticket.user_id == current_user.id) ? false : true
       @ticket_activity.user_id   = current_user.id
-      @ticket_activity.save
+      
+      if @ticket_activity.save
+        @ticket_activity = @ticket.ticket_activities.new
+      end 
     end
 
     private

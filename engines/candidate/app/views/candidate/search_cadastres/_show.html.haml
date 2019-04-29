@@ -5,7 +5,7 @@
       %a.close
         %i.fas.fa-times
     .modal-body
-      - if @cadastre.nil?
+      - if !@cadastres.present?
         %p.text-center 
           Nenhum cadastro encontrado no CPF informado.
       - else
@@ -13,76 +13,21 @@
         %table.table.table-striped.table-bordered.table-celled
           %thead
             %tr
+              %th Tipo
               %th Nome
               %th CPF
               %th Situação cadastral
+              %th Programa
           %tbody
-            %tr
-              %td
-              %td
-              %td
-
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th Condição especial
-              %th Data de nascimento
-              %th Idade
-              %th Renda familiar
-              
-          %tbody
-            %tr
-              %td
-              %td
-
-        %p Cônjuge
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th Nome
-              %th CPF
-              %th Situação cadastral
-          %tbody
-            %tr
-              %td
-              %td
-              %td
-
-        %p Indicação
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th Nome
-              %th CPF
-              %th Situação cadastral
-          %tbody
-            %tr
-              %td
-              %td
-              %td                
-
-        %p Endereço vínculado
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th Nome
-              %th CPF
-              %th Situação cadastral
-          %tbody
-            %tr
-              %td
-              %td
-              %td    
-                                                            
-        %p Ocorrência
-        %table.table.table-striped.table-bordered.table-celled
-          %thead
-            %tr
-              %th Nome
-              %th CPF
-              %th Situação cadastral
-          %tbody
-            %tr
-              %td
-              %td
-              %td                             
+            - @cadastres.each do |cadastre|
+              %tr
+                %td.collapsing
+                  = cadastre.type_row_format
+                %td
+                  = link_to cadastre.name, candidate.cadastre_path(cadastre), title: cadastre.id
+                %td.collapsing
+                  = link_to  cadastre.cpf.format_cpf, candidate.cadastre_path(cadastre)
+                %td.collapsing
+                  = cadastre.situation_name rescue t(:no_info)
+                %td.collapsing
+                  = cadastre.program_name rescue t(:no_info)

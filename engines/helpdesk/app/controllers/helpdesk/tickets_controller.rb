@@ -3,13 +3,21 @@ require_dependency 'helpdesk/application_controller'
 module Helpdesk
   class TicketsController < ApplicationController 
     before_action :set_ticket, only: [:edit, :update, :destroy]
+    before_action :set_tickets
 
-    def index
-      @pagy, @tickets = pagy(Helpdesk::Ticket.by_current_user(current_user).order(created_at: :desc))
-    end
+    has_scope :by_id
+    has_scope :by_category_type
+    has_scope :by_category
+    has_scope :by_type
+    has_scope :by_situation
+    has_scope :by_requester_id
+    has_scope :by_attendant_id
+    
+    def index; end
     
     def show
       @ticket = Helpdesk::Ticket.find(params[:id])
+      @ticket_activity = @ticket.ticket_activities.new
     end
     
     def new
@@ -32,7 +40,6 @@ module Helpdesk
       @ticket.destroy
     end
 
-
     def answer
       @ticket = Helpdesk::Ticket.find(params[:ticket_id])
       @ticket.set_answer!(current_user.id)
@@ -49,6 +56,11 @@ module Helpdesk
 
     def set_ticket
       @ticket = Helpdesk::Ticket.find(params[:id])
+    end
+
+    def set_tickets
+      @tickets_all = apply_scopes(Helpdesk::Ticket.by_current_user(current_user)).order(created_at: :desc)
+      @pagy, @tickets = pagy(@tickets_all)
     end
       
   end

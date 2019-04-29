@@ -6,7 +6,7 @@ module Candidate
     def index
       cpf = params[:cpf].to_s.unformat_cpf
       
-      @cadastre = Candidate::Cadastre.find_by(cpf: cpf)
+      @cadastres = Candidate::CadastreUnionView.where(cpf: cpf)
     end
 
   end

@@ -18,7 +18,7 @@
                   %span.badge.badge-primary{title: 'Possui condição especial'}
                     %i.fa.fa-wheelchair
                   
-                - if @cadastre.age >=60
+                - if @cadastre.presenter.is_older?
                   %span.badge.badge-warning{title: 'Idoso'}
                     + 60
 
@@ -26,25 +26,20 @@
                 / %i.fa.fa-exclamation-triangle
 
         .col-4
-          %table.table.table-striped.table-bordered
-            %thead
-              %tr
-                %th Lista
-                %th Pontuação
-                %th Posição
-            %tbody
-              %tr
-                %td RII
-                %td 126874596.5454
-                %td 35º
-              %tr
-                %td Idoso
-                %td 126874596.5454
-                %td 12º
-              %tr
-                %td Deficiente
-                %td 126874596.5454
-                %td 12º
+          - if @cadastre.presenter.lists.present?
+            %table.table.table-striped.table-bordered
+              %thead
+                %tr
+                  %th Lista
+                  %th Pontuação
+                  %th Posição
+              %tbody
+                - @cadastre.presenter.lists.each do |list|
+                  %tr
+                    %td= @cadastre.presenter.list_name(list)
+                    %td= @cadastre.presenter.current_pontuation_total
+                    %td
+                
 
       %hr.divider
       .row
@@ -59,6 +54,8 @@
                 %th Convocação (Ativa)
                 %th Pontuação (Hoje)
                 %th Renda familiar
+                %th Condição especial
+                %th Idade
             %tbody
               %tr
                 %td= @cadastre.presenter.current_situation_name
@@ -66,6 +63,8 @@
                 %td= @cadastre.presenter.current_convocation.name rescue t(:no_info)
                 %td= @cadastre.presenter.current_pontuation.total rescue t(:no_info)
                 %td= number_to_currency @cadastre.family_income
+                %td= @cadastre.presenter.special_condition_format
+                %td= "#{@cadastre.age} ano(s)"
                   
           - if @cadastre.presenter.last_indication.present?
             %p.title-xs.bold Vínculo(s) com empreendimento

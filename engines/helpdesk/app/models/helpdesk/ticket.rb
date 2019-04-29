@@ -4,7 +4,7 @@ module Helpdesk
     belongs_to :ticket_situation_type, required: false, foreign_key: :situation_type_id
     belongs_to :ticket_type
     belongs_to :ticket_subject, class_name: 'Helpdesk::TicketTypeSubject', foreign_key: :subject_id
-    belongs_to :user, class_name: 'Pivotal::User'
+    belongs_to :user, class_name: '::Pivotal::User', foreign_key: :user_id
 
     has_many :ticket_attachments
     has_many :ticket_activities
@@ -18,7 +18,6 @@ module Helpdesk
       where(ticket_type_id: current_user_types(current_user))  
     }
 
-
     def set_answer user_id
       # 2 => Em execução
       update(situation_type_id: 2, attendant_id: user_id)
@@ -29,8 +28,12 @@ module Helpdesk
     end
 
     def presenter
-      call_presenter('Helpdesk::TicketPresenter', self)
+      call_presenter('::Helpdesk::TicketPresenter', self)
     end
 
+    def policy
+      call_presenter('::Helpdesk::TicketPolicy', self)
+    end
+    
   end
 end

@@ -9,7 +9,8 @@ Candidate::Engine.routes.draw do
   resources :occurrence_targets,         path: 'objetos-ocorrencias'
   resources :procedural_types,           path: 'processos-tipos'
   resources :situation_types,            path: 'situacao-tipos'
-  
+  resources :pontuation_types,           path: 'pontuacao-tipos'
+  resources :additional_pontuations,     path: 'pontuacao-adicional' 
   
   resources :convocations,  path: 'convocacoes'
   resources :lists,         path: 'listas'

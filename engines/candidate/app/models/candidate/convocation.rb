@@ -3,8 +3,8 @@ require_dependency "support/candidate/convocation"
 module Candidate
   class Convocation < Support::Candidate::Convocation
 
-    belongs_to :program, class_name: 'Candidate::Program'
-    belongs_to :sub_program, class_name: 'Candidate::Program'
+    belongs_to :program, required: false, class_name: 'Candidate::Program'
+    belongs_to :sub_program, required: false, class_name: 'Candidate::Program'
 
     validates :name, :start_date, :end_date, presence: true
 

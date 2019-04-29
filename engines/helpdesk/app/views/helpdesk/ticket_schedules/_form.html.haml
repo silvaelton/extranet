@@ -1,0 +1,10 @@
+= simple_form_for @ticket_schedule, url: helpdesk.ticket_schedules_path(@ticket), method: :post, remote: true do |f|
+  .row
+    .col-md-6
+      = f.input :schedule_date, as: :string, input_html: { class: 'date' }
+    .col-md-6
+      = f.input :schedule_hour, as: :string, input_html: { class: 'hour' }
+  .divider
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'  

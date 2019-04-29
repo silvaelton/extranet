@@ -6,8 +6,22 @@
     %tr
       %th.collapsing Data/Hora
       %th Conteúdo
-      %th
+      %th Anexo
+      %th Autor
   %tbody
-    %tr
-      %td{colspan: 3}
-        %i Nenhuma interação registrada.
+    - if @ticket.ticket_activities.present?
+      - @ticket.ticket_activities.order(created_at: :desc).each do |act|
+        %tr
+          %td.collapsing= act.created_at.format_datetime
+          %td= act.content 
+          %td
+            - if act.document?
+              = link_to "Baixar arquivo", act.document_url, target: '_blank'
+            - else
+              Sem anexo 
+          %td.collapsing= act.user.presenter.short_name rescue t(:no_info)
+
+    - else
+      %tr
+        %td{colspan: 3}
+          %i Nenhuma interação registrada.

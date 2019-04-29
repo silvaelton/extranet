@@ -2,11 +2,12 @@ Helpdesk::Engine.routes.draw do
   root 'tickets#index'
 
   resources :tickets, path: 'chamados' do
-    get 'get_ticket'
-    
-    get 'answer'
-    
-    resources :ticket_activities
+    resources :ticket_activities, as: :activities 
+    resources :ticket_schedules,  as: :schedules 
+    resources :ticket_transfers,  as: :transfers 
+    resources :ticket_answers,    as: :answers 
+    resources :ticket_closes,     as: :closes
+    resources :ticket_cancels,    as: :cancels
   end
 
   resources :ticket_situation_types, path: 'situacoes'

@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    modules:
+      'helpdesk/ticket_activity': 'interação'
+    attributes:
+      'helpdesk/ticket_activity':
+        content: "Conteúdo"
