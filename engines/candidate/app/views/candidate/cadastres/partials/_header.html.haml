@@ -8,42 +8,38 @@
         .col-8
           .row
             .col-12
-              %p.title-sm= @cadastre.program.name rescue t(:no_info)
-              %p.title
+              %p.title-sm= @cadastre.presenter.current_program_name
+              %p.title 
                 = @cadastre.name.upcase
-                = link_to "#", class: 'btn-icon bookmark-link' do
-                  %i.far.fa-star
               %p.title-sm= @cadastre.cpf.format_cpf
-              %p.title-sm
-                %span.badge.badge-primary{title: 'Possui condição especial'}
-                  %i.fa.fa-wheelchair
+              %p.title-sm 
 
-                %span.badge.badge-warning{title: 'Idoso'}
-                  + 60
+                - if @cadastre.special_condition
+                  %span.badge.badge-primary{title: 'Possui condição especial'}
+                    %i.fa.fa-wheelchair
+                  
+                - if @cadastre.presenter.is_older?
+                  %span.badge.badge-warning{title: 'Idoso'}
+                    + 60
 
-                %span.badge.badge-danger{title: 'Possui ocorrências não resolvidas'}
-                  %i.fa.fa-exclamation-triangle
+                /%span.badge.badge-danger{title: 'Possui ocorrências não resolvidas'}
+                / %i.fa.fa-exclamation-triangle
 
         .col-4
-          %table.table.table-striped.table-bordered
-            %thead
-              %tr
-                %th Lista
-                %th Pontuação
-                %th Posição
-            %tbody
-              %tr
-                %td RII
-                %td 126874596.5454
-                %td 35º
-              %tr
-                %td Idoso
-                %td 126874596.5454
-                %td 12º
-              %tr
-                %td Deficiente
-                %td 126874596.5454
-                %td 12º
+          - if @cadastre.presenter.lists.present?
+            %table.table.table-striped.table-bordered
+              %thead
+                %tr
+                  %th Lista
+                  %th Pontuação
+                  %th Posição
+              %tbody
+                - @cadastre.presenter.lists.each do |list|
+                  %tr
+                    %td= @cadastre.presenter.list_name(list)
+                    %td= @cadastre.presenter.current_pontuation_total
+                    %td
+                
 
       %hr.divider
       .row
@@ -58,6 +54,8 @@
                 %th Convocação (Ativa)
                 %th Pontuação (Hoje)
                 %th Renda familiar
+                %th Condição especial
+                %th Idade
             %tbody
               %tr
                 %td= @cadastre.presenter.current_situation_name
@@ -65,6 +63,9 @@
                 %td= @cadastre.presenter.current_convocation.name rescue t(:no_info)
                 %td= @cadastre.presenter.current_pontuation.total rescue t(:no_info)
                 %td= number_to_currency @cadastre.family_income
+                %td= @cadastre.presenter.special_condition_format
+                %td= "#{@cadastre.age} ano(s)"
+                  
           - if @cadastre.presenter.last_indication.present?
             %p.title-xs.bold Vínculo(s) com empreendimento
             .divider
@@ -90,34 +91,34 @@
                 %td= link_to "Samabaia - XS 01 CJ A CASA 01", "#"
                 %td.collapsing 01/01/2018
 
-          %p.title-xs.bold Ocorrência(s)
-          .divider
-          %table.table.table-striped.table-bordered.table-celled
-            %thead
-              %tr.tr-danger
-                %th.collapsing ID
-                %th.collapsing Data / Hora
-                %th.collapsing Descrição
-                %th.collapsing Usuário
-            %tbody
-              %tr
-                %td 1
-                %td 1
-                %td 1
-                %td 1
+          -# %p.title-xs.bold Ocorrência(s)
+          -# .divider
+          -# %table.table.table-striped.table-bordered.table-celled
+          -#   %thead
+          -#     %tr.tr-danger
+          -#       %th.collapsing ID
+          -#       %th.collapsing Data / Hora
+          -#       %th.collapsing Descrição
+          -#       %th.collapsing Usuário
+          -#   %tbody
+          -#     %tr
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1
 
-          %p.title-xs.bold Último atendimento
-          .divider
-          %table.table.table-striped.table-bordered.table-celled
-            %thead
-              %tr.tr-danger
-                %th.collapsing ID
-                %th.collapsing Data / Hora
-                %th.collapsing Descrição
-                %th.collapsing Usuário
-            %tbody
-              %tr
-                %td 1
-                %td 1
-                %td 1
-                %td 1
+          -# %p.title-xs.bold Último atendimento
+          -# .divider
+          -# %table.table.table-striped.table-bordered.table-celled
+          -#   %thead
+          -#     %tr.tr-danger
+          -#       %th.collapsing ID
+          -#       %th.collapsing Data / Hora
+          -#       %th.collapsing Descrição
+          -#       %th.collapsing Usuário
+          -#   %tbody
+          -#     %tr
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1
+          -#       %td 1

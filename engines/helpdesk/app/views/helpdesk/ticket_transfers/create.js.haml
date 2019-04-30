@@ -1,0 +1,7 @@
+- if @ticket_transfer.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".index-content").html("#{escape_javascript(render 'helpdesk/tickets/index')}");
+
+update_js();

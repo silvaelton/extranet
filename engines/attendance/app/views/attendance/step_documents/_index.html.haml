@@ -9,7 +9,7 @@
       %th
   %tbody
     - if @category_step.step_documents.present?
-      -@category_step.step_documents.reject(&:new_record?).each do |document|
+      - @category_step.step_documents.reject(&:new_record?).each do |document|
         %tr{class: "row-document-#{document.id}"}
           %td.collapsing= document.document_type.code
           %td= document.document_type.name

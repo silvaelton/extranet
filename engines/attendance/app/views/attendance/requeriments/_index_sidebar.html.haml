@@ -8,8 +8,8 @@
     .card-body
       = simple_form_for url_for, method: :get, remote: true, html: { id: 'attendance-filter'}  do |f|
         = f.input :by_cpf, label: "Por CPF", input_html: { name: 'by_cpf', value: params[:by_cpf], class: 'cpf'}
-        = f.input :by_situation, as: :select, label: "Por situação", collection: Pivotal::User.all, selected: params[:by_responsible], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_responsible'}, prompt: 'Selecione'
-        = f.input :by_category, as: :select, label: "Por categoria", collection: Attendance::RequerimentCategory.status_active, selected: params[:by_responsible], input_html: {onchange: "$('#attendance-filter').submit()", name: 'by_responsible'}, prompt: 'Selecione'
+        = f.input :by_situation, as: :select, label: "Por situação", collection: {"respondido" => true, "pendente" => false}, selected: params[:by_responsible], input_html: {name: 'by_situation'}, include_blank: t(:include_blank_all)
+        = f.input :by_category, as: :select, label: "Por categoria", collection: Attendance::RequerimentCategory.status_active, selected: params[:by_responsible], input_html: { name: 'by_category'}, include_blank: t(:include_blank_all)
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block'
         = link_to "Limpar filtro", attendance.requeriments_path, class: 'btn btn-dark btn-block'

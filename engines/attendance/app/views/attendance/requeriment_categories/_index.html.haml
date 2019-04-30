@@ -13,8 +13,9 @@
           %th Nome
           %th Descrição
           %th CPF externo
-          %th Programa(s)
-          %th Situação
+          %th Programas
+          %th Situações
+          %th Ativo?
           %th 
       %tbody
         - if @requeriment_categories.present?
@@ -23,7 +24,8 @@
               %td= category.name
               %td= category.description
               %td= category.outside_cadastre.status_format
-              %td= category.program ? category.program_id : 'Nenhum'
+              %td= category.program_id
+              %td= category.situation ? category.situation_id : 'Nenhuma situação'
               %td= category.status.status_format
               %td.collapsing
                 .dropdown

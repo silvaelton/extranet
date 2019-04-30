@@ -15,6 +15,7 @@
       %hr.divider
         = link_to "Atualizar presidencia", entity.new_cadastre_president_path(@entity), remote: true
         = link_to "Adicionar membro (Diretoria)", entity.new_cadastre_member_path(@entity), remote: true
-        = link_to "Víncular empreendimento"
       %hr.divider
         = link_to "Abrir aplicativo", entity.app_path(@entity)
+      %hr.divider
+        = link_to "Ficha cadastro", "#"

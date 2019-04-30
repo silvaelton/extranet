@@ -5,6 +5,9 @@
     .col-md-3
       = f.input :code, placeholder: 'Digite o código'
   .row
+    .col-md-4
+      = f.input :min_file, as: :string 
+  .row
     .col-md-12
       = f.input :introduction, placeholder: 'Digite uma observação', input_html: { class: 'tinymce' }
   .row

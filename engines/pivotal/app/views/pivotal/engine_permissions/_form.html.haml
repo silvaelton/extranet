@@ -5,12 +5,12 @@
     .col-4
       = f.input :code, placeholder: 'Digite o código'  
   .row
-    .col-4
+    .col-6
       = f.input :status, as: :select, include_blank: false
-    .col-4
-      = f.input :url, placeholder: 'Digito o link'
-    .col-4
+    .col-6
       = f.input :target_method, placeholder: ''
+    .col-6
+      = f.input :url, placeholder: 'Digito o link'
 
   %hr.divider
     = f.button :submit, class: 'btn btn-success'

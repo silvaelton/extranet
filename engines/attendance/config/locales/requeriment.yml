@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/requeriment': "requerimento"
+    attributes:
+      'attendance/requeriment':
+        attendant_answer_content: "Resposta"

@@ -1,0 +1,9 @@
+- if @requeriment.attendant_answer? 
+  %p
+    %small= @requeriment.attendant_answer_content
+  %small
+    %b Respondido por #{@requeriment.attendant.name} em #{@requeriment.attendant_answer_at.format_datetime}
+- else
+  = simple_form_for @requeriment, remote: true do |f|
+    = f.input :attendant_answer_content, as: :text, label: false
+    = f.button :submit, class: 'btn btn-success'

@@ -10,6 +10,7 @@
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
+          %td Nº
           %td Nome
           %td Justificativa
           %td Data de inicio
@@ -19,8 +20,9 @@
           %td 
       %tbody
         - if @convocations.present?
-          - @convocations.each do |convocation|
+          - @convocations.order(:id).each do |convocation|
             %tr{class: "row-convocation-#{convocation.id}"}
+              %td= convocation.id
               %td= convocation.name
               %td= convocation.justify
               %td= convocation.start_date.format_date.format_empty

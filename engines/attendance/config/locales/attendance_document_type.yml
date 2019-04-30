@@ -9,4 +9,5 @@ pt-BR:
         introduction: "Introdução"
         status: "Ativo?"
         help_text: "Texto de ajuda"
+        min_file: "Mínimo de arquivos"
 

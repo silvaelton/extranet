@@ -7,6 +7,9 @@
     .modal-body
       .row
         .col-md-12
+          %h6 Conteúdo      
+      .row
+        .col-md-12
           %table.table.table-striped.table-celled.table-bordered
             %thead
               %tr
@@ -16,7 +19,7 @@
             %tbody
               %tr
                 %td= @requeriment.created_at.format_date
-                %td                    
+                %td= (@requeriment.attendant_answer? ? "Respondido" : (@requeriment.cancelled ? "Cancelado" : "Pendente"))                  
                 %td= @requeriment.requeriment_category.name rescue t(:no_info)
 
           %table.table.table-striped.table-celled.table-bordered
@@ -51,11 +54,21 @@
               %tr
                 %td= @requeriment.content
       %hr/
-      %p Anexo(s)                  
+
+      .row
+        .col-md-12
+          %h6 Anexo(s)              
       .row
         .col-md-12
           - @requeriment.requeriment_attachments.each do |attach|
-            = link_to image_tag("http://localhost:3001/#{attach.attachment_url}",class: 'img-thumbnail'), "http://localhost:3001/#{attach.attachment_url}", data: { magnify: "gallery", capition: "Anexo"}
+            = link_to image_tag("http://localhost:3001/#{attach.attachment_url}",class: 'img-thumbnail', width: '80'), "http://localhost:3001/#{attach.attachment_url}", data: { magnify: "gallery", capition: "Anexo"}
+      %hr/
+      .row
+        .col-md-12
+          %h6 Resposta
+      .row
+        .col-md-12.form-content
+          = render 'form'
       %hr/
       %p Requerimentos vínculados ao CPF                  
       .row
@@ -63,11 +76,24 @@
           %table.table.table-striped.table-celled.table-bordered
             %thead
               %tr                  
-                %th Nº            
+                %th Situação            
                 %th Data/Hora            
-                %th Categoria            
-                %th Situação
+                %th Protocolo            
+                %th Nome            
+                %th CPF            
+                %th Categoria  
             %tbody
-              %tr
-                %td{colspan: 4}
-                  %i Nenhum requerimento vínculado          
+              - if @cadastre_requeriments.present?
+                - @cadastre_requeriments.each do |requeriment|
+                  %tr
+                    %td.collapsing= link_to (requeriment.attendant_answer? ? "Respondido" : (requeriment.cancelled? ? "Cancelado" : "Pendente")), attendance.requeriment_path(requeriment), remote: true
+                    %td.collapsing= link_to requeriment.created_at.format_date, attendance.requeriment_path(requeriment), remote: true
+                    %td.collapsing= link_to requeriment.id, attendance.requeriment_path(requeriment), remote: true
+                    %td= link_to requeriment.name.mb_chars.upcase, attendance.requeriment_path(requeriment), remote: true
+                    %td.collapsing= link_to requeriment.cpf.format_cpf, attendance.requeriment_path(requeriment), remote: true
+                    %td.collapsing= requeriment.requeriment_category.name                
+
+              - else
+                %tr
+                  %td{colspan: 6}
+                    Nenhum requerimento listado.

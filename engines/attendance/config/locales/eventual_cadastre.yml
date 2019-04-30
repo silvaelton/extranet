@@ -11,3 +11,6 @@ pt-BR:
         program_id: "Programa"
         convocation_id: "Convocação"
         observation: "Observação"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+        sub_program_id: "Sub Programa"

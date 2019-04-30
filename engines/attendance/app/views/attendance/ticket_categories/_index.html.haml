@@ -8,9 +8,9 @@
         %tr
           %th Nº 
           %th Nome
+          %th Programa
           %th Filtro situação?
           %th Filtro convocação?
-          %th Filtro programa?
           %th Status
           %th
       %tbody
@@ -19,9 +19,9 @@
             %tr{class: "row-ticket-category-#{ticket_category.id}"}
               %td.collapsing= ticket_category.id
               %td= ticket_category.name
+              %td= ticket_category.filter_program_id
               %td= ticket_category.filter_situation? ? "Sim" : "Não"
               %td= ticket_category.filter_convocation? ? "Sim" : "Não"
-              %td= ticket_category.filter_program? ? "Sim" : "Não"
               %td.collapsing= ticket_category.status? ? "Ativo" : "Inativo"
               %td.collapsing
                 .dropdown

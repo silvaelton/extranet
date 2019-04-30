@@ -15,7 +15,7 @@
     .col-3 
       = f.input :sub_program_id, as: :select, collection: Candidate::Program.status_active.order(:id), include_blank: 'Selecione...'
     .col-3 
-      = f.input :document, placeholder: 'Digite o documento'
+      = f.input :document, as: :file
     .col-3 
       = f.input :document_date, as: :string,  input_html: { class: 'date', value: (@convocation.document_date) ? localize(f.object.document_date) : nil}
     .col-3 

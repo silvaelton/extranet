@@ -8,7 +8,7 @@ module Candidate
 
     def index
       if params[:by_cpf].present? || params[:by_name].present?
-        @cadastres = apply_scopes(Candidate::Cadastre).all
+        @cadastres = apply_scopes(Candidate::CadastreUnionView).all.limit(20)
       end
     end
 

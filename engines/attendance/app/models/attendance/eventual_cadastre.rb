@@ -95,9 +95,6 @@ module Attendance
 
     end
 
-    def confirmation
-        self.password_confirmation = BCrypt::Password.create(self.password_confirmation)
-    end
 
     def cpf_valid?
       candidate_cadastre = Candidate::Cadastre.find_by(cpf: self.cpf)

@@ -1,0 +1,8 @@
+pt-BR:
+  activemodel:
+    models: 
+      'helpdesk/ticket_transfer': "transferência"
+    attributes:
+      'helpdesk/ticket_transfer':
+        ticket_type_id: "Tipo do chamado"
+        ticket_subject_id: "Assunto do chamado"

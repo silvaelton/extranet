@@ -14,13 +14,16 @@ module Pivotal
     
     def create
       @session = Pivotal::Session.new(set_params)
+      
       if @session.valid?
         @session.logger!(request, 'signin')
         
         session[:user_id] = @session.user_id
         session[:filter]  = nil
 
-        redirect_to pivotal.root_path
+        redirect_to main_app.root_path
+      else
+        render action: :new
       end
     end
     

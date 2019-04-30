@@ -2,14 +2,11 @@
   .card-body.card-header.border-left-yellow
     .card-title
       Listagem
-      .float-right.group-action
-        = link_to "Excel", "#", class: 'btn btn-secondary btn-sm'
-        = link_to "Imprimir", "#", class: 'btn btn-secondary btn-sm'
-  
   .card-body
     %table.table.table-bordered.table-striped.table-celled
       %thead
         %tr
+          %th Tipo
           %th Nome
           %th CPF
           %th Situação
@@ -19,14 +16,14 @@
         - if @cadastres.present?
           - @cadastres.each do |cadastre|
             %tr
+              %td.collapsing
+                = cadastre.type_row_format
               %td
-                %small ID: #{cadastre.id}
-                %br/
-                %h6
-                  %b= link_to cadastre.name, candidate.cadastre_path(cadastre), remote: true
-              %td.collapsing= cadastre.cpf.format_cpf
+                = link_to cadastre.name, candidate.cadastre_path(cadastre), title: cadastre.id
               %td.collapsing
-                Situação
+                = link_to  cadastre.cpf.format_cpf, candidate.cadastre_path(cadastre)
               %td.collapsing
-                = cadastre.program.name rescue t(:no_info)
+                = cadastre.situation_name rescue t(:no_info)
+              %td.collapsing
+                = cadastre.program_name rescue t(:no_info)
               %td.collapsing

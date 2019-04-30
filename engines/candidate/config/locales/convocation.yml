@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      'candidate/convocation': Convocação
+    attributes:
+      'candidate/convocation':
+        name: "Nome"
+        start_date: "Início"
+        end_date: "Fim"
+        quantity: "Quantidade"
+        program_id: "Programa"
+        sub_program_id: "Sub-Programa"
+        document: "Súmula"
+        document_date: "Súmula (data)"
+        status: "Ativa?"
+        description: "Descrição"
+        justify: "Justificativa"
