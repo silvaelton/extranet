@@ -1,0 +1,8 @@
+- if @permission_group.errors.any?
+  $("#modal .modal-body").html("#{escape_javascript(render 'form')}");
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".index-content").html("#{escape_javascript(render 'pivotal/permission_groups/index')}");
+  $(".row-permission-group-#{@permission_group.id}").addClass('table-success');
+  
+update_js();

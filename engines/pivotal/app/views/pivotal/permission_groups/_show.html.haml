@@ -1,0 +1,17 @@
+%table.table.table-striped.table-celled.table-bordered
+  %thead
+    %tr
+      %th Grupo de permissões
+      %th
+  %tbody
+    - if @permission_groups.present?
+      -@permission_groups.order(:name).each do |permission_group|
+        %tr{class: "row-permission-group-#{permission_group.id}"}
+          %td= permission_group.name
+          %td
+            = link_to "<i class='fa fa-circle' style='color: #068840'></i>".html_safe, pivotal.user_user_nav_path(id: nav.id), method: :delete, remote: true, class: 'btn-icon bookmark-link' 
+            
+    - else
+      %tr
+        %td{colspan: 6}
+          %i Nenhum grupo registrado.

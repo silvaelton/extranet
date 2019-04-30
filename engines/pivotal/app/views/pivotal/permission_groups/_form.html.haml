@@ -1,0 +1,16 @@
+= simple_form_for @permission_group, remote: true do |f|
+  .row
+    .col-md-8
+      = f.input :name, placeholder: 'Digite o nome'
+    .col-md-4
+      = f.input :group_type, collection: Pivotal::PermissionGroup.group_types.map { |k,v| [k.humanize, k]}, include_blank: 'Selecione...'
+  .row
+    .col-md-12
+      = f.input :permission_ids, placeholder: 'Permissões separadas por ;'
+  .row
+    .col-md-12
+      = f.input :description, placeholder: 'Digite uma descrição'
+  .divider-sm
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

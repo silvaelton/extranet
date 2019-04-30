@@ -1,0 +1,13 @@
+#sidebar
+  .card
+    .card-body.card-header.border-left-yellow
+      .card-title
+        Operações
+        = link_to "javascript:void(0)", class: "collapsing-link" do
+          %i.fa.fa-minus
+    .card-body.card-list
+      = link_to "Adicionar grupo de permissão", pivotal.new_permission_group_path, remote: true
+      %hr.divider
+      = link_to "Gestão de usuários", pivotal.users_path
+      = link_to "Gestão de setores", pivotal.sectors_path
+      = link_to "Gestão de engines", pivotal.system_engines_path
