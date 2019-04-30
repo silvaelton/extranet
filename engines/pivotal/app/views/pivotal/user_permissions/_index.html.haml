@@ -4,6 +4,7 @@
       Permissões
       .float-right.group-action
   .card-body
+    = render 'pivotal/user_group_permission_engines/index'
     %table.table.table-striped.table-celled.table-bordered
       - @system_engines.each do |system_engine|
         %thead

@@ -6,35 +6,6 @@
         %a.close
           %i.fas.fa-times
       .modal-body
-        %table.table.table-striped.table-celled.table-bordered
-          %thead
-            %tr
-              %th Nome
-              %th Descrição
-              %th Status
-              %th 
-          - @navs.each do |nav|
-            %thead
-              %tr.dark-modal
-                %th.collapsing= nav.label
-                %th= nav.description
-                %th.collapsing= nav.status.status_format
-                %th 
-                  - if @user.user_navs.where(nav_id: nav.id).present?
-                    = link_to "<i class='fa fa-circle' style='color: #068840'></i>".html_safe, pivotal.user_user_nav_path(id: nav.id), method: :delete, remote: true, class: 'btn-icon bookmark-link' 
-                  - else
-                    = link_to "<i class='fa fa-circle'></i>".html_safe, pivotal.new_user_user_nav_path(nav_id: nav.id), remote: true, class: 'btn-icon bookmark-link' 
-      
-            - if nav.childrens.present?
-              - nav.childrens.each do |children|
-                %tbody                  
-                  %tr
-                    %td.collapsing= children.label
-                    %td= children.description
-                    %td.collapsing= children.status.status_format
-                    %td
-                      - if @user.user_navs.where(nav_id: children.id).present?
-                        = link_to "<i class='fa fa-circle' style='color: #068840'></i>".html_safe, pivotal.user_user_nav_path(id: children.id), method: :delete, remote: true, class: 'btn-icon bookmark-link' 
-                      - else
-                        = link_to "<i class='fa fa-circle'></i>".html_safe, pivotal.new_user_user_nav_path(nav_id: children.id), remote: true, class: 'btn-icon bookmark-link' 
-          
+        = render 'pivotal/user_group_permission_navs/index'
+        = render 'pivotal/navs/show'
+     

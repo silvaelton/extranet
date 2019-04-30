@@ -12,12 +12,17 @@ Pivotal::Engine.routes.draw do
 
     resources :reset_passwords
     resources :user_navs
+    resources :user_group_permission_navs
+    resources :user_group_permission_engines
     resources :user_permissions
+    
 
     resources :tickets
     resources :logs
     resources :session_logs
   end
+
+  resources :permission_groups
 
   resources :system_engines do
     resources :engine_permissions

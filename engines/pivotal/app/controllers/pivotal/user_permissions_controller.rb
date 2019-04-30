@@ -31,6 +31,7 @@ module Pivotal
 
     def set_system_engines
       @system_engines = Pivotal::SystemEngine.all.order(:name)
+      @permission_groups = Pivotal::PermissionGroup
     end
 
     def set_user_permission

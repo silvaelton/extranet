@@ -3,9 +3,7 @@ module Pivotal
     before_action :set_user
     before_action :set_nav
         
-    def index
-      
-    end
+    def index; end
 
     def new
       @user_nav = @user.user_navs.new
@@ -32,6 +30,7 @@ module Pivotal
 
     def set_nav
       @navs = Pivotal::Nav.where(father_id: nil).order(:position)
+      @permission_groups = Pivotal::PermissionGroup
     end
 
     def set_user_navs
