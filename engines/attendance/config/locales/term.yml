@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      'attendance/term': "termo"
+    attributes:
+      'attendance/term':
+        title: "Título"
+        content: "Conteúdo"
+        status: "Ativo?"

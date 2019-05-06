@@ -1,0 +1,9 @@
+- if @term.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+ 
+- else
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".index-content").html("#{escape_javascript(render 'index')}");
+  $(".row-term-#{@term.id}").addClass('table-success');
+
+update_js();

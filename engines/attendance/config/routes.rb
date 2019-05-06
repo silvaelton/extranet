@@ -15,6 +15,7 @@ Attendance::Engine.routes.draw do
   resources :ticket_situation_types
 
   resources :control_stations
+  resources :terms
   
   get 'update_control', to: 'control_stations#update_control'
 

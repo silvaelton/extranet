@@ -6,6 +6,8 @@
         = link_to "javascript:void(0)", class: "collapsing-link" do
           %i.fa.fa-minus
     .card-body.card-list
+      = link_to "Retornar para pesquisa", candidate.cadastres_path(filter_params)
+      %hr.divider
       = link_to "Adicionar situação cadastral", candidate.new_cadastre_cadastre_situation_path(@cadastre), remote: true
       = link_to "Adicionar convocação", candidate.new_cadastre_cadastre_convocation_path(@cadastre), remote: true
       %hr.divider
@@ -13,19 +15,13 @@
       %hr.divider
       = link_to "Atualizar dados de contato", candidate.edit_update_contact_path(@cadastre), remote: true
       = link_to "Atualizar dados gerais", candidate.edit_update_general_path(@cadastre), remote: true
-      = link_to "Adicionar dependente", candidate.new_cadastre_dependent_path(@cadastre),  remote: true
-      = link_to "Adicionar herdeiro", candidate.new_cadastre_cadastre_inheritor_path(@cadastre),  remote: true
-      %hr.divider      
-      = link_to "Gerar pontuação", "#"
       %hr.divider
       = link_to "Adicionar ocorrência", "#"
       = link_to "Adicionar indicação", candidate.new_cadastre_indication_unitary_path(@cadastre), remote: true
       %hr.divider
-      = link_to "Enviar notificação", candidate.new_cadastre_cadastre_push_notification_path(@cadastre), remote: true       
-      = link_to "Enviar sms", candidate.new_cadastre_cadastre_send_menssage_path(@cadastre), remote: true     
-      = link_to "Enviar e-mail", candidate.new_cadastre_cadastre_send_email_path(@cadastre), remote: true     
-      %hr.divider
       = link_to "Adicionar atividade", candidate.new_cadastre_cadastre_activity_path(@cadastre),  remote: true
       %hr.divider
       = link_to "Emitir ficha cadastral", "#"       
+      %hr.divider
+      = link_to "Visualizar aplicativo", "#"       
       

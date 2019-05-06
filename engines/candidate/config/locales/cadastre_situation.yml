@@ -4,9 +4,11 @@ pt-BR:
       'candidate/cadastre_situation': Situação
     attributes:
       'candidate/cadastre_situation':
+        date: "Data"
         observation: "Observação"
         situation_type_id: "Tipo de situação"
         process_number: "Número do processo"
         computer: "Computador?"
         process_sei: "Processo SEI"
         subscribe: "Subscribe"
+        cadastre_convocation_id: "Convocação vínculada"

@@ -8,7 +8,7 @@ body::-webkit-scrollbar {
   background: transparent;
 }
 body::-webkit-scrollbar-thumb {
-  background: #f5b302;
+  background: #3570b7;
 }
 
 table a {
@@ -50,37 +50,37 @@ table .dropdown a {
 
 .btn-primary {
   color: #fff;
-  background-color: #f5b302;
-  border-color: #f5b302;
+  background-color: #3570b7;
+  border-color: #3570b7;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, 
 .btn-primary:not(:disabled):not(.disabled):active, 
 .show>.btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #f5b302;
-  border-color: #f5b302;
+  background-color: #3570b7;;
+  border-color: #3570b7;;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #e8a900;
-  border-color: #f5b302;
+  background-color: #4689da;
+  border-color: #3570b7;
 }
 
 .btn-primary.focus, .btn-primary:focus {
-  box-shadow: #e8a900;
+  box-shadow: #4689da;
 }
 
 .btn-primary:not(:disabled):not(.disabled).active:focus, 
 .btn-primary:not(:disabled):not(.disabled):active:focus, 
 .show>.btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem #f5b302;
+  box-shadow: 0 0 0 0.2rem #3570b7;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
-  background-color: #ffc671;
-  border-color: #ffc671;
+  background-color: #4689da;
+  border-color: #4689da;
 }
 
 .alert {
@@ -179,7 +179,7 @@ table .dropdown a {
 
 
 #candidate-content .content {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 #unit-content .content {
@@ -195,3 +195,9 @@ table .dropdown a {
   font-size: 15px;
 }
 
+
+
+.link {
+  color: #3570b7 !important;
+  font-size: 14px !important;
+}

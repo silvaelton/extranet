@@ -1,0 +1,17 @@
+= simple_form_for @term, remote: true do |f|
+  .row
+    .col-md-12
+      = f.input :title, placeholder: 'Informe o título'
+  .row
+    .col-md-12
+      = f.input :content, input_html: { class: 'tinymce' }
+  .row
+    .col-md-12
+      = f.input :status, as: :select, include_blank: false
+
+
+  %hr.divider
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
+

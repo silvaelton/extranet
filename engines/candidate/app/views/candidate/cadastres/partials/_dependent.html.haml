@@ -3,12 +3,14 @@
   .card-body.card-header.border-left-yellow
     .card-title
       %a.collapsing-content-link{href:"javascript:void(0)"}
-        2. Dependente (#{@cadastre.dependents.count})
+        2. Dependentes (#{@cadastre.dependents.count})
   .card-body.dependent-display{style: 'display: none'}
     .row
       .col-md-12
-        %h6
-          = link_to "+ Adicionar dependente", new_cadastre_dependent_path(@cadastre), remote: true
+        = link_to "+ Adicionar dependente", new_cadastre_dependent_path(@cadastre), remote: true, class: 'link'
+    .divider
+    .row
+      .col-md-12
         %table.table.table-bordered.table-striped
           %thead
             %tr
@@ -36,5 +38,5 @@
                         = link_to "Remover", candidate.cadastre_dependent_path(@cadastre, dependent), method: :delete, remote: true,  class: 'dropdown-item', data: { confirm: t(:confirm)}
             - else
               %tr
-                %td{colspan: 3}
+                %td{colspan: 5}
                   Nenhum assunto registrado.

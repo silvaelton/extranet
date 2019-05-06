@@ -1,0 +1,14 @@
+.modal-dialog.modal-lg
+  .modal-content
+    .modal-header
+      %h5.modal-title Detalhamento de termo
+      %a.close
+        %i.fas.fa-times
+    .modal-body
+      %table.table.table-striped.table-celled.table-bordered
+        %thead
+          %tr
+            %th= @term.title 
+        %tbody
+          %tr
+            %td= @term.content.html_safe 

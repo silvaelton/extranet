@@ -1,6 +1,6 @@
 .row
   .col-md-12
-    %h6 Etapas
+    %h6 Termos
     .divider
     %table.table.table-bordered.table-striped
       %thead
@@ -13,23 +13,16 @@
           %th.collapsing Obrigatória
           %th
       %tbody
-        - if @ticket_category.ticket_category_steps.present?
-          -@ticket_category.ticket_category_steps.order(:screen_order).each do |category_step|
-            %tr{class: "row-category-step-#{category_step.id}"}
-              %td.collapsing= category_step.screen_order
-              %td= category_step.name
-              %td= category_step.resume
-              %td= category_step.document_required.boolean_format
-              %td= category_step.allow_confirmation.boolean_format
-              %td= category_step.step_required.boolean_format
+        - if @ticket_category.ticket_category_terms.present?
+          -@ticket_category.ticket_category_terms.each do |ticket_term|
+            %tr{class: "row-ticket-term-#{ticket_term.id}"}
+              %td.collapsing= ticket_term.id
               %td.collapsing
                 .dropdown
                   %button.btn.btn-primary.btn-icon.btn-sm.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                     %i.fa.fa-cog
                     %i.ti-angle-down
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                    = link_to "Documentação", ticket_category_ticket_category_step_path(@ticket_category, category_step), class: 'dropdown-item', remote: true
-                    = link_to "Editar", edit_ticket_category_ticket_category_step_path(@ticket_category, category_step), class: 'dropdown-item', remote: true
                     = link_to "Excluir", ticket_category_ticket_category_step_path(@ticket_category, category_step), method: :delete, class: 'dropdown-item', data: {confirm: t(:confirm)}, remote: true
                 
         - else

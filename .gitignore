@@ -25,4 +25,4 @@
 
 /public/uploads/*
 
-.bundle
+.bundle/

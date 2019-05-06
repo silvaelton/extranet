@@ -6,6 +6,8 @@ module Attendance
     validates :name, presence: true
 
     has_many :ticket_category_steps
+    has_many :ticket_category_terms
+    
     
     scope :by_name,    ->(name) { where("name ilike '%#{name}%'") }
     scope :by_status,  ->(status) { where(status: status) }
