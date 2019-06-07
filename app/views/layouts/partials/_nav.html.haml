@@ -13,8 +13,17 @@
                 = nav.label
               .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
                 - nav.childrens.each do |child|
-                  - if current_user.user_navs.where(nav_id: child.id).present? || current_user.administrator?
-                    %a.dropdown-item{:href => "#{child.url}"}= child.label
+                  - if !child.childrens.present?
+                    %a.dropdown-item{href: child.url} 
+                      = child.label
+                  - else
+                    .dropdown.dropright.dropdown-submenu
+                      %a.dropdown-item.dropdown-toggle= child.label
+                      .dropdown-menu
+                        - child.childrens.each do |subchild|
+                          %a.dropdown-item{href: subchild.url}
+                            = subchild.label
+                                
           - else
             %li.nav-item
               %a.nav-link{:href => "#{nav.url}"}

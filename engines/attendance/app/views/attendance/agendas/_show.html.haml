@@ -5,4 +5,20 @@
       %a.close
         %i.fas.fa-times
     .modal-body
+      %table.table.table-striped.table-celled.table-bordered
+        %thead
+          %tr
+            %th Título
+        %tbody 
+          %tr
+            %td= @agenda.title
+
+      %table.table.table-striped.table-celled.table-bordered
+        %thead
+          %tr
+            %th Resumo
+        %tbody 
+          %tr
+            %td= @agenda.resume
+
       = @agenda.inspect

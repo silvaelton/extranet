@@ -39,6 +39,7 @@ Attendance::Engine.routes.draw do
 
   # Atendimento
   resources :ticket_categories, path: 'atendimento-categorias' do
+    resources :ticket_category_terms
     resources :ticket_category_steps do
       resources :step_documents
     end

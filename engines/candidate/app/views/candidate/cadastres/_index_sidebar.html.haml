@@ -12,18 +12,3 @@
         .mt-4
         = f.submit "Filtrar", name: nil, class: 'btn btn-primary btn-block', data: { disable_with: t(:disable_with)} 
         = link_to "Limpar", url_for, class: 'btn btn-dark btn-block' 
-  .divider
-  .card
-    .card-body.card-header.border-left-yellow
-      .card-title 
-        Operações
-        = link_to "javascript:void(0)", class: "collapsing-link" do
-          %i.fa.fa-minus
-    .card-body.card-list
-      = link_to "Gestão de convocações", candidate.convocations_path
-      = link_to "Gestão de situações cadastral", candidate.situation_types_path
-      = link_to "Gestão de listas (Portal)", candidate.lists_path
-      = link_to "Gestão de programas", candidate.programs_path
-      = link_to "Gestão de tipo de pontuação", candidate.pontuation_types_path
-      = link_to "Gestão de adição de pontuação", candidate.additional_pontuations_path
-      

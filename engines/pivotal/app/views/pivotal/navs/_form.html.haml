@@ -9,7 +9,7 @@
       = f.input :position 
   .row
     .col-12
-      = f.input :father_id, as: :select, collection: Pivotal::Nav.where(father_id: nil).status_active.order(:label), label_method: lambda {|father_id| "#{father_id.label}"}, include_blank: t(:include_blank)
+      = f.input :father_id, as: :select, collection: Pivotal::Nav.status_active.order(:label), label_method: lambda {|father_id| "#{father_id.label}"}, include_blank: t(:include_blank)
   
   .row
     .col-12

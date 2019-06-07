@@ -12,13 +12,5 @@ module Attendance
     scope :by_name,    ->(name) { where("name ilike '%#{name}%'") }
     scope :by_status,  ->(status) { where(status: status) }
 
-    def filter_program_id
-      self[:filter_program_id].join(',')
-    end
-    
-    def filter_situation_id
-      self[:filter_situation_id].join(',')
-    end
-    
   end
 end

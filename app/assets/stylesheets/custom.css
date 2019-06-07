@@ -201,3 +201,7 @@ table .dropdown a {
   color: #3570b7 !important;
   font-size: 14px !important;
 }
+
+#nav .dropdown:hover>.dropdown-menu {
+  display: block;
+}

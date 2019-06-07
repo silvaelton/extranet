@@ -1,4 +1,5 @@
 Cpl::Engine.routes.draw do
+  root 'notices#index'
 
   resources :notices, path: 'editais' do
     resources :notice_documents, only: [:index, :new, :create, :destroy]

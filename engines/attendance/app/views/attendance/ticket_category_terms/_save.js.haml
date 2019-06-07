@@ -1,0 +1,8 @@
+- if @ticket_category_term.errors.any?
+  $("#modal").html("#{escape_javascript(render 'new')}");
+- else
+  $(".index_ticket_category_term").html("#{escape_javascript(render 'attendance/ticket_category_terms/index')}");
+  $("#modal").html("#{escape_javascript(render 'layouts/partials/modal_success')}");
+  $(".row-category-term-#{@ticket_category_term.id}").addClass('table-success');
+
+update_js();

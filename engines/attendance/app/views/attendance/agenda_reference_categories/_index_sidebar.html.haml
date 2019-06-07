@@ -7,6 +7,3 @@
           %i.fa.fa-minus
     .card-body.card-list
       = link_to "Adicionar categoria", attendance.new_agenda_reference_category_path, remote: true
-      %hr/
-      = link_to "Gestão de agendas", attendance.agendas_path
-      = link_to "Gestão de categorias", attendance.agenda_categories_path, data: { disable_with: t(:disable_with) }

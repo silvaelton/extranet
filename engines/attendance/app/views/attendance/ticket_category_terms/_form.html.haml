@@ -1,0 +1,4 @@
+= simple_form_for [@ticket_category, @ticket_category_term], remote: true do |f|
+  = f.input :term_id, as: :select, collection: Support::Attendance::Term.status_active, include_blank: t(:include_blank)
+  .divider
+  = f.button :submit, class: 'btn btn-success', data: { disable_with: t(:disable_with) }

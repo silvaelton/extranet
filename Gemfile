@@ -43,6 +43,7 @@ gem 'savon', '~> 2.12.0'
 gem 'bd_money', '~> 0.0.14'
 gem 'dotenv-rails'
 gem 'hg-weather'
+gem 'rack-cors'
 
 gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
 gem 'carrierwave-base64', '~> 2.7.0'

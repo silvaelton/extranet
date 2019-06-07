@@ -232,3 +232,7 @@ input::placeholder, option {
 #candidate-content a {
   color: #6a6a6a;
 }
+
+#nav .dropdown-toggle::after {
+  color: #939393;
+}
